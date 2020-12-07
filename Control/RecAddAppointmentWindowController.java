@@ -110,7 +110,7 @@ public class RecAddAppointmentWindowController implements Initializable {
       @FXML  
       public void submitBtn(ActionEvent event) {
          try {
-            File file = new File ("user data\\Appointment\\"+userID.getText()+".txt");
+            File file = new File ("user data\\appointment\\"+userID.getText()+".txt");
                 PrintWriter print = new PrintWriter(new FileOutputStream(file,true)); 
                 print.append(userID.getText()+"\n"+name.getText()+"\n"+appDate.getValue()+"\n"+appTime.getValue()+"\n"+specAreaCombo.getValue()+"\n"+Symptoms.getText()+"\n");
                 print.close();
