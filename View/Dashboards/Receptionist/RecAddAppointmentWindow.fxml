@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXDatePicker?>
+<?import com.jfoenix.controls.JFXTextArea?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import com.jfoenix.controls.JFXTimePicker?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.InnerShadow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" maxHeight="780.0" maxWidth="1500.0" minHeight="500.0" minWidth="500.0" prefHeight="780.0" prefWidth="1500.0" styleClass="BackgroundPane" stylesheets="@../../Styles.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Control.RecAddAppointmentWindowController">
+   <children>
+      <AnchorPane layoutX="113.0" layoutY="40.0" prefHeight="796.0" prefWidth="218.0" styleClass="SubPane" stylesheets="@../Styles.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <AnchorPane layoutY="3.0" prefHeight="200.0" prefWidth="218.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="3.0">
+               <children>
+                  <Circle fill="DODGERBLUE" layoutX="112.0" layoutY="74.0" radius="46.0" stroke="BLACK" strokeType="INSIDE" AnchorPane.bottomAnchor="80.0" AnchorPane.leftAnchor="66.0" AnchorPane.rightAnchor="60.400000000000006" AnchorPane.topAnchor="28.0" />
+                  <Label layoutX="62.0" layoutY="128.0" prefHeight="28.0" prefWidth="98.0" text="John Doe" textFill="#274684">
+                     <font>
+                        <Font name="Segoe UI" size="23.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="62.0" layoutY="156.0" prefHeight="22.0" prefWidth="98.0" text="Receptionist" textFill="#071739">
+                     <font>
+                        <Font name="Segoe UI" size="17.0" />
+                     </font>
+                  </Label>
+                  <Button layoutX="83.0" layoutY="61.0" mnemonicParsing="false" onAction="#Profilebtn" opacity="0.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+               </children>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </AnchorPane>
+            <VBox layoutY="203.0" prefHeight="386.0" prefWidth="218.0" AnchorPane.bottomAnchor="196.60000000000002" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="203.0">
+               <children>
+                  <JFXButton alignment="TOP_RIGHT" buttonType="RAISED" lineSpacing="3.0" nodeOrientation="RIGHT_TO_LEFT" onAction="#homeBtn" prefHeight="73.0" prefWidth="256.0" ripplerFill="#206afd" styleClass="Side-Button" stylesheets="@../Styles.css" text="Home" textFill="#b9d5fd" textOverrun="CLIP">
+                     <font>
+                        <Font name="Segoe UI" size="27.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <effect>
+                        <InnerShadow blurType="GAUSSIAN" height="205.44" radius="70.52" width="78.64" />
+                     </effect>
+                  </JFXButton>
+                  <JFXButton alignment="TOP_RIGHT" buttonType="RAISED" graphicTextGap="0.0" lineSpacing="3.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onAction="#AppointmentBtn" prefHeight="73.0" prefWidth="218.0" ripplerFill="#206afd" styleClass="Side-Button-select" stylesheets="@../Styles.css" text="Appointments" textFill="#b9d5fd" textOverrun="CLIP">
+                     <font>
+                        <Font name="Segoe UI" size="27.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <effect>
+                        <InnerShadow blurType="GAUSSIAN" height="205.44" radius="70.52" width="78.64" />
+                     </effect>
+                  </JFXButton>
+                  <JFXButton alignment="TOP_RIGHT" buttonType="RAISED" lineSpacing="3.0" nodeOrientation="RIGHT_TO_LEFT" onAction="#VisitorsBtn" prefHeight="73.0" prefWidth="256.0" ripplerFill="#206afd" styleClass="Side-Button" stylesheets="@../Styles.css" text="Visitors" textFill="#b9d5fd" textOverrun="CLIP">
+                     <font>
+                        <Font name="Segoe UI" size="27.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <effect>
+                        <InnerShadow blurType="GAUSSIAN" height="205.44" radius="70.52" width="78.64" />
+                     </effect>
+                  </JFXButton>
+                  <JFXButton alignment="TOP_RIGHT" buttonType="RAISED" lineSpacing="3.0" nodeOrientation="RIGHT_TO_LEFT" onAction="#ComplaintsBtn" prefHeight="73.0" prefWidth="256.0" ripplerFill="#206afd" styleClass="Side-Button" stylesheets="@../Styles.css" text="Complains" textFill="#b9d5fd" textOverrun="CLIP">
+                     <font>
+                        <Font name="Segoe UI" size="27.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <effect>
+                        <InnerShadow blurType="GAUSSIAN" height="205.44" radius="70.52" width="78.64" />
+                     </effect>
+                  </JFXButton>
+                  <JFXButton alignment="TOP_RIGHT" buttonType="RAISED" lineSpacing="3.0" nodeOrientation="RIGHT_TO_LEFT" onAction="#PostalBtn" prefHeight="73.0" prefWidth="256.0" ripplerFill="#206afd" styleClass="Side-Button" stylesheets="@../Styles.css" text="Postal" textFill="#b9d5fd" textOverrun="CLIP">
+                     <font>
+                        <Font name="Segoe UI" size="27.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <effect>
+                        <InnerShadow blurType="GAUSSIAN" height="205.44" radius="70.52" width="78.64" />
+                     </effect>
+                  </JFXButton>
+                  <JFXButton alignment="TOP_RIGHT" buttonType="RAISED" lineSpacing="3.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="73.0" prefWidth="256.0" ripplerFill="#206afd" styleClass="Side-Button" stylesheets="@../Styles.css" text="Patients" textFill="#b9d5fd" textOverrun="CLIP">
+                     <font>
+                        <Font name="Segoe UI" size="27.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <effect>
+                        <InnerShadow blurType="GAUSSIAN" height="205.44" radius="70.52" width="78.64" />
+                     </effect>
+                  </JFXButton>
+               </children>
+            </VBox>
+            <JFXButton buttonType="RAISED" layoutX="14.0" layoutY="724.0" onAction="#Signoutbtn" prefHeight="47.0" prefWidth="142.0" styleClass="Special-buttons" text="Signout" textFill="#b3d1f4" AnchorPane.bottomAnchor="14.799999999999997" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="62.0">
+               <font>
+                  <Font name="Segoe UI Symbol" size="20.0" />
+               </font>
+               <ripplerFill>
+                  <LinearGradient endX="1.0" endY="1.0">
+                     <stops>
+                        <Stop color="#176694" />
+                        <Stop color="#5454cc" offset="1.0" />
+                     </stops>
+                  </LinearGradient>
+               </ripplerFill>
+            </JFXButton>
+         </children>
+      </AnchorPane>
+      <Label layoutX="266.0" layoutY="50.0" text="Add a new Appointment" textFill="#071739" AnchorPane.leftAnchor="266.0" AnchorPane.topAnchor="50.0">
+         <font>
+            <Font name="Segoe UI" size="40.0" />
+         </font>
+      </Label>
+      <Pane layoutX="270.0" layoutY="118.0" prefHeight="611.0" prefWidth="585.0" AnchorPane.bottomAnchor="51.0" AnchorPane.leftAnchor="270.0" AnchorPane.rightAnchor="645.0" AnchorPane.topAnchor="118.0">
+         <children>
+            <JFXTextField fx:id="name" labelFloat="true" layoutX="36.0" layoutY="92.0" promptText="Name" unFocusColor="#1d7fff">
+               <font>
+                  <Font size="21.0" />
+               </font>
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
+               <opaqueInsets>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </opaqueInsets>
+            </JFXTextField>
+            <JFXDatePicker fx:id="appDate" defaultColor="#274684" layoutX="34.0" layoutY="153.0" prefHeight="46.0" prefWidth="242.0" promptText="Appointment Date" showWeekNumbers="true">
+               <padding>
+                  <Insets bottom="5.0" left="5.0" top="5.0" />
+               </padding>
+            </JFXDatePicker>
+            <JFXTextField labelFloat="true" layoutX="33.0" layoutY="281.0" prefHeight="41.0" prefWidth="176.0" promptText="Medical Officer" unFocusColor="#1d7fff">
+               <font>
+                  <Font size="21.0" />
+               </font>
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
+               <opaqueInsets>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </opaqueInsets>
+            </JFXTextField>
+            <JFXTimePicker fx:id="appTime" layoutX="38.0" layoutY="222.0" prefHeight="28.0" prefWidth="242.0" promptText="Appointment Time" />
+            <ComboBox fx:id="specAreaCombo" layoutX="239.0" layoutY="301.0" prefWidth="150.0" promptText="Select" styleClass="Table-pane" stylesheets="@../../Styles.css">
+               <cursor>
+               <Cursor fx:constant="HAND" />
+               </cursor>
+            </ComboBox>
+            
+            <JFXTextArea fx:id="Symptoms" layoutX="38.0" layoutY="367.0" prefHeight="160.0" prefWidth="454.0" promptText="Symptoms" styleClass="BackgroundPane" stylesheets="@../../Styles.css" />
+            <JFXButton layoutX="314.0" layoutY="546.0" onAction="#homeBtn" prefHeight="31.0" prefWidth="74.0" styleClass="Special-buttons" text="Cancel" textFill="#b9d5fd">
+               <font>
+                  <Font size="15.0" />
+               </font>
+              </JFXButton>
+            <JFXButton layoutX="427.0" layoutY="546.0" prefHeight="31.0" prefWidth="74.0" styleClass="Special-buttons" text="Submit" textFill="#b9d5fd">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </JFXButton>
+            <JFXTextField fx:id="userID" labelFloat="true" layoutX="36.0" layoutY="17.0" promptText="User ID" unFocusColor="#1d7fff">
+               <font>
+                  <Font size="21.0" />
+               </font>
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
+               <opaqueInsets>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </opaqueInsets>
+            </JFXTextField>
+         </children>
+      </Pane>
+   </children>
+</AnchorPane>

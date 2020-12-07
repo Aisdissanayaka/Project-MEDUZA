@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXDatePicker?>
+<?import com.jfoenix.controls.JFXPasswordField?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.InnerShadow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Font?>
+
+<fx:root id="AnchorPane" maxHeight="780.0" maxWidth="1500.0" minHeight="500.0" minWidth="500.0" prefHeight="780.0" prefWidth="1500.0" styleClass="BackgroundPane" stylesheets="@Styles.css" type="AnchorPane" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Control.ReceptionistProfileWindowController">
+   <children>
+      <AnchorPane layoutX="113.0" layoutY="40.0" prefHeight="796.0" prefWidth="218.0" styleClass="SubPane" stylesheets="@Styles.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <AnchorPane layoutY="3.0" prefHeight="200.0" prefWidth="218.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="3.0">
+               <children>
+                  <Circle fill="DODGERBLUE" layoutX="112.0" layoutY="74.0" radius="46.0" stroke="BLACK" strokeType="INSIDE" AnchorPane.bottomAnchor="80.0" AnchorPane.leftAnchor="66.0" AnchorPane.rightAnchor="60.400000000000006" AnchorPane.topAnchor="28.0" />
+                  <Label layoutX="62.0" layoutY="128.0" prefHeight="28.0" prefWidth="98.0" text="John Doe" textFill="#274684">
+                     <font>
+                        <Font name="Segoe UI" size="23.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="62.0" layoutY="156.0" prefHeight="22.0" prefWidth="98.0" text="Receptionist" textFill="#071739">
+                     <font>
+                        <Font name="Segoe UI" size="17.0" />
+                     </font>
+                  </Label>
+               </children>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </AnchorPane>
+            <VBox layoutY="203.0" prefHeight="386.0" prefWidth="218.0" AnchorPane.bottomAnchor="196.60000000000002" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="203.0">
+               <children>
+                  <JFXButton alignment="TOP_RIGHT" buttonType="RAISED" graphicTextGap="0.0" lineSpacing="3.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" prefHeight="73.0" prefWidth="218.0" ripplerFill="#206afd" styleClass="Side-Button" stylesheets="@Styles.css" text="Appointments" textFill="#b9d5fd" textOverrun="CLIP">
+                     <font>
+                        <Font name="Segoe UI" size="27.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="DEFAULT" />
+                     </cursor>
+                     <effect>
+                        <InnerShadow blurType="GAUSSIAN" height="205.44" radius="70.52" width="78.64" />
+                     </effect>
+                  </JFXButton>
+                  <JFXButton alignment="TOP_RIGHT" buttonType="RAISED" lineSpacing="3.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="73.0" prefWidth="256.0" ripplerFill="#206afd" styleClass="Side-Button" stylesheets="@Styles.css" text="Visitors" textFill="#b9d5fd" textOverrun="CLIP">
+                     <font>
+                        <Font name="Segoe UI" size="27.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <effect>
+                        <InnerShadow blurType="GAUSSIAN" height="205.44" radius="70.52" width="78.64" />
+                     </effect>
+                  </JFXButton>
+                  <JFXButton alignment="TOP_RIGHT" buttonType="RAISED" lineSpacing="3.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="73.0" prefWidth="256.0" ripplerFill="#206afd" styleClass="Side-Button" stylesheets="@Styles.css" text="Complains" textFill="#b9d5fd" textOverrun="CLIP">
+                     <font>
+                        <Font name="Segoe UI" size="27.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <effect>
+                        <InnerShadow blurType="GAUSSIAN" height="205.44" radius="70.52" width="78.64" />
+                     </effect>
+                  </JFXButton>
+                  <JFXButton alignment="TOP_RIGHT" buttonType="RAISED" lineSpacing="3.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="73.0" prefWidth="256.0" ripplerFill="#206afd" styleClass="Side-Button" stylesheets="@Styles.css" text="Postal" textFill="#b9d5fd" textOverrun="CLIP">
+                     <font>
+                        <Font name="Segoe UI" size="27.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <effect>
+                        <InnerShadow blurType="GAUSSIAN" height="205.44" radius="70.52" width="78.64" />
+                     </effect>
+                  </JFXButton>
+                  <JFXButton alignment="TOP_RIGHT" buttonType="RAISED" lineSpacing="3.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="73.0" prefWidth="256.0" ripplerFill="#206afd" styleClass="Side-Button" stylesheets="@Styles.css" text="Patients" textFill="#b9d5fd" textOverrun="CLIP">
+                     <font>
+                        <Font name="Segoe UI" size="27.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <effect>
+                        <InnerShadow blurType="GAUSSIAN" height="205.44" radius="70.52" width="78.64" />
+                     </effect>
+                  </JFXButton>
+               </children>
+            </VBox>
+            <JFXButton buttonType="RAISED" layoutX="14.0" layoutY="724.0" onAction="#Signoutbtn" prefHeight="47.0" prefWidth="142.0" styleClass="Special-buttons" text="Signout" textFill="#b3d1f4" AnchorPane.bottomAnchor="14.799999999999997" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="62.0">
+               <font>
+                  <Font name="Segoe UI Symbol" size="20.0" />
+               </font>
+               <ripplerFill>
+                  <LinearGradient endX="1.0" endY="1.0">
+                     <stops>
+                        <Stop color="#176694" />
+                        <Stop color="#5454cc" offset="1.0" />
+                     </stops>
+                  </LinearGradient>
+               </ripplerFill>
+            </JFXButton>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="218.0" layoutY="203.0" prefHeight="583.0" prefWidth="1550.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="218.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="203.0">
+         <children>
+            <Pane layoutX="114.0" layoutY="114.0" prefHeight="577.0" prefWidth="699.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="583.0" AnchorPane.topAnchor="0.0">
+               <children>
+                  <JFXTextField labelFloat="true" layoutX="49.0" layoutY="17.0" promptText="First Name" text="John" unFocusColor="#1d7fff">
+                     <font>
+                        <Font size="21.0" />
+                     </font>
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                     <opaqueInsets>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </opaqueInsets>
+                  </JFXTextField>
+                  <JFXTextField labelFloat="true" layoutX="51.0" layoutY="102.0" promptText="Last Name" text="Doe" unFocusColor="#1d7fff">
+                     <font>
+                        <Font size="21.0" />
+                     </font>
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                  </JFXTextField>
+                  <JFXComboBox editable="true" labelFloat="true" layoutX="52.0" layoutY="173.0" prefHeight="45.0" prefWidth="237.0" promptText="Gender" visibleRowCount="2">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                  </JFXComboBox>
+                  <JFXDatePicker defaultColor="#274684" layoutX="52.0" layoutY="242.0" prefHeight="46.0" prefWidth="242.0" promptText="Date of Birth" showWeekNumbers="true">
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" top="5.0" />
+                     </padding>
+                  </JFXDatePicker>
+                  <JFXTextField labelFloat="true" layoutX="53.0" layoutY="331.0" promptText="Phone Number" text="077123456" unFocusColor="#1d7fff">
+                     <font>
+                        <Font size="21.0" />
+                     </font>
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                  </JFXTextField>
+                  <JFXTextField labelFloat="true" layoutX="52.0" layoutY="416.0" promptText="Address" text="Samanthage Gedara" unFocusColor="#1d7fff">
+                     <font>
+                        <Font size="21.0" />
+                     </font>
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                  </JFXTextField>
+                  <JFXTextField labelFloat="true" layoutX="428.0" layoutY="15.0" promptText="Staff ID" text="18152364" unFocusColor="#1d7fff">
+                     <font>
+                        <Font size="21.0" />
+                     </font>
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                  </JFXTextField>
+                  <JFXTextField labelFloat="true" layoutX="429.0" layoutY="100.0" prefHeight="45.0" prefWidth="265.0" promptText="Staff Email Address" text="Samantha@gmail.com" unFocusColor="#1d7fff">
+                     <font>
+                        <Font size="21.0" />
+                     </font>
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                  </JFXTextField>
+                  <JFXDatePicker defaultColor="#274684" layoutX="428.0" layoutY="161.0" prefHeight="46.0" prefWidth="273.0" promptText="Joined Date" showWeekNumbers="true">
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" top="5.0" />
+                     </padding>
+                  </JFXDatePicker>
+                  <Label layoutX="439.0" layoutY="243.0" prefHeight="48.0" prefWidth="57.0" text="CV" textFill="#071739">
+                     <font>
+                        <Font name="Segoe UI" size="24.0" />
+                     </font>
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                  </Label>
+                  <JFXButton layoutX="497.0" layoutY="251.0" prefHeight="25.0" prefWidth="62.0" styleClass="Special-buttons" text="View" textFill="#b9d5fd">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </JFXButton>
+               </children>
+            </Pane>
+            <AnchorPane layoutX="788.0" layoutY="14.0" prefHeight="399.0" prefWidth="455.0" styleClass="SubPane2" AnchorPane.bottomAnchor="164.0" AnchorPane.leftAnchor="788.0" AnchorPane.rightAnchor="39.0" AnchorPane.topAnchor="14.0">
+               <children>
+                  <Label layoutX="16.0" layoutY="8.0" prefHeight="55.0" prefWidth="213.0" text="Update Credentials" textFill="#071739" AnchorPane.bottomAnchor="335.8" AnchorPane.leftAnchor="16.0" AnchorPane.rightAnchor="225.4" AnchorPane.topAnchor="8.0">
+                     <font>
+                        <Font name="Segoe UI Bold" size="23.0" />
+                     </font>
+                  </Label>
+                  <JFXTextField labelFloat="true" layoutX="13.0" layoutY="106.0" promptText="Current User Name" text="9952525V" unFocusColor="#1d7fff" AnchorPane.leftAnchor="13.000000000000028" AnchorPane.rightAnchor="196.4">
+                     <font>
+                        <Font size="21.0" />
+                     </font>
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                     <opaqueInsets>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </opaqueInsets>
+                  </JFXTextField>
+                  <Label layoutX="14.0" layoutY="172.0" prefHeight="48.0" prefWidth="199.0" text="Current password" textFill="#071739" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="241.8">
+                     <font>
+                        <Font name="Segoe UI" size="19.0" />
+                     </font>
+                     <padding>
+                        <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
+                     </padding>
+                  </Label>
+                  <Label layoutX="14.0" layoutY="218.0" prefHeight="48.0" prefWidth="199.0" text="New password" textFill="#071739" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="241.8">
+                     <font>
+                        <Font name="Segoe UI" size="19.0" />
+                     </font>
+                     <padding>
+                        <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
+                     </padding>
+                  </Label>
+                  <Label layoutX="14.0" layoutY="262.0" prefHeight="48.0" prefWidth="199.0" text="Retype new password" textFill="#071739" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="241.8">
+                     <font>
+                        <Font name="Segoe UI" size="19.0" />
+                     </font>
+                     <padding>
+                        <Insets bottom="3.0" left="3.0" right="3.0" top="3.0" />
+                     </padding>
+                  </Label>
+                  <JFXPasswordField layoutX="214.0" layoutY="184.0" prefHeight="26.0" prefWidth="178.0" text="password" AnchorPane.leftAnchor="213.99999999999997" AnchorPane.rightAnchor="62.599999999999994" />
+                  <JFXPasswordField layoutX="214.0" layoutY="225.0" prefHeight="26.0" prefWidth="184.0" promptText="Enter a strong password" AnchorPane.leftAnchor="214.0" AnchorPane.rightAnchor="57.0" />
+                  <JFXPasswordField layoutX="214.0" layoutY="274.0" prefHeight="26.0" prefWidth="184.0" promptText="Re-type your password" AnchorPane.leftAnchor="214.0" AnchorPane.rightAnchor="57.0" />
+                  <JFXButton layoutX="330.0" layoutY="328.0" prefHeight="31.0" prefWidth="69.0" styleClass="Special-buttons" text="Update" textFill="#b9d5fd">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton layoutX="250.0" layoutY="327.0" prefHeight="31.0" prefWidth="74.0" styleClass="Special-buttons" text="Cancel" textFill="#b9d5fd">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </JFXButton>
+               </children>
+            </AnchorPane>
+         </children>
+      </AnchorPane>
+      <Label layoutX="266.0" layoutY="61.0" prefHeight="48.0" prefWidth="221.0" text="My Profile" textFill="#071739" AnchorPane.leftAnchor="266.0" AnchorPane.topAnchor="61.0">
+         <font>
+            <Font name="Segoe UI" size="40.0" />
+         </font>
+      </Label>
+      <JFXButton layoutX="266.0" layoutY="118.0" prefHeight="31.0" prefWidth="199.0" styleClass="Special-buttons" text="Add new display picture" textFill="#b9d5fd">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </JFXButton>
+   </children>
+</fx:root>

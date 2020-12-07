@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.effect.InnerShadow?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" maxHeight="780.0" maxWidth="1500.0" minHeight="500.0" minWidth="500.0" prefHeight="780.0" prefWidth="1500.0" styleClass="BackgroundPane" stylesheets="@Styles.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Control.DashboardUIController">
+   <children>
+      <AnchorPane layoutX="113.0" layoutY="40.0" prefHeight="796.0" prefWidth="218.0" styleClass="SubPane" stylesheets="@Styles.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <AnchorPane layoutY="3.0" prefHeight="200.0" prefWidth="218.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="3.0">
+               <children>
+                  <Circle fill="DODGERBLUE" layoutX="112.0" layoutY="74.0" radius="46.0" stroke="BLACK" strokeType="INSIDE" AnchorPane.bottomAnchor="80.0" AnchorPane.leftAnchor="66.0" AnchorPane.rightAnchor="60.400000000000006" AnchorPane.topAnchor="28.0" />
+                  <Label layoutX="62.0" layoutY="128.0" prefHeight="28.0" prefWidth="98.0" text="John Doe" textFill="#274684">
+                     <font>
+                        <Font name="Segoe UI" size="23.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="62.0" layoutY="156.0" prefHeight="22.0" prefWidth="98.0" text="Receptionist" textFill="#071739">
+                     <font>
+                        <Font name="Segoe UI" size="17.0" />
+                     </font>
+                  </Label>
+                  <Button layoutX="83.0" layoutY="61.0" mnemonicParsing="false" opacity="0.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+               </children>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </AnchorPane>
+            <VBox layoutY="203.0" prefHeight="386.0" prefWidth="218.0" AnchorPane.bottomAnchor="196.60000000000002" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="203.0">
+               <children>
+                  <JFXButton alignment="TOP_RIGHT" buttonType="RAISED" graphicTextGap="0.0" lineSpacing="3.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" prefHeight="73.0" prefWidth="218.0" ripplerFill="#206afd" styleClass="Side-Button" stylesheets="@Styles.css" text="Appointments" textFill="#b9d5fd" textOverrun="CLIP">
+                     <font>
+                        <Font name="Segoe UI" size="27.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <effect>
+                        <InnerShadow blurType="GAUSSIAN" height="205.44" radius="70.52" width="78.64" />
+                     </effect>
+                  </JFXButton>
+                  <JFXButton alignment="TOP_RIGHT" buttonType="RAISED" lineSpacing="3.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="73.0" prefWidth="256.0" ripplerFill="#206afd" styleClass="Side-Button" stylesheets="@Styles.css" text="Visitors" textFill="#b9d5fd" textOverrun="CLIP">
+                     <font>
+                        <Font name="Segoe UI" size="27.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <effect>
+                        <InnerShadow blurType="GAUSSIAN" height="205.44" radius="70.52" width="78.64" />
+                     </effect>
+                  </JFXButton>
+                  <JFXButton alignment="TOP_RIGHT" buttonType="RAISED" lineSpacing="3.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="73.0" prefWidth="256.0" ripplerFill="#206afd" styleClass="Side-Button" stylesheets="@Styles.css" text="Complains" textFill="#b9d5fd" textOverrun="CLIP">
+                     <font>
+                        <Font name="Segoe UI" size="27.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <effect>
+                        <InnerShadow blurType="GAUSSIAN" height="205.44" radius="70.52" width="78.64" />
+                     </effect>
+                  </JFXButton>
+                  <JFXButton alignment="TOP_RIGHT" buttonType="RAISED" lineSpacing="3.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="73.0" prefWidth="256.0" ripplerFill="#206afd" styleClass="Side-Button" stylesheets="@Styles.css" text="Postal" textFill="#b9d5fd" textOverrun="CLIP">
+                     <font>
+                        <Font name="Segoe UI" size="27.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <effect>
+                        <InnerShadow blurType="GAUSSIAN" height="205.44" radius="70.52" width="78.64" />
+                     </effect>
+                  </JFXButton>
+                  <JFXButton alignment="TOP_RIGHT" buttonType="RAISED" lineSpacing="3.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="73.0" prefWidth="256.0" ripplerFill="#206afd" styleClass="Side-Button" stylesheets="@Styles.css" text="Patients" textFill="#b9d5fd" textOverrun="CLIP">
+                     <font>
+                        <Font name="Segoe UI" size="27.0" />
+                     </font>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <effect>
+                        <InnerShadow blurType="GAUSSIAN" height="205.44" radius="70.52" width="78.64" />
+                     </effect>
+                  </JFXButton>
+               </children>
+            </VBox>
+            <JFXButton buttonType="RAISED" layoutX="14.0" layoutY="724.0" onAction="#Signoutbtn" prefHeight="47.0" prefWidth="142.0" styleClass="Special-buttons" text="Signout" textFill="#b3d1f4" AnchorPane.bottomAnchor="14.799999999999997" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="62.0">
+               <font>
+                  <Font name="Segoe UI Symbol" size="20.0" />
+               </font>
+               <ripplerFill>
+                  <LinearGradient endX="1.0" endY="1.0">
+                     <stops>
+                        <Stop color="#176694" />
+                        <Stop color="#5454cc" offset="1.0" />
+                     </stops>
+                  </LinearGradient>
+               </ripplerFill>
+            </JFXButton>
+         </children>
+      </AnchorPane>
+      <AnchorPane layoutX="218.0" prefHeight="92.0" prefWidth="1077.0" styleClass="SubPane" stylesheets="@Styles.css" AnchorPane.leftAnchor="218.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <Label layoutY="22.0" text="MEDUSA HOSPITALS PVT(Ltd.)" textFill="#50506d">
+               <font>
+                  <Font name="Segoe UI Historic" size="32.0" />
+               </font>
+            </Label>
+         </children></AnchorPane>
+      <JFXButton buttonType="RAISED" layoutX="226.0" layoutY="126.0" onAction="#Profilebtn" prefHeight="47.0" prefWidth="182.0" styleClass="Special-buttons" text="Add New" textFill="#b3d1f4" AnchorPane.leftAnchor="226.0" AnchorPane.topAnchor="126.0">
+         <font>
+            <Font name="Segoe UI Symbol" size="20.0" />
+         </font>
+         <ripplerFill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop color="#176694" />
+                  <Stop color="#5454cc" offset="1.0" />
+               </stops>
+            </LinearGradient>
+         </ripplerFill>
+      </JFXButton>
+      <AnchorPane layoutX="218.0" layoutY="203.0" prefHeight="583.0" prefWidth="1550.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="218.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="203.0">
+         <children>
+            <ScrollPane layoutX="2.0" prefHeight="489.0" prefWidth="714.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="898.0" prefWidth="1322.0">
+                     <children>
+                        <TableView layoutX="17.0" layoutY="26.0" prefHeight="905.0" prefWidth="1251.0" tableMenuButtonVisible="true" AnchorPane.bottomAnchor="-33.0" AnchorPane.leftAnchor="17.0" AnchorPane.rightAnchor="54.0" AnchorPane.topAnchor="26.0">
+                          <columns>
+                            <TableColumn prefWidth="75.0" text="ID" />
+                            <TableColumn prefWidth="75.0" text="Patient" />
+                              <TableColumn prefWidth="75.0" text="Appintment Date" />
+                              <TableColumn prefWidth="75.0" text="Appointment Time" />
+                              <TableColumn prefWidth="75.0" text="Symptoms" />
+                              <TableColumn prefWidth="75.0" text="Medical Officer" />
+                              <TableColumn prefWidth="75.0" text="Status" />
+                              <TableColumn prefWidth="75.0" text="Options" />
+                          </columns>
+                           <columnResizePolicy>
+                              <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                           </columnResizePolicy>
+                        </TableView>
+                     </children>
+                  </AnchorPane>
+              </content>
+            </ScrollPane>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
