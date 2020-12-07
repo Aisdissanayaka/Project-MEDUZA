@@ -6,13 +6,14 @@
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" nodeOrientation="LEFT_TO_RIGHT" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #f4f5f5;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Control.Sign_Up_as_RECEPTIONISTController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" nodeOrientation="LEFT_TO_RIGHT" prefHeight="600.0" prefWidth="800.0" style="-fx-background-color: #f4f5f5;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Control.Sign_Up_as_RECEPTIONISTController">
    <children>
       <Label layoutX="274.0" layoutY="10.0" text="Sign Up as Receptionist" textAlignment="JUSTIFY">
          <font>
@@ -26,7 +27,7 @@
                   <Font name="Times New Roman Bold" size="18.0" />
                </font>
             </Label>
-            <Button alignment="CENTER" contentDisplay="TOP" layoutX="279.0" layoutY="338.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 25;" text="add file">
+            <Button alignment="CENTER" contentDisplay="TOP" layoutX="279.0" layoutY="338.0" mnemonicParsing="false" onAction="#onclickbtnsave" prefHeight="30.0" prefWidth="100.0" style="-fx-background-color: #FFFFFF; -fx-background-radius: 25;" text="add file">
                <font>
                   <Font size="15.0" />
                </font></Button>
@@ -47,42 +48,43 @@
                   <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
                </rowConstraints>
             </GridPane>
-            <JFXTextField labelFloat="true" layoutX="59.0" layoutY="34.0" promptText="First Name">
+            <JFXTextField fx:id="recFirstNametxt" labelFloat="true" layoutX="59.0" layoutY="34.0" promptText="First Name">
                <font>
                   <Font name="Times New Roman" size="16.0" />
                </font>
             </JFXTextField>
-            <JFXTextField labelFloat="true" layoutX="59.0" layoutY="91.0" promptText="Last Name">
+            <JFXTextField fx:id="recLastNametxt" labelFloat="true" layoutX="59.0" layoutY="91.0" promptText="Last Name">
                <font>
                   <Font name="Times New Roman" size="16.0" />
                </font>
             </JFXTextField>
-            <JFXTextField labelFloat="true" layoutX="61.0" layoutY="150.0" promptText="Address">
+            <JFXTextField fx:id="recAddresstxt" labelFloat="true" layoutX="61.0" layoutY="150.0" promptText="Address">
                <font>
                   <Font name="Times New Roman" size="16.0" />
                </font>
             </JFXTextField>
-            <JFXTextField labelFloat="true" layoutX="61.0" layoutY="211.0" promptText="Phone Number">
+            <JFXTextField fx:id="recPhoneNumtxt" labelFloat="true" layoutX="61.0" layoutY="211.0" promptText="Phone Number">
                <font>
                   <Font name="Times New Roman" size="16.0" />
                </font>
             </JFXTextField>
-            <JFXTextField labelFloat="true" layoutX="541.0" layoutY="47.0" promptText="Staff ID">
+            <JFXTextField fx:id="recStaffIDtxt" labelFloat="true" layoutX="541.0" layoutY="47.0" promptText="Staff ID">
                <font>
                   <Font name="Times New Roman" size="16.0" />
                </font>
             </JFXTextField>
-            <JFXTextField labelFloat="true" layoutX="541.0" layoutY="103.0" promptText="Staff Email Address">
+            <JFXTextField fx:id="recStaffEmailtxt" labelFloat="true" layoutX="541.0" layoutY="103.0" promptText="Staff Email Address">
                <font>
                   <Font name="Times New Roman" size="16.0" />
                </font>
             </JFXTextField>
-            <JFXDatePicker defaultColor="#2c6c8c" layoutX="342.0" layoutY="41.0" prefHeight="25.0" prefWidth="115.0" promptText="Date Of Birth" />
-            <JFXComboBox layoutX="343.0" layoutY="93.0" promptText="Gender" />
-            <JFXDatePicker defaultColor="#2c6c8c" layoutX="541.0" layoutY="169.0" prefHeight="25.0" prefWidth="126.0" promptText="Date Of Joining" />
+            <JFXDatePicker fx:id="recDateOfBirth" defaultColor="#2c6c8c" layoutX="342.0" layoutY="41.0" prefHeight="25.0" prefWidth="115.0" promptText="Date Of Birth" />
+            <JFXComboBox fx:id="series" layoutX="343.0" layoutY="93.0" promptText="Gender" />
+            <JFXDatePicker fx:id="recDateOfJoin" defaultColor="#2c6c8c" layoutX="541.0" layoutY="169.0" prefHeight="25.0" prefWidth="126.0" promptText="Date Of Joining" />
+            <ImageView fx:id="img" fitHeight="150.0" fitWidth="200.0" layoutX="36.0" layoutY="251.0" pickOnBounds="true" preserveRatio="true" />
          </children>
       </AnchorPane>
-      <Button layoutX="442.0" layoutY="528.0" mnemonicParsing="false" style="-fx-background-color: #960db7; -fx-background-radius: 25;" text="Signup" textFill="#f8f8f8">
+      <Button layoutX="442.0" layoutY="528.0" mnemonicParsing="false" onAction="#signupbtn" style="-fx-background-color: #960db7; -fx-background-radius: 25;" text="Signup" textFill="#f8f8f8">
          <font>
             <Font size="18.0" />
          </font>
