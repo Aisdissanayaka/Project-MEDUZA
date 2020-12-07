@@ -106,45 +106,18 @@ public class RecAddAppointmentWindowController implements Initializable {
         window.centerOnScreen();
         
        }
-    @FXML
-    public void VisitorsBtn(ActionEvent event) throws IOException{
-        Parent signUpAsParent = FXMLLoader.load(getClass().getResource("/View/Dashboards/Receptionist/RecVisitorsWindow.fxml"));
-        Scene signUpAsviewScene = new Scene(signUpAsParent);
-        
-        //This Line gets the Stage Information
-        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
-        window.setScene(signUpAsviewScene);
-        window.show();
-        window.centerOnScreen();
-        
-       }
-    @FXML
-    public void ComplaintsBtn(ActionEvent event) throws IOException{
-        Parent signUpAsParent = FXMLLoader.load(getClass().getResource("/View/Dashboards/Receptionist/RecComplaintsWindow.fxml"));
-        Scene signUpAsviewScene = new Scene(signUpAsParent);
-        
-        //This Line gets the Stage Information
-        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
-        window.setScene(signUpAsviewScene);
-        window.show();
-        window.centerOnScreen();
-        
-       }
     
-    @FXML
-    public void PostalBtn(ActionEvent event) throws IOException{
-        Parent signUpAsParent = FXMLLoader.load(getClass().getResource("/View/Dashboards/Receptionist/RecPostalWindow.fxml"));
-        Scene signUpAsviewScene = new Scene(signUpAsParent);
-        
-        //This Line gets the Stage Information
-        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
-        window.setScene(signUpAsviewScene);
-        window.show();
-        window.centerOnScreen();
-        
-       }
+      @FXML  
+      public void submitBtn(ActionEvent event) {
+         try {
+            File file = new File ("user data\\Appointment\\"+userID.getText()+".txt");
+                PrintWriter print = new PrintWriter(new FileOutputStream(file,true)); 
+                print.append(userID.getText()+"\n"+name.getText()+"\n"+appDate.getValue()+"\n"+appTime.getValue()+"\n"+specAreaCombo.getValue()+"\n"+Symptoms.getText()+"\n");
+                print.close();
+        } catch (FileNotFoundException e) {
+        }
 
-     
+     }
     
     
     
