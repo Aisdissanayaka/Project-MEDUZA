@@ -30,37 +30,42 @@
                   <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
                </rowConstraints>
             </GridPane>
-            <JFXTextField labelFloat="true" layoutX="59.0" layoutY="34.0" promptText="First Name">
+            <JFXTextField fx:id="firstNameTxt" labelFloat="true" layoutX="59.0" layoutY="34.0" promptText="First Name">
                <font>
                   <Font name="Times New Roman" size="16.0" />
                </font>
             </JFXTextField>
-            <JFXTextField labelFloat="true" layoutX="59.0" layoutY="91.0" promptText="Last Name">
+            <JFXTextField fx:id="lastNameTxt" labelFloat="true" layoutX="59.0" layoutY="91.0" promptText="Last Name">
                <font>
                   <Font name="Times New Roman" size="16.0" />
                </font>
             </JFXTextField>
-            <JFXTextField labelFloat="true" layoutX="61.0" layoutY="150.0" promptText="Address">
+            <JFXTextField fx:id="addressTxt" labelFloat="true" layoutX="61.0" layoutY="150.0" promptText="Address">
                <font>
                   <Font name="Times New Roman" size="16.0" />
                </font>
             </JFXTextField>
-            <JFXTextField labelFloat="true" layoutX="417.0" layoutY="152.0" prefHeight="31.0" prefWidth="182.0" promptText="Phone Number">
+            <JFXTextField fx:id="phoneNumberTxt" labelFloat="true" layoutX="417.0" layoutY="152.0" prefHeight="31.0" prefWidth="182.0" promptText="Phone Number">
                <font>
                   <Font name="Times New Roman" size="16.0" />
                </font>
             </JFXTextField>
-            <JFXDatePicker defaultColor="#2c6c8c" layoutX="418.0" layoutY="41.0" prefHeight="25.0" prefWidth="115.0" promptText="Date Of Birth" />
-            <JFXComboBox labelFloat="true" layoutX="417.0" layoutY="97.0" promptText="Gender" />
-            <JFXTextArea labelFloat="true" layoutX="420.0" layoutY="208.0" prefHeight="131.0" prefWidth="262.0" promptText="Allerigies">
+            <JFXDatePicker fx:id="dateOfBirthDate" defaultColor="#2c6c8c" layoutX="418.0" layoutY="41.0" prefHeight="25.0" prefWidth="115.0" promptText="Date Of Birth" />
+            <JFXComboBox fx:id="genderTxt" labelFloat="true" layoutX="417.0" layoutY="97.0" promptText="Gender" />
+            <JFXTextArea fx:id="allergiesTxt" labelFloat="true" layoutX="420.0" layoutY="208.0" prefHeight="131.0" prefWidth="262.0" promptText="Allergies">
                <font>
                   <Font name="Times New Roman" size="16.0" />
                </font>
             </JFXTextArea>
-            <JFXComboBox labelFloat="true" layoutX="61.0" layoutY="209.0" prefHeight="25.0" prefWidth="182.0" promptText="Blood Group" />
+            <JFXComboBox fx:id="bloodGroupTxt" labelFloat="true" layoutX="59.0" layoutY="274.0" prefHeight="25.0" prefWidth="182.0" promptText="Blood Group" />
+            <JFXTextField fx:id="nicTxt" labelFloat="true" layoutX="59.0" layoutY="208.0" promptText="NIC">
+               <font>
+                  <Font name="Times New Roman" size="16.0" />
+               </font>
+            </JFXTextField>
          </children>
       </AnchorPane>
-      <Button layoutX="366.0" layoutY="478.0" mnemonicParsing="false" style="-fx-background-color: #960db7; -fx-background-radius: 25;" text="Signup" textFill="#f8f8f8">
+      <Button layoutX="366.0" layoutY="478.0" mnemonicParsing="false" onAction="#signupBtn" style="-fx-background-color: #960db7; -fx-background-radius: 25;" text="Signup" textFill="#f8f8f8">
          <font>
             <Font size="18.0" />
          </font>
