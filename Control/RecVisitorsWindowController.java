@@ -102,18 +102,7 @@ public class RecVisitorsWindowController implements Initializable {
         
        }
     
-    @FXML
-    public void PostalBtn(ActionEvent event) throws IOException{
-        Parent signUpAsParent = FXMLLoader.load(getClass().getResource("/View/Dashboards/Receptionist/RecPostalWindow.fxml"));
-        Scene signUpAsviewScene = new Scene(signUpAsParent);
-        
-        //This Line gets the Stage Information
-        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
-        window.setScene(signUpAsviewScene);
-        window.show();
-        window.centerOnScreen();
-        
-       }
+   
     
     
 
