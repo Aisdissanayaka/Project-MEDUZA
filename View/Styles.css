@@ -41,6 +41,18 @@
     -fx-background-color: #153872;
     
  }
+  .Close-Button {
+    
+    -fx-background-color: #82273B;
+
+    
+ }
+ .Close-Button:hover{
+    
+    -fx-background-color: #A82A51;
+    
+ }
+ 
  
  .Back-Button {
     
