@@ -5,7 +5,13 @@
  */
 package Control;
 
+import com.jfoenix.controls.JFXTextArea;
+import com.jfoenix.controls.JFXTextField;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -23,6 +29,38 @@ import javafx.stage.Stage;
  * @author ASUS
  */
 public class RecAddDispatchedPostalController implements Initializable {
+    //Declaring Variable
+    @FXML
+    private JFXTextField disName;
+
+    @FXML
+    private JFXTextArea disNote;
+
+    @FXML
+    private JFXTextField disReff;
+
+    @FXML
+    private JFXTextArea disTo;
+
+    @FXML
+    private JFXTextField disFrom;
+    
+    //Submit Button Action Methode    
+      @FXML  
+      public void submitBtn(ActionEvent event) {
+         try {
+            File file = new File ("user data\\receptionist\\postal\\dispatched post\\"+disReff.getText()+".txt");
+                PrintWriter print = new PrintWriter(new FileOutputStream(file,true)); 
+                print.append(disName.getText()+"\n"+disReff.getText()+"\n"+disTo.getText()+"\n"+disNote.getText()+"\n"+disFrom.getText()+"\n");
+                print.close();
+        } catch (FileNotFoundException e) {
+        }
+
+     }
+    
+    
+    
+    
  @FXML
     public void closeBtn(ActionEvent event) {
      System.exit(0);
