@@ -24,6 +24,11 @@ import javafx.stage.Stage;
  * @author ASUS
  */
 public class RecDashboardWelcome implements Initializable {
+   
+    @FXML
+    public void closeBtn(ActionEvent event) {
+     System.exit(0);
+    }
     
     @FXML
     public void Signoutbtn(ActionEvent event) throws IOException{
@@ -38,7 +43,7 @@ public class RecDashboardWelcome implements Initializable {
         
        }
     
-      @FXML
+    @FXML
     public void Profilebtn(ActionEvent event) throws IOException{
         Parent signUpAsParent = FXMLLoader.load(getClass().getResource("/View/Dashboards/Receptionist/ReceptionistProfileWindow.fxml"));
         Scene signUpAsviewScene = new Scene(signUpAsParent);
@@ -101,7 +106,20 @@ public class RecDashboardWelcome implements Initializable {
         window.centerOnScreen();
         
        }
+    @FXML
+    public void PatientBtn(ActionEvent event) throws IOException{
+        Parent signUpAsParent = FXMLLoader.load(getClass().getResource("/View/Dashboards/Receptionist/RecPatientsWindow.fxml"));
+        Scene signUpAsviewScene = new Scene(signUpAsParent);
+        
+        //This Line gets the Stage Information
+        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+        window.setScene(signUpAsviewScene);
+        window.show();
+        window.centerOnScreen();
+        
+       }
 
+    
   
     /**
      * Initializes the controller class.

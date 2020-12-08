@@ -5,19 +5,19 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.effect.InnerShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.paint.LinearGradient?>
 <?import javafx.scene.paint.Stop?>
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" maxHeight="780.0" maxWidth="1500.0" minHeight="500.0" minWidth="500.0" prefHeight="700.0" prefWidth="1200.0" styleClass="BackgroundPane" stylesheets="@../../Styles.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Control.RecPostalWindowController">
+<AnchorPane id="AnchorPane" maxHeight="780.0" maxWidth="1500.0" minHeight="500.0" minWidth="500.0" prefHeight="700.0" prefWidth="1200.0" styleClass="BackgroundPane" stylesheets="@../../Styles.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Control.RecPatientsWindowController">
    <children>
       <AnchorPane layoutX="113.0" layoutY="40.0" prefHeight="796.0" prefWidth="218.0" styleClass="SubPane" stylesheets="@../Styles.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -53,7 +53,7 @@
                         <InnerShadow blurType="GAUSSIAN" height="205.44" radius="70.52" width="78.64" />
                      </effect>
                   </JFXButton>
-                  <JFXButton alignment="TOP_RIGHT" buttonType="RAISED" graphicTextGap="0.0" lineSpacing="3.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onAction="#AppointmentBtn" prefHeight="73.0" prefWidth="218.0" ripplerFill="#206afd" styleClass="Side-Button" stylesheets="@../Styles.css" text="Appointments" textFill="#b9d5fd" textOverrun="CLIP">
+                  <JFXButton alignment="TOP_RIGHT" buttonType="RAISED" graphicTextGap="0.0" lineSpacing="3.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onAction="#AppointmentBtn" prefHeight="51.0" prefWidth="256.0" ripplerFill="#206afd" styleClass="Side-Button" stylesheets="@../Styles.css" text="Appointments" textFill="#b9d5fd" textOverrun="CLIP">
                      <font>
                         <Font name="Segoe UI" size="27.0" />
                      </font>
@@ -86,7 +86,7 @@
                         <InnerShadow blurType="GAUSSIAN" height="205.44" radius="70.52" width="78.64" />
                      </effect>
                   </JFXButton>
-                  <JFXButton alignment="TOP_RIGHT" buttonType="RAISED" lineSpacing="3.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="51.0" prefWidth="207.0" ripplerFill="#206afd" styleClass="Side-Button-select" stylesheets="@../Styles.css" text="Postal" textFill="#b9d5fd" textOverrun="CLIP">
+                  <JFXButton alignment="TOP_RIGHT" buttonType="RAISED" lineSpacing="3.0" nodeOrientation="RIGHT_TO_LEFT" onAction="#PostalBtn" prefHeight="73.0" prefWidth="256.0" ripplerFill="#206afd" styleClass="Side-Button" stylesheets="@../Styles.css" text="Postal" textFill="#b9d5fd" textOverrun="CLIP">
                      <font>
                         <Font name="Segoe UI" size="27.0" />
                      </font>
@@ -97,7 +97,7 @@
                         <InnerShadow blurType="GAUSSIAN" height="205.44" radius="70.52" width="78.64" />
                      </effect>
                   </JFXButton>
-                  <JFXButton alignment="TOP_RIGHT" buttonType="RAISED" lineSpacing="3.0" nodeOrientation="RIGHT_TO_LEFT" onAction="#PatientBtn" prefHeight="73.0" prefWidth="256.0" ripplerFill="#206afd" styleClass="Side-Button" stylesheets="@../Styles.css" text="Patients" textFill="#b9d5fd" textOverrun="CLIP">
+                  <JFXButton alignment="TOP_RIGHT" buttonType="RAISED" lineSpacing="3.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="51.0" prefWidth="207.0" ripplerFill="#206afd" styleClass="Side-Button-select" stylesheets="@../Styles.css" text="Patients" textFill="#b9d5fd" textOverrun="CLIP">
                      <font>
                         <Font name="Segoe UI" size="27.0" />
                      </font>
@@ -110,7 +110,7 @@
                   </JFXButton>
                </children>
             </VBox>
-            <JFXButton buttonType="RAISED" layoutX="38.0" layoutY="638.0" onAction="#Signoutbtn" prefHeight="47.0" prefWidth="142.0" style="-fx-background-radius: 30;" styleClass="Special-buttons" text="Signout" textFill="#b3d1f4" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="38.0" AnchorPane.rightAnchor="38.0">
+            <JFXButton buttonType="RAISED" layoutX="14.0" layoutY="638.0" onAction="#Signoutbtn" prefHeight="47.0" prefWidth="142.0" style="-fx-background-radius: 30;" styleClass="Special-buttons" text="Signout" textFill="#b3d1f4" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="38.0" AnchorPane.rightAnchor="38.0">
                <font>
                   <Font name="Segoe UI Symbol" size="20.0" />
                </font>
@@ -123,9 +123,14 @@
                   </LinearGradient>
                </ripplerFill>
             </JFXButton>
+            <ImageView fitHeight="111.0" fitWidth="92.0" layoutX="62.0" layoutY="513.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="64.60000000000014" AnchorPane.leftAnchor="69.0" AnchorPane.rightAnchor="60.93807067871094">
+               <image>
+                  <Image url="@../../images/lgogo.png" />
+               </image>
+            </ImageView>
          </children>
       </AnchorPane>
-      <JFXButton buttonType="RAISED" layoutX="226.0" layoutY="126.0" onAction="#addReceivedPostBtn" prefHeight="47.0" prefWidth="260.0" style="-fx-background-radius: 30;" styleClass="Special-buttons" stylesheets="@../../Styles.css" text="New Received Postal" textFill="#b3d1f4" AnchorPane.leftAnchor="226.0" AnchorPane.topAnchor="126.0">
+      <JFXButton buttonType="RAISED" layoutX="226.0" layoutY="126.0" onAction="#AddPatientBtn" prefHeight="47.0" prefWidth="260.0" style="-fx-background-radius: 30;" styleClass="Special-buttons" stylesheets="@../../Styles.css" text="Add New Patient" textFill="#b3d1f4" AnchorPane.leftAnchor="226.0" AnchorPane.topAnchor="126.0">
          <font>
             <Font name="Segoe UI Symbol" size="20.0" />
          </font>
@@ -144,26 +149,19 @@
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="898.0" prefWidth="1322.0">
                      <children>
-                        <JFXButton layoutX="-1.0" layoutY="1.0" prefHeight="39.0" prefWidth="120.0" styleClass="Side-Button" stylesheets="@../../Styles.css" text="Received" textFill="#b3d1f4">
-                           <font>
-                              <Font name="Segoe UI Italic" size="19.0" />
-                           </font>
-                           <effect>
-                              <DropShadow color="#ff2727" height="121.09" radius="58.2575" spread="0.5" width="113.94" />
-                           </effect>
-                        </JFXButton>
-                        <JFXButton layoutX="121.0" layoutY="1.0" onAction="#DispatchedBtn" prefHeight="39.0" prefWidth="130.0" styleClass="Side-Button-select" stylesheets="@../../Styles.css" text="Dispatched" textFill="#b3d1f4">
-                           <font>
-                              <Font name="Segoe UI Italic" size="19.0" />
-                           </font>
-                        </JFXButton>
-                        <Pane layoutX="-1.0" layoutY="42.0" prefHeight="158.0" prefWidth="1322.0" styleClass="Table-pane" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="42.0">
-                           <children>
-                              <Label layoutX="14.0" layoutY="63.0" prefHeight="92.0" prefWidth="218.0" text="Received Posts">
-                                 <font>
-                                    <Font name="Segoe UI Emoji" size="28.0" />
-                                 </font></Label>
-                           </children></Pane>
+                        <TableView layoutX="25.0" layoutY="28.0" prefHeight="430.0" prefWidth="910.0">
+                          <columns>
+                            <TableColumn prefWidth="51.73329162597656" text="ID" />
+                            <TableColumn prefWidth="98.666748046875" text="First Name" />
+                              <TableColumn prefWidth="98.666748046875" text="Last Name" />
+                              <TableColumn prefWidth="98.666748046875" text="Gender" />
+                              <TableColumn prefWidth="98.666748046875" text="DOB" />
+                              <TableColumn prefWidth="98.666748046875" text="Phone Number" />
+                              <TableColumn prefWidth="98.666748046875" text="Address" />
+                              <TableColumn prefWidth="98.666748046875" text="Blood Group" />
+                              <TableColumn prefWidth="98.666748046875" text="Allergies" />
+                          </columns>
+                        </TableView>
                      </children>
                   </AnchorPane>
                </content>
@@ -175,24 +173,6 @@
             <Font name="Segoe UI Historic" size="32.0" />
          </font>
       </Label>
-      <JFXButton buttonType="RAISED" layoutX="507.0" layoutY="126.0" onAction="#addDispatchedPostBtn" prefHeight="47.0" prefWidth="260.0" style="-fx-background-radius: 30;" styleClass="Special-buttons" stylesheets="@../../Styles.css" text="New Dispatched Postal" textFill="#b3d1f4">
-         <font>
-            <Font name="Segoe UI Symbol" size="20.0" />
-         </font>
-         <ripplerFill>
-            <LinearGradient endX="1.0" endY="1.0">
-               <stops>
-                  <Stop color="#176694" />
-                  <Stop color="#5454cc" offset="1.0" />
-               </stops>
-            </LinearGradient>
-         </ripplerFill>
-      </JFXButton>
-      <ImageView fitHeight="111.0" fitWidth="92.0" layoutX="79.0" layoutY="534.3999999999999" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="64.60000000000014" AnchorPane.leftAnchor="69.0" AnchorPane.rightAnchor="60.93807067871094">
-         <image>
-            <Image url="@../../images/lgogo.png" />
-         </image>
-      </ImageView>
       <Button layoutX="1165.0" layoutY="14.0" minHeight="-Infinity" mnemonicParsing="false" onAction="#closeBtn" prefHeight="13.0" prefWidth="26.0" style="-fx-background-radius: 50;" styleClass="Close-Button" stylesheets="@../../Styles.css">
          <cursor>
             <Cursor fx:constant="HAND" />

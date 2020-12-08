@@ -22,15 +22,13 @@ import javafx.stage.Stage;
  *
  * @author ASUS
  */
-public class RecComplaintsWindowController implements Initializable {
-    
-    @FXML
+public class RecAddDispatchedPostalController implements Initializable {
+ @FXML
     public void closeBtn(ActionEvent event) {
      System.exit(0);
     }
 
-    //Action events
-     @FXML
+    @FXML
     public void Signoutbtn(ActionEvent event) throws IOException{
         Parent signUpAsParent = FXMLLoader.load(getClass().getResource("/View/UserLogin.fxml"));
         Scene signUpAsviewScene = new Scene(signUpAsParent);
@@ -40,7 +38,22 @@ public class RecComplaintsWindowController implements Initializable {
         window.setScene(signUpAsviewScene);
         window.show();
         window.centerOnScreen();
-    }
+        
+       }
+    
+      @FXML
+    public void Profilebtn(ActionEvent event) throws IOException{
+        Parent signUpAsParent = FXMLLoader.load(getClass().getResource("/View/Dashboards/Receptionist/ReceptionistProfileWindow.fxml"));
+        Scene signUpAsviewScene = new Scene(signUpAsParent);
+        
+        //This Line gets the Stage Information
+        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+        window.setScene(signUpAsviewScene);
+        window.show();
+        window.centerOnScreen();
+        
+       }
+    
     @FXML
     public void homeBtn(ActionEvent event) throws IOException{
         Parent signUpAsParent = FXMLLoader.load(getClass().getResource("/View/Dashboards/RecDashboardWelcome.fxml"));
@@ -54,25 +67,10 @@ public class RecComplaintsWindowController implements Initializable {
         
        }
     
+    
     @FXML
     public void AppointmentBtn(ActionEvent event) throws IOException{
         Parent signUpAsParent = FXMLLoader.load(getClass().getResource("/View/Dashboards/Receptionist/RecAppointmentWindow.fxml"));
-        Scene signUpAsviewScene = new Scene(signUpAsParent);
-        
-        //This Line gets the Stage Information
-        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
-        window.setScene(signUpAsviewScene);
-        window.show();
-        window.centerOnScreen();
-        
-       }
-    
-    
-   
-    
-    @FXML
-    public void Profilebtn(ActionEvent event) throws IOException{
-        Parent signUpAsParent = FXMLLoader.load(getClass().getResource("/View/Dashboards/Receptionist/ReceptionistProfileWindow.fxml"));
         Scene signUpAsviewScene = new Scene(signUpAsParent);
         
         //This Line gets the Stage Information
@@ -94,23 +92,9 @@ public class RecComplaintsWindowController implements Initializable {
         window.centerOnScreen();
         
        }
-    
     @FXML
     public void ComplaintsBtn(ActionEvent event) throws IOException{
         Parent signUpAsParent = FXMLLoader.load(getClass().getResource("/View/Dashboards/Receptionist/RecComplaintsWindow.fxml"));
-        Scene signUpAsviewScene = new Scene(signUpAsParent);
-        
-        //This Line gets the Stage Information
-        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
-        window.setScene(signUpAsviewScene);
-        window.show();
-        window.centerOnScreen();
-        
-       }
-    
-     @FXML
-    public void AddComplaintBtn(ActionEvent event) throws IOException{
-        Parent signUpAsParent = FXMLLoader.load(getClass().getResource("/View/Dashboards/Receptionist/RecAddComplaintWindow.fxml"));
         Scene signUpAsviewScene = new Scene(signUpAsParent);
         
         //This Line gets the Stage Information
@@ -144,6 +128,7 @@ public class RecComplaintsWindowController implements Initializable {
         window.centerOnScreen();
         
        }
+
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {

@@ -77,7 +77,7 @@
                         <InnerShadow blurType="GAUSSIAN" height="205.44" radius="70.52" width="78.64" />
                      </effect>
                   </JFXButton>
-                  <JFXButton alignment="TOP_RIGHT" buttonType="RAISED" lineSpacing="3.0" nodeOrientation="RIGHT_TO_LEFT" onAction="#ComplaintsBtn" prefHeight="73.0" prefWidth="256.0" ripplerFill="#206afd" styleClass="Side-Button-select" stylesheets="@../Styles.css" text="Complaints" textFill="#b9d5fd" textOverrun="CLIP">
+                  <JFXButton alignment="TOP_RIGHT" buttonType="RAISED" lineSpacing="3.0" nodeOrientation="RIGHT_TO_LEFT" onAction="#ComplaintsBtn" prefHeight="51.0" prefWidth="207.0" ripplerFill="#206afd" styleClass="Side-Button-select" stylesheets="@../Styles.css" text="Complaints" textFill="#b9d5fd" textOverrun="CLIP">
                      <font>
                         <Font name="Segoe UI" size="27.0" />
                      </font>
@@ -99,7 +99,7 @@
                         <InnerShadow blurType="GAUSSIAN" height="205.44" radius="70.52" width="78.64" />
                      </effect>
                   </JFXButton>
-                  <JFXButton alignment="TOP_RIGHT" buttonType="RAISED" lineSpacing="3.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="73.0" prefWidth="256.0" ripplerFill="#206afd" styleClass="Side-Button" stylesheets="@../Styles.css" text="Patients" textFill="#b9d5fd" textOverrun="CLIP">
+                  <JFXButton alignment="TOP_RIGHT" buttonType="RAISED" lineSpacing="3.0" nodeOrientation="RIGHT_TO_LEFT" onAction="#PatientBtn" prefHeight="73.0" prefWidth="256.0" ripplerFill="#206afd" styleClass="Side-Button" stylesheets="@../Styles.css" text="Patients" textFill="#b9d5fd" textOverrun="CLIP">
                      <font>
                         <Font name="Segoe UI" size="27.0" />
                      </font>
@@ -112,7 +112,7 @@
                   </JFXButton>
                </children>
             </VBox>
-            <JFXButton buttonType="RAISED" layoutX="14.0" layoutY="724.0" onAction="#Signoutbtn" prefHeight="47.0" prefWidth="142.0" style="-fx-background-radius: 30;" styleClass="Special-buttons" text="Signout" textFill="#b3d1f4" AnchorPane.bottomAnchor="14.799999999999997" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="62.0">
+            <JFXButton buttonType="RAISED" layoutX="34.0" layoutY="640.0" onAction="#Signoutbtn" prefHeight="47.0" prefWidth="142.0" style="-fx-background-radius: 30;" styleClass="Special-buttons" text="Signout" textFill="#b3d1f4" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="38.0" AnchorPane.rightAnchor="38.0">
                <font>
                   <Font name="Segoe UI Symbol" size="20.0" />
                </font>
@@ -125,6 +125,11 @@
                   </LinearGradient>
                </ripplerFill>
             </JFXButton>
+            <ImageView fitHeight="111.0" fitWidth="92.0" layoutX="65.0" layoutY="526.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="64.60000000000014" AnchorPane.leftAnchor="69.0" AnchorPane.rightAnchor="60.93807067871094">
+               <image>
+                  <Image url="@../../images/lgogo.png" />
+               </image>
+            </ImageView>
          </children>
       </AnchorPane>
       <Label layoutX="266.0" layoutY="50.0" text="Add a new complaint" textFill="#071739" AnchorPane.leftAnchor="266.0" AnchorPane.topAnchor="50.0">
@@ -182,5 +187,15 @@
             <Image url="@../../images/big%20logo.png" />
          </image>
       </ImageView>
+      <Button layoutX="1165.0" layoutY="14.0" minHeight="-Infinity" mnemonicParsing="false" onAction="#closeBtn" prefHeight="13.0" prefWidth="26.0" style="-fx-background-radius: 50;" styleClass="Close-Button" stylesheets="@../../Styles.css">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
+      <Button layoutX="1114.0" layoutY="20.0" minHeight="-Infinity" mnemonicParsing="false" prefHeight="4.0" prefWidth="45.0" style="-fx-background-radius: 50;" styleClass="Side-Button" stylesheets="@../../Styles.css">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
+      </Button>
    </children>
 </AnchorPane>
