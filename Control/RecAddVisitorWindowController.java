@@ -5,7 +5,15 @@
  */
 package Control;
 
+import com.jfoenix.controls.JFXDatePicker;
+import com.jfoenix.controls.JFXTextArea;
+import com.jfoenix.controls.JFXTextField;
+import com.jfoenix.controls.JFXTimePicker;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -23,7 +31,44 @@ import javafx.stage.Stage;
  * @author ASUS
  */
 public class RecAddVisitorWindowController implements Initializable {
- 
+   // Declaring Varible 
+    
+    @FXML
+    private JFXTextField visID;
+
+    @FXML
+    private JFXDatePicker visDate;
+
+    @FXML
+    private JFXTimePicker inTime;
+
+    @FXML
+    private JFXTextArea visNote;
+
+    @FXML
+    private JFXTextField visName;
+
+    @FXML
+    private JFXTimePicker outTime;
+    
+    
+    //Submit Button Action Methode
+    
+    @FXML
+    public void submitBtn(ActionEvent event) {
+         try {
+            File file = new File ("user data\\visitors\\"+visName.getText()+".txt");
+                PrintWriter print = new PrintWriter(new FileOutputStream(file,true)); 
+                print.append(visName.getText()+"\n"+visID.getText()+"\n"+visDate.getValue()+"\n"+inTime.getValue()+"\n"+outTime.getValue()+"\n"+visNote.getText()+"\n");
+                print.close();
+        } catch (FileNotFoundException e) {
+        }
+
+     }
+    
+    
+
+     //Close Button Action Methode
     @FXML
     public void closeBtn(ActionEvent event) {
      System.exit(0);
