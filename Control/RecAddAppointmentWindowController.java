@@ -161,8 +161,8 @@ public class RecAddAppointmentWindowController implements Initializable {
         window.centerOnScreen();
         
        }
-
-    
+      
+      //Submit Button Action Methode    
       @FXML  
       public void submitBtn(ActionEvent event) {
          try {
