@@ -13,6 +13,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.PrintWriter;
 import java.net.URL;
+import java.time.LocalDate;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -36,7 +37,7 @@ public class RecAddComplaintWindowController extends DashboardUIController imple
     private JFXTextArea actionTakenTxt;
 
     @FXML
-    private ComboBox comTypeCombo;
+    private ComboBox comTypeBox;
 
     @FXML
     private JFXTextField phoneNumTxt;
@@ -47,22 +48,26 @@ public class RecAddComplaintWindowController extends DashboardUIController imple
     @FXML
     private JFXTextArea noteTxt;
     
-    @FXML
-    private JFXButton submitBtn;
-    
-    private int n=1;
+    private LocalDate date;
     
     
-    //submit button. It writes complaints data to file
+    //submit button. It's writes complaints data to file
      @FXML
     public void submitBtn(ActionEvent event){
         try{
-        File file = new File("user data\\complaint\\"+ n++ +".txt");    
+         File file = new File("user data\\complaint\\"+ LocalDate.now()+" " +nameTxt.getText() +".txt"); 
         PrintWriter printer = new PrintWriter(new FileOutputStream(file,true));  
-        printer.append( comTypeCombo.getValue()+"\n"  + nameTxt.getText()+ "\n" +  phoneNumTxt.getText()+"\n"+ descriptionTxt.getText()+"\n"+ actionTakenTxt.getText() + "\n"+
+        printer.append(date.now()+"\n"  + comTypeBox.getValue()+"\n"  + nameTxt.getText()+ "\n" +  phoneNumTxt.getText()+"\n"+ descriptionTxt.getText()+"\n"+ actionTakenTxt.getText() + "\n"+
                          noteTxt.getText()+ "\n");
              printer.close();
         }catch(FileNotFoundException e){}
+        
+        comTypeBox.setValue(null);
+        nameTxt.setText(null);
+        descriptionTxt.setText(null);
+        noteTxt.setText(null);
+        phoneNumTxt.setText(null);
+        actionTakenTxt.setText(null);
     }
 
     
@@ -70,8 +75,8 @@ public class RecAddComplaintWindowController extends DashboardUIController imple
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         
-        ObservableList<String>list=FXCollections.observableArrayList("Type 1","Type 2", "Type 3");
-       comTypeCombo.setItems(list);
+         ObservableList<String>list=FXCollections.observableArrayList("Type 1","Type 2", "Type 3");
+       comTypeBox.setItems(list);
     }    
     
 }
