@@ -22,104 +22,25 @@ import javafx.stage.Stage;
  *
  * @author ASUS
  */
-public class RecPostalWindowController implements Initializable {
+public class RecPostalWindowController extends DashboardUIController implements Initializable {
     
+  
+   //Trigers the Dispatched postal side window in the postal window
     @FXML
-    public void closeBtn(ActionEvent event) {
-     System.exit(0);
-    }
-    
-
-    //Action events
-     @FXML
-    public void Signoutbtn(ActionEvent event) throws IOException{
-        Parent signUpAsParent = FXMLLoader.load(getClass().getResource("/View/UserLogin.fxml"));
-        Scene signUpAsviewScene = new Scene(signUpAsParent);
+    public void DispatchedpostalBtn(ActionEvent event) throws IOException{
+        Parent dispatchedPostalWindow = FXMLLoader.load(getClass().getResource("/View/Dashboards/Receptionist/RecPostalDispatchedWindow.fxml"));
+        Scene dispatchedPostalWindowViewScene = new Scene(dispatchedPostalWindow);
         
         //This Line gets the Stage Information
         Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
-        window.setScene(signUpAsviewScene);
-        window.show();
-        window.centerOnScreen();
-    }
-    @FXML
-    public void homeBtn(ActionEvent event) throws IOException{
-        Parent signUpAsParent = FXMLLoader.load(getClass().getResource("/View/Dashboards/RecDashboardWelcome.fxml"));
-        Scene signUpAsviewScene = new Scene(signUpAsParent);
-        
-        //This Line gets the Stage Information
-        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
-        window.setScene(signUpAsviewScene);
+        window.setScene(dispatchedPostalWindowViewScene);
         window.show();
         window.centerOnScreen();
         
        }
     
-      @FXML
-    public void AppointmentBtn(ActionEvent event) throws IOException{
-        Parent signUpAsParent = FXMLLoader.load(getClass().getResource("/View/Dashboards/Receptionist/RecAppointmentWindow.fxml"));
-        Scene signUpAsviewScene = new Scene(signUpAsParent);
-        
-        //This Line gets the Stage Information
-        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
-        window.setScene(signUpAsviewScene);
-        window.show();
-        window.centerOnScreen();
-        
-       }
-    
-    
-   
-    
+   //Trigers the add new received post window
     @FXML
-    public void Profilebtn(ActionEvent event) throws IOException{
-        Parent signUpAsParent = FXMLLoader.load(getClass().getResource("/View/Dashboards/Receptionist/ReceptionistProfileWindow.fxml"));
-        Scene signUpAsviewScene = new Scene(signUpAsParent);
-        
-        //This Line gets the Stage Information
-        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
-        window.setScene(signUpAsviewScene);
-        window.show();
-        window.centerOnScreen();
-        
-       }
-    @FXML
-    public void VisitorsBtn(ActionEvent event) throws IOException{
-        Parent signUpAsParent = FXMLLoader.load(getClass().getResource("/View/Dashboards/Receptionist/RecVisitorsWindow.fxml"));
-        Scene signUpAsviewScene = new Scene(signUpAsParent);
-        
-        //This Line gets the Stage Information
-        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
-        window.setScene(signUpAsviewScene);
-        window.show();
-        window.centerOnScreen();
-        
-       }
-    @FXML
-    public void ComplaintsBtn(ActionEvent event) throws IOException{
-        Parent signUpAsParent = FXMLLoader.load(getClass().getResource("/View/Dashboards/Receptionist/RecComplaintsWindow.fxml"));
-        Scene signUpAsviewScene = new Scene(signUpAsParent);
-        
-        //This Line gets the Stage Information
-        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
-        window.setScene(signUpAsviewScene);
-        window.show();
-        window.centerOnScreen();
-        
-       }
-    @FXML
-    public void DispatchedBtn(ActionEvent event) throws IOException{
-        Parent signUpAsParent =  FXMLLoader.load(getClass().getResource("/View/Dashboards/Receptionist/RecPostalDispatchedWindow.fxml"));
-        Scene signUpAsviewScene = new Scene(signUpAsParent);
-        
-        //This Line gets the Stage Information
-        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
-        window.setScene(signUpAsviewScene);
-        window.show();
-        window.centerOnScreen();
-        
-       }
-     @FXML
     public void addReceivedPostBtn(ActionEvent event) throws IOException{
         Parent signUpAsParent =  FXMLLoader.load(getClass().getResource("/View/Dashboards/Receptionist/RecAddReceivedPost.fxml"));
         Scene signUpAsviewScene = new Scene(signUpAsParent);
@@ -129,28 +50,17 @@ public class RecPostalWindowController implements Initializable {
         window.setScene(signUpAsviewScene);
         window.show();
         window.centerOnScreen();
-    }
-    
-     @FXML
-    public void addDispatchedPostBtn(ActionEvent event) throws IOException{
-        Parent signUpAsParent =  FXMLLoader.load(getClass().getResource("/View/Dashboards/Receptionist/RecAddDispatchedPostal.fxml"));
-        Scene signUpAsviewScene = new Scene(signUpAsParent);
-        
-        //This Line gets the Stage Information
-        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
-        window.setScene(signUpAsviewScene);
-        window.show();
-        window.centerOnScreen();
         
        }
+     //Trigers the add new dispatched post window
     @FXML
-    public void PatientBtn(ActionEvent event) throws IOException{
-        Parent signUpAsParent = FXMLLoader.load(getClass().getResource("/View/Dashboards/Receptionist/RecPatientsWindow.fxml"));
-        Scene signUpAsviewScene = new Scene(signUpAsParent);
+    public void addDispatchedPostBtn(ActionEvent event) throws IOException{
+        Parent addDispatchedPostWindow =  FXMLLoader.load(getClass().getResource("/View/Dashboards/Receptionist/RecAddDispatchedPostal.fxml"));
+        Scene addDispatchedPostWindowViewScene = new Scene(addDispatchedPostWindow);
         
         //This Line gets the Stage Information
         Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
-        window.setScene(signUpAsviewScene);
+        window.setScene(addDispatchedPostWindowViewScene);
         window.show();
         window.centerOnScreen();
         

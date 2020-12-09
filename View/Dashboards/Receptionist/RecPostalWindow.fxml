@@ -152,7 +152,7 @@
                               <DropShadow color="#ff2727" height="121.09" radius="58.2575" spread="0.5" width="113.94" />
                            </effect>
                         </JFXButton>
-                        <JFXButton layoutX="121.0" layoutY="1.0" onAction="#DispatchedBtn" prefHeight="39.0" prefWidth="130.0" styleClass="Side-Button-select" stylesheets="@../../Styles.css" text="Dispatched" textFill="#b3d1f4">
+                        <JFXButton layoutX="121.0" layoutY="1.0" onAction="#DispatchedpostalBtn" prefHeight="39.0" prefWidth="130.0" styleClass="Side-Button-select" stylesheets="@../../Styles.css" text="Dispatched" textFill="#b3d1f4">
                            <font>
                               <Font name="Segoe UI Italic" size="19.0" />
                            </font>
