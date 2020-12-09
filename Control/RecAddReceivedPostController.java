@@ -5,6 +5,7 @@
  */
 package Control;
 
+import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
 import java.io.File;
@@ -40,17 +41,24 @@ public class RecAddReceivedPostController extends DashboardUIController implemen
     @FXML
     private JFXTextField postTo;
     
+    @FXML
+    private JFXDatePicker postDate;
     //Submit Button Action Methode    
     @FXML  
       public void submitBtn(ActionEvent event) {
          try {
             File file = new File ("user data\\receptionist\\postal\\received postal\\"+postReff.getText()+".txt");
                 PrintWriter print = new PrintWriter(new FileOutputStream(file,true)); 
-                print.append(postName.getText()+"\n"+postReff.getText()+"\n"+postFrom.getText()+"\n"+postNote.getText()+"\n"+postTo.getText()+"\n");
+                print.append(postName.getText()+"\n"+postReff.getText()+"\n"+postFrom.getText()+"\n"+postNote.getText()+"\n"+postTo.getText()+"\n"+postDate.getValue().toString()+"\n");
                 print.close();
         } catch (FileNotFoundException e) {
         }
-
+        postName.setText(null);
+        postNote.setText(null);
+        postReff.setText(null);
+        postFrom.setText(null);
+        postTo.setText(null);
+        postDate.setValue(null);
      }
     
          
