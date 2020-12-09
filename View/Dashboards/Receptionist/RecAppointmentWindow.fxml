@@ -130,7 +130,7 @@
             </ImageView>
          </children>
       </AnchorPane>
-      <JFXButton buttonType="RAISED" layoutX="226.0" layoutY="126.0" onAction="#addNewAppointentBtn" prefHeight="47.0" prefWidth="260.0" style="-fx-background-radius: 30;" styleClass="Special-buttons" stylesheets="@../../Styles.css" text="Add New Appointment" textFill="#b3d1f4" AnchorPane.leftAnchor="226.0" AnchorPane.topAnchor="126.0">
+      <JFXButton buttonType="RAISED" layoutX="226.0" layoutY="126.0" onAction="#addNewAppointment" prefHeight="47.0" prefWidth="260.0" style="-fx-background-radius: 30;" styleClass="Special-buttons" stylesheets="@../../Styles.css" text="Add New Appointment" textFill="#b3d1f4" AnchorPane.leftAnchor="226.0" AnchorPane.topAnchor="126.0">
          <font>
             <Font name="Segoe UI Symbol" size="20.0" />
          </font>

@@ -19,37 +19,130 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 /**
- * FXML Controller class
- *
- * @author ASUS
+ * 
+ * Parent class of the Dashboard action events. 
  */
 public class DashboardUIController implements Initializable {
     
+    
+    //Close button
+    @FXML
+    public void closeBtn(ActionEvent event) {
+     System.exit(0);
+    }
+    
+    //Signout button - (Side Vbox)
     @FXML
     public void Signoutbtn(ActionEvent event) throws IOException{
-        Parent signUpAsParent = FXMLLoader.load(getClass().getResource("/View/UserLogin.fxml"));
-        Scene signUpAsviewScene = new Scene(signUpAsParent);
+        Parent loginWindow = FXMLLoader.load(getClass().getResource("/View/UserLogin.fxml"));
+        Scene loginViewScene = new Scene(loginWindow);
         
         //This Line gets the Stage Information
         Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
-        window.setScene(signUpAsviewScene);
+        window.setScene(loginViewScene);
         window.show();
+        window.centerOnScreen();
         
        }
     
+    //Profile button - (Side Vbox)
+    @FXML
     public void Profilebtn(ActionEvent event) throws IOException{
-        Parent signUpAsParent = FXMLLoader.load(getClass().getResource("/View/ReceptionistProfileWindow.fxml"));
+        Parent profileWindow = FXMLLoader.load(getClass().getResource("/View/Dashboards/Receptionist/ReceptionistProfileWindow.fxml"));
+        Scene profileViewScene = new Scene(profileWindow);
+        
+        //This Line gets the Stage Information
+        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+        window.setScene(profileViewScene);
+        window.show();
+        window.centerOnScreen();
+        
+       }
+    
+    //Home button - (Side Vbox)
+    @FXML
+    public void homeBtn(ActionEvent event) throws IOException{
+        Parent welcomeWindow = FXMLLoader.load(getClass().getResource("/View/Dashboards/RecDashboardWelcome.fxml"));
+        Scene welcomeWindowViewScene = new Scene(welcomeWindow);
+        
+        //This Line gets the Stage Information
+        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+        window.setScene(welcomeWindowViewScene);
+        window.show();
+        window.centerOnScreen();
+        
+       }
+    
+    //Appointment button - (Side Vbox)
+    @FXML
+    public void AppointmentBtn(ActionEvent event) throws IOException{
+        Parent appointmentWindow = FXMLLoader.load(getClass().getResource("/View/Dashboards/Receptionist/RecAppointmentWindow.fxml"));
+        Scene appointmentWindowViewScene = new Scene(appointmentWindow);
+        
+        //This Line gets the Stage Information
+        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+        window.setScene(appointmentWindowViewScene);
+        window.show();
+        window.centerOnScreen();
+        
+       }
+    
+    //Visitors button - (Side Vbox)
+    @FXML
+    public void VisitorsBtn(ActionEvent event) throws IOException{
+        Parent VisitorsWindow = FXMLLoader.load(getClass().getResource("/View/Dashboards/Receptionist/RecVisitorsWindow.fxml"));
+        Scene VisitorsWindowViewScene = new Scene(VisitorsWindow);
+        
+        //This Line gets the Stage Information
+        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+        window.setScene(VisitorsWindowViewScene);
+        window.show();
+        window.centerOnScreen();
+        
+       }
+    
+    //Complaints button - (Side Vbox)
+    @FXML
+    public void ComplaintsBtn(ActionEvent event) throws IOException{
+        Parent signUpAsParent = FXMLLoader.load(getClass().getResource("/View/Dashboards/Receptionist/RecComplaintsWindow.fxml"));
         Scene signUpAsviewScene = new Scene(signUpAsParent);
         
         //This Line gets the Stage Information
         Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
         window.setScene(signUpAsviewScene);
         window.show();
+        window.centerOnScreen();
         
        }
-    /**
-     * Initializes the controller class.
-     */
+    //Postal Button - (Side Vbox)
+     @FXML
+    public void PostalBtn(ActionEvent event) throws IOException{
+        Parent postalWindow = FXMLLoader.load(getClass().getResource("/View/Dashboards/Receptionist/RecPostalWindow.fxml"));
+        Scene postalWindowViewScene = new Scene(postalWindow);
+        
+        //This Line gets the Stage Information
+        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+        window.setScene(postalWindowViewScene);
+        window.show();
+        window.centerOnScreen();
+        
+       }
+    
+    //Patient Button - (Side Vbox)
+    @FXML
+    public void PatientBtn(ActionEvent event) throws IOException{
+        Parent patientWindow = FXMLLoader.load(getClass().getResource("/View/Dashboards/Receptionist/RecPatientsWindow.fxml"));
+        Scene patientWindowViewScene = new Scene(patientWindow);
+        
+        //This Line gets the Stage Information
+        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+        window.setScene(patientWindowViewScene);
+        window.show();
+        window.centerOnScreen();
+        
+       }
+    
+  
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
