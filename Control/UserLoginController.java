@@ -7,6 +7,9 @@ package Control;
 
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -44,18 +47,65 @@ public class UserLoginController implements Initializable {
     private JFXTextField userName;
 
     @FXML
-    private JFXPasswordField userPassword;
+    private JFXPasswordField password;
 
     @FXML
-    private Button loginBtn;
+    private Button login;
     
-    
+    @FXML
+    private Label lable;
     
     @FXML
     public void closeBtn(ActionEvent event) {
      System.exit(0);
     }
     
+
+
+
+    //Login button Action Method (user data\receptionist\credentials\receptionistlogin.txt)
+
+
+     @FXML
+    private void login(ActionEvent event) throws IOException {
+      boolean x = true;
+        BufferedReader br = null;
+        try {
+            br = new BufferedReader(new FileReader("user data\\receptionist\\credentials\\receptionistlogin.txt"));
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        if (br != null) {
+            String st;
+            while ((st = br.readLine()) != null) {
+                String[] splitted = st.split(",");
+                if (userName.getText().equals(splitted[0]) && password.getText().equals(splitted[1])) {
+                    x = false;
+                    Parent signUpAsParent = FXMLLoader.load(getClass().getResource("/View/Dashboards/RecDashboardWelcome.fxml"));
+                    Scene signUpAsviewScene = new Scene(signUpAsParent);
+        
+                     //This Line gets the Stage Information
+                     Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+                     window.setScene(signUpAsviewScene);
+                     window.show();
+                     window.centerOnScreen();
+                     
+                }
+                    
+                
+            }if (x == true){
+            /*Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setContentText("Invalid Username or Password\n please try again!");
+            alert.show();*/
+            lable.setText("Invalid Username or Password");
+            
+            }
+        }
+        userName.setText(null);
+        password.setText(null);
+    }
+
+
 
     
     
