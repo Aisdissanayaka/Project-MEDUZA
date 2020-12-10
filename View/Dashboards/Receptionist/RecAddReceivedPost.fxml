@@ -189,7 +189,7 @@
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </opaqueInsets>
             </JFXTextField>
-            <JFXDatePicker layoutX="36.0" layoutY="367.0" />
+            <JFXDatePicker fx:id="postDate" layoutX="36.0" layoutY="367.0" promptText="Date" />
          </children>
       </Pane>
       <ImageView fitHeight="532.0" fitWidth="488.0" layoutX="573.0" layoutY="30.0" opacity="0.23" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="-17.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="73.0">
