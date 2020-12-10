@@ -34,7 +34,7 @@ public class DashboardUIController implements Initializable {
     //Signout button - (Side Vbox)
     @FXML
     public void Signoutbtn(ActionEvent event) throws IOException{
-        Parent loginWindow = FXMLLoader.load(getClass().getResource("/View/UserLogin.fxml"));
+        Parent loginWindow = FXMLLoader.load(getClass().getResource("/View/Sign_Up_as.fxml"));
         Scene loginViewScene = new Scene(loginWindow);
         
         //This Line gets the Stage Information

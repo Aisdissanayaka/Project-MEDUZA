@@ -62,8 +62,35 @@ public class UserLoginController implements Initializable {
     
     //Methode of Create Account HyperLink
     @FXML   
-    public void createAccount(ActionEvent event) throws IOException{
-        Parent signUpAsParent = FXMLLoader.load(getClass().getResource("/View/Sign_Up_as.fxml"));
+    public void createAccountMedicalOfficer(ActionEvent event) throws IOException{
+        Parent signUpAsParent = FXMLLoader.load(getClass().getResource("/View/Sign_Up_as_MO.fxml"));
+        Scene signUpAsviewScene = new Scene(signUpAsParent);
+        
+        //This Line gets the Stage Information
+        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+        window.setScene(signUpAsviewScene);
+        window.show();
+        window.centerOnScreen();
+        
+       }
+    
+    //Methode of Create Account HyperLink
+    @FXML   
+    public void createAccountPATIENT(ActionEvent event) throws IOException{
+        Parent signUpAsParent = FXMLLoader.load(getClass().getResource("/View/Sign_Up_as_PATIENT.fxml"));
+        Scene signUpAsviewScene = new Scene(signUpAsParent);
+        
+        //This Line gets the Stage Information
+        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+        window.setScene(signUpAsviewScene);
+        window.show();
+        window.centerOnScreen();
+        
+       }
+    //Methode of Create Account HyperLink
+    @FXML   
+    public void createAccountReceptionist(ActionEvent event) throws IOException{
+        Parent signUpAsParent = FXMLLoader.load(getClass().getResource("/View/Sign_Up_as_RECEPTIONIST.fxml"));
         Scene signUpAsviewScene = new Scene(signUpAsParent);
         
         //This Line gets the Stage Information

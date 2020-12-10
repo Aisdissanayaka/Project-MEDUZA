@@ -27,6 +27,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.ComboBox;
 import javafx.stage.Stage;
 
+
 /**
  * FXML Controller class
  *
@@ -79,8 +80,8 @@ public class Sign_Up_as_PATIENTController implements Initializable {
                  dateOfBirthDate.getValue()+ "\n"+ genderTxt.getValue() +"\n" +phoneNumberTxt.getText() +"\n"+ allergiesTxt.getText());
              printer.close();
         }catch(FileNotFoundException e){}
-        
-    
+         
+   
         
     }
     
@@ -96,6 +97,7 @@ public class Sign_Up_as_PATIENTController implements Initializable {
         Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
         window.setScene(signUpAsviewScene);
         window.show();
+        window.centerOnScreen();
         
        }
     
