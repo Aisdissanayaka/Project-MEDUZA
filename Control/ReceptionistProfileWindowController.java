@@ -16,7 +16,7 @@ import javafx.fxml.Initializable;
  *
  * @author ASUS
  */
-public class ReceptionistProfileWindowController implements Initializable {
+public class ReceptionistProfileWindowController extends DashboardUIController implements Initializable {
     
       
     
@@ -28,8 +28,6 @@ public class ReceptionistProfileWindowController implements Initializable {
     }    
 
 
-    @FXML
-    private void Profilebtn(ActionEvent event) {
-    }
+  
     
 }

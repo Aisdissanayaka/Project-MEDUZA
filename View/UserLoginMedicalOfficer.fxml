@@ -20,7 +20,7 @@
             <Cursor fx:constant="DEFAULT" />
          </cursor>
          <children>
-            <Hyperlink fx:id="createAccountLink" layoutX="56.0" layoutY="280.0" onAction="#createAccount" text="Create Account">
+            <Hyperlink fx:id="createAccountLink" layoutX="56.0" layoutY="280.0" onAction="#createAccountMedicalOfficer" text="Create Account">
                <font>
                   <Font name="Segoe UI" size="12.0" />
                </font></Hyperlink>

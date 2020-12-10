@@ -39,7 +39,7 @@ public class Sign_Up_asController implements Initializable {
         //medical officer button
         @FXML   
         public void medicalOfficerBtn(ActionEvent event) throws IOException{
-        Parent signUpAsParent = FXMLLoader.load(getClass().getResource("/View/Sign_Up_as_MO.fxml"));
+        Parent signUpAsParent = FXMLLoader.load(getClass().getResource("/View/UserLoginMedicalOfficer.fxml"));
         Scene signUpAsviewScene = new Scene(signUpAsParent);
         
         //This Line gets the Stage Information
@@ -52,7 +52,7 @@ public class Sign_Up_asController implements Initializable {
         
         @FXML   
         public void patientBtn(ActionEvent event) throws IOException{
-        Parent signUpAsParent = FXMLLoader.load(getClass().getResource("/View/Sign_Up_as_PATIENT.fxml"));
+        Parent signUpAsParent = FXMLLoader.load(getClass().getResource("/View/UserLoginPatient.fxml"));
         Scene signUpAsviewScene = new Scene(signUpAsParent);
         
         //This Line gets the Stage Information
@@ -65,7 +65,7 @@ public class Sign_Up_asController implements Initializable {
         
         @FXML   
         public void receptionisBtn(ActionEvent event) throws IOException{
-        Parent signUpAsParent = FXMLLoader.load(getClass().getResource("/View/Sign_Up_as_RECEPTIONIST.fxml"));
+        Parent signUpAsParent = FXMLLoader.load(getClass().getResource("/View/UserLoginReceptionist.fxml"));
         Scene signUpAsviewScene = new Scene(signUpAsParent);
         
         //This Line gets the Stage Information
