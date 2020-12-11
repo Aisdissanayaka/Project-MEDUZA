@@ -50,6 +50,7 @@ public class RecAddAppointmentWindowController extends DashboardUIController imp
       //Adding new appointment - Submit Button Action Methode    
       @FXML  
       public void submitBtn(ActionEvent event) {
+          //write values in another text file
          try {
             File file = new File ("user data\\appointment\\"+userID.getText()+".txt");
                 PrintWriter print = new PrintWriter(new FileOutputStream(file,true)); 

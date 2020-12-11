@@ -46,6 +46,7 @@ public class RecAddReceivedPostController extends DashboardUIController implemen
     //Submit Button Action Methode    
     @FXML  
       public void submitBtn(ActionEvent event) {
+          //write values in another text file
          try {
             File file = new File ("user data\\receptionist\\postal\\received postal\\"+postReff.getText()+".txt");
                 PrintWriter print = new PrintWriter(new FileOutputStream(file,true)); 
@@ -53,6 +54,8 @@ public class RecAddReceivedPostController extends DashboardUIController implemen
                 print.close();
         } catch (FileNotFoundException e) {
         }
+         
+         //setting values to declared variables
         postName.setText(null);
         postNote.setText(null);
         postReff.setText(null);
