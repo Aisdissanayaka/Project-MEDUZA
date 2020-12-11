@@ -63,11 +63,11 @@ public class UserLoginController implements Initializable {
 
 
 
-    //Login button Action Method (user data\receptionist\credentials\receptionistlogin.txt)
+    //Login button Action Method in receptionist Window(user data\receptionist\credentials\receptionistlogin.txt)
 
 
      @FXML
-    private void login(ActionEvent event) throws IOException {
+    private void loginAsRec(ActionEvent event) throws IOException {
       boolean x = true;
         BufferedReader br = null;
         try {
@@ -107,6 +107,106 @@ public class UserLoginController implements Initializable {
 
 
 
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    //Login button Action Method in Patient Window(user data\patient\credentials\patientlogin.txt)
+
+
+     @FXML
+    private void loginAsPatient(ActionEvent event) throws IOException {
+      boolean x = true;
+        BufferedReader br = null;
+        try {
+            br = new BufferedReader(new FileReader("user data\\patient\\credentials\\patientlogin.txt"));
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        if (br != null) {
+            String st;
+            while ((st = br.readLine()) != null) {
+                String[] splitted = st.split(",");
+                if (userName.getText().equals(splitted[0]) && password.getText().equals(splitted[1])) {
+                    x = false;
+                    Parent signUpAsParent = FXMLLoader.load(getClass().getResource("/View/Dashboards/PatientDashboardWelcome.fxml"));
+                    Scene signUpAsviewScene = new Scene(signUpAsParent);
+        
+                     //This Line gets the Stage Information
+                     Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+                     window.setScene(signUpAsviewScene);
+                     window.show();
+                     window.centerOnScreen();
+                     
+                }
+                    
+                
+            }if (x == true){
+            /*Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setContentText("Invalid Username or Password\n please try again!");
+            alert.show();*/
+            lable.setText("Invalid Username or Password");
+            
+            }
+        }
+        userName.setText(null);
+        password.setText(null);
+    }
+    
+    //Login button Action Method in Medical Officer Window(user data\medical officer\credentials\medicalofficerlogin.txt)
+
+
+     @FXML
+    private void loginAsMO(ActionEvent event) throws IOException {
+      boolean x = true;
+        BufferedReader br = null;
+        try {
+            br = new BufferedReader(new FileReader("user data\\medical officer\\credentials\\medicalofficerlogin.txt"));
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+        if (br != null) {
+            String st;
+            while ((st = br.readLine()) != null) {
+                String[] splitted = st.split(",");
+                if (userName.getText().equals(splitted[0]) && password.getText().equals(splitted[1])) {
+                    x = false;
+                    Parent signUpAsParent = FXMLLoader.load(getClass().getResource("/View/Dashboards/MODashboardWelcome.fxml"));
+                    Scene signUpAsviewScene = new Scene(signUpAsParent);
+        
+                     //This Line gets the Stage Information
+                     Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+                     window.setScene(signUpAsviewScene);
+                     window.show();
+                     window.centerOnScreen();
+                     
+                }
+                    
+                
+            }if (x == true){
+            /*Alert alert = new Alert(Alert.AlertType.WARNING);
+            alert.setContentText("Invalid Username or Password\n please try again!");
+            alert.show();*/
+            lable.setText("Invalid Username or Password");
+            
+            }
+        }
+        userName.setText(null);
+        password.setText(null);
+    }
+    
+    
+    
+    
+    
+    
+    
     
     
     
