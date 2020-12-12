@@ -36,8 +36,8 @@ import javafx.stage.Stage;
 import javax.imageio.ImageIO;
 
 
-public class Sign_Up_as_MOController implements Initializable {
-    //initialization variables
+public class Sign_Up_as_MOController extends DashboardUIController implements Initializable {
+    
     @FXML
     private JFXTextField moFirstName;
     @FXML
@@ -75,7 +75,7 @@ public class Sign_Up_as_MOController implements Initializable {
         window.centerOnScreen();
         
        }
-    //SignUp button Action Event
+    
     @FXML
     private void signupbtn(ActionEvent event) {
         String value = moDateOfJoin.getValue().toString();//get date as a String value
@@ -108,7 +108,6 @@ public class Sign_Up_as_MOController implements Initializable {
          moSpecialityArea.setValue(null);
       }
     
-    //Select button Action Event
     @FXML
     private void Select(ActionEvent event) {
         

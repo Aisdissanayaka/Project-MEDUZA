@@ -35,7 +35,7 @@ import javafx.stage.Stage;
 import javax.imageio.ImageIO;
 
 
-public class Sign_Up_as_RECEPTIONISTController implements Initializable {
+public class Sign_Up_as_RECEPTIONISTController extends DashboardUIController implements Initializable {
     
     ObservableList list1 =FXCollections.observableArrayList();
 
