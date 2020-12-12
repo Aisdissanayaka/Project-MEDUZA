@@ -142,6 +142,127 @@ public class DashboardUIController implements Initializable {
         
        }
     
+     //Following lines are related to Patient's Dashboard
+    
+    //Patient's Home button - (Side Vbox) patHomeBtn
+    @FXML
+    public void patHomeBtn(ActionEvent event) throws IOException{
+        Parent profileWindow = FXMLLoader.load(getClass().getResource("/View/Dashboards/PatientDashboardWelcome.fxml"));
+        Scene profileViewScene = new Scene(profileWindow);
+        
+        //This Line gets the Stage Information
+        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+        window.setScene(profileViewScene);
+        window.show();
+        window.centerOnScreen();
+        
+       }
+    
+    
+    @FXML
+    public void patientProfilebtn(ActionEvent event) throws IOException{
+        Parent profileWindow = FXMLLoader.load(getClass().getResource("/View/Dashboards/Patient/PatientProfileWindow.fxml"));
+        Scene profileViewScene = new Scene(profileWindow);
+        
+        //This Line gets the Stage Information
+        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+        window.setScene(profileViewScene);
+        window.show();
+        window.centerOnScreen();
+        
+       }
+    
+
+    
+     //Patient's Appointment button - (Side Vbox)
+    @FXML
+    public void patientAppointmentBtn(ActionEvent event) throws IOException{
+        Parent appointmentWindow = FXMLLoader.load(getClass().getResource("/View/Dashboards/Patient/PatAppointmentWindow.fxml"));
+        Scene appointmentWindowViewScene = new Scene(appointmentWindow);
+        
+        //This Line gets the Stage Information
+        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+        window.setScene(appointmentWindowViewScene);
+        window.show();
+        window.centerOnScreen();
+        
+       }
+    
+    //Patient's Complaints button - (Side Vbox)
+    @FXML
+    public void patientComplaintsBtn(ActionEvent event) throws IOException{
+        Parent signUpAsParent = FXMLLoader.load(getClass().getResource("/View/Dashboards/Patient/PatComplaintsWindow.fxml"));
+        Scene signUpAsviewScene = new Scene(signUpAsParent);
+        
+        //This Line gets the Stage Information
+        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+        window.setScene(signUpAsviewScene);
+        window.show();
+        window.centerOnScreen();
+        
+       }
+    
+    
+    //Following lines are related to MO's Dashboard
+    
+    
+    //Profile button - (Side Vbox)
+    @FXML
+    public void MOProfilebtn(ActionEvent event) throws IOException{
+        Parent profileWindow = FXMLLoader.load(getClass().getResource("/View/Dashboards/MO/MOProfileWindow.fxml"));
+        Scene profileViewScene = new Scene(profileWindow);
+        
+        //This Line gets the Stage Information
+        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+        window.setScene(profileViewScene);
+        window.show();
+        window.centerOnScreen();
+        
+       }
+    
+    //Home button - (Side Vbox)
+    @FXML
+    public void MOhomeBtn(ActionEvent event) throws IOException{
+        Parent welcomeWindow = FXMLLoader.load(getClass().getResource("/View/Dashboards/MODashboardWelcome.fxml"));
+        Scene welcomeWindowViewScene = new Scene(welcomeWindow);
+        
+        //This Line gets the Stage Information
+        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+        window.setScene(welcomeWindowViewScene);
+        window.show();
+        window.centerOnScreen();
+        
+       }
+    
+    //Appointment button - (Side Vbox)
+    @FXML
+    public void MOPendingAppointmentBtn(ActionEvent event) throws IOException{
+        Parent appointmentWindow = FXMLLoader.load(getClass().getResource("/View/Dashboards/MO/MOPendingAppointmentWindow.fxml"));
+        Scene appointmentWindowViewScene = new Scene(appointmentWindow);
+        
+        //This Line gets the Stage Information
+        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+        window.setScene(appointmentWindowViewScene);
+        window.show();
+        window.centerOnScreen();
+        
+       }
+    
+    //Appointment button - (Side Vbox)
+    @FXML
+    public void MOCompletedAppointmentBtn(ActionEvent event) throws IOException{
+        Parent appointmentWindow = FXMLLoader.load(getClass().getResource("/View/Dashboards/MO/MOCompletedAppointmentWindow.fxml"));
+        Scene appointmentWindowViewScene = new Scene(appointmentWindow);
+        
+        //This Line gets the Stage Information
+        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+        window.setScene(appointmentWindowViewScene);
+        window.show();
+        window.centerOnScreen();
+        
+       }
+    
+    
   
     @Override
     public void initialize(URL url, ResourceBundle rb) {
