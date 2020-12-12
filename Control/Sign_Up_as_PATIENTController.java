@@ -8,9 +8,11 @@ package Control;
 import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.URL;
@@ -72,7 +74,7 @@ public class Sign_Up_as_PATIENTController extends DashboardUIController implemen
      */
     
       @FXML
-    public void signupBtn(ActionEvent event){
+    public void signupBtn(ActionEvent event) throws IOException{
         try{
         File file = new File("user data\\patient\\data\\"+nicTxt.getText()+".txt");    
         PrintWriter printer = new PrintWriter(new FileOutputStream(file,true));  
@@ -81,7 +83,19 @@ public class Sign_Up_as_PATIENTController extends DashboardUIController implemen
              printer.close();
         }catch(FileNotFoundException e){}
          
-   
+       
+        
+        //Write credentials file of patients
+        try{
+         
+         FileWriter fw = new FileWriter("user data\\patient\\credentials\\patientlogin.txt",true);
+         BufferedWriter bw = new BufferedWriter(fw);
+         PrintWriter pw = new PrintWriter(bw);
+         pw.write(nicTxt.getText()+","+nicTxt.getText()+"\n");
+         pw.close();
+         }catch(FileNotFoundException  e){}
+        
+        
         
     }
     

@@ -96,14 +96,18 @@ public class Sign_Up_as_RECEPTIONISTController extends DashboardUIController imp
                    +"\n"+""+recStaffEmailtxt.getText()+"\n"+""+recDateOfJoin.getValue().toString()+"\n");
            printer.close();
           
-           /*File file1 = new File("D:\\java project original new\\HIMS-By-Kelvin0\\HIMS\\receptionit_details.txt");
-            PrintWriter printer1 = new PrintWriter(new FileOutputStream(file1,true));
             
-            printer1.append("Receptionist"+"\n"+"---------------------------------------------"+"\n"+""+recFirstNametxt.getText()+"\t"+""+recLastNametxt.getText()
-                   +"\n"+""+recAddresstxt.getText()+"\n"+""+recPhoneNumtxt.getText()+"\n"+""+recDateOfBirth.getValue().toString()+"\n"+""+series.getValue()+"\n"+"---------------------------------------------"+"\n"+""+recStaffIDtxt.getText()
-                   +"\n"+""+recStaffEmailtxt.getText()+"\n"+""+recDateOfJoin.getValue().toString()+"\n"+"*****************************************"+"\n");
-             printer1.close();*/
+        //Write credentials file of receptionist
+        try{
+         
+         FileWriter fw = new FileWriter("user data\\receptionist\\credentials\\receptionistlogin.txt",true);
+         BufferedWriter bw = new BufferedWriter(fw);
+         PrintWriter pw = new PrintWriter(bw);
+         pw.write(recStaffIDtxt.getText()+","+recStaffIDtxt.getText()+"\n");
+         pw.close();
+         }catch(FileNotFoundException  e){}
        }
+         
         catch(Exception e){}
          
          recFirstNametxt.setText(null);
