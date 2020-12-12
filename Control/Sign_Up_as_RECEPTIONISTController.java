@@ -8,6 +8,8 @@ package Control;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXTextField;
+import com.jfoenix.validation.NumberValidator;
+import com.jfoenix.validation.RequiredFieldValidator;
 import java.awt.image.BufferedImage;
 import java.io.*;
 import java.io.FileOutputStream;
@@ -17,6 +19,8 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.embed.swing.SwingFXUtils;
@@ -160,6 +164,142 @@ public class Sign_Up_as_RECEPTIONISTController extends DashboardUIController imp
   @Override
     public void initialize(URL url, ResourceBundle rb) {
          loadData();
+         
+         //show validation status
+        RequiredFieldValidator validator = new RequiredFieldValidator();
+        NumberValidator numvalidator = new  NumberValidator();
+        
+        //validation for phone number
+        recPhoneNumtxt.getValidators().add(numvalidator);
+        numvalidator.setMessage("Invalied Number");
+        
+        recPhoneNumtxt.focusedProperty().addListener(new ChangeListener <Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+                if(!newValue)
+                {
+                recPhoneNumtxt.validate();
+                } 
+            }
+        });       
+        //validation for First name
+        recFirstNametxt.getValidators().add(validator);
+        validator.setMessage("Required Field");
+        
+        recFirstNametxt.focusedProperty().addListener(new ChangeListener <Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+                if(!newValue)
+                {
+                recFirstNametxt.validate();
+                } 
+            }
+        });
+        //validation field for Last name
+        recLastNametxt.getValidators().add(validator);
+        validator.setMessage("Required Field");
+        
+        recLastNametxt.focusedProperty().addListener(new ChangeListener <Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+                if(!newValue)
+                {
+                recLastNametxt.validate();
+                } 
+            }
+        });
+        //validation Field for Address
+        recAddresstxt.getValidators().add(validator);
+        validator.setMessage("Required Field");
+        
+        recAddresstxt.focusedProperty().addListener(new ChangeListener <Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+                if(!newValue)
+                {
+                recAddresstxt.validate();
+                } 
+            }
+        }); 
+        //validation field for staffID
+        recStaffIDtxt.getValidators().add(validator);
+        validator.setMessage("Required Field");
+        
+        recStaffIDtxt.focusedProperty().addListener(new ChangeListener <Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+                if(!newValue)
+                {
+                recStaffIDtxt.validate();
+                } 
+            }
+        }); 
+        //validation Field for Staff Email Address
+        recStaffEmailtxt.getValidators().add(validator);
+        validator.setMessage("Required Field");
+        
+        recStaffEmailtxt.focusedProperty().addListener(new ChangeListener <Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+                if(!newValue)
+                {
+                recStaffEmailtxt.validate();
+                } 
+            }
+        }); 
+        
+        //validation field for phone Number
+        recPhoneNumtxt.getValidators().add(validator);
+        validator.setMessage("Required Field");
+        
+        recPhoneNumtxt.focusedProperty().addListener(new ChangeListener <Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+                if(!newValue)
+                {
+                recPhoneNumtxt.validate();
+                } 
+            }
+        }); 
+        //validation of date of Join
+        recDateOfJoin.getValidators().add(validator);
+        validator.setMessage("Required Field");
+        
+       recDateOfJoin.focusedProperty().addListener(new ChangeListener <Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+                if(!newValue)
+                {
+                recDateOfJoin.validate();
+                } 
+            }
+        }); 
+      //validation of date of birth
+       recDateOfBirth.getValidators().add(validator);
+        validator.setMessage("Required Field");
+        
+       recDateOfBirth.focusedProperty().addListener(new ChangeListener <Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+                if(!newValue)
+                {
+                recDateOfBirth.validate();
+                } 
+            }
+        });
+       //validation of gender
+       series.getValidators().add(validator);
+        validator.setMessage("Required Field");
+        
+       series.focusedProperty().addListener(new ChangeListener <Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+                if(!newValue)
+                {
+                series.validate();
+                } 
+            }
+        }); 
        }
 
    
