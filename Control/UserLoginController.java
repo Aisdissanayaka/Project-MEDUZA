@@ -253,6 +253,35 @@ public class UserLoginController implements Initializable {
     
     @FXML 
     public void forgotpw(ActionEvent event) throws IOException{
+        Parent signUpAsParent = FXMLLoader.load(getClass().getResource("/View/Dashboards/MODashboardWelcome.fxml"));
+        Scene signUpAsviewScene = new Scene(signUpAsParent);
+        
+        //This Line gets the Stage Information
+        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+        window.setScene(signUpAsviewScene);
+        window.show();
+        window.centerOnScreen();
+        window.getFullScreenExitKeyCombination();
+        
+       }
+    //gimic 
+     @FXML 
+    public void forgotpw1(ActionEvent event) throws IOException{
+        Parent signUpAsParent = FXMLLoader.load(getClass().getResource("/View/Dashboards/PatientDashboardWelcome.fxml"));
+        Scene signUpAsviewScene = new Scene(signUpAsParent);
+        
+        //This Line gets the Stage Information
+        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+        window.setScene(signUpAsviewScene);
+        window.show();
+        window.centerOnScreen();
+        window.getFullScreenExitKeyCombination();
+        
+       }
+    
+    //gimic 
+     @FXML 
+    public void forgotpw2(ActionEvent event) throws IOException{
         Parent signUpAsParent = FXMLLoader.load(getClass().getResource("/View/Dashboards/RecDashboardWelcome.fxml"));
         Scene signUpAsviewScene = new Scene(signUpAsParent);
         

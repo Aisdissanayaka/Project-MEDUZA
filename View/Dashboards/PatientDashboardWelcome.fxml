@@ -15,7 +15,7 @@
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" maxHeight="780.0" maxWidth="1500.0" minHeight="500.0" minWidth="500.0" prefHeight="700.0" prefWidth="1200.0" styleClass="BackgroundPane" stylesheets="@../Styles.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Control.RecDashboardWelcome">
+<AnchorPane id="AnchorPane" maxHeight="780.0" maxWidth="1500.0" minHeight="500.0" minWidth="500.0" prefHeight="700.0" prefWidth="1200.0" styleClass="BackgroundPane" stylesheets="@../Styles.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Control.PatDashboardWelcome">
    <children>
       <AnchorPane layoutX="113.0" layoutY="40.0" prefHeight="796.0" prefWidth="218.0" styleClass="SubPane" stylesheets="@Styles.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -32,7 +32,7 @@
                         <Font name="Segoe UI" size="17.0" />
                      </font>
                   </Label>
-                  <Button layoutX="83.0" layoutY="61.0" mnemonicParsing="false" onAction="#Profilebtn" opacity="0.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                  <Button layoutX="83.0" layoutY="61.0" mnemonicParsing="false" onAction="#patientProfilebtn" opacity="0.0" prefHeight="200.0" prefWidth="218.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                </children>
                <cursor>
                   <Cursor fx:constant="HAND" />
@@ -40,7 +40,7 @@
             </AnchorPane>
             <VBox layoutY="203.0" prefHeight="386.0" prefWidth="218.0" AnchorPane.bottomAnchor="196.60000000000002" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="203.0">
                <children>
-                  <JFXButton alignment="TOP_RIGHT" buttonType="RAISED" graphicTextGap="0.0" lineSpacing="3.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" prefHeight="51.0" prefWidth="207.0" ripplerFill="#206afd" styleClass="Side-Button-select" stylesheets="@Styles.css" text="Home" textFill="#b9d5fd" textOverrun="CLIP">
+                  <JFXButton alignment="TOP_RIGHT" buttonType="RAISED" graphicTextGap="0.0" lineSpacing="3.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" prefHeight="86.0" prefWidth="207.0" ripplerFill="#206afd" styleClass="Side-Button-select" stylesheets="@Styles.css" text="Home" textFill="#b9d5fd" textOverrun="CLIP">
                      <font>
                         <Font name="Segoe UI" size="27.0" />
                      </font>
@@ -51,7 +51,7 @@
                         <InnerShadow blurType="GAUSSIAN" height="205.44" radius="70.52" width="78.64" />
                      </effect>
                   </JFXButton>
-                  <JFXButton alignment="TOP_RIGHT" buttonType="RAISED" graphicTextGap="0.0" lineSpacing="3.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onAction="#AppointmentBtn" prefHeight="73.0" prefWidth="218.0" ripplerFill="#206afd" styleClass="Side-Button" stylesheets="@Styles.css" text="Appointments" textFill="#b9d5fd" textOverrun="CLIP">
+                  <JFXButton alignment="TOP_RIGHT" buttonType="RAISED" graphicTextGap="0.0" lineSpacing="3.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onAction="#patientAppointmentBtn" prefHeight="28.0" prefWidth="218.0" ripplerFill="#206afd" styleClass="Side-Button" stylesheets="@Styles.css" text="Appointments" textFill="#b9d5fd" textOverrun="CLIP">
                      <font>
                         <Font name="Segoe UI" size="27.0" />
                      </font>
@@ -62,40 +62,7 @@
                         <InnerShadow blurType="GAUSSIAN" height="205.44" radius="70.52" width="78.64" />
                      </effect>
                   </JFXButton>
-                  <JFXButton alignment="TOP_RIGHT" buttonType="RAISED" lineSpacing="3.0" nodeOrientation="RIGHT_TO_LEFT" onAction="#VisitorsBtn" prefHeight="73.0" prefWidth="256.0" ripplerFill="#206afd" styleClass="Side-Button" stylesheets="@Styles.css" text="Visitors" textFill="#b9d5fd" textOverrun="CLIP">
-                     <font>
-                        <Font name="Segoe UI" size="27.0" />
-                     </font>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                     <effect>
-                        <InnerShadow blurType="GAUSSIAN" height="205.44" radius="70.52" width="78.64" />
-                     </effect>
-                  </JFXButton>
-                  <JFXButton alignment="TOP_RIGHT" buttonType="RAISED" lineSpacing="3.0" nodeOrientation="RIGHT_TO_LEFT" onAction="#ComplaintsBtn" prefHeight="73.0" prefWidth="256.0" ripplerFill="#206afd" styleClass="Side-Button" stylesheets="@Styles.css" text="Complaints" textFill="#b9d5fd" textOverrun="CLIP">
-                     <font>
-                        <Font name="Segoe UI" size="27.0" />
-                     </font>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                     <effect>
-                        <InnerShadow blurType="GAUSSIAN" height="205.44" radius="70.52" width="78.64" />
-                     </effect>
-                  </JFXButton>
-                  <JFXButton alignment="TOP_RIGHT" buttonType="RAISED" lineSpacing="3.0" nodeOrientation="RIGHT_TO_LEFT" onAction="#PostalBtn" prefHeight="73.0" prefWidth="256.0" ripplerFill="#206afd" styleClass="Side-Button" stylesheets="@Styles.css" text="Postal" textFill="#b9d5fd" textOverrun="CLIP">
-                     <font>
-                        <Font name="Segoe UI" size="27.0" />
-                     </font>
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                     <effect>
-                        <InnerShadow blurType="GAUSSIAN" height="205.44" radius="70.52" width="78.64" />
-                     </effect>
-                  </JFXButton>
-                  <JFXButton alignment="TOP_RIGHT" buttonType="RAISED" lineSpacing="3.0" nodeOrientation="RIGHT_TO_LEFT" onAction="#PatientBtn" prefHeight="73.0" prefWidth="256.0" ripplerFill="#206afd" styleClass="Side-Button" stylesheets="@Styles.css" text="Patients" textFill="#b9d5fd" textOverrun="CLIP">
+                  <JFXButton alignment="TOP_RIGHT" buttonType="RAISED" lineSpacing="3.0" nodeOrientation="RIGHT_TO_LEFT" onAction="#patientComplaintsBtn" prefHeight="5.0" prefWidth="218.0" ripplerFill="#206afd" styleClass="Side-Button" stylesheets="@Styles.css" text="Complaints" textFill="#b9d5fd" textOverrun="CLIP">
                      <font>
                         <Font name="Segoe UI" size="27.0" />
                      </font>
