@@ -33,7 +33,7 @@ import javafx.stage.Stage;
  *
  * @author Prasad Chamika
  */
-public class Sign_Up_as_PATIENTController implements Initializable {
+public class Sign_Up_as_PATIENTController extends DashboardUIController implements Initializable {
 
     
     @FXML
