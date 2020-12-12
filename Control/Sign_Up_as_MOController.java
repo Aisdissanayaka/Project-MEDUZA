@@ -15,8 +15,6 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -28,9 +26,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javax.imageio.ImageIO;
@@ -77,7 +73,7 @@ public class Sign_Up_as_MOController extends DashboardUIController implements In
        }
     
     @FXML
-    private void signupbtn(ActionEvent event) {
+    private void signupbtn(ActionEvent event) throws IOException {
         String value = moDateOfJoin.getValue().toString();//get date as a String value
         String value1 = moDateOfBirth.getValue().toString();//get date as a String value
        
@@ -94,6 +90,18 @@ public class Sign_Up_as_MOController extends DashboardUIController implements In
            printer.close();
        }
         catch(Exception e){}
+         
+         
+          //Write credentials file of MO
+         try{
+         
+         FileWriter fw = new FileWriter("user data\\medical officer\\credentials\\medicalofficerlogin.txt",true);
+         BufferedWriter bw = new BufferedWriter(fw);
+         PrintWriter pw = new PrintWriter(bw);
+         pw.write(moStaffID.getText()+","+moStaffID.getText()+"\n");
+         pw.close();
+         }catch(FileNotFoundException  e){}
+         
          
          //setiing values for declared variables
          moFirstName.setText(null);
