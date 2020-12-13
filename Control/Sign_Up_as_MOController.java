@@ -15,6 +15,8 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -33,6 +35,10 @@ import javax.imageio.ImageIO;
 
 
 public class Sign_Up_as_MOController extends DashboardUIController implements Initializable {
+    
+    //create new object as fileChooser           
+    FileChooser fileChooser = new FileChooser();
+    Stage primaryStage = new Stage();
     
     @FXML
     private JFXTextField moFirstName;
@@ -56,6 +62,12 @@ public class Sign_Up_as_MOController extends DashboardUIController implements In
     private JFXComboBox<String> moSpecialityArea;
     @FXML
     private JFXButton btnAddFile;
+    @FXML
+    private File path;
+    @FXML
+    private JFXButton btnSave;
+    @FXML
+    private JFXButton btnLoad;
     
     
     // Cancel Button. it's go to sign up as menu  
@@ -146,10 +158,42 @@ public class Sign_Up_as_MOController extends DashboardUIController implements In
          File fileoutput = new File ("user data\\medical officer\\photo\\"+moStaffID.getText()+".jpg");
          BufferedImage BI= SwingFXUtils.fromFXImage(image,null);
          ImageIO.write(BI,"jpg",fileoutput);
-         
      
      }
      
+      //opening and saving document file    
+    @FXML
+    public void openFile(ActionEvent actionEvent) throws IOException {
+       
+       
+        fileChooser.setInitialDirectory(new File("C:\\Users\\Theja"));
+        fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("doc file","*.doc","*.docx"));
+
+        File file = fileChooser.showOpenDialog(primaryStage);
+       // File desination = fileChooser.showSaveDialog(primaryStage);
+        path=file.getAbsoluteFile();
+        
+        
+         //saving file given path
+          try {
+                Files.copy(file.toPath(),Paths.get("user data\\medical officer\\cv\\"+moStaffID.getText()+".doc"));
+            } catch (Exception ioException) {
+               ioException.printStackTrace();
+            }
+          
+          //create new object file1
+          File file1 = new File(String.valueOf(path));
+       
+        fileChooser.setInitialFileName(moStaffID.getText()+".txt");  
+        //getting type of files 
+        fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("doc file","*.doc","*.docx"));
+        
+         
+    }
+
+   
+    
+   
             
             
       
