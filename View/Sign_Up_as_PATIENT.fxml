@@ -15,14 +15,14 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" nodeOrientation="LEFT_TO_RIGHT" prefHeight="600.0" prefWidth="547.0" styleClass="BackgroundPane" stylesheets="@Styles.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Control.Sign_Up_as_PATIENTController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" nodeOrientation="LEFT_TO_RIGHT" prefHeight="750.0" prefWidth="547.0" styleClass="BackgroundPane" stylesheets="@Styles.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Control.Sign_Up_as_PATIENTController">
    <children>
       <Label layoutX="69.0" layoutY="16.0" text="Sign Up as Patient" textAlignment="JUSTIFY" textFill="#071739">
          <font>
             <Font name="Segoe UI" size="40.0" />
          </font>
       </Label>
-      <AnchorPane accessibleRole="COMBO_BOX" layoutX="12.0" layoutY="67.0" prefHeight="492.0" prefWidth="518.0">
+      <AnchorPane accessibleRole="COMBO_BOX" layoutX="12.0" layoutY="67.0" prefHeight="668.0" prefWidth="518.0">
          <children>
             <GridPane layoutX="31.0" layoutY="56.0">
                <columnConstraints>
@@ -37,35 +37,35 @@
                   <Font name="Segoe UI Light" size="16.0" />
                </font>
             </JFXTextField>
-            <JFXTextField fx:id="lastNameTxt" labelFloat="true" layoutX="60.0" layoutY="92.0" promptText="Last Name" styleClass="scroll-pane" stylesheets="@Styles.css">
+            <JFXTextField fx:id="lastNameTxt" labelFloat="true" layoutX="60.0" layoutY="115.0" promptText="Last Name" styleClass="scroll-pane" stylesheets="@Styles.css">
                <font>
                   <Font name="Segoe UI Light" size="16.0" />
                </font>
             </JFXTextField>
-            <JFXTextField fx:id="addressTxt" labelFloat="true" layoutX="61.0" layoutY="151.0" promptText="Address" styleClass="scroll-pane" stylesheets="@Styles.css">
+            <JFXTextField fx:id="addressTxt" labelFloat="true" layoutX="60.0" layoutY="204.0" promptText="Address" styleClass="scroll-pane" stylesheets="@Styles.css">
                <font>
                   <Font name="Segoe UI Light" size="16.0" />
                </font>
             </JFXTextField>
-            <JFXTextField fx:id="phoneNumberTxt" labelFloat="true" layoutX="61.0" layoutY="368.0" prefHeight="31.0" prefWidth="182.0" promptText="Phone Number" stylesheets="@Styles.css">
+            <JFXTextField fx:id="phoneNumberTxt" labelFloat="true" layoutX="55.0" layoutY="508.0" prefHeight="31.0" prefWidth="182.0" promptText="Phone Number" stylesheets="@Styles.css">
                <font>
                   <Font name="Segoe UI" size="16.0" />
                </font>
             </JFXTextField>
-            <JFXDatePicker fx:id="dateOfBirthDate" defaultColor="#2c6c8c" layoutX="61.0" layoutY="312.0" prefHeight="28.0" prefWidth="172.0" promptText="Date Of Birth" />
-            <JFXComboBox fx:id="genderTxt" labelFloat="true" layoutX="61.0" layoutY="267.0" prefHeight="26.0" prefWidth="172.0" promptText="Gender" />
-            <JFXTextArea fx:id="allergiesTxt" labelFloat="true" layoutX="276.0" layoutY="103.0" prefHeight="131.0" prefWidth="194.0" promptText="Allergies">
+            <JFXDatePicker fx:id="dateOfBirthDate" defaultColor="#2c6c8c" layoutX="60.0" layoutY="430.0" prefHeight="28.0" prefWidth="172.0" promptText="Date Of Birth" />
+            <JFXComboBox fx:id="genderTxt" labelFloat="true" layoutX="60.0" layoutY="370.0" prefHeight="26.0" prefWidth="172.0" promptText="Gender" />
+            <JFXTextArea fx:id="allergiesTxt" labelFloat="true" layoutX="276.0" layoutY="115.0" prefHeight="131.0" prefWidth="194.0" promptText="Allergies">
                <font>
                   <Font name="Segoe UI" size="16.0" />
                </font>
             </JFXTextArea>
             <JFXComboBox fx:id="bloodGroupTxt" labelFloat="true" layoutX="276.0" layoutY="41.0" prefHeight="27.0" prefWidth="194.0" promptText="Blood Group" styleClass="scroll-pane" stylesheets="@Styles.css" />
-            <JFXTextField fx:id="nicTxt" labelFloat="true" layoutX="61.0" layoutY="209.0" promptText="NIC" styleClass="scroll-pane" stylesheets="@Styles.css">
+            <JFXTextField fx:id="nicTxt" labelFloat="true" layoutX="60.0" layoutY="287.0" promptText="NIC" styleClass="scroll-pane" stylesheets="@Styles.css">
                <font>
                   <Font name="Segoe UI Light" size="16.0" />
                </font>
             </JFXTextField>
-            <JFXButton layoutX="210.0" layoutY="438.0" onAction="#cancelBtn" prefHeight="38.0" prefWidth="139.0" style="-fx-background-radius: 35;" styleClass="Side-Button" stylesheets="@Styles.css" text="Cancel" textFill="WHITE">
+            <JFXButton layoutX="213.0" layoutY="573.0" onAction="#cancelBtn" prefHeight="38.0" prefWidth="139.0" style="-fx-background-radius: 35;" styleClass="Side-Button" stylesheets="@Styles.css" text="Cancel" textFill="WHITE">
                <font>
                   <Font name="Segoe UI" size="12.0" />
                </font>
@@ -73,12 +73,12 @@
                   <InnerShadow />
                </effect>
             </JFXButton>
-            <JFXButton layoutX="361.0" layoutY="438.0" onAction="#signupBtn" prefHeight="38.0" prefWidth="139.0" style="-fx-background-radius: 35;" styleClass="Side-Button" stylesheets="@Styles.css" text="Signup" textFill="WHITE">
+            <JFXButton layoutX="372.0" layoutY="573.0" onAction="#signupBtn" prefHeight="38.0" prefWidth="139.0" style="-fx-background-radius: 35;" styleClass="Side-Button" stylesheets="@Styles.css" text="Signup" textFill="WHITE">
                <font>
                   <Font name="Segoe UI" size="12.0" />
                </font>
             </JFXButton>
-            <JFXButton layoutX="275.0" layoutY="261.0" prefHeight="38.0" prefWidth="194.0" styleClass="Special-buttons" stylesheets="@Styles.css" text="Add Profile Picture" textFill="WHITE">
+            <JFXButton layoutX="290.0" layoutY="367.0" prefHeight="38.0" prefWidth="194.0" styleClass="Special-buttons" stylesheets="@Styles.css" text="Add Profile Picture" textFill="WHITE">
                <font>
                   <Font name="Segoe UI" size="12.0" />
                </font>
