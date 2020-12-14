@@ -68,7 +68,10 @@ public class MOProfileWindowController extends DashboardUIController implements 
     private JFXTextField joinedDateTxt;
     
     @FXML
-    public JFXTextField staffIDTxt;
+    public JFXTextField MOStaffIDTxt;
+    
+      @FXML
+    private ComboBox specialityAreaBox;
     
     @FXML
     public Circle profilePhoto;
@@ -82,7 +85,7 @@ public class MOProfileWindowController extends DashboardUIController implements 
   public void readFiles(ActionEvent event) {
         try  { 
 //the file to be opened for reading  
-FileInputStream fis=new FileInputStream("user data\\receptionist\\data\\123.txt");       
+FileInputStream fis=new FileInputStream("user data\\medical officer\\data\\123.txt");       
 Scanner sc=new Scanner(fis);    //file to be scanned  
 //returns true if there is another line to read  
 while(sc.hasNextLine())  
@@ -93,11 +96,11 @@ lastNameTxt.setText(sc.nextLine());
 addressTxt.setText(sc.nextLine());
 phoneNumTxt.setText(sc.nextLine());
 dateOfBirthTxt.setText(sc.nextLine());
-genderBox.setValue(sc.nextLine());
-staffIDTxt.setText(sc.nextLine());
+MOStaffIDTxt.setText(sc.nextLine());
 staffEmailTxt.setText(sc.nextLine());
 joinedDateTxt.setText(sc.nextLine());
-
+genderBox.setValue(sc.nextLine());
+specialityAreaBox.setValue(sc.nextLine());
 }  
 sc.close();     //closes the scanner  
 }  
@@ -109,13 +112,13 @@ catch(IOException e)  {}
     @FXML
     private void updateBtn(){
         try{
-        File file = new File("user data\\receptionist\\data\\"+ staffIDTxt.getText()+".txt");  
+        File file = new File("user data\\receptionist\\data\\"+ MOStaffIDTxt.getText()+".txt");  
         file.delete();
         PrintWriter printer = new PrintWriter(new FileOutputStream(file,true)); 
         
         printer.append(firstNameTxt.getText()+"\n"+lastNameTxt.getText()+"\n"+addressTxt.getText()+"\n"+phoneNumTxt.getText()+"\n"
-                +dateOfBirthTxt.getText()+"\n"+ genderBox.getValue()+"\n"+""+staffIDTxt.getText()
-                   +"\n"+ staffEmailTxt.getText()+"\n"+ joinedDateTxt.getText()+"\n");
+                +dateOfBirthTxt.getText()+"\n"+ MOStaffIDTxt.getText()+"\n"+ staffEmailTxt.getText()+"\n"+ joinedDateTxt.getText()+"\n"+
+                genderBox.getValue()+"\n"+ specialityAreaBox.getValue()+"\n");
            
         printer.close();
         }catch(FileNotFoundException e){}
@@ -142,12 +145,12 @@ catch(IOException e)  {}
          
          // set new profile picture
           profilePhoto.setFill(new ImagePattern(img1));
-          nameLbl.setText("chamika");
+        
          
      }
      //save photogrgaph
      private void saveToFile(Image image,String name)throws IOException{
-         File fileoutput = new File ("user data\\Receptionist\\photo\\" +staffIDTxt.getText()+".jpg");
+         File fileoutput = new File ("user data\\medical officer\\photo\\" +MOStaffIDTxt.getText()+".jpg");
          BufferedImage BI= SwingFXUtils.fromFXImage(image,null);
          ImageIO.write(BI,"jpg",fileoutput);
          
@@ -159,8 +162,10 @@ catch(IOException e)  {}
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-       ObservableList<String>list1=FXCollections.observableArrayList("Male","Female","Other");
+       ObservableList<String>list1=FXCollections.observableArrayList("Male","Female");
        genderBox.setItems(list1);
+        ObservableList<String>list2=FXCollections.observableArrayList("A","B","C");
+       specialityAreaBox.setItems(list2);
     }    
 
 
