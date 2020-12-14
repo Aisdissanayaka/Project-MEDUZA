@@ -8,6 +8,8 @@ package Control;
 import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
+import com.jfoenix.validation.NumberValidator;
+import com.jfoenix.validation.RequiredFieldValidator;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -17,6 +19,8 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -124,6 +128,118 @@ public class Sign_Up_as_PATIENTController extends DashboardUIController implemen
        
        ObservableList<String>list2=FXCollections.observableArrayList("A+","O+","B+","AB+","A-","O-","B-","AB-");
        bloodGroupTxt.setItems(list2);
+       
+        //show validation status
+        RequiredFieldValidator validator = new RequiredFieldValidator();
+        NumberValidator numvalidator = new  NumberValidator();
+    
+      
+        
+        //validation for phone number
+        phoneNumberTxt.getValidators().add(numvalidator);
+        numvalidator.setMessage("Invalied Number");
+        
+       phoneNumberTxt.focusedProperty().addListener(new ChangeListener <Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+                if(!newValue)
+                {
+                phoneNumberTxt.validate();
+                } 
+            }
+        });       
+        //validation for First name
+        firstNameTxt.getValidators().add(validator);
+        validator.setMessage("Required Field");
+        
+        firstNameTxt.focusedProperty().addListener(new ChangeListener <Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+                if(!newValue)
+                {
+                firstNameTxt.validate();
+                } 
+            }
+        });
+        //validation field for Last name
+        lastNameTxt.getValidators().add(validator);
+        validator.setMessage("Required Field");
+        
+        lastNameTxt.focusedProperty().addListener(new ChangeListener <Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+                if(!newValue)
+                {
+                lastNameTxt.validate();
+                } 
+            }
+        });
+        //validation Field for Address
+        addressTxt.getValidators().add(validator);
+        validator.setMessage("Required Field");
+        
+        addressTxt.focusedProperty().addListener(new ChangeListener <Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+                if(!newValue)
+                {
+                addressTxt.validate();
+                } 
+            }
+        }); 
+        //validation field for Phone Number
+        phoneNumberTxt.getValidators().add(validator);
+        validator.setMessage("Required Field");
+        
+        phoneNumberTxt.focusedProperty().addListener(new ChangeListener <Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+                if(!newValue)
+                {
+                phoneNumberTxt.validate();
+                } 
+            }
+        }); 
+        //validation Field for Date of birth
+       dateOfBirthDate.getValidators().add(validator);
+        validator.setMessage("Required Field");
+        
+        dateOfBirthDate.focusedProperty().addListener(new ChangeListener <Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+                if(!newValue)
+                {
+               dateOfBirthDate.validate();
+                } 
+            }
+        }); 
+        
+        //validation field for patient allergies
+       allergiesTxt.getValidators().add(validator);
+        validator.setMessage("Required Field");
+        
+       allergiesTxt.focusedProperty().addListener(new ChangeListener <Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+                if(!newValue)
+                {
+                allergiesTxt.validate();
+                } 
+            }
+        }); 
+       //validation field for patient allergies
+       nicTxt.getValidators().add(validator);
+        validator.setMessage("Required Field");
+        
+       nicTxt.focusedProperty().addListener(new ChangeListener <Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+                if(!newValue)
+                {
+               nicTxt.validate();
+                } 
+            }
+        }); 
 
     }    
     
