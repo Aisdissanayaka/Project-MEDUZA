@@ -34,6 +34,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -102,7 +104,7 @@ public class Sign_Up_as_RECEPTIONISTController extends DashboardUIController imp
         String value = recDateOfJoin.getValue().toString();
         String value1 = recDateOfBirth.getValue().toString();
        
-        
+        if(validateFields()){
         
          try
        {
@@ -139,7 +141,7 @@ public class Sign_Up_as_RECEPTIONISTController extends DashboardUIController imp
          recDateOfJoin.setValue(null);        
          
                  
-      }
+      }}
     //Gender drop down list
      private void loadData(){
         list1.removeAll(list1);
@@ -150,6 +152,30 @@ public class Sign_Up_as_RECEPTIONISTController extends DashboardUIController imp
         series.getItems().addAll(list1);
         
      }
+     // warning message for null validation
+     private boolean validateFields(){
+         
+         
+         
+          
+         if(recFirstNametxt.getText().isEmpty() | recLastNametxt.getText().isEmpty()|
+                 recAddresstxt.getText().isEmpty()|recPhoneNumtxt.getText().isEmpty()| recStaffIDtxt.getText().isEmpty()|recStaffEmailtxt.getText().isEmpty())
+         {
+              Alert alert = new Alert(AlertType.WARNING);
+             alert.setTitle("Validate Fields");
+             alert.setHeaderText(null);
+             alert.setContentText("Please Enter Into The Fields");
+             alert.showAndWait();
+             
+            
+             
+             return false;
+            
+         }
+         
+         return true;
+         
+          }
      
      //upload to photograph
      @FXML
