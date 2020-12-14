@@ -30,6 +30,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
 import javafx.stage.Stage;
 
@@ -79,6 +80,8 @@ public class Sign_Up_as_PATIENTController extends DashboardUIController implemen
     
       @FXML
     public void signupBtn(ActionEvent event) throws IOException{
+        
+        if(validateFields()){
         try{
         File file = new File("user data\\patient\\data\\"+nicTxt.getText()+".txt");    
         PrintWriter printer = new PrintWriter(new FileOutputStream(file,true));  
@@ -97,7 +100,7 @@ public class Sign_Up_as_PATIENTController extends DashboardUIController implemen
          PrintWriter pw = new PrintWriter(bw);
          pw.write(nicTxt.getText()+","+nicTxt.getText()+"\n");
          pw.close();
-         }catch(FileNotFoundException  e){}
+         }catch(FileNotFoundException  e){}}
         
         
         
@@ -118,6 +121,24 @@ public class Sign_Up_as_PATIENTController extends DashboardUIController implemen
         window.centerOnScreen();
         
        }
+    // warning message for null validation
+     private boolean validateFields(){
+           
+         
+         if(firstNameTxt.getText().isEmpty() | lastNameTxt.getText().isEmpty()| addressTxt.getText().isEmpty()|
+                 phoneNumberTxt.getText().isEmpty()| nicTxt.getText().isEmpty()| allergiesTxt.getText().isEmpty())
+         {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+             alert.setTitle("Validate Fields");
+             alert.setHeaderText(null);
+             alert.setContentText("Please Enter Into The Fields");
+             alert.showAndWait();
+             
+             return false;
+            
+         }
+         return true;
+          }
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {

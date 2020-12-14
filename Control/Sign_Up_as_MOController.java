@@ -32,6 +32,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.image.Image;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
@@ -93,7 +94,7 @@ public class Sign_Up_as_MOController extends DashboardUIController implements In
         String value = moDateOfJoin.getValue().toString();//get date as a String value
         String value1 = moDateOfBirth.getValue().toString();//get date as a String value
        
-        
+        if(validateFields()){
         //write details in a text file
          try
        {
@@ -130,7 +131,7 @@ public class Sign_Up_as_MOController extends DashboardUIController implements In
          moDateOfJoin.setValue(null);        
          moGender.setValue(null);
          moSpecialityArea.setValue(null);
-      }
+      }}
     
     @FXML
     private void Select(ActionEvent event) {
@@ -164,6 +165,24 @@ public class Sign_Up_as_MOController extends DashboardUIController implements In
          ImageIO.write(BI,"jpg",fileoutput);
      
      }
+     // warning message for null validation
+     private boolean validateFields(){
+           
+         
+         if(moFirstName.getText().isEmpty() | moLastName.getText().isEmpty()| moAddress.getText().isEmpty()|
+                 moPhoneNum.getText().isEmpty()| moStaffID.getText().isEmpty()| moStaffEmail.getText().isEmpty())
+         {
+            Alert alert = new Alert(Alert.AlertType.WARNING);
+             alert.setTitle("Validate Fields");
+             alert.setHeaderText(null);
+             alert.setContentText("Please Enter Into The Fields");
+             alert.showAndWait();
+             
+             return false;
+            
+         }
+         return true;
+          }
      
       //opening and saving document file    
     @FXML
