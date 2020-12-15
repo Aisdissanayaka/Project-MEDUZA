@@ -5,6 +5,8 @@
  */
 package Control;
 
+
+import Model.Appointment;
 import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
@@ -21,6 +23,9 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
+import Control.UserLoginController;
+import static Control.UserLoginController.primaryKey;
+
 
 
 
@@ -49,16 +54,18 @@ public class RecAddAppointmentWindowController extends DashboardUIController imp
       
       //Adding new appointment - Submit Button Action Methode    
       @FXML  
-      public void submitBtn(ActionEvent event) {
-          //write values in another text file
-         try {
-            File file = new File ("user data\\appointment\\"+userID.getText()+".txt");
-                PrintWriter print = new PrintWriter(new FileOutputStream(file,true)); 
-                print.append(userID.getText()+"\n"+name.getText()+"\n"+appDate.getValue()+"\n"+appTime.getValue()+"\n"+specAreaCombo.getValue()+"\n"+Symptoms.getText()+"\n");
-                print.close();
-        } catch (FileNotFoundException e) {
-        }
-
+      public void submitBtn(ActionEvent event) throws FileNotFoundException {
+        //write values in another text file
+        Appointment appObj = new Appointment();
+        appObj.setName(name.getText());
+        appObj.setAppDate(appDate.getValue().toString());
+        appObj.setAppTime(appTime.getValue().toString());
+        appObj.setSymptoms(Symptoms.getText());
+        appObj.setUserID(userID.getText());
+        appObj.addAppointmentRec(event);
+        
+          System.out.println(primaryKey);
+        
      }
     
     

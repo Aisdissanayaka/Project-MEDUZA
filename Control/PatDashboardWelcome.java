@@ -14,11 +14,8 @@ import javafx.fxml.Initializable;
 
 public class PatDashboardWelcome extends DashboardUIController implements Initializable {
    
-     
   
-    /**
-     * Initializes the controller class.
-     */
+  
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO

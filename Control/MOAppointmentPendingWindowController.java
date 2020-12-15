@@ -24,20 +24,7 @@ import javafx.stage.Stage;
  */
 public class MOAppointmentPendingWindowController extends DashboardUIController implements Initializable {
     
-    //Triggers the Add new appointmend button in the appointment window
-//    @FXML
-//    public void addNewAppointment(ActionEvent event) throws IOException{
-//        Parent addNewAppointmentWindow = FXMLLoader.load(getClass().getResource("/View/Dashboards/Patient/PatAddAppointmentWindow.fxml"));
-//        Scene addNewAppointmentWindowViewScene = new Scene(addNewAppointmentWindow);
-//        
-//        //This Line gets the Stage Information
-//        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
-//        window.setScene(addNewAppointmentWindowViewScene);
-//        window.show();
-//        window.centerOnScreen();
-//        
-//       
-//    }
+    
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
