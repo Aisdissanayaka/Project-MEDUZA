@@ -5,6 +5,7 @@
  */
 package Control;
 
+import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXTextField;
@@ -16,6 +17,8 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -41,6 +44,10 @@ import javax.imageio.ImageIO;
 
 public class Sign_Up_as_RECEPTIONISTController extends DashboardUIController implements Initializable {
     
+     //create new object as fileChooser           
+    FileChooser fileChooser = new FileChooser();
+    Stage primaryStage = new Stage();
+    
     ObservableList list1 =FXCollections.observableArrayList();
 
     @FXML
@@ -61,12 +68,19 @@ public class Sign_Up_as_RECEPTIONISTController extends DashboardUIController imp
     private JFXDatePicker recDateOfBirth;
     @FXML
     private JFXDatePicker recDateOfJoin;
-     @FXML
+    @FXML
     private JFXComboBox<String> series;
-     @FXML
-     private Button recbtnSave;
-     @FXML
-     private ImageView img;
+    @FXML
+    private Button recbtnSave;
+    @FXML
+    private ImageView img;
+    @FXML
+    private File path;
+    @FXML
+    private JFXButton btnSave;
+    @FXML
+    private JFXButton btnLoad;
+    
      
 
   // Cancel Button. it's go to sign up as menu  
@@ -161,6 +175,38 @@ public class Sign_Up_as_RECEPTIONISTController extends DashboardUIController imp
          ImageIO.write(BI,"jpg",fileoutput);
          
     }
+     
+     
+      //opening and saving document file    
+    @FXML
+    public void openFile(ActionEvent actionEvent) throws IOException {
+       
+       
+        fileChooser.setInitialDirectory(new File("C:\\Users\\"));
+        fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("doc file","*.doc","*.docx"));
+
+        File file = fileChooser.showOpenDialog(primaryStage);
+       // File desination = fileChooser.showSaveDialog(primaryStage);
+        path=file.getAbsoluteFile();
+        
+        
+         //saving file given path
+          try {
+                Files.copy(file.toPath(),Paths.get("user data\\receptionist\\cv\\"+recStaffIDtxt.getText()+".doc"));
+            } catch (Exception ioException) {
+               ioException.printStackTrace();
+            }
+          
+          //create new object file1
+          File file1 = new File(String.valueOf(path));
+       
+        fileChooser.setInitialFileName(recStaffIDtxt.getText()+".doc");  
+        //getting type of files 
+        fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("doc file","*.doc","*.docx"));
+        
+         
+    }
+     
   @Override
     public void initialize(URL url, ResourceBundle rb) {
          loadData();
