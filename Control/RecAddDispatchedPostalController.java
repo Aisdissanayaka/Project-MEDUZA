@@ -9,6 +9,8 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
+import com.jfoenix.validation.NumberValidator;
+import com.jfoenix.validation.RequiredFieldValidator;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -18,9 +20,12 @@ import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ResourceBundle;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
@@ -69,6 +74,8 @@ public class RecAddDispatchedPostalController extends DashboardUIController impl
     @FXML  
       public void submitBtn(ActionEvent event) {
             String value = disDate.getValue().toString();
+            
+            if(validateFields()){
          try {
             File file = new File ("user data\\receptionist\\postal\\dispatched post\\data\\"+disReff.getText()+".txt");
                 PrintWriter print = new PrintWriter(new FileOutputStream(file,true)); 
@@ -78,12 +85,29 @@ public class RecAddDispatchedPostalController extends DashboardUIController impl
          disName.setText(null);
          disReff.setText(null);
          disTo.setText(null);
-         disNote.setText(null);
+        disNote.setText(null);
          disDate.setValue(null);
          disFrom.setText(null);
          
 
-     }
+     }}
+      // warning message for null validation
+     private boolean validateFields(){
+        if( disName.getText().isEmpty() | disReff.getText().isEmpty()|
+                 disTo.getText().isEmpty()|disNote.getText().isEmpty()|  disDate.getEditor().getText().isEmpty()|disFrom.getText().isEmpty())
+         {
+              Alert alert = new Alert(Alert.AlertType.WARNING);
+             alert.setTitle("Validate Fields");
+             alert.setHeaderText(null);
+             alert.setContentText("Please Enter Into The Fields");
+             alert.showAndWait();
+            return false;
+            
+         }
+         
+         return true;
+         
+          }
       
        //opening and saving document file    
     @FXML
@@ -118,7 +142,90 @@ public class RecAddDispatchedPostalController extends DashboardUIController impl
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+         //show validation status
+        RequiredFieldValidator validator = new RequiredFieldValidator();
+        NumberValidator numvalidator = new  NumberValidator();
+        
+        
+       
+        //validation for Address
+        disTo.getValidators().add(validator);
+        validator.setMessage("Required Field");
+        
+        disTo.focusedProperty().addListener(new ChangeListener <Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+                if(!newValue)
+                {
+                disTo.validate();
+                } 
+            }
+        });
+        //validation field for Reffereence Number
+        disReff.getValidators().add(validator);
+        validator.setMessage("Required Field");
+        
+        disReff.focusedProperty().addListener(new ChangeListener <Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+                if(!newValue)
+                {
+                disReff.validate();
+                } 
+            }
+        });
+        //validation Field for To
+        disName.getValidators().add(validator);
+        validator.setMessage("Required Field");
+        
+        disName.focusedProperty().addListener(new ChangeListener <Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+                if(!newValue)
+                {
+                disName.validate();
+                } 
+            }
+        }); 
+        //validation field for Note
+        disNote.getValidators().add(validator);
+        validator.setMessage("Required Field");
+        
+        disNote.focusedProperty().addListener(new ChangeListener <Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+                if(!newValue)
+                {
+                disNote.validate();
+                } 
+            }
+        }); 
+        //validation field for Date
+        disDate.getValidators().add(validator);
+        validator.setMessage("Required Field");
+        
+        disDate.focusedProperty().addListener(new ChangeListener <Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+                if(!newValue)
+                {
+                disDate.validate();
+                } 
+            }
+        }); 
+        //validation field for From
+        disFrom.getValidators().add(validator);
+        validator.setMessage("Required Field");
+        
+        disFrom.focusedProperty().addListener(new ChangeListener <Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+                if(!newValue)
+                {
+                disFrom.validate();
+                } 
+            }
+        }); 
     }    
     
 }
