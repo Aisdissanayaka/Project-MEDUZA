@@ -9,6 +9,8 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
+import com.jfoenix.validation.NumberValidator;
+import com.jfoenix.validation.RequiredFieldValidator;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -18,9 +20,12 @@ import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ResourceBundle;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
@@ -68,6 +73,7 @@ public class RecAddReceivedPostController extends DashboardUIController implemen
     //Submit Button Action Methode    
     @FXML  
       public void submitBtn(ActionEvent event) {
+          if(validateFields()){
           //write values in another text file
          try {
             File file = new File ("user data\\receptionist\\postal\\received postal\\data\\"+postReff.getText()+".txt");
@@ -84,8 +90,24 @@ public class RecAddReceivedPostController extends DashboardUIController implemen
         postFrom.setText(null);
         postTo.setText(null);
         postDate.setValue(null);
-     }
-    
+     }}
+     // warning message for null validation
+     private boolean validateFields(){
+        if(   postName.getText().isEmpty() | postNote.getText().isEmpty()|
+                postReff.getText().isEmpty()|postFrom.getText().isEmpty()|  postDate.getEditor().getText().isEmpty()|postTo.getText().isEmpty())
+         {
+              Alert alert = new Alert(Alert.AlertType.WARNING);
+             alert.setTitle("Validate Fields");
+             alert.setHeaderText(null);
+             alert.setContentText("Please Enter Into The Fields");
+             alert.showAndWait();
+            return false;
+            
+         }
+         
+         return true;
+         
+          }
       
         //opening and saving document file    
     @FXML
@@ -119,7 +141,90 @@ public class RecAddReceivedPostController extends DashboardUIController implemen
          
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        //show validation status
+        RequiredFieldValidator validator = new RequiredFieldValidator();
+        NumberValidator numvalidator = new  NumberValidator();
+        
+        
+       
+        //validation for Address
+       postName.getValidators().add(validator);
+        validator.setMessage("Required Field");
+        
+       postName.focusedProperty().addListener(new ChangeListener <Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+                if(!newValue)
+                {
+                postName.validate();
+                } 
+            }
+        });
+        //validation field for Reffereence Number
+        postNote.getValidators().add(validator);
+        validator.setMessage("Required Field");
+        
+        postNote.focusedProperty().addListener(new ChangeListener <Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+                if(!newValue)
+                {
+                postNote.validate();
+                } 
+            }
+        });
+        //validation Field for To
+       postReff.getValidators().add(validator);
+        validator.setMessage("Required Field");
+        
+       postReff.focusedProperty().addListener(new ChangeListener <Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+                if(!newValue)
+                {
+                postReff.validate();
+                } 
+            }
+        }); 
+        //validation field for Note
+       postFrom.getValidators().add(validator);
+        validator.setMessage("Required Field");
+        
+        postFrom.focusedProperty().addListener(new ChangeListener <Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+                if(!newValue)
+                {
+                postFrom.validate();
+                } 
+            }
+        }); 
+        //validation field for Date
+       postTo.getValidators().add(validator);
+        validator.setMessage("Required Field");
+        
+       postTo.focusedProperty().addListener(new ChangeListener <Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+                if(!newValue)
+                {
+               postTo.validate();
+                } 
+            }
+        }); 
+        //validation field for From
+        postDate.getValidators().add(validator);
+        validator.setMessage("Required Field");
+        
+         postDate.focusedProperty().addListener(new ChangeListener <Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+                if(!newValue)
+                {
+                 postDate.validate();
+                } 
+            }
+        }); 
     }    
     
 }
