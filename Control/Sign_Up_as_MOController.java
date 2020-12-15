@@ -5,6 +5,8 @@
  */
 package Control;
 
+import Model.MedicalOfficer;
+import Model.user;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXDatePicker;
@@ -98,13 +100,12 @@ public class Sign_Up_as_MOController extends DashboardUIController implements In
         //write details in a text file
          try
        {
-           File file = new File("user data\\medical officer\\data\\"+moStaffID.getText()+".txt");
-           PrintWriter printer = new PrintWriter(new FileOutputStream(file,true));
-           printer.append(moFirstName.getText()+"\n"+moLastName.getText()
-                   +"\n"+moAddress.getText()+"\n"+moPhoneNum.getText()+"\n"+moDateOfBirth.getValue().toString()+"\n"+moStaffID.getText()
-                   +"\n"+moStaffEmail.getText()+"\n"+moDateOfJoin.getValue().toString()+"\n" +moGender.getValue().toString()+"\n"+moSpecialityArea.getValue().toString()+"\n");
+           MedicalOfficer moObj = (MedicalOfficer) new user();
+           moObj.setStaffID(moStaffID.getText());
+           moObj.setFName(moFirstName.getText());
+           moObj.setLName(moLastName.getText());
           
-           printer.close();
+           moObj.signup();
        }
         catch(Exception e){}
          

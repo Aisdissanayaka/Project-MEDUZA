@@ -24,7 +24,9 @@ import javafx.stage.Stage;
  */
 public class DashboardUIController implements Initializable {
     
-    
+    public void setName(String name){
+      System.out.println(name);
+  }   
     //Close button
     @FXML
     public void closeBtn(ActionEvent event) {

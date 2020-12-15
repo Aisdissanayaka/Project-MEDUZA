@@ -5,6 +5,7 @@
  */
 package Control;
 
+import Model.user;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
 import java.io.BufferedReader;
@@ -61,21 +62,28 @@ public class UserLoginController implements Initializable {
     }
     
  
-     
+       public static String primaryKey;
       
 
     //Login button Action Method in receptionist Window(user data\receptionist\credentials\receptionistlogin.txt)
 
     public UserLoginController() {
     }
-
+    
+  
 
      @FXML
     private void loginAsRec(ActionEvent event) throws IOException {
-      user obj = new receptionist();
+      user obj = new user();
       obj.setUserName(userName.getText());
+      primaryKey = userName.getText();
+     
+      
+      
       obj.setPassword(password.getText());
       obj.login(event, lable, "user data\\receptionist\\credentials\\receptionistlogin.txt", "/View/Dashboards/RecDashboardWelcome.fxml");
+      
+      
       
     }
     

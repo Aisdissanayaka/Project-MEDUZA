@@ -5,6 +5,8 @@
  */
 package Control;
 
+
+import Model.Appointment;
 import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
@@ -52,22 +54,15 @@ public class PatAddAppointmentWindowController extends DashboardUIController imp
       
       //Adding new appointment - Submit Button Action Methode    
       @FXML  
-      public void submitBtn(ActionEvent event) {
-          //write values in another text file
-         try {
-            File file = new File ("user data\\appointment\\"+NICTxt.getText()+".txt");
-                PrintWriter print = new PrintWriter(new FileOutputStream(file,true)); 
-               print.append(NICTxt.getText()+"\n"+nameTxt.getText()+"\n"+appDate.getValue()+"\n"+appTime.getValue()+"\n"+specAreaCombo.getValue()+"\n"+SymptomsTxt.getText()+"\n");
-                print.close();
-        } catch (FileNotFoundException e) {}
-         NICTxt.setText(null);
-        nameTxt.setText(null);
-        appDate.setValue(null);
-        appTime.setValue(null);
-        MOTxt.setText(null);
-        specAreaCombo.setValue(null);
-        SymptomsTxt.setText(null);
-
+      public void submitBtn(ActionEvent event) throws FileNotFoundException {
+           Appointment appObj = new Appointment();
+        appObj.setName(nameTxt.getText());
+        appObj.setAppDate(appDate.getValue().toString());
+        appObj.setAppTime(appTime.getValue().toString());
+        appObj.setSymptoms(SymptomsTxt.getText());
+        appObj.setUserID(NICTxt.getText());
+        appObj.addAppointmentRec(event);
+       
      }
     
     

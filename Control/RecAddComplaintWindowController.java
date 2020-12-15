@@ -72,7 +72,7 @@ public class RecAddComplaintWindowController extends DashboardUIController imple
     
     
     //submit button. It's writes complaints data to file
-     @FXML
+    @FXML
     public void submitBtn(ActionEvent event){
         try{
          File file = new File("user data\\complaint\\data\\"+ LocalDate.now()+" " +nameTxt.getText() +".txt"); 
@@ -96,7 +96,7 @@ public class RecAddComplaintWindowController extends DashboardUIController imple
        
        
         fileChooser.setInitialDirectory(new File("C:\\Users\\"));
-        fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("doc file","*.doc","*.docx"));
+        fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("pdf file","*.pdf","*.PDF"));
 
         File file = fileChooser.showOpenDialog(primaryStage);
        // File desination = fileChooser.showSaveDialog(primaryStage);
@@ -105,7 +105,7 @@ public class RecAddComplaintWindowController extends DashboardUIController imple
         
          //saving file given path
           try {
-                Files.copy(file.toPath(),Paths.get("user data\\complaint\\cv\\"+LocalDate.now()+" " +nameTxt.getText() +".doc"));
+                Files.copy(file.toPath(),Paths.get("user data\\complaint\\cv\\"+LocalDate.now()+" " +nameTxt.getText() +".pdf"));
             } catch (Exception ioException) {
                ioException.printStackTrace();
             }
@@ -113,9 +113,9 @@ public class RecAddComplaintWindowController extends DashboardUIController imple
           //create new object file1
           File file1 = new File(String.valueOf(path));
        
-        fileChooser.setInitialFileName(LocalDate.now()+" " +nameTxt.getText() +".doc");  
+        fileChooser.setInitialFileName(LocalDate.now()+" " +nameTxt.getText() +".pdf");  
         //getting type of files 
-        fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("doc file","*.doc","*.docx"));
+        fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("pdf file","*.pdf","*.PDF"));
         
          
     }

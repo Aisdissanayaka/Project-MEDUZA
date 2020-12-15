@@ -70,46 +70,37 @@ public class RecAddVisitorWindowController extends DashboardUIController impleme
     //Submit Button Action Methode
     
     @FXML
-    public void submitBtn(ActionEvent event) {
-         try {
-            File file = new File ("user data\\visitors\\data\\"+visName.getText()+".txt");
-                PrintWriter print = new PrintWriter(new FileOutputStream(file,true)); 
-                print.append(visName.getText()+"\n"+visID.getText()+"\n"+visDate.getValue()+"\n"+inTime.getValue()+"\n"+outTime.getValue()+"\n"+visNote.getText()+"\n");
-                print.close();
-        } catch (FileNotFoundException e) {
-        }
-
-     }
-    
-     //opening and saving document file    
-    @FXML
-    public void openFile(ActionEvent actionEvent) throws IOException {
-       
-       
-        fileChooser.setInitialDirectory(new File("C:\\Users\\"));
-        fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("doc file","*.doc","*.docx"));
-
-        File file = fileChooser.showOpenDialog(primaryStage);
-       // File desination = fileChooser.showSaveDialog(primaryStage);
-        path=file.getAbsoluteFile();
+    public void openFile(ActionEvent event2) throws IOException {
         
+        Visitor visitorObjF = new Visitor();
         
-         //saving file given path
-          try {
-                Files.copy(file.toPath(),Paths.get("user data\\visitors\\cv\\"+visName.getText()+".doc"));
-            } catch (Exception ioException) {
-               ioException.printStackTrace();
-            }
-          
-          //create new object file1
-          File file1 = new File(String.valueOf(path));
-       
-        fileChooser.setInitialFileName(visName.getText()+".doc");  
-        //getting type of files 
-        fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("doc file","*.doc","*.docx"));
-        
-         
+        visitorObjF.setNic(visID.getText());
+        visitorObjF.setName(visName.getText());
+        visitorObjF.setNote(visNote.getText());
+        visitorObjF.setInTime(inTime.getValue().toString());
+        visitorObjF.setOutTime(outTime.getValue().toString());
+        visitorObjF.setDate(visDate.getValue().toString());
+        visitorObjF.addFile(event2);
     }
+    
+    @FXML
+    public void submitBtn(ActionEvent event) throws FileNotFoundException {
+        try{
+        Visitor visitorObj = new Visitor();
+        
+        visitorObj.setNic(visID.getText());
+        visitorObj.setName(visName.getText());
+        visitorObj.setNote(visNote.getText());
+        visitorObj.setInTime(inTime.getValue().toString());
+        visitorObj.setOutTime(outTime.getValue().toString());
+        visitorObj.setDate(visDate.getValue().toString());
+        
+        visitorObj.addVisitor(event);}
+        catch(Exception e){
+            System.out.println("Error");}
+    } 
+       
+    
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
