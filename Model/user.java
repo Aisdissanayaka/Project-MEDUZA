@@ -5,6 +5,7 @@
  */
 package Model;
 
+import static Control.UserLoginController.primaryKey;
 import com.jfoenix.controls.JFXPasswordField;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -169,50 +170,41 @@ public class user {
    
     
     private  Scanner x;
-    public void changePassword(String filepath,String currentPassword,String newPassword1,String newPassword2,String tempFile,Label warningMsg,String userName) throws IOException{
+    public void changePassword(String filepath,String currentPassword,String newPassword1,String newPassword2,String tempFile,Label warningMsg) throws IOException{
         File oldFile = new File(filepath);
         File newFile = new File (tempFile);
-        String username = "" ; String password = "";
+        String uName = "" ; String pWord = "";
         
-       
+        try {
             
-            
-           try{ 
-            FileWriter fw = new FileWriter(tempFile,true); 
+            FileWriter fw = new FileWriter(tempFile,true);
             BufferedWriter bw = new BufferedWriter(fw);
             PrintWriter pw = new PrintWriter(bw);
-            x =new Scanner(new File (filepath));
+            x = new Scanner (new File (filepath));
             x.useDelimiter("[,\n]");
             
-            while (x.hasNext()){
+            while(x.hasNext()){
+                uName = x.next();
+                pWord = x.next();
                 
-            
-            username = x.next();
-            password = x.next();
-            if (username.equals(userName)&& password.equals(currentPassword)){
-            
-             pw.print(username+ "," + newPassword1+"\n");
-               
-            }else{
-                warningMsg.setText("hello");
-                pw.print(username + "," + password+"\n");
-            }
-            
-        }
-           x.close();
-           pw.flush();
-           pw.close();
-           //fw.close();
-           oldFile.delete();
-           File dump = new File(filepath);
-           newFile.renameTo(dump);
-            
-            
-        }
-           
-           catch (Exception e) {
-               System.out.println("Error");
-        }
+                if (uName.equals(primaryKey)){
+                    pw.print(primaryKey + "," + newPassword1 + "\n");   
+                }else{
+                    pw.print(uName + "," + pWord + "\n");
+                }
+                
+              
+            }   
+            x.close();
+            pw.flush();
+            pw.close();
+            oldFile.delete();
+            File dump = new File (filepath);
+            newFile.renameTo(dump); 
+          
+        } catch (Exception e) {
+            System.out.println("Error");
+          }
     }
 
 

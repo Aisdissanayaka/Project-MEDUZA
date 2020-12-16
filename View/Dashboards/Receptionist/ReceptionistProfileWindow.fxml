@@ -269,5 +269,10 @@
             <Font size="15.0" />
          </font>
       </JFXButton>
+      <JFXButton layoutX="707.0" layoutY="142.0" onAction="#recChangePasswordBtn" prefHeight="31.0" prefWidth="143.0" styleClass="Special-buttons" text="Change Password" textFill="#b9d5fd">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </JFXButton>
    </children>
 </AnchorPane>

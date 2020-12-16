@@ -265,6 +265,22 @@ public class DashboardUIController implements Initializable {
        }
     
     
+    
+    
+    @FXML
+    public void recChangePasswordBtn(ActionEvent event) throws IOException {
+        Parent changePasswordWindow = FXMLLoader.load(getClass().getResource("/View/Dashboards/Receptionist/RecChangePassword.fxml"));
+        Scene changePasswordWindowViewScene = new Scene(changePasswordWindow);
+        
+        //This Line gets the Stage Information
+        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+        window.setScene(changePasswordWindowViewScene);
+        
+        window.show();
+        window.centerOnScreen();
+        }
+    
+    
   
     @Override
     public void initialize(URL url, ResourceBundle rb) {
