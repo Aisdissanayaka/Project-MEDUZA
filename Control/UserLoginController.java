@@ -63,7 +63,7 @@ public class UserLoginController implements Initializable {
     
  
        public static String primaryKey;
-      
+       public static String primaryKey1;
 
     //Login button Action Method in receptionist Window(user data\receptionist\credentials\receptionistlogin.txt)
 
@@ -77,7 +77,7 @@ public class UserLoginController implements Initializable {
       user obj = new user();
       obj.setUserName(userName.getText());
       primaryKey = userName.getText();
-     
+      primaryKey1 = password.getText();
       
       
       obj.setPassword(password.getText());
