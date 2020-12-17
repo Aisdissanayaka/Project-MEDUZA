@@ -5,6 +5,7 @@
  */
 package Control;
 
+import Model.Postal;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXTextArea;
@@ -70,27 +71,29 @@ public class RecAddReceivedPostController extends DashboardUIController implemen
     private JFXButton btnLoad;
     
     
-    //Submit Button Action Methode    
+   // add received post -Submit Button Action Methode    
     @FXML  
-      public void submitBtn(ActionEvent event) {
+      public void submitBtn(ActionEvent event) throws FileNotFoundException {
           if(validateFields()){
-          //write values in another text file
-         try {
-            File file = new File ("user data\\receptionist\\postal\\received postal\\data\\"+postReff.getText()+".txt");
-                PrintWriter print = new PrintWriter(new FileOutputStream(file,true)); 
-                print.append(postName.getText()+"\n"+postReff.getText()+"\n"+postFrom.getText()+"\n"+postNote.getText()+"\n"+postTo.getText()+"\n"+postDate.getValue().toString()+"\n");
-                print.close();
-        } catch (FileNotFoundException e) {
-        }
-         
-         //setting values to declared variables
-        postName.setText(null);
-        postNote.setText(null);
-        postReff.setText(null);
-        postFrom.setText(null);
-        postTo.setText(null);
-        postDate.setValue(null);
-     }}
+    //write values in another text file
+      Postal obj = new Postal();
+      obj.setFrom(postFrom.getText());
+      obj.setTo(postTo.getText());
+      obj.setAddress(postName.getText());
+      obj.setRefferenceNum(postReff.getText());
+      obj.setNote(postNote.getText());
+      obj.setDate( postDate.getValue().toString());
+      
+      obj.AddReceivedPost(event);
+      
+         postName.setText(null);
+         postFrom.setText(null);
+         postTo.setText(null);
+         postReff.setText(null);
+         postDate.setValue(null);
+         postNote.setText(null);
+      
+      }}
      // warning message for null validation
      private boolean validateFields(){
         if(   postName.getText().isEmpty() | postNote.getText().isEmpty()|
