@@ -117,7 +117,7 @@ public class user {
             String st;
             while ((st = br.readLine()) != null) {
                 String[] splitted = st.split(",");
-                if (username.equals(splitted[0]) && password.equals(splitted[1])) {
+                if (getUserName().equals(splitted[0]) && getPassword().equals(splitted[1])) {
                     x = false;
                     Parent signUpAsParent = FXMLLoader.load(getClass().getResource(fxmlpath));
                     Scene signUpAsviewScene = new Scene(signUpAsParent);
@@ -150,7 +150,7 @@ public class user {
    
    
    
-   
+  
    
    
    
