@@ -25,6 +25,11 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
 import Control.UserLoginController;
 import static Control.UserLoginController.primaryKey;
+import com.jfoenix.validation.NumberValidator;
+import com.jfoenix.validation.RequiredFieldValidator;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+import javafx.scene.control.Alert;
 
 
 
@@ -55,6 +60,7 @@ public class RecAddAppointmentWindowController extends DashboardUIController imp
       //Adding new appointment - Submit Button Action Methode    
       @FXML  
       public void submitBtn(ActionEvent event) throws FileNotFoundException {
+          if(validateFields()){
         //write values in another text file
         Appointment appObj = new Appointment();
         appObj.setName(name.getText());
@@ -66,7 +72,27 @@ public class RecAddAppointmentWindowController extends DashboardUIController imp
         
           System.out.println(primaryKey);
         
-     }
+     }}
+       // warning message for null validation
+     private boolean validateFields(){
+         
+          if(userID.getText().isEmpty() | name.getText().isEmpty()|appDate.getEditor().getText().isEmpty()|appTime.getEditor().getText().isEmpty()| Symptoms.getText().isEmpty())
+         {
+              Alert alert = new Alert(Alert.AlertType.WARNING);
+             alert.setTitle("Validate Fields");
+             alert.setHeaderText(null);
+             alert.setContentText("Please Enter Into The Fields");
+             alert.showAndWait();
+             
+            
+             
+             return false;
+            
+         }
+         
+         return true;
+         
+          }
     
     
     
@@ -76,6 +102,79 @@ public class RecAddAppointmentWindowController extends DashboardUIController imp
       //Combo-box data foe the Medical officer speciality     
        ObservableList<String>list1=FXCollections.observableArrayList("A","B","C","D");
         specAreaCombo.setItems(list1);
+        
+         //show validation status
+        RequiredFieldValidator validator = new RequiredFieldValidator();
+        NumberValidator numvalidator = new  NumberValidator();
+        
+       
+        //validation for user ID
+        userID.getValidators().add(validator);
+        validator.setMessage("Required Field");
+        
+       userID.focusedProperty().addListener(new ChangeListener <Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+                if(!newValue)
+                {
+                userID.validate();
+                } 
+            }
+        });
+        //validation field for name
+        name.getValidators().add(validator);
+        validator.setMessage("Required Field");
+        
+        name.focusedProperty().addListener(new ChangeListener <Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+                if(!newValue)
+                {
+                name.validate();
+                } 
+            }
+        });
+        //validation Field for appointment date
+        appDate.getValidators().add(validator);
+        validator.setMessage("Required Field");
+        
+        appDate.focusedProperty().addListener(new ChangeListener <Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+                if(!newValue)
+                {
+                appDate.validate();
+                } 
+            }
+        }); 
+        //validation field for appointment time
+        appTime.getValidators().add(validator);
+        validator.setMessage("Required Field");
+        
+        appTime.focusedProperty().addListener(new ChangeListener <Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+                if(!newValue)
+                {
+                appTime.validate();
+                } 
+            }
+        }); 
+        //validation Field for symptoms
+        Symptoms.getValidators().add(validator);
+        validator.setMessage("Required Field");
+        
+        Symptoms.focusedProperty().addListener(new ChangeListener <Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+                if(!newValue)
+                {
+                Symptoms.validate();
+                } 
+            }
+        }); 
+        
+        
         
         
     }    
