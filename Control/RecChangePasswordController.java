@@ -6,6 +6,7 @@
 package Control;
 
 import static Control.UserLoginController.primaryKey1;
+import static Control.UserLoginController.staticUserName;
 import Model.user;
 import com.jfoenix.controls.JFXPasswordField;
 import java.io.IOException;
@@ -48,16 +49,16 @@ public class RecChangePasswordController  extends DashboardUIController   implem
 
     @FXML
     void cancelBtn(ActionEvent event) throws IOException {
-        
-        Parent profileWindow = FXMLLoader.load(getClass().getResource("/View/Dashboards/Receptionist/ReceptionistProfileWindow.fxml"));
-        Scene profileViewScene = new Scene(profileWindow);
-        
-        //This Line gets the Stage Information
-        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
-        window.setScene(profileViewScene);
-        window.show();
-        window.centerOnScreen();
 
+    FXMLLoader loader =new FXMLLoader(getClass().getResource("/View/Dashboards/Receptionist/ReceptionistProfileWindow.fxml"));
+    Parent root = loader.load();
+    DashboardUIController welcome =loader.getController();
+    welcome.showInformation(staticUserName);
+
+    Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+    window.setScene(new Scene(root));
+    window.show();
+    window.centerOnScreen();
 
     }
 
