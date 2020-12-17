@@ -5,6 +5,7 @@
  */
 package Control;
 
+import Model.Complaint;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
@@ -56,7 +57,7 @@ public class PatAddComplaintWindowController extends DashboardUIController imple
 
     @FXML
     private JFXTextArea noteTxt;
-    
+      
     @FXML
     private LocalDate date;
     
@@ -70,17 +71,20 @@ public class PatAddComplaintWindowController extends DashboardUIController imple
     private JFXButton btnLoad;
     
     
-    
     //submit button. It's writes complaints data to file
      @FXML
-    public void submitBtn(ActionEvent event){
-        try{
-         File file = new File("user data\\complaint\\data\\"+ LocalDate.now()+" " +nameTxt.getText() +".txt"); 
-        PrintWriter printer = new PrintWriter(new FileOutputStream(file,true));  
-        printer.append(date.now()+"\n"  + comTypeBox.getValue()+"\n"  + nameTxt.getText()+ "\n" +  phoneNumTxt.getText()+"\n"+ descriptionTxt.getText()+"\n"+ actionTakenTxt.getText() + "\n"+
-                         noteTxt.getText()+ "\n");
-             printer.close();
-        }catch(FileNotFoundException e){}
+    public void submitBtn(ActionEvent event)throws  IOException {
+        
+        Complaint patCom=new Complaint();
+        patCom.setDate(date.now().toString());
+        patCom.setType(comTypeBox.getValue().toString());
+        patCom.setName(nameTxt.getText());
+        patCom.setPhoneNo(phoneNumTxt.getText());
+        patCom.setDescription(descriptionTxt.getText());
+        patCom.setActionTaken(actionTakenTxt.getText());
+        patCom.setNote(noteTxt.getText());
+        
+        patCom.addComplaint(event);
         
         comTypeBox.setValue(null);
         nameTxt.setText(null);
@@ -88,16 +92,16 @@ public class PatAddComplaintWindowController extends DashboardUIController imple
         noteTxt.setText(null);
         phoneNumTxt.setText(null);
         actionTakenTxt.setText(null);
-    }
+        
 
-    
+    }
      //opening and saving document file    
     @FXML
     public void openFile(ActionEvent actionEvent) throws IOException {
        
        
         fileChooser.setInitialDirectory(new File("C:\\Users\\"));
-        fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("doc file","*.doc","*.docx"));
+        fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("pdf file","*.pdf","*.PDF"));
 
         File file = fileChooser.showOpenDialog(primaryStage);
        // File desination = fileChooser.showSaveDialog(primaryStage);
@@ -106,7 +110,7 @@ public class PatAddComplaintWindowController extends DashboardUIController imple
         
          //saving file given path
           try {
-                Files.copy(file.toPath(),Paths.get("user data\\complaint\\cv\\"+LocalDate.now()+" " +nameTxt.getText()+".doc"));
+                Files.copy(file.toPath(),Paths.get("user data\\complaint\\cv\\"+LocalDate.now()+" " +nameTxt.getText()+".pdf"));
             } catch (Exception ioException) {
                ioException.printStackTrace();
             }
@@ -114,9 +118,9 @@ public class PatAddComplaintWindowController extends DashboardUIController imple
           //create new object file1
           File file1 = new File(String.valueOf(path));
        
-        fileChooser.setInitialFileName(LocalDate.now()+" " +nameTxt.getText()+".doc");  
+        fileChooser.setInitialFileName(LocalDate.now()+" " +nameTxt.getText()+".pdf");  
         //getting type of files 
-        fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("doc file","*.doc","*.docx"));
+        fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("pdf file","*.pdf","*.PDF"));
         
          
     }

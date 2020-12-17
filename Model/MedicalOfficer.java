@@ -8,7 +8,9 @@ package Model;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.PrintWriter;
+import java.time.LocalDate;
 import javafx.event.ActionEvent;
 
 public class MedicalOfficer extends user{
@@ -51,13 +53,15 @@ public class MedicalOfficer extends user{
     
     
     
-    public void signup() throws FileNotFoundException{
-    File file = new File("user data\\medical officer\\data\\"+getStaffID()+".txt");
-           PrintWriter printer = new PrintWriter(new FileOutputStream(file,true));
-           printer.append(getFName()+"\n"+getLName()
+    public void signup(ActionEvent event) throws FileNotFoundException{
+     
+        File file = new File("user data\\medical officer\\data\\"+getStaffID()+".txt");
+           PrintWriter print = new PrintWriter(new FileOutputStream(file,true));
+           print.append(getFName()+" "+getLName()
                    +"\n"+getAddress()+"\n"+getPhoneNumber()+"\n"+getDOB()+"\n"+getStaffID()
                    +"\n"+getEmail()+"\n"+getDateJoined()+"\n" +getGender()+"\n"+getSpecialityArea()+"\n");
           
-           printer.close();
+           print.close();
+    
     }
 }

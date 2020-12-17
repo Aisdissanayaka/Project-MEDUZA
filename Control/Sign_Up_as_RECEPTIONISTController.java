@@ -209,7 +209,7 @@ public class Sign_Up_as_RECEPTIONISTController extends DashboardUIController imp
        
        
         fileChooser.setInitialDirectory(new File("C:\\Users\\"));
-        fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("doc file","*.doc","*.docx"));
+        fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("pdf file","*.pdf","*.PDF"));
 
         File file = fileChooser.showOpenDialog(primaryStage);
        // File desination = fileChooser.showSaveDialog(primaryStage);
@@ -218,7 +218,7 @@ public class Sign_Up_as_RECEPTIONISTController extends DashboardUIController imp
         
          //saving file given path
           try {
-                Files.copy(file.toPath(),Paths.get("user data\\receptionist\\cv\\"+recStaffIDtxt.getText()+".doc"));
+                Files.copy(file.toPath(),Paths.get("user data\\receptionist\\cv\\"+recStaffIDtxt.getText()+".pdf"));
             } catch (Exception ioException) {
                ioException.printStackTrace();
             }
@@ -226,9 +226,9 @@ public class Sign_Up_as_RECEPTIONISTController extends DashboardUIController imp
           //create new object file1
           File file1 = new File(String.valueOf(path));
        
-        fileChooser.setInitialFileName(recStaffIDtxt.getText()+".doc");  
+        fileChooser.setInitialFileName(recStaffIDtxt.getText()+".pdf");  
         //getting type of files 
-        fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("doc file","*.doc","*.docx"));
+        fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("pdf file","*.pdf","*.PDF"));
         
          
     }

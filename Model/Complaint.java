@@ -10,6 +10,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.PrintWriter;
+import java.nio.file.Path;
 import java.time.LocalDate;
 import javafx.event.ActionEvent;
 
@@ -26,7 +27,7 @@ public class Complaint {
     private String description;
     private String note;
     private String date;
-
+    private Path document;
     
     //Getters
     public String getName() {
@@ -55,6 +56,8 @@ public class Complaint {
     public String getDate() {
         return date;
     }
+   
+    
     
     //Setters
     
@@ -83,6 +86,8 @@ public class Complaint {
         this.date = date;
     }
     
+   
+    
     
     public void addComplaint(ActionEvent event) throws FileNotFoundException{
         
@@ -95,6 +100,8 @@ public class Complaint {
              printer.close();
            
         }
+
+    
       
         
     }
