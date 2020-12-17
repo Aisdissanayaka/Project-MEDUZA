@@ -5,6 +5,7 @@
  */
 package Control;
 
+import static Control.UserLoginController.staticUserName;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -28,14 +29,18 @@ public class RecComplaintsWindowController extends DashboardUIController impleme
     //Triggers the add complain button in the complains window
      @FXML
     public void AddComplaintBtn(ActionEvent event) throws IOException{
-        Parent addComplainWindow = FXMLLoader.load(getClass().getResource("/View/Dashboards/Receptionist/RecAddComplaintWindow.fxml"));
-        Scene addComplainWindowViewScene = new Scene(addComplainWindow);
+      
+    FXMLLoader loader =new FXMLLoader(getClass().getResource("/View/Dashboards/Receptionist/RecAddComplaintWindow.fxml"));
+    Parent root = loader.load();
+    DashboardUIController welcome =loader.getController();
+    welcome.showInformation(staticUserName);
+
+    Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+    window.setScene(new Scene(root));
+    window.show();
+    window.centerOnScreen();
         
-        //This Line gets the Stage Information
-        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
-        window.setScene(addComplainWindowViewScene);
-        window.show();
-        window.centerOnScreen();
+       
         
        }
     

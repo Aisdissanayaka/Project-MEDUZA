@@ -4,8 +4,9 @@
  * and open the template in the editor.
  */
 package Model;
-
+import Control.DashboardUIController;
 import static Control.UserLoginController.primaryKey;
+import static Control.UserLoginController.staticUserName;
 import com.jfoenix.controls.JFXPasswordField;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -119,14 +120,17 @@ public class user {
                 String[] splitted = st.split(",");
                 if (getUserName().equals(splitted[0]) && getPassword().equals(splitted[1])) {
                     x = false;
-                    Parent signUpAsParent = FXMLLoader.load(getClass().getResource(fxmlpath));
-                    Scene signUpAsviewScene = new Scene(signUpAsParent);
+                    
         
-                     //This Line gets the Stage Information
-                     Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
-                     window.setScene(signUpAsviewScene);
-                     window.show();
-                     window.centerOnScreen();
+    FXMLLoader loader =new FXMLLoader(getClass().getResource(fxmlpath));
+    Parent root = loader.load();
+    DashboardUIController welcome =loader.getController();
+    welcome.showInformation(staticUserName);
+
+    Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+    window.setScene(new Scene(root));
+    window.show();
+    window.centerOnScreen();
                      
                 }
                     

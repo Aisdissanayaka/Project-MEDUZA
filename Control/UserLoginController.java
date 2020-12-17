@@ -62,8 +62,8 @@ public class UserLoginController implements Initializable {
     }
     
  
-       public static String primaryKey;
-       public static String primaryKey1;
+       public static String primaryKey,primaryKey1,staticUserName;
+       
 
     //Login button Action Method in receptionist Window(user data\receptionist\credentials\receptionistlogin.txt)
 
@@ -78,6 +78,7 @@ public class UserLoginController implements Initializable {
       obj.setUserName(userName.getText());
       primaryKey = userName.getText();
       primaryKey1 = password.getText();
+      staticUserName = userName.getText();
       
       
       obj.setPassword(password.getText());

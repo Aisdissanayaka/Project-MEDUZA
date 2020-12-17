@@ -5,6 +5,7 @@
  */
 package Control;
 
+import static Control.UserLoginController.staticUserName;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -27,15 +28,17 @@ public class RecVisitorsWindowController extends DashboardUIController implement
     //Trigers the add new Visitor Window
     @FXML
     public void addNewVisitorBtn(ActionEvent event) throws IOException{
-        Parent addNewVisitorWindow = FXMLLoader.load(getClass().getResource("/View/Dashboards/Receptionist/RecAddVisitorWindow.fxml"));
-        Scene addNewVisitorWindowViewScene = new Scene(addNewVisitorWindow);
-        
-        //This Line gets the Stage Information
-        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
-        window.setScene(addNewVisitorWindowViewScene);
-        window.show();
-        window.centerOnScreen();
-        
+
+      
+    FXMLLoader loader =new FXMLLoader(getClass().getResource("/View/Dashboards/Receptionist/RecAddVisitorWindow.fxml"));
+    Parent root = loader.load();
+    DashboardUIController welcome =loader.getController();
+    welcome.showInformation(staticUserName);
+
+    Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+    window.setScene(new Scene(root));
+    window.show();
+    window.centerOnScreen();
        }
     
      
