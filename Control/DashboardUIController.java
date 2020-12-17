@@ -266,20 +266,48 @@ public class DashboardUIController implements Initializable {
     
     
     
-    
+    // Receptionist Change Password Button
     @FXML
     public void recChangePasswordBtn(ActionEvent event) throws IOException {
-        Parent changePasswordWindow = FXMLLoader.load(getClass().getResource("/View/Dashboards/Receptionist/RecChangePassword.fxml"));
-        Scene changePasswordWindowViewScene = new Scene(changePasswordWindow);
+        Parent RecchangePasswordWindow = FXMLLoader.load(getClass().getResource("/View/Dashboards/Receptionist/RecChangePassword.fxml"));
+        Scene RecchangePasswordWindowViewScene = new Scene(RecchangePasswordWindow);
         
         //This Line gets the Stage Information
         Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
-        window.setScene(changePasswordWindowViewScene);
+        window.setScene(RecchangePasswordWindowViewScene);
         
         window.show();
         window.centerOnScreen();
         }
     
+    
+    
+    @FXML
+    public void patChangePasswordBtn(ActionEvent event) throws IOException {
+        Parent PatchangePasswordWindow = FXMLLoader.load(getClass().getResource("/View/Dashboards/Patient/PatChangePassword.fxml"));
+        Scene PatchangePasswordWindowViewScene = new Scene(PatchangePasswordWindow);
+        
+        //This Line gets the Stage Information
+        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+        window.setScene(PatchangePasswordWindowViewScene);
+        
+        window.show();
+        window.centerOnScreen();
+        }
+    
+    
+    @FXML
+    public void MOChangePasswordBtn(ActionEvent event) throws IOException {
+        Parent MOchangePasswordWindow = FXMLLoader.load(getClass().getResource("/View/Dashboards/Patient/PatChangePassword.fxml"));
+        Scene MOtchangePasswordWindowViewScene = new Scene(MOchangePasswordWindow);
+        
+        //This Line gets the Stage Information
+        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+        window.setScene(MOtchangePasswordWindowViewScene);
+        
+        window.show();
+        window.centerOnScreen();
+        }
     
   
     @Override
