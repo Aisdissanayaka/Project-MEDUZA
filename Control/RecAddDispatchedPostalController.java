@@ -5,6 +5,7 @@
  */
 package Control;
 
+import Model.Postal;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXTextArea;
@@ -72,20 +73,24 @@ public class RecAddDispatchedPostalController extends DashboardUIController impl
     
     //Add Dispatched Postal Contoller - Submit Button Action Method    
     @FXML  
-      public void submitBtn(ActionEvent event) {
+      private void submitBtn(ActionEvent event) throws FileNotFoundException {
             String value = disDate.getValue().toString();
             
             if(validateFields()){
-         try {
-            File file = new File ("user data\\receptionist\\postal\\dispatched post\\data\\"+disReff.getText()+".txt");
-                PrintWriter print = new PrintWriter(new FileOutputStream(file,true)); 
-                print.append(disName.getText()+"\n"+disReff.getText()+"\n"+disTo.getText()+"\n"+disNote.getText()+"\n"+disDate.getValue().toString()+"\n"+disFrom.getText()+"\n");
-                print.close();
-        } catch (FileNotFoundException e) {}
+      Postal disobj = new Postal();
+      disobj.setFrom(disFrom.getText());
+      disobj.setTo(disTo.getText());
+      disobj.setAddress(disName.getText());
+      disobj.setRefferenceNum(disReff.getText());
+      disobj.setNote(disNote.getText());
+      disobj.setDate( disDate.getValue().toString());
+      
+      disobj.AddDispatchedPost(event);
+        
          disName.setText(null);
          disReff.setText(null);
          disTo.setText(null);
-        disNote.setText(null);
+         disNote.setText(null);
          disDate.setValue(null);
          disFrom.setText(null);
          
