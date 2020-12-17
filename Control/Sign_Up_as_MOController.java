@@ -194,7 +194,7 @@ public class Sign_Up_as_MOController extends DashboardUIController implements In
     public void openFile(ActionEvent actionEvent) throws IOException {
        
        
-        fileChooser.setInitialDirectory(new File("C:\\Users\\Theja"));
+        fileChooser.setInitialDirectory(new File("C:\\Users\\"));
         fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("pdf file","*.pdf","*.PDF"));
 
         File file = fileChooser.showOpenDialog(primaryStage);
