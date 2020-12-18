@@ -9,6 +9,7 @@ import Model.user;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
@@ -56,13 +57,17 @@ public class UserLoginController implements Initializable {
     @FXML
     private Label lable;
     
+    
+    //This will exit the system.
     @FXML
     public void closeBtn(ActionEvent event) {
      System.exit(0);
     }
     
  
-       public static String primaryKey,primaryKey1,staticUserName;
+       public static String primaryKey,primaryKey1,staticUserName,
+               staticFName,staticLName,staticGender,staticDOB,staticPhoneNo,
+               staticAddress,staticEmail,staticJoinDate,staticStaffID,profilePicture;
        
 
     //Login button Action Method in receptionist Window(user data\receptionist\credentials\receptionistlogin.txt)
@@ -78,13 +83,33 @@ public class UserLoginController implements Initializable {
       obj.setUserName(userName.getText());
       primaryKey = userName.getText();
       primaryKey1 = password.getText();
-      staticUserName = userName.getText();
+    
+      profilePicture = "user data\\receptionist\\photo\\"+primaryKey+".jpg";
+      File file = new File("user data\\receptionist\\data\\"+primaryKey+".txt");
+      FileReader fr = new FileReader(file);
+      BufferedReader br = new BufferedReader(fr);
+      staticUserName = br.readLine();
+      staticLName = br.readLine();
+      staticAddress = br.readLine();
+      staticPhoneNo = br.readLine();
+      staticDOB = br.readLine();     
+      staticGender = br.readLine();
+      staticStaffID = br.readLine();  
+      staticEmail = br.readLine();
+      staticJoinDate = br.readLine();
       
-      
+        
       obj.setPassword(password.getText());
       obj.login(event, lable, "user data\\receptionist\\credentials\\receptionistlogin.txt", "/View/Dashboards/RecDashboardWelcome.fxml");
       
+     
+        
       
+      fr.close();
+      br.close();
+      
+      
+              
       
     }
     
@@ -113,15 +138,7 @@ public class UserLoginController implements Initializable {
       
     }
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
     //Methode of Create Account HyperLink
     @FXML   
     public void createAccountMedicalOfficer(ActionEvent event) throws IOException{
@@ -176,7 +193,7 @@ public class UserLoginController implements Initializable {
         window.getFullScreenExitKeyCombination();
         
        }
-    //gimic 
+
      @FXML 
     public void forgotpw1(ActionEvent event) throws IOException{
         Parent signUpAsParent = FXMLLoader.load(getClass().getResource("/View/Dashboards/PatientDashboardWelcome.fxml"));
@@ -191,7 +208,7 @@ public class UserLoginController implements Initializable {
         
        }
     
-    //gimic 
+ 
      @FXML 
     public void forgotpw2(ActionEvent event) throws IOException{
         Parent signUpAsParent = FXMLLoader.load(getClass().getResource("/View/Dashboards/RecDashboardWelcome.fxml"));

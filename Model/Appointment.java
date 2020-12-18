@@ -5,11 +5,17 @@
  */
 package Model;
 
+import Control.RecAddAppointmentWindowController;
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 
 
 public class Appointment {
@@ -71,6 +77,42 @@ public class Appointment {
         print.append(getUserID()+"\n"+getName()+"\n"+getAppDate()+"\n"+
                 getAppTime()+"\n"+getSpecArea()+"\n"+getSymptoms()+"\n");
         print.close();
+        
+    }
+    
+    
+   @FXML
+      public ArrayList<RecAddAppointmentWindowController> viewAppointment(ActionEvent event) throws FileNotFoundException, IOException{
+        
+        ArrayList<RecAddAppointmentWindowController> appointmentArrayList = new ArrayList<>();
+        
+        
+        File appFile = new File("user data//appointment//007.txt");
+        FileReader fr = new FileReader(appFile);
+        BufferedReader br = new BufferedReader(fr);
+        String currentLine;
+        while ((currentLine = br.readLine())!=null){
+            RecAddAppointmentWindowController appoinmentLine = new RecAddAppointmentWindowController();
+            
+            String[] appData = currentLine.split(",");
+            appoinmentLine.setName(appData[0]);
+            appoinmentLine.setName(appData[1]);
+            appoinmentLine.setName(appData[2]);
+            appoinmentLine.setName(appData[3]);
+            appoinmentLine.setName(appData[4]);
+            appoinmentLine.setName(appData[5]);
+            
+        
+           
+        appointmentArrayList.add(appoinmentLine);
+        
+        System.out.println(appointmentArrayList.toString());
+
+        }
+        
+        fr.close();
+        br.close();
+        return appointmentArrayList;
         
     }
     

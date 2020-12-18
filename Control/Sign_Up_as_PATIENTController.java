@@ -5,14 +5,11 @@
  */
 package Control;
 
-
-import Model.Patient;
 import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
 import com.jfoenix.validation.NumberValidator;
 import com.jfoenix.validation.RequiredFieldValidator;
-import java.awt.image.BufferedImage;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -26,7 +23,6 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -36,10 +32,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
-import javafx.scene.image.Image;
-import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-import javax.imageio.ImageIO;
 
 
 /**
@@ -90,39 +83,14 @@ public class Sign_Up_as_PATIENTController extends DashboardUIController implemen
         
         if(validateFields()){
         try{
-        
-             Patient patObj = new Patient();
-           
-           patObj.setFName(firstNameTxt.getText());
-           patObj.setLName(lastNameTxt.getText());
-           patObj.setAddress(addressTxt.getText());
-           patObj.setPhoneNumber(phoneNumberTxt.getText());
-           patObj.setDOB(dateOfBirthDate.getValue().toString());
-           patObj.setNic(nicTxt.getText());
-           patObj.setAllergies(allergiesTxt.getText());
-           patObj.setBloodGroup(bloodGroupTxt.getValue().toString());
-           patObj.setGender(genderTxt.getValue().toString());
-           
-          
-           patObj.signup(event);
-          
-            
-            
+        File file = new File("user data\\patient\\data\\"+nicTxt.getText()+".txt");    
+        PrintWriter printer = new PrintWriter(new FileOutputStream(file,true));  
+        printer.append(firstNameTxt.getText()+"\n"  + lastNameTxt.getText()+ "\n" +  addressTxt.getText()+"\n"+ nicTxt.getText()+"\n"+ bloodGroupTxt.getValue() + "\n"+
+                 dateOfBirthDate.getValue()+ "\n"+ genderTxt.getValue() +"\n" +phoneNumberTxt.getText() +"\n"+ allergiesTxt.getText());
+             printer.close();
         }catch(FileNotFoundException e){}
          
        
-         //setiing values for declared variables
-         firstNameTxt.setText(null);
-         lastNameTxt.setText(null);
-         addressTxt.setText(null);
-         nicTxt.setText(null);
-         dateOfBirthDate.setValue(null);
-         allergiesTxt.setText(null);
-         phoneNumberTxt.setText(null);        
-         genderTxt.setValue(null);
-         bloodGroupTxt.setValue(null);
-        
-        
         
         //Write credentials file of patients
         try{
@@ -138,26 +106,6 @@ public class Sign_Up_as_PATIENTController extends DashboardUIController implemen
         
     }
     
-    //to add a photograph for add profile photograph
-    @FXML
-     private void onclickbtnAddFile(ActionEvent event)throws IOException{
-         Stage stage =new Stage();
-         FileChooser fileChooser =new FileChooser();
-        
-         File selectedFile = fileChooser.showOpenDialog(stage);
-         
-        
-         Image moImg1= new Image(selectedFile.toURI().toString());
-         saveToFile(moImg1,"Photo");
-         
-     }
-     //saving photogrgaph
-     private void saveToFile(Image image,String name)throws IOException{
-         File fileoutput = new File ("user data\\patient\\photo\\"+nicTxt.getText()+".jpg");
-         BufferedImage BI= SwingFXUtils.fromFXImage(image,null);
-         ImageIO.write(BI,"jpg",fileoutput);
-     
-     }
     
     
     

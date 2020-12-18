@@ -75,33 +75,10 @@ public class ReceptionistProfileWindowController extends DashboardUIController i
     
     @FXML
     public Label nameLbl;
-    
-    
-    
-          @FXML
-  public void readFiles(ActionEvent event) {
-        try  { 
-//the file to be opened for reading  
-FileInputStream fis=new FileInputStream("user data\\receptionist\\data\\123.txt");       
-Scanner sc=new Scanner(fis);    //file to be scanned  
-//returns true if there is another line to read  
-while(sc.hasNextLine())  
-{     
-            //returns the line that was skipped 
-firstNameTxt.setText(sc.nextLine()); 
-lastNameTxt.setText(sc.nextLine());
-addressTxt.setText(sc.nextLine());
-phoneNumTxt.setText(sc.nextLine());
-dateOfBirthTxt.setText(sc.nextLine());
-genderBox.setValue(sc.nextLine());
-staffIDTxt.setText(sc.nextLine());
-staffEmailTxt.setText(sc.nextLine());
-joinedDateTxt.setText(sc.nextLine());
+  
+@FXML
+public void readFiles(ActionEvent event) {
 
-}  
-sc.close();     //closes the scanner  
-}  
-catch(IOException e)  {} 
 } 
 
     
@@ -139,10 +116,9 @@ catch(IOException e)  {}
          Image img1= new Image(selectedFile.toURI().toString());
          saveToFile(img1,"photo");
          
+         profilePhoto.setFill(new ImagePattern(img1));
          
-         // set new profile picture
-          profilePhoto.setFill(new ImagePattern(img1));
-          nameLbl.setText("chamika");
+        
          
      }
      //save photogrgaph
@@ -153,9 +129,7 @@ catch(IOException e)  {}
          
        
      }
- 
-      
-    
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO

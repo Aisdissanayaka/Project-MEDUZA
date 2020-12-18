@@ -6,6 +6,7 @@
 package Model;
 import Control.DashboardUIController;
 import static Control.UserLoginController.primaryKey;
+import static Control.UserLoginController.profilePicture;
 import static Control.UserLoginController.staticUserName;
 import com.jfoenix.controls.JFXPasswordField;
 import java.io.BufferedReader;
@@ -126,6 +127,7 @@ public class user {
     Parent root = loader.load();
     DashboardUIController welcome =loader.getController();
     welcome.showInformation(staticUserName);
+    welcome.showProfilePicture(profilePicture);
 
     Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
     window.setScene(new Scene(root));
@@ -147,32 +149,7 @@ public class user {
         password=(null);
     }
    
-   
-   
-   
-   
-   
-   
-   
-  
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-    
+//The following method will check the user is genuine and allows to change the password
     private  Scanner x;
     public void changePassword(String filepath,String currentPassword,String newPassword1,String newPassword2,String tempFile,Label warningMsg) throws IOException{
         File oldFile = new File(filepath);
@@ -210,6 +187,9 @@ public class user {
             System.out.println("Error");
           }
     }
+    
+    
+  
 
 
     
