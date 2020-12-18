@@ -66,7 +66,7 @@ public class RecAddVisitorWindowController extends DashboardUIController impleme
     @FXML
     private JFXButton btnLoad;
     
-    
+  
     //Submit Button Action Methode
     
     @FXML
@@ -81,6 +81,8 @@ public class RecAddVisitorWindowController extends DashboardUIController impleme
         visitorObjF.setOutTime(outTime.getValue().toString());
         visitorObjF.setDate(visDate.getValue().toString());
         visitorObjF.addFile(event2);
+        
+        
     }
     
     @FXML
@@ -95,10 +97,50 @@ public class RecAddVisitorWindowController extends DashboardUIController impleme
         visitorObj.setOutTime(outTime.getValue().toString());
         visitorObj.setDate(visDate.getValue().toString());
         
-        visitorObj.addVisitor(event);}
+        visitorObj.addVisitor(event);
+        
+        visID.setText(null);
+        visName.setText(null);
+        visNote.setText(null);
+        visDate.setValue(null);
+        inTime.setValue(null);
+        outTime.setValue(null);
+        
+        }
         catch(Exception e){
             System.out.println("Error");}
     } 
+    
+    
+    //opening and saving document file    
+    @FXML
+    public void openedFile(ActionEvent actionEvent) throws IOException {
+       
+       
+        fileChooser.setInitialDirectory(new File("C:\\Users\\"));
+        fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("pdf file","*.pdf","*.PDF"));
+
+        File file = fileChooser.showOpenDialog(primaryStage);
+       // File desination = fileChooser.showSaveDialog(primaryStage);
+        path=file.getAbsoluteFile();
+        
+        
+         //saving file given path
+          try {
+                Files.copy(file.toPath(),Paths.get("user data\\receptionist\\postal\\received postal\\cv\\"+visID.getText()+".pdf"));
+            } catch (Exception ioException) {
+               ioException.printStackTrace();
+            }
+          
+          //create new object file1
+          File file1 = new File(String.valueOf(path));
+       
+        fileChooser.setInitialFileName(visID.getText()+".pdf");  
+        //getting type of files 
+        fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("pdf file","*.pdf","*.PDF"));
+        
+         
+    }
        
     
     

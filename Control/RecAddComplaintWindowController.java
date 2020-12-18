@@ -5,6 +5,7 @@
  */
 package Control;
 
+import Model.Complaint;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
@@ -73,21 +74,28 @@ public class RecAddComplaintWindowController extends DashboardUIController imple
     
     //submit button. It's writes complaints data to file
     @FXML
-    public void submitBtn(ActionEvent event){
-        try{
-         File file = new File("user data\\complaint\\data\\"+ LocalDate.now()+" " +nameTxt.getText() +".txt"); 
-        PrintWriter printer = new PrintWriter(new FileOutputStream(file,true));  
-        printer.append(date.now()+"\n"  + comTypeBox.getValue()+"\n"  + nameTxt.getText()+ "\n" +  phoneNumTxt.getText()+"\n"+ descriptionTxt.getText()+"\n"+ actionTakenTxt.getText() + "\n"+
-                         noteTxt.getText()+ "\n");
-             printer.close();
-        }catch(FileNotFoundException e){}
+    public void submitBtn(ActionEvent event)throws  IOException{
+        
+        Complaint recCom=new Complaint();
+        recCom.setDate(date.now().toString());
+        recCom.setType(comTypeBox.getValue().toString());
+        recCom.setName(nameTxt.getText());
+        recCom.setPhoneNo(phoneNumTxt.getText());
+        recCom.setDescription(descriptionTxt.getText());
+        recCom.setActionTaken(actionTakenTxt.getText());
+        recCom.setNote(noteTxt.getText());
+        
+        recCom.addComplaint(event);
         
         comTypeBox.setValue(null);
         nameTxt.setText(null);
-        descriptionTxt.setText(null);
-        noteTxt.setText(null);
         phoneNumTxt.setText(null);
+        descriptionTxt.setText(null);
         actionTakenTxt.setText(null);
+        noteTxt.setText(null);
+       
+        
+        
     }
     
     //opening and saving document file    

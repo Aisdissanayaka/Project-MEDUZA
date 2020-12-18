@@ -115,7 +115,7 @@ public class RecAddReceivedPostController extends DashboardUIController implemen
        
        
         fileChooser.setInitialDirectory(new File("C:\\Users\\"));
-        fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("doc file","*.doc","*.docx"));
+        fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("pdf file","*.pdf","*.PDF"));
 
         File file = fileChooser.showOpenDialog(primaryStage);
        // File desination = fileChooser.showSaveDialog(primaryStage);
@@ -124,7 +124,7 @@ public class RecAddReceivedPostController extends DashboardUIController implemen
         
          //saving file given path
           try {
-                Files.copy(file.toPath(),Paths.get("user data\\receptionist\\postal\\received postal\\cv\\"+postReff.getText()+".doc"));
+                Files.copy(file.toPath(),Paths.get("user data\\receptionist\\postal\\received postal\\cv\\"+postReff.getText()+".pdf"));
             } catch (Exception ioException) {
                ioException.printStackTrace();
             }
@@ -132,9 +132,9 @@ public class RecAddReceivedPostController extends DashboardUIController implemen
           //create new object file1
           File file1 = new File(String.valueOf(path));
        
-        fileChooser.setInitialFileName(postReff.getText()+".doc");  
+        fileChooser.setInitialFileName(postReff.getText()+".pdf");  
         //getting type of files 
-        fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("doc file","*.doc","*.docx"));
+        fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("pdf file","*.pdf","*.PDF"));
         
          
     }

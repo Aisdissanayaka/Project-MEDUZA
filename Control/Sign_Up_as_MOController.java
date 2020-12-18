@@ -92,24 +92,31 @@ public class Sign_Up_as_MOController extends DashboardUIController implements In
        }
     
     @FXML
-    private void signupbtn(ActionEvent event) throws IOException {
+    private void signupbtn(ActionEvent event) throws  IOException {
         String value = moDateOfJoin.getValue().toString();//get date as a String value
         String value1 = moDateOfBirth.getValue().toString();//get date as a String value
-       
-        if(validateFields()){
+        
+        
+       if(validateFields()){
         //write details in a text file
-         try
-       {
-           MedicalOfficer moObj = (MedicalOfficer) new user();
-           moObj.setStaffID(moStaffID.getText());
+       
+           MedicalOfficer moObj = new MedicalOfficer();
+           
            moObj.setFName(moFirstName.getText());
            moObj.setLName(moLastName.getText());
+           moObj.setAddress(moAddress.getText());
+           moObj.setPhoneNumber(moPhoneNum.getText());
+           moObj.setDOB(moDateOfBirth.getValue().toString());
+           moObj.setStaffID(moStaffID.getText());
+           moObj.setEmail(moStaffEmail.getText());
+           moObj.setDateJoined(moDateOfJoin.getValue().toString());
+           moObj.setGender(moGender.getValue());
+           moObj.setSpecialityArea (moSpecialityArea.getValue());
           
-           moObj.signup();
-       }
-        catch(Exception e){}
-         
-         
+           moObj.signup(event);
+          
+          
+       }  
           //Write credentials file of MO
          try{
          
@@ -132,20 +139,17 @@ public class Sign_Up_as_MOController extends DashboardUIController implements In
          moDateOfJoin.setValue(null);        
          moGender.setValue(null);
          moSpecialityArea.setValue(null);
-      }}
-    
+      }
+
     @FXML
     private void Select(ActionEvent event) {
         
         String value = moGender.getValue().toString();//get combo gender value as String value
         String value1 = moSpecialityArea.getValue().toString();//get combo specialityArea value as String value
         
-       
-        
-        
-        
+     
                  
-    }
+   }
      //to add a photograph for staff photograph
     @FXML
      private void onclickbtnAddFile(ActionEvent event)throws IOException{
@@ -191,7 +195,7 @@ public class Sign_Up_as_MOController extends DashboardUIController implements In
        
        
         fileChooser.setInitialDirectory(new File("C:\\Users\\Theja"));
-        fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("doc file","*.doc","*.docx"));
+        fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("pdf file","*.pdf","*.PDF"));
 
         File file = fileChooser.showOpenDialog(primaryStage);
        // File desination = fileChooser.showSaveDialog(primaryStage);
@@ -200,7 +204,7 @@ public class Sign_Up_as_MOController extends DashboardUIController implements In
         
          //saving file given path
           try {
-                Files.copy(file.toPath(),Paths.get("user data\\medical officer\\cv\\"+moStaffID.getText()+".doc"));
+                Files.copy(file.toPath(),Paths.get("user data\\medical officer\\cv\\"+moStaffID.getText()+".pdf"));
             } catch (Exception ioException) {
                ioException.printStackTrace();
             }
@@ -208,9 +212,9 @@ public class Sign_Up_as_MOController extends DashboardUIController implements In
           //create new object file1
           File file1 = new File(String.valueOf(path));
        
-        fileChooser.setInitialFileName(moStaffID.getText()+".txt");  
+        fileChooser.setInitialFileName(moStaffID.getText()+".pdf");  
         //getting type of files 
-        fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("doc file","*.doc","*.docx"));
+        fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("pdf file","*.pdf","*.PDF"));
         
          
     }
