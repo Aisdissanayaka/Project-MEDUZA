@@ -6,6 +6,7 @@
 package Control;
 
 import static Control.UserLoginController.primaryKey1;
+import static Control.UserLoginController.profilePicture;
 import static Control.UserLoginController.staticUserName;
 import Model.user;
 import com.jfoenix.controls.JFXPasswordField;
@@ -54,6 +55,8 @@ public class RecChangePasswordController  extends DashboardUIController   implem
     Parent root = loader.load();
     DashboardUIController welcome =loader.getController();
     welcome.showInformation(staticUserName);
+    welcome.showProfilePicture(profilePicture);
+
 
     Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
     window.setScene(new Scene(root));

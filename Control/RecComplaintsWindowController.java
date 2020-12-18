@@ -5,6 +5,7 @@
  */
 package Control;
 
+import static Control.UserLoginController.profilePicture;
 import static Control.UserLoginController.staticUserName;
 import java.io.IOException;
 import java.net.URL;
@@ -34,6 +35,8 @@ public class RecComplaintsWindowController extends DashboardUIController impleme
     Parent root = loader.load();
     DashboardUIController welcome =loader.getController();
     welcome.showInformation(staticUserName);
+    welcome.showProfilePicture(profilePicture);
+
 
     Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
     window.setScene(new Scene(root));

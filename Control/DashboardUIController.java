@@ -7,7 +7,19 @@
 package Control;
 
 import static Control.UserLoginController.primaryKey;
+import static Control.UserLoginController.profilePicture;
+import static Control.UserLoginController.staticAddress;
+import static Control.UserLoginController.staticDOB;
+import static Control.UserLoginController.staticEmail;
+import static Control.UserLoginController.staticGender;
+import static Control.UserLoginController.staticJoinDate;
+import static Control.UserLoginController.staticLName;
+import static Control.UserLoginController.staticPhoneNo;
+import static Control.UserLoginController.staticStaffID;
 import static Control.UserLoginController.staticUserName;
+import com.jfoenix.controls.JFXTextField;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -18,7 +30,11 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.paint.ImagePattern;
+import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
 
 /**
@@ -29,11 +45,64 @@ public class DashboardUIController implements Initializable {
     
     @FXML
     public Label nameLbl;
+    @FXML
+    public Circle profilePhoto;
     
     public void showInformation(String username){
         nameLbl.setText(username);
+  
+    }
+    
+    public void showProfilePicture(String picturePath) throws FileNotFoundException{
         
-        
+        FileInputStream input = new FileInputStream(picturePath);
+ 
+        Image img1 = new Image(input);
+     
+        profilePhoto.setFill(new ImagePattern(img1));
+    
+    }
+    
+     @FXML
+    private JFXTextField firstNameTxt;
+
+    @FXML
+    private JFXTextField lastNameTxt;
+    
+    @FXML
+    private ComboBox genderBox;
+
+    @FXML
+    private JFXTextField dateOfBirthTxt;
+
+    @FXML
+    private JFXTextField phoneNumTxt;
+
+    @FXML
+    private JFXTextField addressTxt;
+    
+    @FXML
+    private JFXTextField staffEmailTxt;
+
+    @FXML
+    private JFXTextField joinedDateTxt;
+    
+    @FXML
+    public JFXTextField staffIDTxt;
+    
+ 
+     public void showInformation(String username,String lastName, String gender, String dob, String phone, String address,String staffID, String email, String joinedDate ){
+        nameLbl.setText(username);
+        firstNameTxt.setText(username);
+        lastNameTxt.setText(lastName);
+        genderBox.setValue(gender);
+        dateOfBirthTxt.setText(dob);
+        phoneNumTxt.setText(phone);
+        addressTxt.setText(address);
+        staffEmailTxt.setText(email);
+        staffIDTxt.setText(staffID);
+        joinedDateTxt.setText(joinedDate);
+
     }
     
     public void setName(String name){
@@ -67,7 +136,14 @@ public class DashboardUIController implements Initializable {
     FXMLLoader loader =new FXMLLoader(getClass().getResource("/View/Dashboards/Receptionist/ReceptionistProfileWindow.fxml"));
     Parent root = loader.load();
     DashboardUIController welcome =loader.getController();
-    welcome.showInformation(staticUserName);
+    welcome.showInformation(staticUserName,staticLName, staticGender, 
+    staticDOB, staticPhoneNo, staticAddress,staticStaffID, staticEmail,staticJoinDate);
+     welcome.showProfilePicture(profilePicture);
+    
+    
+ 
+               
+               
 
     Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
     window.setScene(new Scene(root));
@@ -84,7 +160,8 @@ public class DashboardUIController implements Initializable {
     Parent root = loader.load();
     DashboardUIController welcome =loader.getController();
     welcome.showInformation(staticUserName);
-
+    welcome.showProfilePicture(profilePicture);
+    
     Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
     window.setScene(new Scene(root));
     window.show();
@@ -101,7 +178,8 @@ public class DashboardUIController implements Initializable {
     Parent root = loader.load();
     DashboardUIController welcome =loader.getController();
     welcome.showInformation(staticUserName);
-
+    welcome.showProfilePicture(profilePicture);
+    
     Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
     window.setScene(new Scene(root));
     window.show();
@@ -118,6 +196,8 @@ public class DashboardUIController implements Initializable {
     Parent root = loader.load();
     DashboardUIController welcome =loader.getController();
     welcome.showInformation(staticUserName);
+    welcome.showProfilePicture(profilePicture);
+         
 
     Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
     window.setScene(new Scene(root));
@@ -135,6 +215,7 @@ public class DashboardUIController implements Initializable {
     Parent root = loader.load();
     DashboardUIController welcome =loader.getController();
     welcome.showInformation(staticUserName);
+    welcome.showProfilePicture(profilePicture);
 
     Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
     window.setScene(new Scene(root));
@@ -150,7 +231,8 @@ public class DashboardUIController implements Initializable {
     Parent root = loader.load();
     DashboardUIController welcome =loader.getController();
     welcome.showInformation(staticUserName);
-
+    welcome.showProfilePicture(profilePicture);
+    
     Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
     window.setScene(new Scene(root));
     window.show();
@@ -166,7 +248,8 @@ public class DashboardUIController implements Initializable {
     Parent root = loader.load();
     DashboardUIController welcome =loader.getController();
     welcome.showInformation(staticUserName);
-
+    welcome.showProfilePicture(profilePicture);
+    
     Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
     window.setScene(new Scene(root));
     window.show();
@@ -185,7 +268,8 @@ public class DashboardUIController implements Initializable {
     Parent root = loader.load();
     DashboardUIController welcome =loader.getController();
     welcome.showInformation(staticUserName);
-
+    welcome.showProfilePicture(profilePicture);
+    
     Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
     window.setScene(new Scene(root));
     window.show();
@@ -201,7 +285,8 @@ public class DashboardUIController implements Initializable {
     Parent root = loader.load();
     DashboardUIController welcome =loader.getController();
     welcome.showInformation(staticUserName);
-
+    welcome.showProfilePicture(profilePicture);
+    
     Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
     window.setScene(new Scene(root));
     window.show();
@@ -219,7 +304,8 @@ public class DashboardUIController implements Initializable {
     Parent root = loader.load();
     DashboardUIController welcome =loader.getController();
     welcome.showInformation(staticUserName);
-
+    welcome.showProfilePicture(profilePicture);
+    
     Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
     window.setScene(new Scene(root));
     window.show();
@@ -237,7 +323,8 @@ public class DashboardUIController implements Initializable {
     Parent root = loader.load();
     DashboardUIController welcome =loader.getController();
     welcome.showInformation(staticUserName);
-
+    welcome.showProfilePicture(profilePicture);
+    
     Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
     window.setScene(new Scene(root));
     window.show();
@@ -257,7 +344,8 @@ public class DashboardUIController implements Initializable {
     Parent root = loader.load();
     DashboardUIController welcome =loader.getController();
     welcome.showInformation(staticUserName);
-
+    welcome.showProfilePicture(profilePicture);
+    
     Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
     window.setScene(new Scene(root));
     window.show();
@@ -274,7 +362,8 @@ public class DashboardUIController implements Initializable {
     Parent root = loader.load();
     DashboardUIController welcome =loader.getController();
     welcome.showInformation(staticUserName);
-
+    welcome.showProfilePicture(profilePicture);
+    
     Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
     window.setScene(new Scene(root));
     window.show();
@@ -290,7 +379,8 @@ public class DashboardUIController implements Initializable {
     Parent root = loader.load();
     DashboardUIController welcome =loader.getController();
     welcome.showInformation(staticUserName);
-
+    welcome.showProfilePicture(profilePicture);
+    
     Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
     window.setScene(new Scene(root));
     window.show();
@@ -306,7 +396,8 @@ public class DashboardUIController implements Initializable {
     Parent root = loader.load();
     DashboardUIController welcome =loader.getController();
     welcome.showInformation(staticUserName);
-
+    welcome.showProfilePicture(profilePicture);
+    
     Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
     window.setScene(new Scene(root));
     window.show();

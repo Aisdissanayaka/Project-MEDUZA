@@ -5,7 +5,6 @@
  */
 package Control;
 
-import Model.Receptionist;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXDatePicker;
@@ -109,19 +108,14 @@ public class Sign_Up_as_RECEPTIONISTController extends DashboardUIController imp
         
          try
        {
-          Receptionist recObj=new Receptionist();
+           File file = new File("user data\\receptionist\\data\\"+recStaffIDtxt.getText()+".txt");
+           PrintWriter printer = new PrintWriter(new FileOutputStream(file,true));
           
-          recObj.setFName(recFirstNametxt.getText());
-          recObj.setLName(recLastNametxt.getText());
-          recObj.setAddress(recAddresstxt.getText());
-          recObj.setPhoneNumber(recPhoneNumtxt.getText());
-          recObj.setStaffID(recStaffIDtxt.getText());
-          recObj.setStaffEmail(recStaffEmailtxt.getText());
-          recObj.setDOB(recDateOfBirth.getValue().toString());
-          recObj.setJoinedDate(recDateOfJoin.getValue().toString());
-          recObj.setSeries(series.getValue());
+           printer.append(recFirstNametxt.getText()+"\n"+""+recLastNametxt.getText()
+                   +"\n"+""+recAddresstxt.getText()+"\n"+""+recPhoneNumtxt.getText()+"\n"+""+recDateOfBirth.getValue().toString()+"\n"+""+series.getValue()+"\n"+""+recStaffIDtxt.getText()
+                   +"\n"+""+recStaffEmailtxt.getText()+"\n"+""+recDateOfJoin.getValue().toString()+"\n");
+           printer.close();
           
-          recObj.signup(event);
             
         //Write credentials file of receptionist
         try{

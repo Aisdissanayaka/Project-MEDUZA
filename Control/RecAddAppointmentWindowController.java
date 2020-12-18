@@ -27,6 +27,10 @@ import Control.UserLoginController;
 import static Control.UserLoginController.primaryKey;
 import com.jfoenix.validation.NumberValidator;
 import com.jfoenix.validation.RequiredFieldValidator;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.ArrayList;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.scene.control.Alert;
@@ -70,9 +74,21 @@ public class RecAddAppointmentWindowController extends DashboardUIController imp
         appObj.setUserID(userID.getText());
         appObj.addAppointmentRec(event);
         
+        
           System.out.println(primaryKey);
         
      }}
+      
+      @FXML  
+      public void abracadabra(ActionEvent event) throws FileNotFoundException, IOException {
+          Appointment obj = new Appointment();
+          obj.viewAppointment(event);
+          
+          
+          
+      }
+      
+      
        // warning message for null validation
      private boolean validateFields(){
          
@@ -93,6 +109,9 @@ public class RecAddAppointmentWindowController extends DashboardUIController imp
          return true;
          
           }
+    
+
+   //Create an arrayList to store the appointment reco
     
     
     
