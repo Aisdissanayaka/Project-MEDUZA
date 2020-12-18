@@ -121,8 +121,7 @@ public class UserLoginController implements Initializable {
       obj.setUserName(userName.getText());
       obj.setPassword(password.getText());
       obj.login(event, lable, "user data\\patient\\credentials\\patientlogin.txt", "/View/Dashboards/PatientDashboardWelcome.fxml");
-        //userName.setText(null);
-        //password.setText(null);
+      
     }
     
     

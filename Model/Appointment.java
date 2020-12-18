@@ -7,15 +7,18 @@ package Model;
 
 import Control.RecAddAppointmentWindowController;
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 
 
 public class Appointment {
@@ -71,12 +74,25 @@ public class Appointment {
     }
     
     
-    public void addAppointmentRec(ActionEvent event) throws FileNotFoundException{
+    public void addAppointmentRec(ActionEvent event) throws FileNotFoundException, IOException{
         File file = new File ("user data\\appointment\\"+getUserID()+".txt");
         PrintWriter print = new PrintWriter(new FileOutputStream(file,true));
         print.append(getUserID()+"\n"+getName()+"\n"+getAppDate()+"\n"+
                 getAppTime()+"\n"+getSpecArea()+"\n"+getSymptoms()+"\n");
         print.close();
+        
+        try{
+         //database\appointment.txt  file write in all of data
+         FileWriter fw = new FileWriter("user data\\database\\pendingappointment.txt",true);
+         BufferedWriter bw = new BufferedWriter(fw);
+         PrintWriter pw = new PrintWriter(bw);
+         pw.write(getUserID()+","+getName()+","+getAppDate()+","+getAppTime()+","+getSpecArea()+","+getSymptoms()+"\n");
+         pw.close();
+         Alert alert = new Alert(Alert.AlertType.INFORMATION);
+         alert.setContentText("Appointment was saved..!");  //display data saved message
+         alert.show();
+         
+         }catch(FileNotFoundException  e){}
         
     }
     
