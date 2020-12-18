@@ -14,6 +14,7 @@ import com.jfoenix.controls.JFXTimePicker;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -44,8 +45,7 @@ public class PatAddAppointmentWindowController extends DashboardUIController imp
     @FXML
     private JFXTextArea SymptomsTxt;
 
-    @FXML
-    private JFXTextField MOTxt;
+   
     
      @FXML
     private JFXTextField NICTxt;
@@ -54,15 +54,21 @@ public class PatAddAppointmentWindowController extends DashboardUIController imp
       
       //Adding new appointment - Submit Button Action Methode    
       @FXML  
-      public void submitBtn(ActionEvent event) throws FileNotFoundException {
-           Appointment appObj = new Appointment();
+      public void submitBtn(ActionEvent event) throws FileNotFoundException, IOException {
+        Appointment appObj = new Appointment();
         appObj.setName(nameTxt.getText());
         appObj.setAppDate(appDate.getValue().toString());
         appObj.setAppTime(appTime.getValue().toString());
         appObj.setSymptoms(SymptomsTxt.getText());
         appObj.setUserID(NICTxt.getText());
+        appObj.setSpecArea(specAreaCombo.getValue());
         appObj.addAppointmentRec(event);
-       
+        nameTxt.setText(null);
+        appDate.setValue(null);
+        appTime.setValue(null);
+        specAreaCombo.setValue(null);
+        SymptomsTxt.setText(null);
+        NICTxt.setText(null);
      }
     
     

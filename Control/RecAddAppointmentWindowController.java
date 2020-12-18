@@ -29,6 +29,7 @@ import com.jfoenix.validation.NumberValidator;
 import com.jfoenix.validation.RequiredFieldValidator;
 import java.io.BufferedReader;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import javafx.beans.value.ChangeListener;
@@ -63,7 +64,7 @@ public class RecAddAppointmentWindowController extends DashboardUIController imp
       
       //Adding new appointment - Submit Button Action Methode    
       @FXML  
-      public void submitBtn(ActionEvent event) throws FileNotFoundException {
+      public void submitBtn(ActionEvent event) throws FileNotFoundException, IOException {
           if(validateFields()){
         //write values in another text file
         Appointment appObj = new Appointment();
@@ -72,10 +73,15 @@ public class RecAddAppointmentWindowController extends DashboardUIController imp
         appObj.setAppTime(appTime.getValue().toString());
         appObj.setSymptoms(Symptoms.getText());
         appObj.setUserID(userID.getText());
+        appObj.setSpecArea(specAreaCombo.getValue());
         appObj.addAppointmentRec(event);
-        
-        
-          System.out.println(primaryKey);
+        name.setText(null);
+        appDate.setValue(null);
+        appTime.setValue(null);
+        specAreaCombo.setValue(null);
+        Symptoms.setText(null);
+        userID.setText(null);
+       
         
      }}
       

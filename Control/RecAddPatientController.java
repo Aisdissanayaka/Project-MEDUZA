@@ -9,11 +9,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.Initializable;
 
-/**
- * FXML Controller class
- *
- * @author ASUS
- */
+
 public class RecAddPatientController extends DashboardUIController implements Initializable {
 
     @Override

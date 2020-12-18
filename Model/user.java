@@ -123,16 +123,16 @@ public class user {
                     x = false;
                     
         
-    FXMLLoader loader =new FXMLLoader(getClass().getResource(fxmlpath));
-    Parent root = loader.load();
-    DashboardUIController welcome =loader.getController();
-    welcome.showInformation(staticUserName);
-    welcome.showProfilePicture(profilePicture);
+                     FXMLLoader loader =new FXMLLoader(getClass().getResource(fxmlpath));
+                     Parent root = loader.load();
+                     DashboardUIController welcome =loader.getController();
+                     welcome.showInformation(staticUserName);
+                     welcome.showProfilePicture(profilePicture);
 
-    Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
-    window.setScene(new Scene(root));
-    window.show();
-    window.centerOnScreen();
+                    Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+                    window.setScene(new Scene(root));
+                    window.show();
+                    window.centerOnScreen();
                      
                 }
                     
