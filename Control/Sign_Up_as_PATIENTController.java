@@ -85,7 +85,7 @@ public class Sign_Up_as_PATIENTController extends DashboardUIController implemen
         try{
         File file = new File("user data\\patient\\data\\"+nicTxt.getText()+".txt");    
         PrintWriter printer = new PrintWriter(new FileOutputStream(file,true));  
-        printer.append(firstNameTxt.getText()+"\n"  + lastNameTxt.getText()+ "\n" +  addressTxt.getText()+"\n"+ nicTxt.getText()+"\n"+ bloodGroupTxt.getValue() + "\n"+
+        printer.append(firstNameTxt.getText()+" "  + lastNameTxt.getText()+ "\n" +  addressTxt.getText()+"\n"+ nicTxt.getText()+"\n"+ bloodGroupTxt.getValue() + "\n"+
                  dateOfBirthDate.getValue()+ "\n"+ genderTxt.getValue() +"\n" +phoneNumberTxt.getText() +"\n"+ allergiesTxt.getText());
              printer.close();
         }catch(FileNotFoundException e){}
