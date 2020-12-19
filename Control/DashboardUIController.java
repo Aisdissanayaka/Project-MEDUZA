@@ -9,6 +9,8 @@ package Control;
 import static Control.UserLoginController.primaryKey;
 import static Control.UserLoginController.profilePicture;
 import static Control.UserLoginController.staticAddress;
+import static Control.UserLoginController.staticAllergies;
+import static Control.UserLoginController.staticBloodGroup;
 import static Control.UserLoginController.staticDOB;
 import static Control.UserLoginController.staticEmail;
 import static Control.UserLoginController.staticGender;
@@ -16,7 +18,9 @@ import static Control.UserLoginController.staticJoinDate;
 import static Control.UserLoginController.staticLName;
 import static Control.UserLoginController.staticPhoneNo;
 import static Control.UserLoginController.staticStaffID;
+import static Control.UserLoginController.staticUserID;
 import static Control.UserLoginController.staticUserName;
+import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -43,25 +47,7 @@ import javafx.stage.Stage;
  */
 public class DashboardUIController implements Initializable {
     
-    @FXML
-    public Label nameLbl;
-    @FXML
-    public Circle profilePhoto;
     
-    public void showInformation(String username){
-        nameLbl.setText(username);
-  
-    }
-    
-    public void showProfilePicture(String picturePath) throws FileNotFoundException{
-        
-        FileInputStream input = new FileInputStream(picturePath);
- 
-        Image img1 = new Image(input);
-     
-        profilePhoto.setFill(new ImagePattern(img1));
-    
-    }
     
      @FXML
     private JFXTextField firstNameTxt;
@@ -90,8 +76,25 @@ public class DashboardUIController implements Initializable {
     @FXML
     public JFXTextField staffIDTxt;
     
- 
-     public void showInformation(String username,String lastName, String gender, String dob, String phone, String address,String staffID, String email, String joinedDate ){
+    @FXML
+    private JFXTextField NICTxt;
+    
+    @FXML
+    private ComboBox bloodGroupBox;
+    
+    @FXML
+    private JFXTextArea allergiesTxt;
+    
+    @FXML
+    public Label nameLbl;
+    @FXML
+    public Circle profilePhoto;
+    
+    public void showInformation(String username){
+        nameLbl.setText(username);
+  
+    }
+    public void showInformation(String username,String lastName, String gender, String dob, String phone, String address,String staffID, String email, String joinedDate ){
         nameLbl.setText(username);
         firstNameTxt.setText(username);
         lastNameTxt.setText(lastName);
@@ -104,10 +107,32 @@ public class DashboardUIController implements Initializable {
         joinedDateTxt.setText(joinedDate);
 
     }
+    public void showInformatienPatient(String username,String lastName,String address,String IDNumber,String bloodGroup,String dob,String gender,String phoneNumber,String allergies){
+        firstNameTxt.setText(username);
+        lastNameTxt.setText(lastName);
+        phoneNumTxt.setText(phoneNumber);
+        addressTxt.setText(address);
+        dateOfBirthTxt.setText(dob);
+        NICTxt.setText(IDNumber);
+        genderBox.setValue(gender);
+        bloodGroupBox.setValue(bloodGroup);
+        allergiesTxt.setText(allergies);
+    }
     
-    public void setName(String name){
-      System.out.println(name);
-  }   
+    public void showProfilePicture(String picturePath) {
+        try{
+        FileInputStream input = new FileInputStream(picturePath);
+ 
+        Image img1 = new Image(input);
+     
+        profilePhoto.setFill(new ImagePattern(img1));
+        }catch(Exception e){
+            
+        }
+    }
+     
+    
+      
     //Close button
     @FXML
     public void closeBtn(ActionEvent event) {
@@ -138,8 +163,8 @@ public class DashboardUIController implements Initializable {
     DashboardUIController welcome =loader.getController();
     welcome.showInformation(staticUserName,staticLName, staticGender, 
     staticDOB, staticPhoneNo, staticAddress,staticStaffID, staticEmail,staticJoinDate);
-     welcome.showProfilePicture(profilePicture);
-    
+    welcome.showProfilePicture(profilePicture);
+    welcome.showInformation(staticUserName);
     
  
                
@@ -280,10 +305,12 @@ public class DashboardUIController implements Initializable {
     
     @FXML
     public void patientProfilebtn(ActionEvent event) throws IOException{
-  
+    
     FXMLLoader loader =new FXMLLoader(getClass().getResource("/View/Dashboards/Patient/PatientProfileWindow.fxml"));
     Parent root = loader.load();
     DashboardUIController welcome =loader.getController();
+    welcome.showInformatienPatient(staticUserName, staticLName, staticAddress, staticUserID, 
+            staticBloodGroup, staticDOB, staticGender, staticPhoneNo,staticAllergies);
     welcome.showInformation(staticUserName);
     welcome.showProfilePicture(profilePicture);
     
@@ -430,9 +457,9 @@ public class DashboardUIController implements Initializable {
         
     FXMLLoader loader =new FXMLLoader(getClass().getResource("/View/Dashboards/Patient/PatChangePassword.fxml"));
     Parent root = loader.load();
-    DashboardUIController welcome =loader.getController();
-    welcome.showInformation(staticUserName);
-
+    ;
+    
+    
     Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
     window.setScene(new Scene(root));
     window.show();
@@ -448,7 +475,7 @@ public class DashboardUIController implements Initializable {
     Parent root = loader.load();
     DashboardUIController welcome =loader.getController();
     welcome.showInformation(staticUserName);
-
+    welcome.showProfilePicture(profilePicture);
     Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
     window.setScene(new Scene(root));
     window.show();

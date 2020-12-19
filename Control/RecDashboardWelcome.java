@@ -16,9 +16,6 @@ public class RecDashboardWelcome extends DashboardUIController implements Initia
    
      
   
-    /**
-     * Initializes the controller class.
-     */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO

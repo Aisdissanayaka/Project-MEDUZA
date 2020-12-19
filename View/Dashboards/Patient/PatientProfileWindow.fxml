@@ -36,7 +36,7 @@
                         <Font name="Segoe UI" size="23.0" />
                      </font>
                   </Label>
-                  <Label fx:id="roleLbl" layoutX="86.0" layoutY="156.0" prefHeight="22.0" prefWidth="74.0" text="Patient" textFill="#071739">
+                  <Label layoutX="86.0" layoutY="156.0" prefHeight="22.0" prefWidth="74.0" text="Patient" textFill="#071739">
                      <font>
                         <Font name="Segoe UI" size="17.0" />
                      </font>
@@ -218,11 +218,6 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <JFXButton layoutX="503.0" layoutY="142.0" onAction="#readFiles" prefHeight="25.0" prefWidth="62.0" styleClass="Special-buttons" text="View" textFill="#b9d5fd">
-         <font>
-            <Font size="15.0" />
-         </font>
-      </JFXButton>
       <JFXButton layoutX="717.0" layoutY="146.0" onAction="#patChangePasswordBtn" prefHeight="31.0" prefWidth="143.0" styleClass="Special-buttons" text="Change Password" textFill="#b9d5fd">
          <font>
             <Font size="15.0" />

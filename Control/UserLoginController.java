@@ -65,11 +65,11 @@ public class UserLoginController implements Initializable {
     }
     
  
-       public static String primaryKey,primaryKey1,staticUserName,
+       public static String primaryKey,primaryKey1,
                staticFName,staticLName,staticGender,staticDOB,staticPhoneNo,
-               staticAddress,staticEmail,staticJoinDate,staticStaffID,profilePicture;
-       
-
+               staticAddress,staticEmail,staticJoinDate,staticStaffID,staticUserID,staticBloodGroup,staticAllergies;
+       public static String staticUserName =" ";
+       public static String profilePicture =" ";
     //Login button Action Method in receptionist Window(user data\receptionist\credentials\receptionistlogin.txt)
 
     public UserLoginController() {
@@ -78,13 +78,18 @@ public class UserLoginController implements Initializable {
   
 
      @FXML
-    private void loginAsRec(ActionEvent event) throws IOException {
+    private void loginAsRec(ActionEvent event) throws IOException ,FileNotFoundException{
       user obj = new user();
       obj.setUserName(userName.getText());
+      obj.setPassword(password.getText());
       primaryKey = userName.getText();
       primaryKey1 = password.getText();
-    
+      
+      obj.login(event, lable, "user data\\receptionist\\credentials\\receptionistlogin.txt", "/View/Dashboards/RecDashboardWelcome.fxml");
+      
+      
       profilePicture = "user data\\receptionist\\photo\\"+primaryKey+".jpg";
+      try{
       File file = new File("user data\\receptionist\\data\\"+primaryKey+".txt");
       FileReader fr = new FileReader(file);
       BufferedReader br = new BufferedReader(fr);
@@ -98,29 +103,54 @@ public class UserLoginController implements Initializable {
       staticEmail = br.readLine();
       staticJoinDate = br.readLine();
       
-        
-      obj.setPassword(password.getText());
-      obj.login(event, lable, "user data\\receptionist\\credentials\\receptionistlogin.txt", "/View/Dashboards/RecDashboardWelcome.fxml");
-      
-     
-        
       
       fr.close();
       br.close();
-      
-      
+     
+      }catch(Exception e){
+          
+      }
               
       
     }
+   
     
     //Login button Action Method in Patient Window(user data\patient\credentials\patientlogin.txt)
 
      @FXML
-    private void loginAsPatient(ActionEvent event) throws IOException {
+    private void loginAsPatient(ActionEvent event) throws IOException ,FileNotFoundException {
       user obj = new user();
       obj.setUserName(userName.getText());
       obj.setPassword(password.getText());
-      obj.login(event, lable, "user data\\patient\\credentials\\patientlogin.txt", "/View/Dashboards/PatientDashboardWelcome.fxml");
+      primaryKey = userName.getText();
+      primaryKey1 = password.getText();
+    
+      obj.login(event, lable, "user data\\patient\\credentials\\patientlogin.txt" , "/View/Dashboards/PatientDashboardWelcome.fxml");
+      
+      profilePicture = "user data\\patient\\photo\\"+primaryKey+".jpg";
+      
+      try {
+      File file = new File("user data\\patient\\data\\"+primaryKey+".txt");
+      FileReader fr = new FileReader(file);
+      BufferedReader br = new BufferedReader(fr);
+      staticUserName = br.readLine();
+      staticLName = br.readLine();
+      staticAddress = br.readLine();
+      staticUserID =br.readLine();
+      staticBloodGroup=br.readLine();
+      staticDOB = br.readLine();     
+      staticGender = br.readLine();
+      staticPhoneNo = br.readLine();
+      staticAllergies =br.readLine();
+          
+
+      fr.close();
+      br.close();      
+      } catch (Exception e) {
+         
+      }
+      
+      
       
     }
     

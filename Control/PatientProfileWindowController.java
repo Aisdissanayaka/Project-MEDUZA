@@ -69,7 +69,7 @@ public class PatientProfileWindowController extends DashboardUIController implem
     @FXML
     private ComboBox bloodGroupBox;
     
-      @FXML
+    @FXML
     private JFXTextArea allergiesTxt;
     
     @FXML
@@ -78,32 +78,7 @@ public class PatientProfileWindowController extends DashboardUIController implem
    
     
     
-    
-          @FXML
-  public void readFiles(ActionEvent event) {
-        try  { 
-//the file to be opened for reading  
-FileInputStream fis=new FileInputStream("user data\\patient\\data\\123.txt");       
-Scanner sc=new Scanner(fis);    //file to be scanned  
-//returns true if there is another line to read  
-while(sc.hasNextLine())  
-{     
-            //returns the line that was skipped 
-firstNameTxt.setText(sc.nextLine()); 
-lastNameTxt.setText(sc.nextLine());
-addressTxt.setText(sc.nextLine());
-NICTxt.setText(sc.nextLine());
-bloodGroupBox.setValue(sc.nextLine());
-dateOfBirthTxt.setText(sc.nextLine());
-genderBox.setValue(sc.nextLine());
-phoneNumTxt.setText(sc.nextLine());
-allergiesTxt.setText(sc.nextLine());
 
-}  
-sc.close();     //closes the scanner  
-}  
-catch(IOException e)  {} 
-} 
 
     
   // update button. It's update receptionist data
@@ -115,7 +90,7 @@ catch(IOException e)  {}
         PrintWriter printer = new PrintWriter(new FileOutputStream(file,true)); 
         
          printer.append(firstNameTxt.getText()+"\n"  + lastNameTxt.getText()+ "\n" +  addressTxt.getText()+"\n"+ NICTxt.getText()+"\n"+ bloodGroupBox.getValue() + "\n"+
-                 dateOfBirthTxt.getText()+ "\n"+ genderBox.getValue() +"\n" +phoneNumTxt.getText() +"\n"+ allergiesTxt.getText());
+             dateOfBirthTxt.getText()+ "\n"+ genderBox.getValue() +"\n" +phoneNumTxt.getText() +"\n"+ allergiesTxt.getText());
              printer.close();
         }catch(FileNotFoundException e){}
         
@@ -146,7 +121,7 @@ catch(IOException e)  {}
      }
      //save photogrgaph
      private void saveToFile(Image image,String name)throws IOException{
-         File fileoutput = new File ("user data\\Receptionist\\photo\\" +NICTxt.getText()+".jpg");
+         File fileoutput = new File ("user data\\patient\\photo\\" +NICTxt.getText()+".jpg");
          BufferedImage BI= SwingFXUtils.fromFXImage(image,null);
          ImageIO.write(BI,"jpg",fileoutput);
          
