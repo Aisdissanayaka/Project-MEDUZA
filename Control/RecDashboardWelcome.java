@@ -8,12 +8,19 @@ package Control;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Label;
+import javafx.scene.shape.Circle;
 
 
 
 public class RecDashboardWelcome extends DashboardUIController implements Initializable {
    
+    @FXML
+    Label nameLbl;
+    @FXML 
+    Circle profilePhoto;
      
   
     @Override
