@@ -122,13 +122,15 @@ public class user {
                 if (getUserName().equals(splitted[0]) && getPassword().equals(splitted[1])) {
                     x = false;
                     
-        
+                       
                      FXMLLoader loader =new FXMLLoader(getClass().getResource(fxmlpath));
+                     
                      Parent root = loader.load();
                      DashboardUIController welcome =loader.getController();
+                     
                      welcome.showInformation(staticUserName);
                      welcome.showProfilePicture(profilePicture);
-
+                     
                     Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
                     window.setScene(new Scene(root));
                     window.show();
@@ -145,8 +147,7 @@ public class user {
             
             }
         }
-        username=(null);
-        password=(null);
+       
     }
    
 //The following method will check the user is genuine and allows to change the password

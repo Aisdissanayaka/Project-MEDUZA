@@ -6,6 +6,16 @@
 package Control;
 
 import static Control.UserLoginController.primaryKey1;
+import static Control.UserLoginController.profilePicture;
+import static Control.UserLoginController.staticAddress;
+import static Control.UserLoginController.staticAllergies;
+import static Control.UserLoginController.staticBloodGroup;
+import static Control.UserLoginController.staticDOB;
+import static Control.UserLoginController.staticGender;
+import static Control.UserLoginController.staticLName;
+import static Control.UserLoginController.staticPhoneNo;
+import static Control.UserLoginController.staticUserID;
+import static Control.UserLoginController.staticUserName;
 import Model.user;
 import com.jfoenix.controls.JFXPasswordField;
 import java.io.IOException;
@@ -46,12 +56,17 @@ public class PatChangePasswordController implements Initializable {
     @FXML
     public void cancelBtn(ActionEvent event) throws IOException {
         
-        Parent profileWindow = FXMLLoader.load(getClass().getResource("/View/Dashboards/Patient/PatientProfileWindow.fxml"));
-        Scene profileViewScene = new Scene(profileWindow);
-        
+        FXMLLoader loader =new FXMLLoader(getClass().getResource("/View/Dashboards/Patient/PatientProfileWindow.fxml"));
+        //Scene profileViewScene = new Scene(profileWindow);
+        Parent root = loader.load();
+        DashboardUIController welcome =loader.getController();
+        welcome.showInformatienPatient(staticUserName, staticLName, staticAddress, staticUserID, 
+            staticBloodGroup, staticDOB, staticGender, staticPhoneNo,staticAllergies);
+        welcome.showInformation(staticUserName);
+        welcome.showProfilePicture(profilePicture);
         //This Line gets the Stage Information
         Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
-        window.setScene(profileViewScene);
+        window.setScene(new Scene(root));
         window.show();
         window.centerOnScreen();
 

@@ -85,14 +85,7 @@ public class RecAddAppointmentWindowController extends DashboardUIController imp
         
      }}
       
-      @FXML  
-      public void abracadabra(ActionEvent event) throws FileNotFoundException, IOException {
-          Appointment obj = new Appointment();
-          obj.viewAppointment(event);
-          
-          
-          
-      }
+ 
       
       
        // warning message for null validation

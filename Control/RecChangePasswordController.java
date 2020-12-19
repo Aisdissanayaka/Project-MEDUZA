@@ -69,7 +69,7 @@ public class RecChangePasswordController  extends DashboardUIController   implem
     
     
     
-    
+    // change password in recep
     @FXML
     void submitBtn(ActionEvent event) throws IOException {
         if(primaryKey1.equals(currentPassword.getText())){
