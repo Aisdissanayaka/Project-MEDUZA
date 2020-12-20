@@ -5,7 +5,9 @@
  */
 package Control;
 
+import static Control.UserLoginController.primaryKey;
 import com.jfoenix.controls.JFXTextField;
+import java.awt.Desktop;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileInputStream;
@@ -21,8 +23,10 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
@@ -45,19 +49,19 @@ public class ReceptionistProfileWindowController extends DashboardUIController i
      //declare variables
      @FXML
     private JFXTextField firstNameTxt;
-
+ 
     @FXML
     private JFXTextField lastNameTxt;
-    
+     
     @FXML
     private ComboBox genderBox;
-
+ 
     @FXML
     private JFXTextField dateOfBirthTxt;
-
+ 
     @FXML
     private JFXTextField phoneNumTxt;
-
+ 
     @FXML
     private JFXTextField addressTxt;
     
@@ -66,28 +70,49 @@ public class ReceptionistProfileWindowController extends DashboardUIController i
 
     @FXML
     private JFXTextField joinedDateTxt;
-    
+     
     @FXML
     public JFXTextField staffIDTxt;
-    
+     
     @FXML
     public Circle profilePhoto;
-    
+     
     @FXML
     public Label nameLbl;
   
-@FXML
-public void readFiles(ActionEvent event) {
-
-} 
-
-    
-  // update button. It's update receptionist data
     @FXML
-    private void updateBtn(){
+    private Button view; 
+   
+    // view button. It's open MO's CV
+    @FXML
+    private void view(ActionEvent event) {
+ 
+        File file=new File("user data\\receptionist\\cv\\"+primaryKey+".pdf");
+
+        Desktop desktop = Desktop.getDesktop();
+
+        view.setOnAction(new EventHandler<ActionEvent>() {
+ 
+        @Override 
+        public void handle(ActionEvent event) { 
+
+        try { 
+            desktop.open(file); 
+        } catch (IOException ex) { 
+            
+        }
+    }
+});
+
+    }
+    
+    
+  // update button. It's update receptionist data 
+    @FXML 
+    private void updateBtn(){ 
         try{
-        File file = new File("user data\\receptionist\\data\\"+ staffIDTxt.getText()+".txt");  
-        file.delete();
+        File file = new File("user data\\receptionist\\data\\"+ primaryKey+".txt");   
+        file.delete(); 
         PrintWriter printer = new PrintWriter(new FileOutputStream(file,true)); 
         
         printer.append(firstNameTxt.getText()+"\n"+lastNameTxt.getText()+"\n"+addressTxt.getText()+"\n"+phoneNumTxt.getText()+"\n"
@@ -95,23 +120,23 @@ public void readFiles(ActionEvent event) {
                    +"\n"+ staffEmailTxt.getText()+"\n"+ joinedDateTxt.getText()+"\n");
            
         printer.close();
-        }catch(FileNotFoundException e){}
+        }catch(FileNotFoundException e){} 
+         
         
-        
-    }
-    
+    } 
+     
      //upload to photograph
-     @FXML
+     @FXML 
      private void addPhoto(ActionEvent event)throws IOException{
          Stage stage =new Stage();
          FileChooser fileChooser =new FileChooser();
          fileChooser.setTitle("Choose an Image");
-         
+          
          fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("jpg","*.jpg","*.png"));
-         
+          
          File selectedFile = fileChooser.showOpenDialog(stage);
-         
-         Image OriginalPhoto = new Image(selectedFile.toURI().toString());
+          
+         Image OriginalPhoto = new Image(selectedFile.toURI().toString()); 
       
          Image img1= new Image(selectedFile.toURI().toString());
          saveToFile(img1,"photo");
@@ -123,12 +148,12 @@ public void readFiles(ActionEvent event) {
      }
      //save photogrgaph
      private void saveToFile(Image image,String name)throws IOException{
-         File fileoutput = new File ("user data\\Receptionist\\photo\\" +staffIDTxt.getText()+".jpg");
+         File fileoutput = new File ("user data\\Receptionist\\photo\\" +primaryKey+".jpg");
          BufferedImage BI= SwingFXUtils.fromFXImage(image,null);
          ImageIO.write(BI,"jpg",fileoutput);
-         
-       
-     }
+          
+        
+     } 
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -137,7 +162,8 @@ public void readFiles(ActionEvent event) {
        genderBox.setItems(list1);
     }    
 
-
-    
-    
-}
+ 
+     
+     
+} 
+ 
