@@ -176,7 +176,7 @@
                   <Font size="15.0" />
                </font>
             </JFXButton>
-            <JFXTextArea fx:id="allergiesTxt" labelFloat="true" layoutX="459.0" layoutY="192.0" prefHeight="186.0" prefWidth="245.0" promptText="Allergies">
+            <JFXTextArea fx:id="allergiesTxt" layoutX="459.0" layoutY="192.0" prefHeight="186.0" prefWidth="245.0" promptText="Allergies">
                <font>
                   <Font size="18.0" />
                </font></JFXTextArea>

@@ -87,7 +87,7 @@ public class PatientProfileWindowController extends DashboardUIController implem
         try{
         File file = new File("user data\\patient\\data\\"+ NICTxt.getText()+".txt");  
         file.delete();
-        PrintWriter printer = new PrintWriter(new FileOutputStream(file)); 
+        PrintWriter printer = new PrintWriter(new FileOutputStream(file,true)); 
         
          printer.append(firstNameTxt.getText()+"\n"  + lastNameTxt.getText()+ "\n" +  addressTxt.getText()+"\n"+ NICTxt.getText()+"\n"+ bloodGroupBox.getValue() + "\n"+
              dateOfBirthTxt.getText()+ "\n"+ genderBox.getValue() +"\n" +phoneNumTxt.getText() +"\n"+ allergiesTxt.getText());
@@ -113,7 +113,9 @@ public class PatientProfileWindowController extends DashboardUIController implem
          Image img1= new Image(selectedFile.toURI().toString());
          saveToFile(img1,"photo");
          
-         profilePhoto.setFill(new ImagePattern(img1));
+         
+         // set new profile picture
+          profilePhoto.setFill(new ImagePattern(img1));
           
          
      }

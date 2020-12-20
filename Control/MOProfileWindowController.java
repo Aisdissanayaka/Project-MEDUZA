@@ -68,9 +68,9 @@ public class MOProfileWindowController extends DashboardUIController implements 
     private JFXTextField joinedDateTxt;
     
     @FXML
-    public JFXTextField staffIDTxt;
+    public JFXTextField MOStaffIDTxt;
     
-    @FXML
+      @FXML
     private ComboBox specialityAreaBox;
     
     @FXML
@@ -80,19 +80,44 @@ public class MOProfileWindowController extends DashboardUIController implements 
     public Label nameLbl;
     
     
-  
+    
+          @FXML
+  public void readFiles(ActionEvent event) {
+        try  { 
+//the file to be opened for reading  
+FileInputStream fis=new FileInputStream("user data\\medical officer\\data\\123.txt");       
+Scanner sc=new Scanner(fis);    //file to be scanned  
+//returns true if there is another line to read  
+while(sc.hasNextLine())  
+{     
+            //returns the line that was skipped 
+firstNameTxt.setText(sc.nextLine()); 
+lastNameTxt.setText(sc.nextLine());
+addressTxt.setText(sc.nextLine());
+phoneNumTxt.setText(sc.nextLine());
+dateOfBirthTxt.setText(sc.nextLine());
+MOStaffIDTxt.setText(sc.nextLine());
+staffEmailTxt.setText(sc.nextLine());
+joinedDateTxt.setText(sc.nextLine());
+genderBox.setValue(sc.nextLine());
+specialityAreaBox.setValue(sc.nextLine());
+}  
+sc.close();     //closes the scanner  
+}  
+catch(IOException e)  {} 
+} 
 
     
   // update button. It's update receptionist data
     @FXML
     private void updateBtn(){
         try{
-        File file = new File("user data\\receptionist\\data\\"+ staffIDTxt.getText()+".txt");  
+        File file = new File("user data\\receptionist\\data\\"+ MOStaffIDTxt.getText()+".txt");  
         file.delete();
         PrintWriter printer = new PrintWriter(new FileOutputStream(file,true)); 
         
         printer.append(firstNameTxt.getText()+"\n"+lastNameTxt.getText()+"\n"+addressTxt.getText()+"\n"+phoneNumTxt.getText()+"\n"
-                +dateOfBirthTxt.getText()+"\n"+ staffIDTxt.getText()+"\n"+ staffEmailTxt.getText()+"\n"+ joinedDateTxt.getText()+"\n"+
+                +dateOfBirthTxt.getText()+"\n"+ MOStaffIDTxt.getText()+"\n"+ staffEmailTxt.getText()+"\n"+ joinedDateTxt.getText()+"\n"+
                 genderBox.getValue()+"\n"+ specialityAreaBox.getValue()+"\n");
            
         printer.close();
@@ -125,7 +150,7 @@ public class MOProfileWindowController extends DashboardUIController implements 
      }
      //save photogrgaph
      private void saveToFile(Image image,String name)throws IOException{
-         File fileoutput = new File ("user data\\medical officer\\photo\\" +staffIDTxt.getText()+".jpg");
+         File fileoutput = new File ("user data\\medical officer\\photo\\" +MOStaffIDTxt.getText()+".jpg");
          BufferedImage BI= SwingFXUtils.fromFXImage(image,null);
          ImageIO.write(BI,"jpg",fileoutput);
          
@@ -137,9 +162,9 @@ public class MOProfileWindowController extends DashboardUIController implements 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-       ObservableList list1=FXCollections.observableArrayList("Male","Female");
+       ObservableList<String>list1=FXCollections.observableArrayList("Male","Female");
        genderBox.setItems(list1);
-        ObservableList list2=FXCollections.observableArrayList("A","B","C");
+        ObservableList<String>list2=FXCollections.observableArrayList("A","B","C");
        specialityAreaBox.setItems(list2);
     }    
 

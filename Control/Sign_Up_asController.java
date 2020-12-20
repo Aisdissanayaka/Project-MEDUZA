@@ -76,9 +76,9 @@ public class Sign_Up_asController implements Initializable {
         
        }
         
-        @FXML   
-        public void goLoginMenuBtn(ActionEvent event) throws IOException{
-        Parent signUpAsParent = FXMLLoader.load(getClass().getResource("/View/UserLogin.fxml"));
+          @FXML   
+        public void adminBtn(ActionEvent event) throws IOException{
+        Parent signUpAsParent = FXMLLoader.load(getClass().getResource("/View/UserLoginAdmin.fxml"));
         Scene signUpAsviewScene = new Scene(signUpAsParent);
         
         //This Line gets the Stage Information
@@ -88,6 +88,8 @@ public class Sign_Up_asController implements Initializable {
         window.centerOnScreen();
         
        }
+        
+      
     
     
     @Override

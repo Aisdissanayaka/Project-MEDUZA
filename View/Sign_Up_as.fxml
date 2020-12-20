@@ -47,7 +47,7 @@
                   <Font name="Segoe UI" size="25.0" />
                </font>
             </JFXButton>
-            <Hyperlink layoutX="22.0" layoutY="298.0" text="..or Login as a Admin" />
+            <Hyperlink layoutX="22.0" layoutY="298.0" onAction="#adminBtn" text="..or Login as a Admin" />
          </children>
       </Pane>
       <ImageView fitHeight="352.0" fitWidth="138.0" layoutX="218.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">

@@ -56,8 +56,8 @@ public class MedicalOfficer extends user{
     public void signup(ActionEvent event) throws FileNotFoundException{
      
         File file = new File("user data\\medical officer\\data\\"+getStaffID()+".txt");
-           PrintWriter print = new PrintWriter(new FileOutputStream(file));
-           print.append(getFName()+","+getLName()
+           PrintWriter print = new PrintWriter(new FileOutputStream(file,true));
+           print.append(getFName()+" "+getLName()
                    +"\n"+getAddress()+"\n"+getPhoneNumber()+"\n"+getDOB()+"\n"+getStaffID()
                    +"\n"+getEmail()+"\n"+getDateJoined()+"\n" +getGender()+"\n"+getSpecialityArea()+"\n");
           

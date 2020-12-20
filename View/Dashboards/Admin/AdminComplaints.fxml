@@ -4,9 +4,10 @@
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.effect.InnerShadow?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.paint.LinearGradient?>
@@ -14,11 +15,11 @@
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" maxHeight="780.0" maxWidth="1500.0" minHeight="500.0" minWidth="500.0" prefHeight="700.0" prefWidth="1200.0" styleClass="BackgroundPane" stylesheets="@../Styles.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Control.AdminWelcome">
+<AnchorPane id="AnchorPane" maxHeight="780.0" maxWidth="1500.0" minHeight="500.0" minWidth="500.0" prefHeight="700.0" prefWidth="1200.0" styleClass="BackgroundPane" stylesheets="@../../Styles.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Control.AdminComplaintsController">
    <children>
-      <AnchorPane id="AnchorPane" maxHeight="780.0" maxWidth="1500.0" minHeight="500.0" minWidth="500.0" prefHeight="700.0" prefWidth="1200.0" styleClass="BackgroundPane" stylesheets="@../Styles.css">
+      <AnchorPane id="AnchorPane" maxHeight="780.0" maxWidth="1500.0" minHeight="500.0" minWidth="500.0" prefHeight="700.0" prefWidth="1200.0" styleClass="BackgroundPane" stylesheets="@../../Styles.css">
          <children>
-            <AnchorPane layoutX="113.0" layoutY="40.0" prefHeight="796.0" prefWidth="218.0" styleClass="SubPane" stylesheets="@Styles.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <AnchorPane layoutX="113.0" layoutY="40.0" prefHeight="796.0" prefWidth="218.0" styleClass="SubPane" stylesheets="@../Styles.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
                   <AnchorPane layoutY="3.0" prefHeight="200.0" prefWidth="218.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="3.0">
                      <children>
@@ -41,7 +42,7 @@
                   </AnchorPane>
                   <VBox layoutY="203.0" prefHeight="359.0" prefWidth="218.0" AnchorPane.bottomAnchor="138.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="203.0">
                      <children>
-                        <JFXButton alignment="TOP_RIGHT" buttonType="RAISED" lineSpacing="3.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="73.0" prefWidth="207.0" ripplerFill="#206afd" styleClass="Side-Button-select" stylesheets="@Styles.css" text="Home" textFill="#b9d5fd" textOverrun="CLIP">
+                        <JFXButton alignment="TOP_RIGHT" buttonType="RAISED" lineSpacing="3.0" nodeOrientation="RIGHT_TO_LEFT" onAction="#adminHome" prefHeight="73.0" prefWidth="256.0" ripplerFill="#206afd" styleClass="Side-Button" stylesheets="@../Styles.css" text="Home" textFill="#b9d5fd" textOverrun="CLIP">
                            <font>
                               <Font name="Segoe UI" size="27.0" />
                            </font>
@@ -52,7 +53,7 @@
                               <InnerShadow blurType="GAUSSIAN" height="205.44" radius="70.52" width="78.64" />
                            </effect>
                         </JFXButton>
-                        <JFXButton alignment="TOP_RIGHT" buttonType="RAISED" graphicTextGap="0.0" lineSpacing="3.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onAction="#AdminAppointmentBtn" prefHeight="51.0" prefWidth="256.0" ripplerFill="#206afd" styleClass="Side-Button" stylesheets="@Styles.css" text="Appointments" textFill="#b9d5fd" textOverrun="CLIP">
+                        <JFXButton alignment="TOP_RIGHT" buttonType="RAISED" graphicTextGap="0.0" lineSpacing="3.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onAction="#AdminAppointmentBtn" prefHeight="51.0" prefWidth="256.0" ripplerFill="#206afd" styleClass="Side-Button" stylesheets="@../Styles.css" text="Appointments" textFill="#b9d5fd" textOverrun="CLIP">
                            <font>
                               <Font name="Segoe UI" size="27.0" />
                            </font>
@@ -63,7 +64,7 @@
                               <InnerShadow blurType="GAUSSIAN" height="205.44" radius="70.52" width="78.64" />
                            </effect>
                         </JFXButton>
-                        <JFXButton alignment="TOP_RIGHT" buttonType="RAISED" lineSpacing="3.0" nodeOrientation="RIGHT_TO_LEFT" onAction="#AdminVisitorstBtn" prefHeight="73.0" prefWidth="256.0" ripplerFill="#206afd" styleClass="Side-Button" stylesheets="@Styles.css" text="Visitors" textFill="#b9d5fd" textOverrun="CLIP">
+                        <JFXButton alignment="TOP_RIGHT" buttonType="RAISED" lineSpacing="3.0" nodeOrientation="RIGHT_TO_LEFT" onAction="#AdminVisitorstBtn" prefHeight="73.0" prefWidth="256.0" ripplerFill="#206afd" styleClass="Side-Button" stylesheets="@../Styles.css" text="Visitors" textFill="#b9d5fd" textOverrun="CLIP">
                            <font>
                               <Font name="Segoe UI" size="27.0" />
                            </font>
@@ -74,7 +75,7 @@
                               <InnerShadow blurType="GAUSSIAN" height="205.44" radius="70.52" width="78.64" />
                            </effect>
                         </JFXButton>
-                        <JFXButton alignment="TOP_RIGHT" buttonType="RAISED" lineSpacing="3.0" nodeOrientation="RIGHT_TO_LEFT" onAction="#AdminComplaintBtn" prefHeight="73.0" prefWidth="256.0" ripplerFill="#206afd" styleClass="Side-Button" stylesheets="@Styles.css" text="Complaints" textFill="#b9d5fd" textOverrun="CLIP">
+                        <JFXButton alignment="TOP_RIGHT" buttonType="RAISED" lineSpacing="3.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="73.0" prefWidth="207.0" ripplerFill="#206afd" styleClass="Side-Button-select" stylesheets="@../Styles.css" text="Complaints" textFill="#b9d5fd" textOverrun="CLIP">
                            <font>
                               <Font name="Segoe UI" size="27.0" />
                            </font>
@@ -85,7 +86,7 @@
                               <InnerShadow blurType="GAUSSIAN" height="205.44" radius="70.52" width="78.64" />
                            </effect>
                         </JFXButton>
-                        <JFXButton alignment="TOP_RIGHT" buttonType="RAISED" lineSpacing="3.0" nodeOrientation="RIGHT_TO_LEFT" onAction="#AdminPostalReceivedBtn" prefHeight="73.0" prefWidth="256.0" ripplerFill="#206afd" styleClass="Side-Button" stylesheets="@Styles.css" text="Postal" textFill="#b9d5fd" textOverrun="CLIP">
+                        <JFXButton alignment="TOP_RIGHT" buttonType="RAISED" lineSpacing="3.0" nodeOrientation="RIGHT_TO_LEFT" onAction="#AdminPostalReceivedBtn" prefHeight="73.0" prefWidth="256.0" ripplerFill="#206afd" styleClass="Side-Button" stylesheets="@../Styles.css" text="Postal" textFill="#b9d5fd" textOverrun="CLIP">
                            <font>
                               <Font name="Segoe UI" size="27.0" />
                            </font>
@@ -96,7 +97,7 @@
                               <InnerShadow blurType="GAUSSIAN" height="205.44" radius="70.52" width="78.64" />
                            </effect>
                         </JFXButton>
-                        <JFXButton alignment="TOP_RIGHT" buttonType="RAISED" lineSpacing="3.0" nodeOrientation="RIGHT_TO_LEFT" onAction="#AdminUsersRecBtn" prefHeight="82.0" prefWidth="218.0" ripplerFill="#206afd" styleClass="Side-Button" stylesheets="@Styles.css" text="Users" textFill="#b9d5fd" textOverrun="CLIP">
+                        <JFXButton alignment="TOP_RIGHT" buttonType="RAISED" lineSpacing="3.0" nodeOrientation="RIGHT_TO_LEFT" onAction="#AdminUsersRecBtn" prefHeight="82.0" prefWidth="218.0" ripplerFill="#206afd" styleClass="Side-Button" stylesheets="@../Styles.css" text="Users" textFill="#b9d5fd" textOverrun="CLIP">
                            <font>
                               <Font name="Segoe UI" size="27.0" />
                            </font>
@@ -107,7 +108,7 @@
                               <InnerShadow blurType="GAUSSIAN" height="205.44" radius="70.52" width="78.64" />
                            </effect>
                         </JFXButton>
-                        <JFXButton alignment="TOP_RIGHT" buttonType="RAISED" lineSpacing="3.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="73.0" prefWidth="256.0" ripplerFill="#206afd" styleClass="Side-Button" stylesheets="@Styles.css" text="References" textFill="#b9d5fd" textOverrun="CLIP">
+                        <JFXButton alignment="TOP_RIGHT" buttonType="RAISED" lineSpacing="3.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="73.0" prefWidth="256.0" ripplerFill="#206afd" styleClass="Side-Button" stylesheets="@../Styles.css" text="References" textFill="#b9d5fd" textOverrun="CLIP">
                            <font>
                               <Font name="Segoe UI" size="27.0" />
                            </font>
@@ -135,21 +136,47 @@
                   </JFXButton>
                </children>
             </AnchorPane>
-            <Button layoutX="1165.0" layoutY="14.0" minHeight="-Infinity" mnemonicParsing="false" onAction="#closeBtn" prefHeight="13.0" prefWidth="26.0" style="-fx-background-radius: 50;" styleClass="Close-Button" stylesheets="@../Styles.css">
+            <AnchorPane layoutX="218.0" layoutY="203.0" prefHeight="583.0" prefWidth="1550.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="218.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="203.0">
+               <children>
+                  <ScrollPane layoutX="2.0" prefHeight="496.0" prefWidth="982.0" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="1126.0" prefWidth="962.0">
+                           <children>
+                              <TableView layoutX="3.0" layoutY="13.0" prefHeight="1103.0" prefWidth="946.0">
+                                <columns>
+                                  <TableColumn prefWidth="75.0" text="ID" />
+                                  <TableColumn prefWidth="105.5999755859375" text="Complaint type" />
+                                    <TableColumn prefWidth="113.60000610351562" text="Complaint by" />
+                                    <TableColumn prefWidth="126.40008544921875" text="Phone number" />
+                                    <TableColumn prefWidth="51.199951171875" text="Date" />
+                                    <TableColumn prefWidth="78.13336181640625" text="Description" />
+                                    <TableColumn prefWidth="113.06658935546875" text="Action taken" />
+                                    <TableColumn prefWidth="80.800048828125" text="Note" />
+                                    <TableColumn prefWidth="80.26654052734375" text="Document" />
+                                    <TableColumn prefWidth="109.066650390625" text="Options" />
+                                </columns>
+                              </TableView>
+                           </children></AnchorPane>
+                     </content>
+                  </ScrollPane>
+               </children>
+            </AnchorPane>
+            <Label layoutX="226.0" layoutY="46.0" text="MEDUZA HOSPITALS PVT(Ltd.)" textFill="#50506d">
+               <font>
+                  <Font name="Segoe UI Historic" size="32.0" />
+               </font>
+            </Label>
+            <Button layoutX="1165.0" layoutY="14.0" minHeight="-Infinity" mnemonicParsing="false" onAction="#closeBtn" prefHeight="13.0" prefWidth="26.0" style="-fx-background-radius: 50;" styleClass="Close-Button" stylesheets="@../../Styles.css">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Button layoutX="1114.0" layoutY="20.0" minHeight="-Infinity" mnemonicParsing="false" prefHeight="4.0" prefWidth="45.0" style="-fx-background-radius: 50;" styleClass="Side-Button" stylesheets="@../Styles.css">
+            <Button layoutX="1114.0" layoutY="20.0" minHeight="-Infinity" mnemonicParsing="false" prefHeight="4.0" prefWidth="45.0" style="-fx-background-radius: 50;" styleClass="Side-Button" stylesheets="@../../Styles.css">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <ImageView fitHeight="532.0" fitWidth="488.0" layoutX="752.0" layoutY="147.0" opacity="0.23" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../images/big%20logo.png" />
-               </image>
-            </ImageView>
+            <Button layoutX="594.0" layoutY="126.0" mnemonicParsing="false" text="Button" />
          </children>
       </AnchorPane>
    </children>

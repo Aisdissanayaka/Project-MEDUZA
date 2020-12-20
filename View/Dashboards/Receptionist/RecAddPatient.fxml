@@ -138,9 +138,9 @@
             <Font name="Segoe UI" size="40.0" />
          </font>
       </Label>
-      <Pane layoutX="270.0" layoutY="118.0" prefHeight="579.0" prefWidth="497.0" AnchorPane.bottomAnchor="3.0" AnchorPane.leftAnchor="270.0" AnchorPane.rightAnchor="433.0" AnchorPane.topAnchor="118.0">
+      <Pane layoutX="270.0" layoutY="119.0" prefHeight="579.0" prefWidth="504.0" AnchorPane.bottomAnchor="2.0" AnchorPane.leftAnchor="270.0" AnchorPane.rightAnchor="426.0" AnchorPane.topAnchor="119.0">
          <children>
-            <JFXTextField fx:id="firstName" labelFloat="true" layoutX="36.0" layoutY="28.0" promptText="First Name" unFocusColor="#1d7fff">
+            <JFXTextField fx:id="firstName" labelFloat="true" layoutX="42.0" layoutY="28.0" promptText="First Name" unFocusColor="#1d7fff">
                <font>
                   <Font size="21.0" />
                </font>
@@ -152,7 +152,7 @@
                </opaqueInsets>
             </JFXTextField>
             <JFXTextArea fx:id="address" layoutX="38.0" layoutY="358.0" prefHeight="51.0" prefWidth="454.0" promptText="Address" styleClass="BackgroundPane" stylesheets="@../../Styles.css" />
-            <JFXTextField fx:id="lastName" labelFloat="true" layoutX="36.0" layoutY="88.0" promptText="Last Name" unFocusColor="#1d7fff">
+            <JFXTextField fx:id="lastName" labelFloat="true" layoutX="40.0" layoutY="88.0" promptText="Last Name" unFocusColor="#1d7fff">
                <font>
                   <Font size="21.0" />
                </font>
@@ -178,7 +178,7 @@
             </JFXTextField>
             <JFXComboBox fx:id="bloodGroup" layoutX="38.0" layoutY="431.0" promptText="Blood Group" />
             <JFXTextArea fx:id="allergies" layoutX="38.0" layoutY="475.0" prefHeight="51.0" prefWidth="454.0" promptText="Allergies" styleClass="BackgroundPane" stylesheets="@../../Styles.css" />
-            <JFXTextField fx:id="nic" labelFloat="true" layoutX="43.0" layoutY="151.0" promptText="NIC" unFocusColor="#1d7fff">
+            <JFXTextField fx:id="nic" labelFloat="true" layoutX="41.0" layoutY="151.0" promptText="NIC" unFocusColor="#1d7fff">
                <font>
                   <Font size="21.0" />
                </font>

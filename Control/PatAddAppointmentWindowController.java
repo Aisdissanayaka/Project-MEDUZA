@@ -24,7 +24,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ComboBox;
-import javafx.scene.shape.Circle;
 
 
 
@@ -48,7 +47,7 @@ public class PatAddAppointmentWindowController extends DashboardUIController imp
 
    
     
-    @FXML
+     @FXML
     private JFXTextField NICTxt;
     
     
@@ -56,10 +55,7 @@ public class PatAddAppointmentWindowController extends DashboardUIController imp
       //Adding new appointment - Submit Button Action Methode    
       @FXML  
       public void submitBtn(ActionEvent event) throws FileNotFoundException, IOException {
-        
-          
-          
-         Appointment appObj = new Appointment();
+        Appointment appObj = new Appointment();
         appObj.setName(nameTxt.getText());
         appObj.setAppDate(appDate.getValue().toString());
         appObj.setAppTime(appTime.getValue().toString());
@@ -67,13 +63,12 @@ public class PatAddAppointmentWindowController extends DashboardUIController imp
         appObj.setUserID(NICTxt.getText());
         appObj.setSpecArea(specAreaCombo.getValue());
         appObj.addAppointmentRec(event);
-        
-        
+        nameTxt.setText(null);
         appDate.setValue(null);
         appTime.setValue(null);
         specAreaCombo.setValue(null);
         SymptomsTxt.setText(null);
-        
+        NICTxt.setText(null);
      }
     
     

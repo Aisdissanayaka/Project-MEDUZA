@@ -67,7 +67,7 @@ public class UserLoginController implements Initializable {
  
        public static String primaryKey,primaryKey1,
                staticFName,staticLName,staticGender,staticDOB,staticPhoneNo,
-               staticAddress,staticEmail,staticJoinDate,staticStaffID,staticUserID,staticBloodGroup,staticAllergies,staticSpecilatyArea;
+               staticAddress,staticEmail,staticJoinDate,staticStaffID,staticUserID,staticBloodGroup,staticAllergies;
        public static String staticUserName =" ";
        public static String profilePicture =" ";
     //Login button Action Method in receptionist Window(user data\receptionist\credentials\receptionistlogin.txt)
@@ -114,7 +114,7 @@ public class UserLoginController implements Initializable {
     
     //Login button Action Method in Patient Window(user data\patient\credentials\patientlogin.txt)
 
-     @FXML
+    @FXML
     private void loginAsPatient(ActionEvent event) throws IOException ,FileNotFoundException {
       user obj = new user();
       obj.setUserName(userName.getText());
@@ -155,37 +155,12 @@ public class UserLoginController implements Initializable {
     //Login button Action Method in Medical Officer Window(user data\medical officer\credentials\medicalofficerlogin.txt)
 
 
-     @FXML
+    @FXML
     private void loginAsMO(ActionEvent event) throws IOException {
       user obj = new user();
       obj.setUserName(userName.getText());
       obj.setPassword(password.getText());
-      primaryKey = userName.getText();
-      primaryKey1 = password.getText();
       obj.login(event, lable, "user data\\medical officer\\credentials\\medicalofficerlogin.txt", "/View/Dashboards/MODashboardWelcome.fxml");
-       
-      profilePicture = "user data\\receptionist\\photo\\"+primaryKey+".jpg";
-      try{
-      File file = new File("user data\\medical officer\\data\\"+primaryKey+".txt");
-      FileReader fr = new FileReader(file);
-      BufferedReader br = new BufferedReader(fr);
-      staticUserName = br.readLine();
-      staticLName = br.readLine();
-      staticAddress = br.readLine();
-      staticPhoneNo= br.readLine();
-      staticDOB = br.readLine();
-      staticStaffID = br.readLine();
-      staticEmail = br.readLine();
-      staticJoinDate = br.readLine();
-      staticGender = br.readLine();
-      staticSpecilatyArea = br.readLine();
-      fr.close();
-      br.close();      
-      } catch (Exception e) {
-         
-      }
-      
-      
       
     }
     
@@ -203,6 +178,37 @@ public class UserLoginController implements Initializable {
         window.centerOnScreen();
         
        }
+    
+    @FXML
+    private void loginAsAdmin(ActionEvent event) throws IOException ,FileNotFoundException {
+      user obj = new user();
+      obj.setUserName(userName.getText());
+      obj.setPassword(password.getText());
+      primaryKey = userName.getText();
+      primaryKey1 = password.getText();
+    
+      obj.login(event, lable, "user data\\admin\\credentials\\adminlogin.txt" , "/View/Dashboards/AdminDashboardWelcome.fxml");
+      
+      profilePicture = "user data\\admin\\photo\\"+primaryKey+".jpg";
+    
+      try {
+      File file = new File("user data\\admin\\data\\"+primaryKey+".txt");
+      FileReader fr = new FileReader(file);
+      BufferedReader br = new BufferedReader(fr);
+      staticUserName = br.readLine();
+      staticLName = br.readLine();
+      staticAddress = br.readLine();
+      staticUserID =br.readLine();
+      staticDOB = br.readLine();     
+      staticGender = br.readLine();
+      staticPhoneNo = br.readLine();
+      fr.close();
+      br.close();      
+      } catch (Exception e) {
+         
+      }
+    }
+      
     
     //Methode of Create Account HyperLink
     @FXML   
