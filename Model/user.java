@@ -121,14 +121,14 @@ public class user {
                 String[] splitted = st.split(",");
                 if (getUserName().equals(splitted[0]) && getPassword().equals(splitted[1])) {
                     x = false;
-                    
-                       
+                            
                      FXMLLoader loader =new FXMLLoader(getClass().getResource(fxmlpath));
                      
                      Parent root = loader.load();
                      DashboardUIController welcome =loader.getController();
                      
                      welcome.showInformation(staticUserName);
+                     System.out.println("e");
                      welcome.showProfilePicture(profilePicture);
                      
                     Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();

@@ -229,9 +229,9 @@ public class Sign_Up_as_MOController extends DashboardUIController implements In
     @Override
     public void initialize(URL url, ResourceBundle rb) {
        //add combo box values
-       ObservableList<String>list=FXCollections.observableArrayList("Male","Female");
+       ObservableList list=FXCollections.observableArrayList("Male","Female");
        moGender.setItems(list);
-       ObservableList<String>list1=FXCollections.observableArrayList("A","B","C");
+       ObservableList list1=FXCollections.observableArrayList("A","B","C");
        moSpecialityArea.setItems(list1);
        
        //show validation status
