@@ -78,18 +78,13 @@ public class UserLoginController implements Initializable {
   
 
      @FXML
-    private void loginAsRec(ActionEvent event) throws IOException ,FileNotFoundException{
+    private void loginAsRec(ActionEvent event) throws IOException {
       user obj = new user();
       obj.setUserName(userName.getText());
-      obj.setPassword(password.getText());
       primaryKey = userName.getText();
       primaryKey1 = password.getText();
-      
-      obj.login(event, lable, "user data\\receptionist\\credentials\\receptionistlogin.txt", "/View/Dashboards/RecDashboardWelcome.fxml");
-      
-      
+    
       profilePicture = "user data\\receptionist\\photo\\"+primaryKey+".jpg";
-      try{
       File file = new File("user data\\receptionist\\data\\"+primaryKey+".txt");
       FileReader fr = new FileReader(file);
       BufferedReader br = new BufferedReader(fr);
@@ -103,14 +98,16 @@ public class UserLoginController implements Initializable {
       staticEmail = br.readLine();
       staticJoinDate = br.readLine();
       
+        
+      obj.setPassword(password.getText());
+      obj.login(event, lable, "user data\\receptionist\\credentials\\receptionistlogin.txt", "/View/Dashboards/RecDashboardWelcome.fxml");
+      
+     
+        
       
       fr.close();
       br.close();
      
-      }catch(Exception e){
-          
-      }
-              
       
     }
    

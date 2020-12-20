@@ -135,6 +135,8 @@ public class user {
                     window.setScene(new Scene(root));
                     window.show();
                     window.centerOnScreen();
+                    
+                    
                      
                 }
                     

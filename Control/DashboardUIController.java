@@ -102,10 +102,24 @@ public class DashboardUIController implements Initializable {
         nameLbl.setText(username);
   
     }
+
     public void showInformationPatApp(String username,String userid){
         nameTxt.setText(username);
         NICTxt.setText(userid);
         
+
+    
+    public void showProfilePicture(String picturePath) {
+        try{
+        FileInputStream input = new FileInputStream(picturePath);
+ 
+        Image img1 = new Image(input);
+     
+        profilePhoto.setFill(new ImagePattern(img1));
+        }catch(Exception e){
+            
+        }
+
     }
     public void showInformation(String username,String lastName, String gender, String dob, String phone, String address,String staffID, String email, String joinedDate ){
         nameLbl.setText(username);
@@ -147,17 +161,7 @@ public class DashboardUIController implements Initializable {
     
    
     
-    public void showProfilePicture(String picturePath) {
-        try{
-        FileInputStream input = new FileInputStream(picturePath);
- 
-        Image img1 = new Image(input);
-     
-        profilePhoto.setFill(new ImagePattern(img1));
-        }catch(Exception e){
-            
-        }
-    }
+    
      
     
       
@@ -232,6 +236,8 @@ public class DashboardUIController implements Initializable {
     DashboardUIController welcome =loader.getController();
     welcome.showInformation(staticUserName);
     welcome.showProfilePicture(profilePicture);
+    RecAppointmentWindowController viewTable = new RecAppointmentWindowController();
+    viewTable.initialize();
     
     Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
     window.setScene(new Scene(root));
@@ -485,7 +491,7 @@ public class DashboardUIController implements Initializable {
     public void patChangePasswordBtn(ActionEvent event) throws IOException {
  
         
-    FXMLLoader loader =new FXMLLoader(getClass().getResource("/View/Dashboards/Patient/PatChangePassword.fxml"));
+    FXMLLoader loader =new FXMLLoader(getClass().getResource("/View/Dashboards/MO/MoChangePassword.fxml"));
     Parent root = loader.load();
    
     Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();

@@ -6,6 +6,7 @@
 package Model;
 
 import Control.RecAddAppointmentWindowController;
+import static Control.UserLoginController.primaryKey;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -16,6 +17,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.Arrays;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -23,7 +25,7 @@ import javafx.scene.control.Alert;
 
 public class Appointment {
     
-    private String userID,name,appDate,appTime,specArea,symptoms;
+    private String userID,name,appDate,appTime,specArea,symptoms,status,options;
 
     public String getUserID() {
         return userID;
@@ -72,6 +74,20 @@ public class Appointment {
     public void setSymptoms(String symptoms) {
         this.symptoms = symptoms;
     }
+     public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+     public String getOptions() {
+        return options;
+    }
+
+    public void setOptions(String options) {
+        this.options = options;
+    }
     
     
     public void addAppointmentRec(ActionEvent event) throws FileNotFoundException, IOException{
@@ -92,11 +108,46 @@ public class Appointment {
          alert.setContentText("Appointment was saved..!");  //display data saved message
          alert.show();
          
-         }catch(FileNotFoundException  e){}
+         }catch(FileNotFoundException e){}
         
     }
     
-   
+    @FXML
+      public static ArrayList<Appointment> viewAppointment() throws IOException{
+        
+        ArrayList<Appointment> appointmentArrayList = new ArrayList<>();
+        
+        
+        File appFile = new File("user data//appointment//"+primaryKey+".txt");
+        FileReader fr = new FileReader(appFile);
+        BufferedReader br = new BufferedReader(fr);
+        String currentLine;
+      
+        
+        while ((currentLine = br.readLine())!=null){
+            String[] appData = currentLine.split(",");
+            //System.out.println(Arrays.toString(appData));
+            Appointment appoinmentLine = new Appointment();
+            
+           
+            appoinmentLine.setUserID(appData[0]);
+            appoinmentLine.setName(appData[1]);
+            appoinmentLine.setAppDate(appData[2]);
+            appoinmentLine.setAppTime(appData[3]);
+            appoinmentLine.setSymptoms(appData[4]);
+            appoinmentLine.setSpecArea(appData[5]);
+            appoinmentLine.setStatus(appData[6]);
+            appoinmentLine.setOptions(appData[7]);
+           
+        appointmentArrayList.add(appoinmentLine);
+     
+        }
+        
+        fr.close();
+        br.close();
+        return appointmentArrayList;
+        
+    }
        
     
    
