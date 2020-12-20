@@ -5,9 +5,6 @@
  */
 package Control;
 
-import static Control.UserLoginController.staticUserID;
-import static Control.UserLoginController.staticUserName;
-import static Control.UserLoginController.profilePicture;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -30,17 +27,14 @@ public class PatAppointmentWindowController extends DashboardUIController implem
     //Triggers the Add new appointmend button in the appointment window
     @FXML
     public void addNewAppointment(ActionEvent event) throws IOException{
-         FXMLLoader loader =new FXMLLoader(getClass().getResource("/View/Dashboards/Patient/PatAddAppointmentWindow.fxml"));
-         Parent root = loader.load();
-         DashboardUIController welcome =loader.getController();
-         welcome.showInformationPatApp(staticUserName, staticUserID);
-         welcome.showInformation(staticUserName);
-         welcome.showProfilePicture(profilePicture);
+        Parent addNewAppointmentWindow = FXMLLoader.load(getClass().getResource("/View/Dashboards/Patient/PatAddAppointmentWindow.fxml"));
+        Scene addNewAppointmentWindowViewScene = new Scene(addNewAppointmentWindow);
+        
         //This Line gets the Stage Information
         Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
-        window.setScene(new Scene(root));
+        window.setScene(addNewAppointmentWindowViewScene);
         window.show();
-        window.centerOnScreen();  
+        window.centerOnScreen();
         
        
     }

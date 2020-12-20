@@ -30,7 +30,6 @@ public class Appointment {
     public String getUserID() {
         return userID;
     }
-
     public void setUserID(String userID) {
         this.userID = userID;
     }
@@ -93,16 +92,15 @@ public class Appointment {
     public void addAppointmentRec(ActionEvent event) throws FileNotFoundException, IOException{
         File file = new File ("user data\\appointment\\"+getUserID()+".txt");
         PrintWriter print = new PrintWriter(new FileOutputStream(file,true));
-        print.println("\n"+getUserID()+","+getName()+","+getAppDate()+","+
-                getAppTime()+","+getSpecArea()+","+getSymptoms()+","+"pending");
+        print.append(getUserID()+","+getName()+","+getAppDate()+","+
+                getAppTime()+","+getSpecArea()+","+getSymptoms()+"\n");
         print.close();
-        
         try{
          //database\appointment.txt  file write in all of data
          FileWriter fw = new FileWriter("user data\\database\\pendingappointment.txt",true);
          BufferedWriter bw = new BufferedWriter(fw);
          PrintWriter pw = new PrintWriter(bw);
-         pw.println(getUserID()+","+getName()+","+getAppDate()+","+getAppTime()+","+getSpecArea()+","+getSymptoms()+","+"pending");
+         pw.write(getUserID()+","+getName()+","+getAppDate()+","+getAppTime()+","+getSpecArea()+","+getSymptoms()+"\n");
          pw.close();
          Alert alert = new Alert(Alert.AlertType.INFORMATION);
          alert.setContentText("Appointment was saved..!");  //display data saved message
@@ -118,7 +116,7 @@ public class Appointment {
         ArrayList<Appointment> appointmentArrayList = new ArrayList<>();
         
         
-        File appFile = new File("user data//appointment//"+primaryKey+".txt");
+        File appFile = new File("user data//database//pendingappointment.txt");
         FileReader fr = new FileReader(appFile);
         BufferedReader br = new BufferedReader(fr);
         String currentLine;

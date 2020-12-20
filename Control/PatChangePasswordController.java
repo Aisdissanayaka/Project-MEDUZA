@@ -60,7 +60,7 @@ public class PatChangePasswordController implements Initializable {
         //Scene profileViewScene = new Scene(profileWindow);
         Parent root = loader.load();
         DashboardUIController welcome =loader.getController();
-        welcome.showInformationPatient(staticUserName, staticLName, staticAddress, staticUserID, 
+        welcome.showInformatienPatient(staticUserName, staticLName, staticAddress, staticUserID, 
             staticBloodGroup, staticDOB, staticGender, staticPhoneNo,staticAllergies);
         welcome.showInformation(staticUserName);
         welcome.showProfilePicture(profilePicture);

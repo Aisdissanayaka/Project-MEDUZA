@@ -17,7 +17,6 @@ import static Control.UserLoginController.staticGender;
 import static Control.UserLoginController.staticJoinDate;
 import static Control.UserLoginController.staticLName;
 import static Control.UserLoginController.staticPhoneNo;
-import static Control.UserLoginController.staticSpecilatyArea;
 import static Control.UserLoginController.staticStaffID;
 import static Control.UserLoginController.staticUserID;
 import static Control.UserLoginController.staticUserName;
@@ -91,22 +90,9 @@ public class DashboardUIController implements Initializable {
     @FXML
     public Circle profilePhoto;
     
-    @FXML
-    private JFXTextField nameTxt;
-     
-    @FXML
-    private ComboBox specialityAreaBox;
-     
-    
     public void showInformation(String username){
         nameLbl.setText(username);
   
-    }
-
-    public void showInformationPatApp(String username,String userid){
-        nameTxt.setText(username);
-        NICTxt.setText(userid);
-        
     }
     
     public void showProfilePicture(String picturePath) {
@@ -116,11 +102,11 @@ public class DashboardUIController implements Initializable {
         Image img1 = new Image(input);
      
         profilePhoto.setFill(new ImagePattern(img1));
-        } catch(Exception e){
-      
+        }catch(Exception e){
+            
         }
     }
-       public void showInformation(String username,String lastName, String gender, String dob, String phone, String address,String staffID, String email, String joinedDate ){
+    public void showInformation(String username,String lastName, String gender, String dob, String phone, String address,String staffID, String email, String joinedDate ){
         nameLbl.setText(username);
         firstNameTxt.setText(username);
         lastNameTxt.setText(lastName);
@@ -133,7 +119,7 @@ public class DashboardUIController implements Initializable {
         joinedDateTxt.setText(joinedDate);
 
     }
-    public void showInformationPatient(String username,String lastName,String address,String IDNumber,String bloodGroup,String dob,String gender,String phoneNumber,String allergies){
+    public void showInformatienPatient(String username,String lastName,String address,String IDNumber,String bloodGroup,String dob,String gender,String phoneNumber,String allergies){
         firstNameTxt.setText(username);
         lastNameTxt.setText(lastName);
         phoneNumTxt.setText(phoneNumber);
@@ -144,21 +130,6 @@ public class DashboardUIController implements Initializable {
         bloodGroupBox.setValue(bloodGroup);
         allergiesTxt.setText(allergies);
     }
-    public void showInformation(String username,String lastName, String gender, String dob, String phone, String address,String staffID, String email, String joinedDate,String specialityArea ){
-        nameLbl.setText(username);
-        firstNameTxt.setText(username);
-        lastNameTxt.setText(lastName);
-        genderBox.setValue(gender);
-        dateOfBirthTxt.setText(dob);
-        phoneNumTxt.setText(phone);
-        addressTxt.setText(address);
-        staffEmailTxt.setText(email);
-        staffIDTxt.setText(staffID);
-        joinedDateTxt.setText(joinedDate);
-        specialityAreaBox.setValue(specialityArea);
-    }
-    
-   
     
     
      
@@ -342,7 +313,7 @@ public class DashboardUIController implements Initializable {
     FXMLLoader loader =new FXMLLoader(getClass().getResource("/View/Dashboards/Patient/PatientProfileWindow.fxml"));
     Parent root = loader.load();
     DashboardUIController welcome =loader.getController();
-    welcome.showInformationPatient(staticUserName, staticLName, staticAddress, staticUserID, 
+    welcome.showInformatienPatient(staticUserName, staticLName, staticAddress, staticUserID, 
             staticBloodGroup, staticDOB, staticGender, staticPhoneNo,staticAllergies);
     welcome.showInformation(staticUserName);
     welcome.showProfilePicture(profilePicture);
@@ -403,11 +374,9 @@ public class DashboardUIController implements Initializable {
     FXMLLoader loader =new FXMLLoader(getClass().getResource("/View/Dashboards/MO/MOProfileWindow.fxml"));
     Parent root = loader.load();
     DashboardUIController welcome =loader.getController();
-    
-    welcome.showInformation(staticUserName, staticLName, staticAddress, staticPhoneNo, 
-            staticDOB, staticStaffID, staticEmail, staticJoinDate, staticGender, staticSpecilatyArea);
     welcome.showInformation(staticUserName);
     welcome.showProfilePicture(profilePicture);
+    
     Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
     window.setScene(new Scene(root));
     window.show();
@@ -492,7 +461,9 @@ public class DashboardUIController implements Initializable {
         
     FXMLLoader loader =new FXMLLoader(getClass().getResource("/View/Dashboards/MO/MoChangePassword.fxml"));
     Parent root = loader.load();
-   
+    ;
+    
+    
     Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
     window.setScene(new Scene(root));
     window.show();
@@ -506,19 +477,247 @@ public class DashboardUIController implements Initializable {
         
     FXMLLoader loader =new FXMLLoader(getClass().getResource("/View/Dashboards/Patient/PatChangePassword.fxml"));
     Parent root = loader.load();
-    
+    DashboardUIController welcome =loader.getController();
+    welcome.showInformation(staticUserName);
+    welcome.showProfilePicture(profilePicture);
     Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
     window.setScene(new Scene(root));
     window.show();
     window.centerOnScreen();
         }
     
-  
+    @FXML
+    public void adminHome(ActionEvent event) throws IOException{
+
+        
+    FXMLLoader loader =new FXMLLoader(getClass().getResource("/View/Dashboards/AdminDashboardWelcome.fxml"));
+    Parent root = loader.load();
+    DashboardUIController welcome =loader.getController();
+    welcome.showInformation(staticUserName);
+    welcome.showProfilePicture(profilePicture);
+         
+
+    Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+    window.setScene(new Scene(root));
+    window.show();
+    window.centerOnScreen();
+        
+       }
+    
+    @FXML
+    public void AdminProfileBtn(ActionEvent event) throws IOException{
+
+        
+    FXMLLoader loader =new FXMLLoader(getClass().getResource("/View/Dashboards/Admin/AdminProfileWindow.fxml"));
+    Parent root = loader.load();
+    DashboardUIController welcome =loader.getController();
+    welcome.showInformation(staticUserName);
+    welcome.showProfilePicture(profilePicture);
+         
+
+    Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+    window.setScene(new Scene(root));
+    window.show();
+    window.centerOnScreen();
+        
+       }
+    
+    @FXML
+    public void AdminAppointmentBtn(ActionEvent event) throws IOException{
+
+        
+    FXMLLoader loader =new FXMLLoader(getClass().getResource("/View/Dashboards/Admin/AdminAppointments.fxml"));
+    Parent root = loader.load();
+    DashboardUIController welcome =loader.getController();
+    welcome.showInformation(staticUserName);
+    welcome.showProfilePicture(profilePicture);
+         
+
+    Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+    window.setScene(new Scene(root));
+    window.show();
+    window.centerOnScreen();
+        
+       }
+    
+    @FXML
+    public void AdminVisitorstBtn(ActionEvent event) throws IOException{
+
+        
+    FXMLLoader loader =new FXMLLoader(getClass().getResource("/View/Dashboards/Admin/AdminVisitors.fxml"));
+    Parent root = loader.load();
+    DashboardUIController welcome =loader.getController();
+    welcome.showInformation(staticUserName);
+    welcome.showProfilePicture(profilePicture);
+         
+
+    Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+    window.setScene(new Scene(root));
+    window.show();
+    window.centerOnScreen();
+        
+       }
+    @FXML
+    public void AdminComplaintBtn(ActionEvent event) throws IOException{
+
+        
+    FXMLLoader loader =new FXMLLoader(getClass().getResource("/View/Dashboards/Admin/AdminComplaints.fxml"));
+    Parent root = loader.load();
+    DashboardUIController welcome =loader.getController();
+    welcome.showInformation(staticUserName);
+    welcome.showProfilePicture(profilePicture);
+         
+
+    Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+    window.setScene(new Scene(root));
+    window.show();
+    window.centerOnScreen();
+        
+    }
+    
+     @FXML
+    public void AdminPostalReceivedBtn(ActionEvent event) throws IOException{
+
+        
+    FXMLLoader loader =new FXMLLoader(getClass().getResource("/View/Dashboards/Admin/AdminPostalReceived.fxml"));
+    Parent root = loader.load();
+    DashboardUIController welcome =loader.getController();
+    welcome.showInformation(staticUserName);
+    welcome.showProfilePicture(profilePicture);
+         
+
+    Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+    window.setScene(new Scene(root));
+    window.show();
+    window.centerOnScreen();
+        
+       }
+    @FXML
+    public void AdminUsersRecBtn(ActionEvent event) throws IOException{
+
+        
+    FXMLLoader loader =new FXMLLoader(getClass().getResource("/View/Dashboards/Admin/AdminUsersRec.fxml"));
+    Parent root = loader.load();
+    DashboardUIController welcome =loader.getController();
+    welcome.showInformation(staticUserName);
+    welcome.showProfilePicture(profilePicture);
+         
+
+    Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+    window.setScene(new Scene(root));
+    window.show();
+    window.centerOnScreen();
+        
+       }
+    
+    @FXML
+    public void AdminAddNewRec(ActionEvent event) throws IOException{
+
+        
+    FXMLLoader loader =new FXMLLoader(getClass().getResource("/View/Dashboards/Admin/AdminAddRec.fxml"));
+    Parent root = loader.load();
+    DashboardUIController welcome =loader.getController();
+    welcome.showInformation(staticUserName);
+    welcome.showProfilePicture(profilePicture);
+         
+
+    Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+    window.setScene(new Scene(root));
+    window.show();
+    window.centerOnScreen();
+        
+       }
+    @FXML
+    public void AdminAddNewMO(ActionEvent event) throws IOException{
+
+        
+    FXMLLoader loader =new FXMLLoader(getClass().getResource("/View/Dashboards/Admin/AdminAddMO.fxml"));
+    Parent root = loader.load();
+    DashboardUIController welcome =loader.getController();
+    welcome.showInformation(staticUserName);
+    welcome.showProfilePicture(profilePicture);
+         
+
+    Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+    window.setScene(new Scene(root));
+    window.show();
+    window.centerOnScreen();
+        
+       }
+    @FXML
+    public void AdminAddNewPat(ActionEvent event) throws IOException{
+
+        
+    FXMLLoader loader =new FXMLLoader(getClass().getResource("/View/Dashboards/Admin/AdminAddPat.fxml"));
+    Parent root = loader.load();
+    DashboardUIController welcome =loader.getController();
+    welcome.showInformation(staticUserName);
+    welcome.showProfilePicture(profilePicture);
+         
+
+    Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+    window.setScene(new Scene(root));
+    window.show();
+    window.centerOnScreen();
+        
+       }
+    @FXML
+    public void AdminUserMO(ActionEvent event) throws IOException{
+
+        
+    FXMLLoader loader =new FXMLLoader(getClass().getResource("/View/Dashboards/Admin/AdminUsersMO.fxml"));
+    Parent root = loader.load();
+    DashboardUIController welcome =loader.getController();
+    welcome.showInformation(staticUserName);
+    welcome.showProfilePicture(profilePicture);
+         
+
+    Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+    window.setScene(new Scene(root));
+    window.show();
+    window.centerOnScreen();
+        
+       }
+    @FXML
+    public void AdminUserPat(ActionEvent event) throws IOException{
+
+        
+    FXMLLoader loader =new FXMLLoader(getClass().getResource("/View/Dashboards/Admin/AdminUsersPat.fxml"));
+    Parent root = loader.load();
+    DashboardUIController welcome =loader.getController();
+    welcome.showInformation(staticUserName);
+    welcome.showProfilePicture(profilePicture);
+         
+
+    Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+    window.setScene(new Scene(root));
+    window.show();
+    window.centerOnScreen();
+        
+       }
+    @FXML
+    public void AdminUserRec(ActionEvent event) throws IOException{
+
+        
+    FXMLLoader loader =new FXMLLoader(getClass().getResource("/View/Dashboards/Admin/AdminUsersRec.fxml"));
+    Parent root = loader.load();
+    DashboardUIController welcome =loader.getController();
+    welcome.showInformation(staticUserName);
+    welcome.showProfilePicture(profilePicture);
+         
+
+    Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+    window.setScene(new Scene(root));
+    window.show();
+    window.centerOnScreen();
+        
+       }
+    
+    
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
+        // TODO
     }    
-
-   
     
 }
