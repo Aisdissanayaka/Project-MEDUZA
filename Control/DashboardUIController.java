@@ -107,7 +107,7 @@ public class DashboardUIController implements Initializable {
         nameTxt.setText(username);
         NICTxt.setText(userid);
         
-
+    }
     
     public void showProfilePicture(String picturePath) {
         try{
@@ -116,12 +116,11 @@ public class DashboardUIController implements Initializable {
         Image img1 = new Image(input);
      
         profilePhoto.setFill(new ImagePattern(img1));
-        }catch(Exception e){
-            
+        } catch(Exception e){
+      
         }
-
     }
-    public void showInformation(String username,String lastName, String gender, String dob, String phone, String address,String staffID, String email, String joinedDate ){
+       public void showInformation(String username,String lastName, String gender, String dob, String phone, String address,String staffID, String email, String joinedDate ){
         nameLbl.setText(username);
         firstNameTxt.setText(username);
         lastNameTxt.setText(lastName);
