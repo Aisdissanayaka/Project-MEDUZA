@@ -77,8 +77,8 @@ public class Appointment {
     public void addAppointmentRec(ActionEvent event) throws FileNotFoundException, IOException{
         File file = new File ("user data\\appointment\\"+getUserID()+".txt");
         PrintWriter print = new PrintWriter(new FileOutputStream(file,true));
-        print.append(getUserID()+","+getName()+","+getAppDate()+","+
-                getAppTime()+","+getSpecArea()+","+getSymptoms()+"\n");
+        print.println("\n"+getUserID()+","+getName()+","+getAppDate()+","+
+                getAppTime()+","+getSpecArea()+","+getSymptoms()+","+"pending");
         print.close();
         
         try{
@@ -86,7 +86,7 @@ public class Appointment {
          FileWriter fw = new FileWriter("user data\\database\\pendingappointment.txt",true);
          BufferedWriter bw = new BufferedWriter(fw);
          PrintWriter pw = new PrintWriter(bw);
-         pw.write(getUserID()+","+getName()+","+getAppDate()+","+getAppTime()+","+getSpecArea()+","+getSymptoms()+"\n");
+         pw.println(getUserID()+","+getName()+","+getAppDate()+","+getAppTime()+","+getSpecArea()+","+getSymptoms()+","+"pending");
          pw.close();
          Alert alert = new Alert(Alert.AlertType.INFORMATION);
          alert.setContentText("Appointment was saved..!");  //display data saved message

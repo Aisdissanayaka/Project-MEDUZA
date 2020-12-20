@@ -67,7 +67,7 @@ public class UserLoginController implements Initializable {
  
        public static String primaryKey,primaryKey1,
                staticFName,staticLName,staticGender,staticDOB,staticPhoneNo,
-               staticAddress,staticEmail,staticJoinDate,staticStaffID,staticUserID,staticBloodGroup,staticAllergies;
+               staticAddress,staticEmail,staticJoinDate,staticStaffID,staticUserID,staticBloodGroup,staticAllergies,staticSpecilatyArea;
        public static String staticUserName =" ";
        public static String profilePicture =" ";
     //Login button Action Method in receptionist Window(user data\receptionist\credentials\receptionistlogin.txt)
@@ -163,7 +163,32 @@ public class UserLoginController implements Initializable {
       user obj = new user();
       obj.setUserName(userName.getText());
       obj.setPassword(password.getText());
+      primaryKey = userName.getText();
+      primaryKey1 = password.getText();
       obj.login(event, lable, "user data\\medical officer\\credentials\\medicalofficerlogin.txt", "/View/Dashboards/MODashboardWelcome.fxml");
+       
+      profilePicture = "user data\\receptionist\\photo\\"+primaryKey+".jpg";
+      try{
+      File file = new File("user data\\medical officer\\data\\"+primaryKey+".txt");
+      FileReader fr = new FileReader(file);
+      BufferedReader br = new BufferedReader(fr);
+      staticUserName = br.readLine();
+      staticLName = br.readLine();
+      staticAddress = br.readLine();
+      staticPhoneNo= br.readLine();
+      staticDOB = br.readLine();
+      staticStaffID = br.readLine();
+      staticEmail = br.readLine();
+      staticJoinDate = br.readLine();
+      staticGender = br.readLine();
+      staticSpecilatyArea = br.readLine();
+      fr.close();
+      br.close();      
+      } catch (Exception e) {
+         
+      }
+      
+      
       
     }
     

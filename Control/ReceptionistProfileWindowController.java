@@ -88,7 +88,7 @@ public void readFiles(ActionEvent event) {
         try{
         File file = new File("user data\\receptionist\\data\\"+ staffIDTxt.getText()+".txt");  
         file.delete();
-        PrintWriter printer = new PrintWriter(new FileOutputStream(file,true)); 
+        PrintWriter printer = new PrintWriter(new FileOutputStream(file)); 
         
         printer.append(firstNameTxt.getText()+"\n"+lastNameTxt.getText()+"\n"+addressTxt.getText()+"\n"+phoneNumTxt.getText()+"\n"
                 +dateOfBirthTxt.getText()+"\n"+ genderBox.getValue()+"\n"+""+staffIDTxt.getText()
