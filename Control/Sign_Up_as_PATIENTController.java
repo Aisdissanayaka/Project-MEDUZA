@@ -19,6 +19,8 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -81,7 +83,7 @@ public class Sign_Up_as_PATIENTController extends DashboardUIController implemen
       @FXML
     public void signupBtn(ActionEvent event) throws IOException{
         
-        if(validateFields()){
+        if(validateFields()&& validatePhoneNum()){
         try{
         File file = new File("user data\\patient\\data\\"+nicTxt.getText()+".txt");    
         PrintWriter printer = new PrintWriter(new FileOutputStream(file,true));  
@@ -100,7 +102,18 @@ public class Sign_Up_as_PATIENTController extends DashboardUIController implemen
          PrintWriter pw = new PrintWriter(bw);
          pw.write(nicTxt.getText()+","+nicTxt.getText()+"\n");
          pw.close();
-         }catch(FileNotFoundException  e){}}
+         }catch(FileNotFoundException  e){}
+          firstNameTxt.setText(null);
+          lastNameTxt.setText(null);
+         addressTxt.setText(null);
+         nicTxt.setText(null);
+         bloodGroupTxt.setValue(null);
+         dateOfBirthDate.setValue(null);
+         phoneNumberTxt.setText(null);
+         allergiesTxt.setText(null);
+         genderTxt.setValue(null);    
+        
+        }
         
         
         
@@ -139,6 +152,22 @@ public class Sign_Up_as_PATIENTController extends DashboardUIController implemen
          }
          return true;
           }
+       //warnig message to invalide Phone Number 
+     private boolean validatePhoneNum(){
+         Pattern p=Pattern.compile("[0][0-9]{9}");
+         Matcher m = p.matcher(phoneNumberTxt.getText());
+         if(m.find() && m.group().equals(phoneNumberTxt.getText())){
+           return true;
+         }else{
+              Alert alert = new Alert(Alert.AlertType.WARNING);
+             alert.setTitle("Validate Phone Number");
+             alert.setHeaderText(null);
+             alert.setContentText("Please Enter The Valid Phone Number");
+             alert.showAndWait();
+             return false;
+         }
+       }
+     
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -153,12 +182,22 @@ public class Sign_Up_as_PATIENTController extends DashboardUIController implemen
         //show validation status
         RequiredFieldValidator validator = new RequiredFieldValidator();
         NumberValidator numvalidator = new  NumberValidator();
+        numvalidator.setMessage("Invalied Number");
+        validator.setMessage("Required Field");
     
       
         
         //validation for phone number
         phoneNumberTxt.getValidators().add(numvalidator);
-        numvalidator.setMessage("Invalied Number");
+        firstNameTxt.getValidators().add(validator);
+        lastNameTxt.getValidators().add(validator);
+        addressTxt.getValidators().add(validator);
+        phoneNumberTxt.getValidators().add(validator);
+        dateOfBirthDate.getValidators().add(validator);
+        allergiesTxt.getValidators().add(validator);
+        nicTxt.getValidators().add(validator);
+   
+        
         
        phoneNumberTxt.focusedProperty().addListener(new ChangeListener <Boolean>() {
             @Override
@@ -166,12 +205,8 @@ public class Sign_Up_as_PATIENTController extends DashboardUIController implemen
                 if(!newValue)
                 {
                 phoneNumberTxt.validate();
-                } 
-            }
+                }}
         });       
-        //validation for First name
-        firstNameTxt.getValidators().add(validator);
-        validator.setMessage("Required Field");
         
         firstNameTxt.focusedProperty().addListener(new ChangeListener <Boolean>() {
             @Override
@@ -179,12 +214,8 @@ public class Sign_Up_as_PATIENTController extends DashboardUIController implemen
                 if(!newValue)
                 {
                 firstNameTxt.validate();
-                } 
-            }
+                }}
         });
-        //validation field for Last name
-        lastNameTxt.getValidators().add(validator);
-        validator.setMessage("Required Field");
         
         lastNameTxt.focusedProperty().addListener(new ChangeListener <Boolean>() {
             @Override
@@ -192,65 +223,44 @@ public class Sign_Up_as_PATIENTController extends DashboardUIController implemen
                 if(!newValue)
                 {
                 lastNameTxt.validate();
-                } 
-            }
+                }}
         });
-        //validation Field for Address
-        addressTxt.getValidators().add(validator);
-        validator.setMessage("Required Field");
-        
+      
         addressTxt.focusedProperty().addListener(new ChangeListener <Boolean>() {
             @Override
             public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
                 if(!newValue)
                 {
                 addressTxt.validate();
-                } 
-            }
+                }}
         }); 
-        //validation field for Phone Number
-        phoneNumberTxt.getValidators().add(validator);
-        validator.setMessage("Required Field");
-        
+       
         phoneNumberTxt.focusedProperty().addListener(new ChangeListener <Boolean>() {
             @Override
             public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
                 if(!newValue)
                 {
                 phoneNumberTxt.validate();
-                } 
-            }
+                }}
         }); 
-        //validation Field for Date of birth
-       dateOfBirthDate.getValidators().add(validator);
-        validator.setMessage("Required Field");
-        
+    
         dateOfBirthDate.focusedProperty().addListener(new ChangeListener <Boolean>() {
             @Override
             public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
                 if(!newValue)
                 {
                dateOfBirthDate.validate();
-                } 
-            }
+                }}
         }); 
-        
-        //validation field for patient allergies
-       allergiesTxt.getValidators().add(validator);
-        validator.setMessage("Required Field");
-        
+            
        allergiesTxt.focusedProperty().addListener(new ChangeListener <Boolean>() {
             @Override
             public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
                 if(!newValue)
                 {
                 allergiesTxt.validate();
-                } 
-            }
+                }}
         }); 
-       //validation field for patient allergies
-       nicTxt.getValidators().add(validator);
-        validator.setMessage("Required Field");
         
        nicTxt.focusedProperty().addListener(new ChangeListener <Boolean>() {
             @Override
@@ -258,8 +268,7 @@ public class Sign_Up_as_PATIENTController extends DashboardUIController implemen
                 if(!newValue)
                 {
                nicTxt.validate();
-                } 
-            }
+                }}
         }); 
 
     }    

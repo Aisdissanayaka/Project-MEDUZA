@@ -98,21 +98,18 @@ public class RecAddDispatchedPostalController extends DashboardUIController impl
      }}
       // warning message for null validation
      private boolean validateFields(){
-        if( disName.getText().isEmpty() | disReff.getText().isEmpty()|
-                 disTo.getText().isEmpty()|disNote.getText().isEmpty()|  disDate.getEditor().getText().isEmpty()|disFrom.getText().isEmpty())
+        if( disName.getText().isEmpty() | disReff.getText().isEmpty()|disTo.getText().isEmpty()|disNote.getText().isEmpty()|  
+                disDate.getEditor().getText().isEmpty()|disFrom.getText().isEmpty())
          {
               Alert alert = new Alert(Alert.AlertType.WARNING);
-             alert.setTitle("Validate Fields");
-             alert.setHeaderText(null);
-             alert.setContentText("Please Enter Into The Fields");
-             alert.showAndWait();
+              alert.setTitle("Validate Fields");
+              alert.setHeaderText(null);
+              alert.setContentText("Please Enter Into The Fields");
+              alert.showAndWait();
             return false;
-            
+           }
+            return true;
          }
-         
-         return true;
-         
-          }
       
        //opening and saving document file    
     @FXML
@@ -149,13 +146,13 @@ public class RecAddDispatchedPostalController extends DashboardUIController impl
     public void initialize(URL url, ResourceBundle rb) {
          //show validation status
         RequiredFieldValidator validator = new RequiredFieldValidator();
-        NumberValidator numvalidator = new  NumberValidator();
-        
-        
-       
-        //validation for Address
+         validator.setMessage("Required Field");
         disTo.getValidators().add(validator);
-        validator.setMessage("Required Field");
+        disReff.getValidators().add(validator);
+        disName.getValidators().add(validator);
+        disNote.getValidators().add(validator);
+        disDate.getValidators().add(validator);
+        disFrom.getValidators().add(validator);
         
         disTo.focusedProperty().addListener(new ChangeListener <Boolean>() {
             @Override
@@ -163,25 +160,17 @@ public class RecAddDispatchedPostalController extends DashboardUIController impl
                 if(!newValue)
                 {
                 disTo.validate();
-                } 
-            }
+                }}
         });
-        //validation field for Reffereence Number
-        disReff.getValidators().add(validator);
-        validator.setMessage("Required Field");
-        
+       
         disReff.focusedProperty().addListener(new ChangeListener <Boolean>() {
             @Override
             public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
                 if(!newValue)
                 {
                 disReff.validate();
-                } 
-            }
+                }}
         });
-        //validation Field for To
-        disName.getValidators().add(validator);
-        validator.setMessage("Required Field");
         
         disName.focusedProperty().addListener(new ChangeListener <Boolean>() {
             @Override
@@ -189,38 +178,26 @@ public class RecAddDispatchedPostalController extends DashboardUIController impl
                 if(!newValue)
                 {
                 disName.validate();
-                } 
-            }
+                }}
         }); 
-        //validation field for Note
-        disNote.getValidators().add(validator);
-        validator.setMessage("Required Field");
-        
+         
         disNote.focusedProperty().addListener(new ChangeListener <Boolean>() {
             @Override
             public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
                 if(!newValue)
                 {
                 disNote.validate();
-                } 
-            }
+                }}
         }); 
-        //validation field for Date
-        disDate.getValidators().add(validator);
-        validator.setMessage("Required Field");
-        
+          
         disDate.focusedProperty().addListener(new ChangeListener <Boolean>() {
             @Override
             public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
                 if(!newValue)
                 {
                 disDate.validate();
-                } 
-            }
+                }}
         }); 
-        //validation field for From
-        disFrom.getValidators().add(validator);
-        validator.setMessage("Required Field");
         
         disFrom.focusedProperty().addListener(new ChangeListener <Boolean>() {
             @Override
@@ -228,8 +205,7 @@ public class RecAddDispatchedPostalController extends DashboardUIController impl
                 if(!newValue)
                 {
                 disFrom.validate();
-                } 
-            }
+                }}
         }); 
     }    
     

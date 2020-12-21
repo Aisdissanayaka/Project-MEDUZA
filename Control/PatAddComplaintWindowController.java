@@ -9,6 +9,8 @@ import Model.Complaint;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
+import com.jfoenix.validation.NumberValidator;
+import com.jfoenix.validation.RequiredFieldValidator;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -19,11 +21,16 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
@@ -74,6 +81,7 @@ public class PatAddComplaintWindowController extends DashboardUIController imple
     //submit button. It's writes complaints data to file
      @FXML
     public void submitBtn(ActionEvent event)throws  IOException {
+        if(validateFields()&&validatePhoneNum()){
         
         Complaint patCom=new Complaint();
         patCom.setDate(date.now().toString());
@@ -94,7 +102,41 @@ public class PatAddComplaintWindowController extends DashboardUIController imple
         actionTakenTxt.setText(null);
         
 
-    }
+    }}
+    
+       // warning message for null validation
+     private boolean validateFields(){
+         
+          if(nameTxt.getText().isEmpty() | descriptionTxt.getText().isEmpty()| actionTakenTxt.getText().isEmpty()|
+             noteTxt.getText().isEmpty()|phoneNumTxt.getText().isEmpty())
+         {
+              Alert alert = new Alert(Alert.AlertType.WARNING);
+             alert.setTitle("Validate Fields");
+             alert.setHeaderText(null);
+             alert.setContentText("Please Enter Into The Fields");
+             alert.showAndWait();
+             
+          return false;
+            }
+          return true;
+       }
+     
+      //warnig message to invalide Phone Number 
+     private boolean validatePhoneNum(){
+         Pattern p=Pattern.compile("[0][0-9]{9}");
+         Matcher m = p.matcher( phoneNumTxt.getText());
+         if(m.find() && m.group().equals( phoneNumTxt.getText())){
+           return true;
+         }else{
+              Alert alert = new Alert(Alert.AlertType.WARNING);
+             alert.setTitle("Validate Phone Number");
+             alert.setHeaderText(null);
+             alert.setContentText("Please Enter The Valid Phone Number");
+             alert.showAndWait();
+             return false;
+         }
+       }
+    
      //opening and saving document file    
     @FXML
     public void openFile(ActionEvent actionEvent) throws IOException {
@@ -131,6 +173,65 @@ public class PatAddComplaintWindowController extends DashboardUIController imple
         
          ObservableList<String>list=FXCollections.observableArrayList("Type 1","Type 2", "Type 3");
        comTypeBox.setItems(list);
+       
+         //show validation status
+        RequiredFieldValidator validator = new RequiredFieldValidator();
+        NumberValidator numvalidator = new  NumberValidator();
+        validator.setMessage("Required Field");
+         numvalidator.setMessage("Invalied Number");
+     
+       nameTxt.getValidators().add(validator);
+       descriptionTxt.getValidators().add(validator);
+       noteTxt.getValidators().add(validator);
+       phoneNumTxt.getValidators().add(validator);
+       phoneNumTxt.getValidators().add(numvalidator);
+       actionTakenTxt.getValidators().add(validator);
+        
+        
+       nameTxt.focusedProperty().addListener(new ChangeListener <Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+                if(!newValue)
+                {
+                nameTxt.validate();
+                }}
+        });
+       
+       descriptionTxt.focusedProperty().addListener(new ChangeListener <Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+                if(!newValue)
+                {
+               descriptionTxt.validate();
+                }}
+        });
+        
+        noteTxt.focusedProperty().addListener(new ChangeListener <Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+                if(!newValue)
+                {
+               noteTxt.validate();
+                }}
+        }); 
+       
+       phoneNumTxt.focusedProperty().addListener(new ChangeListener <Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+                if(!newValue)
+                {
+                phoneNumTxt.validate();
+                }}
+        }); 
+       
+        actionTakenTxt.focusedProperty().addListener(new ChangeListener <Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+                if(!newValue)
+                {
+                actionTakenTxt.validate();
+                }}
+        }); 
     }    
     
 }

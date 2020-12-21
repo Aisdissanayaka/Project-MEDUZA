@@ -88,26 +88,22 @@ public class RecAddAppointmentWindowController extends DashboardUIController imp
  
       
       
-       // warning message for null validation
+           // warning message for null validation
      private boolean validateFields(){
          
-          if(userID.getText().isEmpty() | name.getText().isEmpty()|appDate.getEditor().getText().isEmpty()|appTime.getEditor().getText().isEmpty()| Symptoms.getText().isEmpty())
+          if(userID.getText().isEmpty() | name.getText().isEmpty()|appDate.getEditor().getText().isEmpty()|
+                  appTime.getEditor().getText().isEmpty()| Symptoms.getText().isEmpty())
          {
               Alert alert = new Alert(Alert.AlertType.WARNING);
              alert.setTitle("Validate Fields");
              alert.setHeaderText(null);
              alert.setContentText("Please Enter Into The Fields");
              alert.showAndWait();
-             
-            
-             
-             return false;
-            
-         }
-         
-         return true;
-         
+          return false;
           }
+        return true;
+     }
+    
     
 
    //Create an arrayList to store the appointment reco
@@ -121,14 +117,20 @@ public class RecAddAppointmentWindowController extends DashboardUIController imp
        ObservableList<String>list1=FXCollections.observableArrayList("A","B","C","D");
         specAreaCombo.setItems(list1);
         
-         //show validation status
+       
+      //show validation status
         RequiredFieldValidator validator = new RequiredFieldValidator();
-        NumberValidator numvalidator = new  NumberValidator();
+         validator.setMessage("Required Field");
+        
         
        
         //validation for user ID
         userID.getValidators().add(validator);
-        validator.setMessage("Required Field");
+        name.getValidators().add(validator);
+        appDate.getValidators().add(validator);
+        appTime.getValidators().add(validator);
+        Symptoms.getValidators().add(validator);
+       
         
        userID.focusedProperty().addListener(new ChangeListener <Boolean>() {
             @Override
@@ -136,61 +138,45 @@ public class RecAddAppointmentWindowController extends DashboardUIController imp
                 if(!newValue)
                 {
                 userID.validate();
-                } 
-            }
+                }}
         });
-        //validation field for name
-        name.getValidators().add(validator);
-        validator.setMessage("Required Field");
-        
+          
         name.focusedProperty().addListener(new ChangeListener <Boolean>() {
             @Override
             public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
                 if(!newValue)
                 {
                 name.validate();
-                } 
-            }
+                }}
         });
-        //validation Field for appointment date
-        appDate.getValidators().add(validator);
-        validator.setMessage("Required Field");
-        
+      
         appDate.focusedProperty().addListener(new ChangeListener <Boolean>() {
             @Override
             public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
                 if(!newValue)
                 {
                 appDate.validate();
-                } 
-            }
+                }}
         }); 
-        //validation field for appointment time
-        appTime.getValidators().add(validator);
-        validator.setMessage("Required Field");
-        
+       
         appTime.focusedProperty().addListener(new ChangeListener <Boolean>() {
             @Override
             public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
                 if(!newValue)
                 {
                 appTime.validate();
-                } 
-            }
+                }}
         }); 
-        //validation Field for symptoms
-        Symptoms.getValidators().add(validator);
-        validator.setMessage("Required Field");
-        
+      
         Symptoms.focusedProperty().addListener(new ChangeListener <Boolean>() {
             @Override
             public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
                 if(!newValue)
                 {
                 Symptoms.validate();
-                } 
-            }
+                }}
         }); 
+
         
         
         

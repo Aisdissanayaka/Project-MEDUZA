@@ -8,6 +8,8 @@ package Control;
 import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
+import com.jfoenix.validation.NumberValidator;
+import com.jfoenix.validation.RequiredFieldValidator;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
@@ -15,6 +17,8 @@ import java.io.PrintWriter;
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -24,6 +28,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
 import javafx.stage.Stage;
 
@@ -65,6 +70,8 @@ public class RecAddPatientController extends DashboardUIController implements In
     
      @FXML
     public void submitBtn(ActionEvent event)throws  IOException{
+        
+        if(validateFields()){
     
         try
         {
@@ -87,7 +94,8 @@ public class RecAddPatientController extends DashboardUIController implements In
          gender.setValue(null);
          bloodGroup.setValue(null);
     
-    } 
+    } }
+    
     
     
      // Cancel Button. it's go to sign up as menu  
@@ -102,6 +110,22 @@ public class RecAddPatientController extends DashboardUIController implements In
         window.centerOnScreen();
         
        }
+    
+     // warning message for null validation
+     private boolean validateFields(){
+         
+   if(firstName.getText().isEmpty() | lastName.getText().isEmpty()|  address.getText().isEmpty()|
+       nic.getText().isEmpty()|allergies.getText().isEmpty()|phoneNumber.getText().isEmpty())
+         {
+              Alert alert = new Alert(Alert.AlertType.WARNING);
+             alert.setTitle("Validate Fields");
+             alert.setHeaderText(null);
+             alert.setContentText("Please Enter Into The Fields");
+             alert.showAndWait();
+             return false;
+            }
+        return true;
+         }
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
@@ -110,6 +134,88 @@ public class RecAddPatientController extends DashboardUIController implements In
        
        ObservableList<String>list2=FXCollections.observableArrayList("A+","O+","B+","AB+","A-","O-","B-","AB-");
        bloodGroup.setItems(list2);
+       
+           //show validation status
+        RequiredFieldValidator validator = new RequiredFieldValidator();
+        NumberValidator numvalidator = new  NumberValidator();
+        numvalidator.setMessage("Invalied Number");
+        validator.setMessage("Required Field");
+        
+        
+        phoneNumber.getValidators().add(numvalidator);
+         firstName.getValidators().add(validator);
+        lastName.getValidators().add(validator);
+        address.getValidators().add(validator);
+        nic.getValidators().add(validator);
+        dateOfBirth.getValidators().add(validator);
+        allergies.getValidators().add(validator);
+        phoneNumber.getValidators().add(validator);
+       
+        
+        phoneNumber.focusedProperty().addListener(new ChangeListener <Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+                if(!newValue)
+                {
+                phoneNumber.validate();
+                }}
+        });       
+       
+        firstName.focusedProperty().addListener(new ChangeListener <Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+                if(!newValue)
+                {
+                firstName.validate();
+                }}
+        });
+  
+        lastName.focusedProperty().addListener(new ChangeListener <Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+                if(!newValue)
+                {
+                lastName.validate();
+                }}
+        });
+       
+        address.focusedProperty().addListener(new ChangeListener <Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+                if(!newValue)
+                {
+                address.validate();
+                }}
+        }); 
+       
+        nic.focusedProperty().addListener(new ChangeListener <Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+                if(!newValue)
+                {
+                nic.validate();
+                }}
+        }); 
+       
+        dateOfBirth.focusedProperty().addListener(new ChangeListener <Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+                if(!newValue)
+                {
+                dateOfBirth.validate();
+                }}
+        }); 
+      
+        allergies.focusedProperty().addListener(new ChangeListener <Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+                if(!newValue)
+                {
+                 allergies.validate();
+                }}
+        }); 
+     
+       
         
     }    
     

@@ -22,6 +22,8 @@ import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ResourceBundle;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -97,7 +99,7 @@ public class Sign_Up_as_MOController extends DashboardUIController implements In
         String value1 = moDateOfBirth.getValue().toString();//get date as a String value
         
         
-       if(validateFields()){
+       if(validateFields()&&validatePhoneNum()&&validateEmail()){
         //write details in a text file
        
            MedicalOfficer moObj = new MedicalOfficer();
@@ -116,7 +118,7 @@ public class Sign_Up_as_MOController extends DashboardUIController implements In
            moObj.signup(event);
           
           
-       }  
+         
           //Write credentials file of MO
          try{
          
@@ -139,7 +141,7 @@ public class Sign_Up_as_MOController extends DashboardUIController implements In
          moDateOfJoin.setValue(null);        
          moGender.setValue(null);
          moSpecialityArea.setValue(null);
-      }
+      }}
 
     @FXML
     private void Select(ActionEvent event) {
@@ -172,10 +174,8 @@ public class Sign_Up_as_MOController extends DashboardUIController implements In
      }
      // warning message for null validation
      private boolean validateFields(){
-           
-         
-         if(moFirstName.getText().isEmpty() | moLastName.getText().isEmpty()| moAddress.getText().isEmpty()|
-                 moPhoneNum.getText().isEmpty()| moStaffID.getText().isEmpty()| moStaffEmail.getText().isEmpty())
+           if(moFirstName.getText().isEmpty() | moLastName.getText().isEmpty()| moAddress.getText().isEmpty()|
+              moPhoneNum.getText().isEmpty()| moStaffID.getText().isEmpty()| moStaffEmail.getText().isEmpty())
          {
             Alert alert = new Alert(Alert.AlertType.WARNING);
              alert.setTitle("Validate Fields");
@@ -188,6 +188,38 @@ public class Sign_Up_as_MOController extends DashboardUIController implements In
          }
          return true;
           }
+     //warnig message to invalide Email Address 
+     private boolean validateEmail(){
+         Pattern p=Pattern.compile("[a-zA-Z0-9][a-zA-Z0-9._]*@[a-zA-Z0-9]+([.][a-zA-Z0-9]+)+");
+         Matcher m = p.matcher( moStaffEmail.getText());
+         if(m.find() && m.group().equals( moStaffEmail.getText())){
+           return true;
+         }else{
+              Alert alert = new Alert(Alert.AlertType.WARNING);
+             alert.setTitle("Validate Email");
+             alert.setHeaderText(null);
+             alert.setContentText("Please Enter The Valid Email");
+             alert.showAndWait();
+             return false;
+         }
+       }
+        //warnig message to invalide Phone Number 
+     private boolean validatePhoneNum(){
+         Pattern p=Pattern.compile("[0][0-9]{9}");
+         Matcher m = p.matcher(moPhoneNum.getText());
+         if(m.find() && m.group().equals(moPhoneNum.getText())){
+           return true;
+         }else{
+              Alert alert = new Alert(Alert.AlertType.WARNING);
+             alert.setTitle("Validate Phone Number");
+             alert.setHeaderText(null);
+             alert.setContentText("Please Enter The Valid Phone Number");
+             alert.showAndWait();
+             return false;
+         }
+       }
+     
+     
      
       //opening and saving document file    
     @FXML
@@ -220,13 +252,7 @@ public class Sign_Up_as_MOController extends DashboardUIController implements In
     }
 
    
-    
-   
-            
-            
-      
-     
-    @Override
+ @Override
     public void initialize(URL url, ResourceBundle rb) {
        //add combo box values
        ObservableList<String>list=FXCollections.observableArrayList("Male","Female");
@@ -237,23 +263,30 @@ public class Sign_Up_as_MOController extends DashboardUIController implements In
        //show validation status
         RequiredFieldValidator validator = new RequiredFieldValidator();
         NumberValidator numvalidator = new  NumberValidator();
-        
-        //validation for phone number
-        moPhoneNum.getValidators().add(numvalidator);
         numvalidator.setMessage("Invalied Number");
+         validator.setMessage("Required Field");
         
+    
+        moPhoneNum.getValidators().add(numvalidator);
+        moPhoneNum.getValidators().add(validator);
+        moFirstName.getValidators().add(validator);
+        moLastName.getValidators().add(validator);
+        moAddress.getValidators().add(validator);
+        moDateOfBirth.getValidators().add(validator);
+        moStaffID.getValidators().add(validator);
+        moStaffEmail.getValidators().add(validator);
+        moDateOfJoin.getValidators().add(validator);
+        moGender.getValidators().add(validator);
+        moSpecialityArea.getValidators().add(validator);
+       
         moPhoneNum.focusedProperty().addListener(new ChangeListener <Boolean>() {
             @Override
             public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
                 if(!newValue)
                 {
                 moPhoneNum.validate();
-                } 
-            }
+                } }
         });       
-        //validation for First name
-        moFirstName.getValidators().add(validator);
-        validator.setMessage("Required Field");
         
          moFirstName.focusedProperty().addListener(new ChangeListener <Boolean>() {
             @Override
@@ -261,117 +294,69 @@ public class Sign_Up_as_MOController extends DashboardUIController implements In
                 if(!newValue)
                 {
                  moFirstName.validate();
-                } 
-            }
+                }}
         });
-        //validation field for Last name
-        moLastName.getValidators().add(validator);
-        validator.setMessage("Required Field");
-        
+       
         moLastName.focusedProperty().addListener(new ChangeListener <Boolean>() {
             @Override
             public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
                 if(!newValue)
                 {
                moLastName.validate();
-                } 
-            }
+                }}
         });
-        //validation Field for Address
-        moAddress.getValidators().add(validator);
-        validator.setMessage("Required Field");
-        
+       
         moAddress.focusedProperty().addListener(new ChangeListener <Boolean>() {
             @Override
             public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
                 if(!newValue)
                 {
                 moAddress.validate();
-                } 
-            }
+                }}
         }); 
-        //validation field for phone Number
-        moPhoneNum.getValidators().add(validator);
-        validator.setMessage("Required Field");
-        
-        moPhoneNum.focusedProperty().addListener(new ChangeListener <Boolean>() {
-            @Override
-            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
-                if(!newValue)
-                {
-                moPhoneNum.validate();
-                } 
-            }
-        }); 
-        //validation Field for Date of Birth
-         moDateOfBirth.getValidators().add(validator);
-        validator.setMessage("Required Field");
-        
+      
        moDateOfBirth.focusedProperty().addListener(new ChangeListener <Boolean>() {
             @Override
             public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
                 if(!newValue)
                 {
                  moDateOfBirth.validate();
-                } 
-            }
+                }}
         }); 
-        
-        //validation field for StaffID
-        moStaffID.getValidators().add(validator);
-        validator.setMessage("Required Field");
-        
+       
        moStaffID.focusedProperty().addListener(new ChangeListener <Boolean>() {
             @Override
             public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
                 if(!newValue)
                 {
                 moStaffID.validate();
-                } 
-            }
+                }}
         }); 
-        //validation of Staff Email Address
-         moStaffEmail.getValidators().add(validator);
-        validator.setMessage("Required Field");
-        
+   
         moStaffEmail.focusedProperty().addListener(new ChangeListener <Boolean>() {
             @Override
             public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
                 if(!newValue)
                 {
                 moStaffEmail.validate();
-                } 
-            }
+                }}
         }); 
-      //validation of date of Join
-        moDateOfJoin.getValidators().add(validator);
-        validator.setMessage("Required Field");
-        
-        moDateOfJoin.focusedProperty().addListener(new ChangeListener <Boolean>() {
+       moDateOfJoin.focusedProperty().addListener(new ChangeListener <Boolean>() {
             @Override
             public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
                 if(!newValue)
                 {
                  moDateOfJoin.validate();
-                } 
-            }
+                }}
         });
-       //validation of gender
-      moGender.getValidators().add(validator);
-        validator.setMessage("Required Field");
-        
-      moGender.focusedProperty().addListener(new ChangeListener <Boolean>() {
+    moGender.focusedProperty().addListener(new ChangeListener <Boolean>() {
             @Override
             public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
                 if(!newValue)
                 {
                moGender.validate();
-                } 
-            }
+                }}
         }); 
-        //validation of medical officer's speciality area
-     moSpecialityArea.getValidators().add(validator);
-        validator.setMessage("Required Field");
         
       moSpecialityArea.focusedProperty().addListener(new ChangeListener <Boolean>() {
             @Override
@@ -379,8 +364,7 @@ public class Sign_Up_as_MOController extends DashboardUIController implements In
                 if(!newValue)
                 {
               moSpecialityArea.validate();
-                } 
-            }
+                }}
         }); 
 
 
