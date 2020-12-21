@@ -142,9 +142,9 @@
             </LinearGradient>
          </ripplerFill>
       </JFXButton>
-      <AnchorPane layoutX="218.0" layoutY="203.0" prefHeight="483.0" prefWidth="982.0" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="218.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="203.0">
+      <AnchorPane layoutX="218.0" layoutY="203.0" prefHeight="483.0" prefWidth="982.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="218.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="203.0">
          <children>
-            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="492.0" prefWidth="977.0">
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="492.0" prefWidth="977.0" AnchorPane.bottomAnchor="5.0" AnchorPane.rightAnchor="5.0">
                <children>
                   <TableView fx:id="patientsTable" layoutX="1.0" layoutY="10.0" prefHeight="443.0" prefWidth="984.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                     <columns>

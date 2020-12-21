@@ -5,10 +5,6 @@
  */
 package Model;
 
-/**
- *
- * @author ASUS
- */
 public class Receptionist {
     
 }
