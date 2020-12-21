@@ -4,7 +4,6 @@
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.effect.InnerShadow?>
@@ -17,7 +16,7 @@
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" maxHeight="780.0" maxWidth="1500.0" minHeight="500.0" minWidth="500.0" prefHeight="700.0" prefWidth="1200.0" styleClass="BackgroundPane" stylesheets="@../../Styles.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Control.RecPatientsWindowController">
+<AnchorPane id="AnchorPane" maxHeight="780.0" maxWidth="1500.0" minHeight="500.0" minWidth="500.0" prefHeight="700.0" prefWidth="1200.0" styleClass="BackgroundPane" stylesheets="@../../Styles.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Control.RecPatientsWindowController">
    <children>
       <AnchorPane layoutX="113.0" layoutY="40.0" prefHeight="796.0" prefWidth="218.0" styleClass="SubPane" stylesheets="@../Styles.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -143,29 +142,27 @@
             </LinearGradient>
          </ripplerFill>
       </JFXButton>
-      <AnchorPane layoutX="218.0" layoutY="203.0" prefHeight="583.0" prefWidth="1550.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="218.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="203.0">
+      <AnchorPane layoutX="218.0" layoutY="203.0" prefHeight="483.0" prefWidth="982.0" AnchorPane.bottomAnchor="14.0" AnchorPane.leftAnchor="218.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="203.0">
          <children>
-            <ScrollPane layoutX="2.0" prefHeight="489.0" prefWidth="714.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-               <content>
-                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="898.0" prefWidth="1322.0">
-                     <children>
-                        <TableView layoutX="25.0" layoutY="28.0" prefHeight="430.0" prefWidth="910.0">
-                          <columns>
-                            <TableColumn prefWidth="51.73329162597656" text="ID" />
-                            <TableColumn prefWidth="98.666748046875" text="First Name" />
-                              <TableColumn prefWidth="98.666748046875" text="Last Name" />
-                              <TableColumn prefWidth="98.666748046875" text="Gender" />
-                              <TableColumn prefWidth="98.666748046875" text="DOB" />
-                              <TableColumn prefWidth="98.666748046875" text="Phone Number" />
-                              <TableColumn prefWidth="98.666748046875" text="Address" />
-                              <TableColumn prefWidth="98.666748046875" text="Blood Group" />
-                              <TableColumn prefWidth="98.666748046875" text="Allergies" />
-                          </columns>
-                        </TableView>
-                     </children>
-                  </AnchorPane>
-               </content>
-            </ScrollPane>
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="492.0" prefWidth="977.0">
+               <children>
+                  <TableView fx:id="patientsTable" layoutX="1.0" layoutY="10.0" prefHeight="443.0" prefWidth="984.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                    <columns>
+                      <TableColumn fx:id="idCol" prefWidth="51.73329162597656" text="ID" />
+                      <TableColumn fx:id="fNameCol" prefWidth="98.666748046875" text="First Name" />
+                        <TableColumn fx:id="lNameCol" prefWidth="98.666748046875" text="Last Name" />
+                        <TableColumn fx:id="genderCol" prefWidth="98.666748046875" text="Gender" />
+                        <TableColumn fx:id="dobCol" prefWidth="98.666748046875" text="DOB" />
+                        <TableColumn fx:id="phoneCol" prefWidth="98.666748046875" text="Phone Number" />
+                        <TableColumn fx:id="addressCol" prefWidth="66.4000244140625" text="Address" />
+                        <TableColumn fx:id="bloodGroupCol" prefWidth="76.79998779296875" text="Blood Group" />
+                        <TableColumn fx:id="allergiesCol" prefWidth="101.59991455078125" text="Allergies" />
+                        <TableColumn fx:id="passwordCol" prefWidth="75.0" text="Password" />
+                        <TableColumn fx:id="optionsCol" prefWidth="111.2000732421875" text="Options" />
+                    </columns>
+                  </TableView>
+               </children>
+            </AnchorPane>
          </children>
       </AnchorPane>
       <Label layoutX="226.0" layoutY="46.0" text="MEDUZA HOSPITALS PVT(Ltd.)" textFill="#50506d">
@@ -183,5 +180,6 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
+      <Button layoutX="517.0" layoutY="137.0" mnemonicParsing="false" onAction="#viewPatients" text="Button" />
    </children>
 </AnchorPane>
