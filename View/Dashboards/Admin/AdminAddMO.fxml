@@ -208,12 +208,12 @@
                      </font>
                   </JFXButton>
                   <JFXComboBox fx:id="moSpecialityArea" layoutX="502.0" layoutY="213.0" prefHeight="26.0" prefWidth="142.0" promptText="Speciality Area" />
-                  <JFXButton layoutX="672.0" layoutY="274.0" onAction="#openPhoto" prefHeight="31.0" prefWidth="142.0" styleClass="Special-buttons" stylesheets="@../../Styles.css" text="Add Staff Photograph" textFill="WHITE">
+                  <JFXButton layoutX="672.0" layoutY="275.0" onAction="#openPhoto" prefHeight="31.0" prefWidth="142.0" styleClass="Special-buttons" stylesheets="@../../Styles.css" text="Add Staff Photograph" textFill="WHITE">
                      <font>
                         <Font name="Segoe UI" size="12.0" />
                      </font>
                   </JFXButton>
-                  <JFXButton layoutX="504.0" layoutY="274.0" onAction="#openFile" prefHeight="31.0" prefWidth="142.0" styleClass="Special-buttons" stylesheets="@../../Styles.css" text="Add CV" textFill="WHITE">
+                  <JFXButton layoutX="504.0" layoutY="275.0" onAction="#openFile" prefHeight="31.0" prefWidth="142.0" styleClass="Special-buttons" stylesheets="@../../Styles.css" text="Add CV" textFill="WHITE">
                      <font>
                         <Font name="Segoe UI" size="12.0" />
                      </font>

@@ -85,6 +85,7 @@ public class AdminAddMOController extends DashboardUIController implements Initi
       
         
        if(validateFields()&&validatePhoneNum()&&validateEmail()){
+           
         //write details in a text file
        
            MedicalOfficer moObj = new MedicalOfficer();
@@ -104,7 +105,7 @@ public class AdminAddMOController extends DashboardUIController implements Initi
           
           
          
-          //Write credentials file of MO
+         //Write credentials file of MO
          try{
          
          FileWriter fw = new FileWriter("user data\\medical officer\\credentials\\medicalofficerlogin.txt",true);
@@ -113,7 +114,6 @@ public class AdminAddMOController extends DashboardUIController implements Initi
          pw.write(moStaffID.getText()+","+moStaffID.getText()+"\n");
          pw.close();
          }catch(FileNotFoundException  e){}
-         
          
          //setiing values for declared variables
          moFirstName.setText(null);
@@ -133,8 +133,7 @@ public class AdminAddMOController extends DashboardUIController implements Initi
         
         String value = moGender.getValue().toString();//get combo gender value as String value
         String value1 = moSpecialityArea.getValue().toString();//get combo specialityArea value as String value
-        
-              
+             
    }
     
     //to add a photograph for staff photograph
