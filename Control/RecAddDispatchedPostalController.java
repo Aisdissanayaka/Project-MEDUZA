@@ -74,7 +74,7 @@ public class RecAddDispatchedPostalController extends DashboardUIController impl
     //Add Dispatched Postal Contoller - Submit Button Action Method    
     @FXML  
       private void submitBtn(ActionEvent event) throws FileNotFoundException {
-            String value = disDate.getValue().toString();
+           
             
             if(validateFields()){
       Postal disobj = new Postal();
@@ -99,7 +99,7 @@ public class RecAddDispatchedPostalController extends DashboardUIController impl
       // warning message for null validation
      private boolean validateFields(){
         if( disName.getText().isEmpty() | disReff.getText().isEmpty()|disTo.getText().isEmpty()|disNote.getText().isEmpty()|  
-                disDate.getEditor().getText().isEmpty()|disFrom.getText().isEmpty())
+               disDate.getEditor().getText().isEmpty()|disFrom.getText().isEmpty())
          {
               Alert alert = new Alert(Alert.AlertType.WARNING);
               alert.setTitle("Validate Fields");
