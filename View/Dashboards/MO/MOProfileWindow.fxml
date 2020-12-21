@@ -212,7 +212,7 @@
             <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
          </padding>
       </Label>
-      <JFXButton layoutX="324.0" layoutY="142.0" prefHeight="25.0" prefWidth="62.0" styleClass="Special-buttons" text="View" textFill="#b9d5fd">
+      <JFXButton fx:id="view" layoutX="324.0" layoutY="142.0" onAction="#view" prefHeight="25.0" prefWidth="62.0" styleClass="Special-buttons" text="View" textFill="#b9d5fd">
          <font>
             <Font size="15.0" />
          </font>
