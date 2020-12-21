@@ -4,7 +4,6 @@
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.effect.DropShadow?>
@@ -18,7 +17,7 @@
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" maxHeight="780.0" maxWidth="1500.0" minHeight="500.0" minWidth="500.0" prefHeight="700.0" prefWidth="1200.0" styleClass="BackgroundPane" stylesheets="@../../Styles.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Control.RecPostalWindowController">
+<AnchorPane id="AnchorPane" fx:id="ap" maxHeight="780.0" maxWidth="1500.0" minHeight="500.0" minWidth="500.0" prefHeight="700.0" prefWidth="1200.0" styleClass="BackgroundPane" stylesheets="@../../Styles.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Control.RecPostalWindowController">
    <children>
       <AnchorPane layoutX="113.0" layoutY="40.0" prefHeight="796.0" prefWidth="218.0" styleClass="SubPane" stylesheets="@../Styles.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -141,39 +140,35 @@
       </JFXButton>
       <AnchorPane layoutX="218.0" layoutY="203.0" prefHeight="583.0" prefWidth="1550.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="218.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="203.0">
          <children>
-            <ScrollPane layoutX="2.0" prefHeight="489.0" prefWidth="714.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-               <content>
-                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="476.0" prefWidth="970.0">
-                     <children>
-                        <JFXButton layoutX="-1.0" layoutY="1.0" prefHeight="39.0" prefWidth="120.0" styleClass="Side-Button" stylesheets="@../../Styles.css" text="Received" textFill="#b3d1f4">
-                           <font>
-                              <Font name="Segoe UI Italic" size="19.0" />
-                           </font>
-                           <effect>
-                              <DropShadow color="#ff2727" height="121.09" radius="58.2575" spread="0.5" width="113.94" />
-                           </effect>
-                        </JFXButton>
-                        <JFXButton layoutX="121.0" layoutY="1.0" onAction="#DispatchedpostalBtn" prefHeight="39.0" prefWidth="130.0" styleClass="Side-Button-select" stylesheets="@../../Styles.css" text="Dispatched" textFill="#b3d1f4">
-                           <font>
-                              <Font name="Segoe UI Italic" size="19.0" />
-                           </font>
-                        </JFXButton>
-                        <TableView fx:id="receivedPostTable" layoutX="-1.0" layoutY="47.0" prefHeight="430.0" prefWidth="957.0">
-                          <columns>
-                            <TableColumn fx:id="refCol" prefWidth="93.33329772949219" text="Ref No" />
-                            <TableColumn fx:id="fromCol" prefWidth="124.26669311523438" text="From" />
-                              <TableColumn fx:id="fromAddressCol" prefWidth="127.99996948242188" text="From Address" />
-                              <TableColumn fx:id="noteCol" prefWidth="96.26669311523438" text="Note" />
-                              <TableColumn fx:id="dateCol" prefWidth="117.33343505859375" text="Date" />
-                              <TableColumn fx:id="toCol" prefWidth="129.066650390625" text="To" />
-                              <TableColumn fx:id="docCol" prefWidth="119.46661376953125" text="Document" />
-                              <TableColumn fx:id="optionsCol" prefWidth="126.6666259765625" text="Options" />
-                          </columns>
-                        </TableView>
-                     </children>
-                  </AnchorPane>
-               </content>
-            </ScrollPane>
+            <AnchorPane layoutX="6.0" layoutY="-1.0" minHeight="0.0" minWidth="0.0" prefHeight="497.0" prefWidth="976.0" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="6.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="-1.0">
+               <children>
+                  <JFXButton layoutX="-1.0" layoutY="1.0" prefHeight="39.0" prefWidth="120.0" styleClass="Side-Button-select" stylesheets="@../../Styles.css" text="Received" textFill="#b3d1f4">
+                     <font>
+                        <Font name="Segoe UI Italic" size="19.0" />
+                     </font>
+                     <effect>
+                        <DropShadow color="#ff2727" height="121.09" radius="58.2575" spread="0.5" width="113.94" />
+                     </effect>
+                  </JFXButton>
+                  <JFXButton layoutX="121.0" layoutY="1.0" onAction="#DispatchedpostalBtn" prefHeight="39.0" prefWidth="130.0" styleClass="Side-Button" stylesheets="@../../Styles.css" text="Dispatched" textFill="#b3d1f4">
+                     <font>
+                        <Font name="Segoe UI Italic" size="19.0" />
+                     </font>
+                  </JFXButton>
+                  <TableView fx:id="receivedPostTable" layoutX="-1.0" layoutY="43.0" prefHeight="427.0" prefWidth="958.0" AnchorPane.bottomAnchor="6.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="6.0" AnchorPane.topAnchor="43.0">
+                    <columns>
+                      <TableColumn fx:id="refCol" prefWidth="93.33329772949219" text="Ref No" />
+                      <TableColumn fx:id="fromCol" prefWidth="124.26669311523438" text="From" />
+                        <TableColumn fx:id="fromAddressCol" prefWidth="127.99996948242188" text="From Address" />
+                        <TableColumn fx:id="noteCol" prefWidth="96.26669311523438" text="Note" />
+                        <TableColumn fx:id="dateCol" prefWidth="117.33343505859375" text="Date" />
+                        <TableColumn fx:id="toCol" prefWidth="129.066650390625" text="To" />
+                        <TableColumn fx:id="docCol" prefWidth="119.46661376953125" text="Document" />
+                        <TableColumn fx:id="optionsCol" prefWidth="126.6666259765625" text="Options" />
+                    </columns>
+                  </TableView>
+               </children>
+            </AnchorPane>
          </children>
       </AnchorPane>
       <Label layoutX="226.0" layoutY="46.0" text="MEDUZA HOSPITALS PVT(Ltd.)" textFill="#50506d">
@@ -204,7 +199,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <Button layoutX="1114.0" layoutY="20.0" minHeight="-Infinity" mnemonicParsing="false" prefHeight="4.0" prefWidth="45.0" style="-fx-background-radius: 50;" styleClass="Side-Button" stylesheets="@../../Styles.css">
+      <Button layoutX="1114.0" layoutY="20.0" minHeight="-Infinity" mnemonicParsing="false" onAction="#minimizeButtonAction" prefHeight="4.0" prefWidth="45.0" style="-fx-background-radius: 50;" styleClass="Side-Button" stylesheets="@../../Styles.css">
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor>

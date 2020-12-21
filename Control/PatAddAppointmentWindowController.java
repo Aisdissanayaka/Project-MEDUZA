@@ -66,12 +66,12 @@ public class PatAddAppointmentWindowController extends DashboardUIController imp
         appObj.setUserID(NICTxt.getText());
         appObj.setSpecArea(specAreaCombo.getValue());
         appObj.addAppointmentRec(event);
-        nameTxt.setText(null);
+        
         appDate.setValue(null);
         appTime.setValue(null);
         specAreaCombo.setValue(null);
         SymptomsTxt.setText(null);
-        NICTxt.setText(null);
+        
         
         
      }}

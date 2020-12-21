@@ -24,6 +24,7 @@ import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
@@ -93,7 +94,9 @@ public class PatientProfileWindowController extends DashboardUIController implem
              dateOfBirthTxt.getText()+ "\n"+ genderBox.getValue() +"\n" +phoneNumTxt.getText() +"\n"+ allergiesTxt.getText());
              printer.close();
         }catch(FileNotFoundException e){}
-        
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setContentText("Your profile was updated..!");
+        alert.show();
         
     }
     

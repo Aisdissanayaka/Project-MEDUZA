@@ -107,8 +107,6 @@ public class MOProfileWindowController extends DashboardUIController implements 
     }
 });}
     
- 
-
     
   // update button. It's update medical officer data
     @FXML

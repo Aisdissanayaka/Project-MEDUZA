@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXProgressBar?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Control.PreloaderController">
+   <children>
+      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="700.0" style="-fx-background-color: #ffffff; -fx-background-insets: 5; -fx-border-color: #525252;">
+         <children>
+            <Label layoutX="28.0" layoutY="356.0" text="Created By Ashan, Nikini, Chamika, Niramani, Maduka for Kelvin Zero. Copyright © Kelvin Zero - 2020" textFill="#3aa5bf">
+               <font>
+                  <Font name="Bookman Old Style Italic" size="10.0" />
+               </font>
+            </Label>
+            <Label fx:id="progress" layoutX="631.0" layoutY="340.0" prefHeight="58.0" prefWidth="69.0" text="Loading" textFill="#3aa5bf">
+               <font>
+                  <Font size="14.0" />
+               </font></Label>
+            <JFXProgressBar fx:id="progressBar" layoutX="28.0" layoutY="373.0" prefHeight="13.0" prefWidth="592.0" progress="0.0" style="-fx-background-color: #356fff;" />
+            <ImageView fitHeight="341.0" fitWidth="563.0" layoutX="69.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@images/loading1.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

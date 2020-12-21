@@ -17,6 +17,7 @@ import static Control.UserLoginController.staticGender;
 import static Control.UserLoginController.staticJoinDate;
 import static Control.UserLoginController.staticLName;
 import static Control.UserLoginController.staticPhoneNo;
+import static Control.UserLoginController.staticSpecilatyArea;
 import static Control.UserLoginController.staticStaffID;
 import static Control.UserLoginController.staticUserID;
 import static Control.UserLoginController.staticUserName;
@@ -37,6 +38,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
@@ -84,11 +86,22 @@ public class DashboardUIController implements Initializable {
     
     @FXML
     private JFXTextArea allergiesTxt;
+ 
     
     @FXML
     public Label nameLbl;
     @FXML
     public Circle profilePhoto;
+
+ @FXML
+    private AnchorPane ap;
+    @FXML
+    private JFXTextField nameTxt;
+    
+
+    @FXML
+    private ComboBox specialityAreaBox;
+
     
     public void showInformation(String username){
         nameLbl.setText(username);
@@ -131,7 +144,26 @@ public class DashboardUIController implements Initializable {
         allergiesTxt.setText(allergies);
     }
     
+    // create a methode for medical officer set value in profile update window
+    public void showInformation(String username,String lastName, String address, String phone, String DOB, String staffID ,String email, String joinedDate, String gender,String specialityArea ){
+        nameLbl.setText(username);
+        firstNameTxt.setText(username);
+        lastNameTxt.setText(lastName);
+        genderBox.setValue(gender);
+        dateOfBirthTxt.setText(DOB);
+        phoneNumTxt.setText(phone);
+        addressTxt.setText(address);
+        staffEmailTxt.setText(email);
+        staffIDTxt.setText(staffID);
+        joinedDateTxt.setText(joinedDate);
+        specialityAreaBox.setValue(specialityArea);
+    }
     
+    public void showInformation(String username,String userid){
+        nameTxt.setText(username);
+        NICTxt.setText(userid);
+        
+    }
      
     
       
@@ -140,6 +172,7 @@ public class DashboardUIController implements Initializable {
     public void closeBtn(ActionEvent event) {
      System.exit(0);
     }
+
     
     //Signout button - (Side Vbox)
     @FXML
@@ -154,6 +187,13 @@ public class DashboardUIController implements Initializable {
         window.centerOnScreen();
         
        }
+
+ //minimize button
+     @FXML
+    private void minimizeButtonAction(ActionEvent event) {
+        Stage stage =(Stage)ap.getScene().getWindow();
+        stage.setIconified(true);
+    }
     
     //Profile button - (Side Vbox)
     @FXML
@@ -374,6 +414,8 @@ public class DashboardUIController implements Initializable {
     FXMLLoader loader =new FXMLLoader(getClass().getResource("/View/Dashboards/MO/MOProfileWindow.fxml"));
     Parent root = loader.load();
     DashboardUIController welcome =loader.getController();
+    welcome.showInformation(staticUserName, staticLName, staticAddress, staticPhoneNo, 
+            staticDOB, staticStaffID, staticEmail, staticJoinDate, staticGender, staticSpecilatyArea);
     welcome.showInformation(staticUserName);
     welcome.showProfilePicture(profilePicture);
     
@@ -459,9 +501,9 @@ public class DashboardUIController implements Initializable {
     public void patChangePasswordBtn(ActionEvent event) throws IOException {
  
         
-    FXMLLoader loader =new FXMLLoader(getClass().getResource("/View/Dashboards/MO/MoChangePassword.fxml"));
+    FXMLLoader loader =new FXMLLoader(getClass().getResource("/View/Dashboards/Patient/PatChangePassword.fxml"));
     Parent root = loader.load();
-    ;
+    
     
     
     Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
@@ -475,11 +517,9 @@ public class DashboardUIController implements Initializable {
     public void MOChangePasswordBtn(ActionEvent event) throws IOException {
      
         
-    FXMLLoader loader =new FXMLLoader(getClass().getResource("/View/Dashboards/Patient/PatChangePassword.fxml"));
+    FXMLLoader loader =new FXMLLoader(getClass().getResource("/View/Dashboards/MO/MoChangePassword.fxml"));
     Parent root = loader.load();
-    DashboardUIController welcome =loader.getController();
-    welcome.showInformation(staticUserName);
-    welcome.showProfilePicture(profilePicture);
+    
     Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
     window.setScene(new Scene(root));
     window.show();
