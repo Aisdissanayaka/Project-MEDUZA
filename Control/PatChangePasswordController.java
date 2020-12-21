@@ -82,8 +82,19 @@ public class PatChangePasswordController implements Initializable {
                user o =new user();
                o.changePassword(filepath, currentPassword.getText(),newPassword1.getText(), newPassword2.getText(), tempFile, warningMsg);
                Alert alert = new Alert(Alert.AlertType.INFORMATION);
-               alert.setContentText("Password change successfully !");
+               alert.setContentText("Password change successfully..!");
                alert.show();
+               FXMLLoader loader =new FXMLLoader(getClass().getResource("/View/UserLoginPatient.fxml"));
+               //Scene profileViewScene = new Scene(profileWindow);
+               Parent root = loader.load();
+               
+               //This Line gets the Stage Information
+               Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+               window.setScene(new Scene(root));
+               window.show();
+               window.centerOnScreen();
+               
+               
             }else{
                 warningMsg.setText("You must enter the same password twice in oder to confirm it.");
             }
