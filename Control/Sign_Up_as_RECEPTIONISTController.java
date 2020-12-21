@@ -105,8 +105,6 @@ public class Sign_Up_as_RECEPTIONISTController extends DashboardUIController imp
     //write details in the text file
     @FXML
     private void signupbtn(ActionEvent event) {
-        String value = recDateOfJoin.getValue().toString();
-        String value1 = recDateOfBirth.getValue().toString();
        
         if(validateFields() &&validatePhoneNum()&& validateEmail()){
         
@@ -160,7 +158,8 @@ public class Sign_Up_as_RECEPTIONISTController extends DashboardUIController imp
      private boolean validateFields(){
          
    if(recFirstNametxt.getText().isEmpty() | recLastNametxt.getText().isEmpty()| recAddresstxt.getText().isEmpty()|
-       recPhoneNumtxt.getText().isEmpty()|recStaffIDtxt.getText().isEmpty()|recStaffEmailtxt.getText().isEmpty())
+       recPhoneNumtxt.getText().isEmpty()| recDateOfBirth.getEditor().getText().isEmpty()|recStaffIDtxt.getText().isEmpty()|recStaffEmailtxt.getText().isEmpty()|
+           recDateOfJoin.getEditor().getText().isEmpty())
          {
               Alert alert = new Alert(AlertType.WARNING);
              alert.setTitle("Validate Fields");

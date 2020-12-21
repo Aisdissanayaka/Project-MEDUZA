@@ -95,8 +95,8 @@ public class Sign_Up_as_MOController extends DashboardUIController implements In
     
     @FXML
     private void signupbtn(ActionEvent event) throws  IOException {
-        String value = moDateOfJoin.getValue().toString();//get date as a String value
-        String value1 = moDateOfBirth.getValue().toString();//get date as a String value
+     //   String value = moDateOfJoin.getValue().toString();//get date as a String value
+      //  String value1 = moDateOfBirth.getValue().toString();//get date as a String value
         
         
        if(validateFields()&&validatePhoneNum()&&validateEmail()){
@@ -175,7 +175,7 @@ public class Sign_Up_as_MOController extends DashboardUIController implements In
      // warning message for null validation
      private boolean validateFields(){
            if(moFirstName.getText().isEmpty() | moLastName.getText().isEmpty()| moAddress.getText().isEmpty()|
-              moPhoneNum.getText().isEmpty()| moStaffID.getText().isEmpty()| moStaffEmail.getText().isEmpty())
+              moPhoneNum.getText().isEmpty()| moDateOfBirth.getEditor().getText().isEmpty()| moStaffID.getText().isEmpty()| moStaffEmail.getText().isEmpty()| moDateOfJoin.getEditor().getText().isEmpty())
          {
             Alert alert = new Alert(Alert.AlertType.WARNING);
              alert.setTitle("Validate Fields");
