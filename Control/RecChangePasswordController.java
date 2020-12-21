@@ -7,6 +7,14 @@ package Control;
 
 import static Control.UserLoginController.primaryKey1;
 import static Control.UserLoginController.profilePicture;
+import static Control.UserLoginController.staticAddress;
+import static Control.UserLoginController.staticDOB;
+import static Control.UserLoginController.staticEmail;
+import static Control.UserLoginController.staticGender;
+import static Control.UserLoginController.staticJoinDate;
+import static Control.UserLoginController.staticLName;
+import static Control.UserLoginController.staticPhoneNo;
+import static Control.UserLoginController.staticStaffID;
 import static Control.UserLoginController.staticUserName;
 import Model.user;
 import com.jfoenix.controls.JFXPasswordField;
@@ -56,7 +64,8 @@ public class RecChangePasswordController  extends DashboardUIController   implem
     DashboardUIController welcome =loader.getController();
     welcome.showInformation(staticUserName);
     welcome.showProfilePicture(profilePicture);
-
+    welcome.showInformation(staticUserName,staticLName, staticGender, 
+    staticDOB, staticPhoneNo, staticAddress,staticStaffID, staticEmail,staticJoinDate);
 
     Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
     window.setScene(new Scene(root));
@@ -79,8 +88,18 @@ public class RecChangePasswordController  extends DashboardUIController   implem
                user o =new user();
                o.changePassword(filepath, currentPassword.getText(),newPassword1.getText(), newPassword2.getText(), tempFile, warningMsg);
                Alert alert = new Alert(Alert.AlertType.INFORMATION);
-               alert.setContentText("Password change successfully !");
+               alert.setContentText("Password change successfully..!");
                alert.show();
+               FXMLLoader loader =new FXMLLoader(getClass().getResource("/View/UserLoginReceptionist.fxml"));
+               //Scene profileViewScene = new Scene(profileWindow);
+               Parent root = loader.load();
+               
+               //This Line gets the Stage Information
+               Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+               window.setScene(new Scene(root));
+               window.show();
+               window.centerOnScreen();
+
             }else{
                 warningMsg.setText("You must enter the same passwor twice in oder to confirm it.");
             }
