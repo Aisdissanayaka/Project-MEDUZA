@@ -11,6 +11,7 @@ import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
 import com.jfoenix.controls.JFXTimePicker;
+import com.jfoenix.validation.RequiredFieldValidator;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -18,11 +19,14 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
 
 
@@ -45,9 +49,7 @@ public class PatAddAppointmentWindowController extends DashboardUIController imp
     @FXML
     private JFXTextArea SymptomsTxt;
 
-   
-    
-     @FXML
+    @FXML
     private JFXTextField NICTxt;
     
     
@@ -55,6 +57,7 @@ public class PatAddAppointmentWindowController extends DashboardUIController imp
       //Adding new appointment - Submit Button Action Methode    
       @FXML  
       public void submitBtn(ActionEvent event) throws FileNotFoundException, IOException {
+          if(validateFields()){
         Appointment appObj = new Appointment();
         appObj.setName(nameTxt.getText());
         appObj.setAppDate(appDate.getValue().toString());
@@ -69,7 +72,24 @@ public class PatAddAppointmentWindowController extends DashboardUIController imp
         specAreaCombo.setValue(null);
         SymptomsTxt.setText(null);
         NICTxt.setText(null);
-     }
+        
+        
+     }}
+       // warning message for null validation
+     private boolean validateFields(){
+         
+          if(nameTxt.getText().isEmpty() |SymptomsTxt.getText().isEmpty()| NICTxt.getText().isEmpty())
+         {
+              Alert alert = new Alert(Alert.AlertType.WARNING);
+             alert.setTitle("Validate Fields");
+             alert.setHeaderText(null);
+             alert.setContentText("Please Enter Into The Fields");
+             alert.showAndWait();
+             
+          return false;
+            }
+          return true;
+       }
     
     
     
@@ -79,6 +99,66 @@ public class PatAddAppointmentWindowController extends DashboardUIController imp
       //Combo-box data foe the Medical officer speciality     
        ObservableList<String>list1=FXCollections.observableArrayList("A","B","C","D");
         specAreaCombo.setItems(list1);
+        
+          //show validation status
+        RequiredFieldValidator validator = new RequiredFieldValidator();
+         validator.setMessage("Required Field");
+        
+        
+       
+        //validation for user ID
+        nameTxt.getValidators().add(validator);
+        SymptomsTxt.getValidators().add(validator);
+        appDate.getValidators().add(validator);
+        appTime.getValidators().add(validator);
+        NICTxt.getValidators().add(validator);
+       
+        
+      nameTxt.focusedProperty().addListener(new ChangeListener <Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+                if(!newValue)
+                {
+                nameTxt.validate();
+                }}
+        });
+          
+      SymptomsTxt.focusedProperty().addListener(new ChangeListener <Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+                if(!newValue)
+                {
+               SymptomsTxt.validate();
+                }}
+        });
+      
+        appDate.focusedProperty().addListener(new ChangeListener <Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+                if(!newValue)
+                {
+                appDate.validate();
+                }}
+        }); 
+       
+        appTime.focusedProperty().addListener(new ChangeListener <Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+                if(!newValue)
+                {
+                appTime.validate();
+                }}
+        }); 
+      
+        NICTxt.focusedProperty().addListener(new ChangeListener <Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+                if(!newValue)
+                {
+                 NICTxt.validate();
+                }}
+        }); 
+        
         
         
     }    

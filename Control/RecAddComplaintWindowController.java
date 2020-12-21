@@ -21,6 +21,8 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -80,7 +82,7 @@ public class RecAddComplaintWindowController extends DashboardUIController imple
     //submit button. It's writes complaints data to file
     @FXML
     public void submitBtn(ActionEvent event)throws  IOException{
-        if(validateFields()){
+        if(validateFields()&& validatePhoneNum()){
         
         Complaint recCom=new Complaint();
         recCom.setDate(date.now().toString());
@@ -119,6 +121,22 @@ public class RecAddComplaintWindowController extends DashboardUIController imple
           return false;
             }
           return true;
+       }
+     
+       //warnig message to invalide Phone Number 
+     private boolean validatePhoneNum(){
+         Pattern p=Pattern.compile("[0][0-9]{9}");
+         Matcher m = p.matcher( phoneNumTxt.getText());
+         if(m.find() && m.group().equals( phoneNumTxt.getText())){
+           return true;
+         }else{
+              Alert alert = new Alert(Alert.AlertType.WARNING);
+             alert.setTitle("Validate Phone Number");
+             alert.setHeaderText(null);
+             alert.setContentText("Please Enter The Valid Phone Number");
+             alert.showAndWait();
+             return false;
+         }
        }
     
     //opening and saving document file    
@@ -163,11 +181,16 @@ public class RecAddComplaintWindowController extends DashboardUIController imple
        //show validation status
         RequiredFieldValidator validator = new RequiredFieldValidator();
         NumberValidator numvalidator = new  NumberValidator();
-        
-       
-        //validation for complaint by
-       nameTxt.getValidators().add(validator);
         validator.setMessage("Required Field");
+         numvalidator.setMessage("Invalied Number");
+     
+       nameTxt.getValidators().add(validator);
+       descriptionTxt.getValidators().add(validator);
+       noteTxt.getValidators().add(validator);
+       phoneNumTxt.getValidators().add(validator);
+       phoneNumTxt.getValidators().add(numvalidator);
+       actionTakenTxt.getValidators().add(validator);
+        
         
        nameTxt.focusedProperty().addListener(new ChangeListener <Boolean>() {
             @Override
@@ -175,25 +198,17 @@ public class RecAddComplaintWindowController extends DashboardUIController imple
                 if(!newValue)
                 {
                 nameTxt.validate();
-                } 
-            }
+                }}
         });
-        //validation field for description about complain
-        descriptionTxt.getValidators().add(validator);
-        validator.setMessage("Required Field");
-        
+       
        descriptionTxt.focusedProperty().addListener(new ChangeListener <Boolean>() {
             @Override
             public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
                 if(!newValue)
                 {
                descriptionTxt.validate();
-                } 
-            }
+                }}
         });
-        //validation Field for notes
-        noteTxt.getValidators().add(validator);
-        validator.setMessage("Required Field");
         
         noteTxt.focusedProperty().addListener(new ChangeListener <Boolean>() {
             @Override
@@ -201,48 +216,27 @@ public class RecAddComplaintWindowController extends DashboardUIController imple
                 if(!newValue)
                 {
                noteTxt.validate();
-                } 
-            }
+                }}
         }); 
-        //validation field for staffID
-       phoneNumTxt.getValidators().add(validator);
-        validator.setMessage("Required Field");
-        
+       
        phoneNumTxt.focusedProperty().addListener(new ChangeListener <Boolean>() {
             @Override
             public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
                 if(!newValue)
                 {
                 phoneNumTxt.validate();
-                } 
-            }
+                }}
         }); 
-        //validation Field for action taken
-       actionTakenTxt.getValidators().add(validator);
-        validator.setMessage("Required Field");
-        
+       
         actionTakenTxt.focusedProperty().addListener(new ChangeListener <Boolean>() {
             @Override
             public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
                 if(!newValue)
                 {
                 actionTakenTxt.validate();
-                } 
-            }
+                }}
         }); 
-         //validation for phone number
-        phoneNumTxt.getValidators().add(numvalidator);
-        numvalidator.setMessage("Invalied Number");
-        
-        phoneNumTxt.focusedProperty().addListener(new ChangeListener <Boolean>() {
-            @Override
-            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
-                if(!newValue)
-                {
-                phoneNumTxt.validate();
-                } 
-            }
-        });       
+       
     }    
     
 }

@@ -96,8 +96,8 @@ public class RecAddReceivedPostController extends DashboardUIController implemen
       }}
      // warning message for null validation
      private boolean validateFields(){
-        if(   postName.getText().isEmpty() | postNote.getText().isEmpty()|
-                postReff.getText().isEmpty()|postFrom.getText().isEmpty()|  postDate.getEditor().getText().isEmpty()|postTo.getText().isEmpty())
+        if(   postName.getText().isEmpty() | postNote.getText().isEmpty()|postReff.getText().isEmpty()|postFrom.getText().isEmpty()|
+                postDate.getEditor().getText().isEmpty()|postTo.getText().isEmpty())
          {
               Alert alert = new Alert(Alert.AlertType.WARNING);
              alert.setTitle("Validate Fields");
@@ -105,12 +105,9 @@ public class RecAddReceivedPostController extends DashboardUIController implemen
              alert.setContentText("Please Enter Into The Fields");
              alert.showAndWait();
             return false;
-            
-         }
-         
-         return true;
-         
           }
+        return true;
+        }
       
         //opening and saving document file    
     @FXML
@@ -146,13 +143,15 @@ public class RecAddReceivedPostController extends DashboardUIController implemen
     public void initialize(URL url, ResourceBundle rb) {
         //show validation status
         RequiredFieldValidator validator = new RequiredFieldValidator();
-        NumberValidator numvalidator = new  NumberValidator();
-        
-        
-       
-        //validation for Address
-       postName.getValidators().add(validator);
         validator.setMessage("Required Field");
+        
+       postName.getValidators().add(validator);
+       postNote.getValidators().add(validator);
+       postReff.getValidators().add(validator);
+       postFrom.getValidators().add(validator);
+       postTo.getValidators().add(validator);
+       postDate.getValidators().add(validator);
+        
         
        postName.focusedProperty().addListener(new ChangeListener <Boolean>() {
             @Override
@@ -160,73 +159,52 @@ public class RecAddReceivedPostController extends DashboardUIController implemen
                 if(!newValue)
                 {
                 postName.validate();
-                } 
-            }
+                }}
         });
-        //validation field for Reffereence Number
-        postNote.getValidators().add(validator);
-        validator.setMessage("Required Field");
-        
+       
         postNote.focusedProperty().addListener(new ChangeListener <Boolean>() {
             @Override
             public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
                 if(!newValue)
                 {
                 postNote.validate();
-                } 
-            }
+                }}
         });
-        //validation Field for To
-       postReff.getValidators().add(validator);
-        validator.setMessage("Required Field");
-        
+         
        postReff.focusedProperty().addListener(new ChangeListener <Boolean>() {
             @Override
             public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
                 if(!newValue)
                 {
                 postReff.validate();
-                } 
-            }
+                }}
         }); 
-        //validation field for Note
-       postFrom.getValidators().add(validator);
-        validator.setMessage("Required Field");
-        
+       
         postFrom.focusedProperty().addListener(new ChangeListener <Boolean>() {
             @Override
             public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
                 if(!newValue)
                 {
                 postFrom.validate();
-                } 
-            }
+                }}
         }); 
-        //validation field for Date
-       postTo.getValidators().add(validator);
-        validator.setMessage("Required Field");
-        
+      
        postTo.focusedProperty().addListener(new ChangeListener <Boolean>() {
             @Override
             public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
                 if(!newValue)
                 {
                postTo.validate();
-                } 
-            }
+                }}
         }); 
-        //validation field for From
-        postDate.getValidators().add(validator);
-        validator.setMessage("Required Field");
-        
+       
          postDate.focusedProperty().addListener(new ChangeListener <Boolean>() {
             @Override
             public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
                 if(!newValue)
                 {
                  postDate.validate();
-                } 
-            }
+                }}
         }); 
     }    
     

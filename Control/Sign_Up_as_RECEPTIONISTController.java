@@ -10,6 +10,7 @@ import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXTextField;
 import com.jfoenix.validation.NumberValidator;
+import com.jfoenix.validation.RegexValidator;
 import com.jfoenix.validation.RequiredFieldValidator;
 import java.awt.image.BufferedImage;
 import java.io.*;
@@ -22,6 +23,8 @@ import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -39,6 +42,7 @@ import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javax.imageio.ImageIO;
@@ -50,7 +54,7 @@ public class Sign_Up_as_RECEPTIONISTController extends DashboardUIController imp
     FileChooser fileChooser = new FileChooser();
     Stage primaryStage = new Stage();
     
-    ObservableList list1 =FXCollections.observableArrayList();
+    ObservableList list1 =FXCollections.observableArrayList();//create gender drop down array list
 
     @FXML
     private JFXTextField recFirstNametxt;
@@ -60,8 +64,6 @@ public class Sign_Up_as_RECEPTIONISTController extends DashboardUIController imp
     private JFXTextField recAddresstxt;
     @FXML
     private JFXTextField recPhoneNumtxt;
-    @FXML
-    private JFXTextField recNICtxt;
     @FXML
     private JFXTextField recStaffIDtxt;
     @FXML
@@ -82,6 +84,8 @@ public class Sign_Up_as_RECEPTIONISTController extends DashboardUIController imp
     private JFXButton btnSave;
     @FXML
     private JFXButton btnLoad;
+    @FXML
+    private AnchorPane ap;
     
      
 
@@ -104,7 +108,7 @@ public class Sign_Up_as_RECEPTIONISTController extends DashboardUIController imp
         String value = recDateOfJoin.getValue().toString();
         String value1 = recDateOfBirth.getValue().toString();
        
-        if(validateFields()){
+        if(validateFields() &&validatePhoneNum()&& validateEmail()){
         
          try
        {
@@ -155,27 +159,49 @@ public class Sign_Up_as_RECEPTIONISTController extends DashboardUIController imp
      // warning message for null validation
      private boolean validateFields(){
          
-         
-         
-          
-         if(recFirstNametxt.getText().isEmpty() | recLastNametxt.getText().isEmpty()|
-                 recAddresstxt.getText().isEmpty()|recPhoneNumtxt.getText().isEmpty()| recStaffIDtxt.getText().isEmpty()|recStaffEmailtxt.getText().isEmpty())
+   if(recFirstNametxt.getText().isEmpty() | recLastNametxt.getText().isEmpty()| recAddresstxt.getText().isEmpty()|
+       recPhoneNumtxt.getText().isEmpty()|recStaffIDtxt.getText().isEmpty()|recStaffEmailtxt.getText().isEmpty())
          {
               Alert alert = new Alert(AlertType.WARNING);
              alert.setTitle("Validate Fields");
              alert.setHeaderText(null);
              alert.setContentText("Please Enter Into The Fields");
              alert.showAndWait();
-             
-            
-             
              return false;
-            
+            }
+        return true;
          }
-         
-         return true;
-         
-          }
+    //warnig message to invalide Email Address 
+     private boolean validateEmail(){
+         Pattern p=Pattern.compile("[a-zA-Z0-9][a-zA-Z0-9._]*@[a-zA-Z0-9]+([.][a-zA-Z0-9]+)+");
+         Matcher m = p.matcher(recStaffEmailtxt.getText());
+         if(m.find() && m.group().equals(recStaffEmailtxt.getText())){
+           return true;
+         }else{
+              Alert alert = new Alert(AlertType.WARNING);
+             alert.setTitle("Validate Email");
+             alert.setHeaderText(null);
+             alert.setContentText("Please Enter The Valid Email");
+             alert.showAndWait();
+             return false;
+         }
+       }
+      //warnig message to invalide Phone Number 
+     private boolean validatePhoneNum(){
+         Pattern p=Pattern.compile("[0][0-9]{9}");
+         Matcher m = p.matcher(recPhoneNumtxt.getText());
+         if(m.find() && m.group().equals(recPhoneNumtxt.getText())){
+           return true;
+         }else{
+              Alert alert = new Alert(AlertType.WARNING);
+             alert.setTitle("Validate Phone Number");
+             alert.setHeaderText(null);
+             alert.setContentText("Please Enter The Valid Phone Number");
+             alert.showAndWait();
+             return false;
+         }
+       }
+   
      
      //upload to photograph
      @FXML
@@ -235,15 +261,27 @@ public class Sign_Up_as_RECEPTIONISTController extends DashboardUIController imp
      
   @Override
     public void initialize(URL url, ResourceBundle rb) {
-         loadData();
+         loadData();//call gender drop down list
          
          //show validation status
         RequiredFieldValidator validator = new RequiredFieldValidator();
         NumberValidator numvalidator = new  NumberValidator();
-        
-        //validation for phone number
-        recPhoneNumtxt.getValidators().add(numvalidator);
+       
         numvalidator.setMessage("Invalied Number");
+        validator.setMessage("Required Field");
+        
+        
+        recPhoneNumtxt.getValidators().add(numvalidator);
+        recPhoneNumtxt.getValidators().add(validator);
+        recFirstNametxt.getValidators().add(validator);
+        recLastNametxt.getValidators().add(validator);
+        recAddresstxt.getValidators().add(validator);
+        recStaffIDtxt.getValidators().add(validator);
+        recStaffEmailtxt.getValidators().add(validator);
+        recDateOfJoin.getValidators().add(validator);
+        recDateOfBirth.getValidators().add(validator);
+        series.getValidators().add(validator);
+       
         
         recPhoneNumtxt.focusedProperty().addListener(new ChangeListener <Boolean>() {
             @Override
@@ -251,130 +289,81 @@ public class Sign_Up_as_RECEPTIONISTController extends DashboardUIController imp
                 if(!newValue)
                 {
                 recPhoneNumtxt.validate();
-                } 
-            }
+                }}
         });       
-        //validation for First name
-        recFirstNametxt.getValidators().add(validator);
-        validator.setMessage("Required Field");
-        
+       
         recFirstNametxt.focusedProperty().addListener(new ChangeListener <Boolean>() {
             @Override
             public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
                 if(!newValue)
                 {
                 recFirstNametxt.validate();
-                } 
-            }
+                }}
         });
-        //validation field for Last name
-        recLastNametxt.getValidators().add(validator);
-        validator.setMessage("Required Field");
-        
+  
         recLastNametxt.focusedProperty().addListener(new ChangeListener <Boolean>() {
             @Override
             public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
                 if(!newValue)
                 {
                 recLastNametxt.validate();
-                } 
-            }
+                }}
         });
-        //validation Field for Address
-        recAddresstxt.getValidators().add(validator);
-        validator.setMessage("Required Field");
-        
+       
         recAddresstxt.focusedProperty().addListener(new ChangeListener <Boolean>() {
             @Override
             public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
                 if(!newValue)
                 {
                 recAddresstxt.validate();
-                } 
-            }
+                }}
         }); 
-        //validation field for staffID
-        recStaffIDtxt.getValidators().add(validator);
-        validator.setMessage("Required Field");
-        
+       
         recStaffIDtxt.focusedProperty().addListener(new ChangeListener <Boolean>() {
             @Override
             public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
                 if(!newValue)
                 {
                 recStaffIDtxt.validate();
-                } 
-            }
+                }}
         }); 
-        //validation Field for Staff Email Address
-        recStaffEmailtxt.getValidators().add(validator);
-        validator.setMessage("Required Field");
-        
+       
         recStaffEmailtxt.focusedProperty().addListener(new ChangeListener <Boolean>() {
             @Override
             public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
                 if(!newValue)
                 {
                 recStaffEmailtxt.validate();
-                } 
-            }
+                }}
         }); 
-        
-        //validation field for phone Number
-        recPhoneNumtxt.getValidators().add(validator);
-        validator.setMessage("Required Field");
-        
-        recPhoneNumtxt.focusedProperty().addListener(new ChangeListener <Boolean>() {
-            @Override
-            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
-                if(!newValue)
-                {
-                recPhoneNumtxt.validate();
-                } 
-            }
-        }); 
-        //validation of date of Join
-        recDateOfJoin.getValidators().add(validator);
-        validator.setMessage("Required Field");
-        
+      
        recDateOfJoin.focusedProperty().addListener(new ChangeListener <Boolean>() {
             @Override
             public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
                 if(!newValue)
                 {
                 recDateOfJoin.validate();
-                } 
-            }
+                }}
         }); 
-      //validation of date of birth
-       recDateOfBirth.getValidators().add(validator);
-        validator.setMessage("Required Field");
-        
+     
        recDateOfBirth.focusedProperty().addListener(new ChangeListener <Boolean>() {
             @Override
             public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
                 if(!newValue)
                 {
                 recDateOfBirth.validate();
-                } 
-            }
+                }}
         });
-       //validation of gender
-       series.getValidators().add(validator);
-        validator.setMessage("Required Field");
-        
+     
        series.focusedProperty().addListener(new ChangeListener <Boolean>() {
             @Override
             public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
                 if(!newValue)
                 {
                 series.validate();
-                } 
-            }
+                }}
         }); 
        }
 
    
 } 
-
-    
