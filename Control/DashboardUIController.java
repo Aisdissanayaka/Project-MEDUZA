@@ -85,11 +85,15 @@ public class DashboardUIController implements Initializable {
     
     @FXML
     private JFXTextArea allergiesTxt;
+ 
     
     @FXML
     public Label nameLbl;
     @FXML
     public Circle profilePhoto;
+
+ @FXML
+    private AnchorPane ap;
     @FXML
     private JFXTextField nameTxt;
     
@@ -167,6 +171,7 @@ public class DashboardUIController implements Initializable {
     public void closeBtn(ActionEvent event) {
      System.exit(0);
     }
+
     
     //Signout button - (Side Vbox)
     @FXML
@@ -181,6 +186,13 @@ public class DashboardUIController implements Initializable {
         window.centerOnScreen();
         
        }
+
+ //minimize button
+     @FXML
+    private void minimizeButtonAction(ActionEvent event) {
+        Stage stage =(Stage)ap.getScene().getWindow();
+        stage.setIconified(true);
+    }
     
     //Profile button - (Side Vbox)
     @FXML
