@@ -188,7 +188,7 @@
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </padding>
             </JFXTextField>
-            <JFXTextField fx:id="MOStaffIDTxt" disable="true" editable="false" labelFloat="true" layoutX="449.0" layoutY="33.0" promptText="Staff ID" unFocusColor="#1d7fff">
+            <JFXTextField fx:id="staffIDTxt" disable="true" editable="false" labelFloat="true" layoutX="449.0" layoutY="33.0" promptText="Staff ID" unFocusColor="#1d7fff">
                <font>
                   <Font size="21.0" />
                </font>
@@ -212,7 +212,7 @@
             <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
          </padding>
       </Label>
-      <JFXButton layoutX="324.0" layoutY="142.0" prefHeight="25.0" prefWidth="62.0" styleClass="Special-buttons" text="View" textFill="#b9d5fd">
+      <JFXButton fx:id="view" layoutX="324.0" layoutY="142.0" onAction="#view" prefHeight="25.0" prefWidth="62.0" styleClass="Special-buttons" text="View" textFill="#b9d5fd">
          <font>
             <Font size="15.0" />
          </font>
@@ -232,11 +232,6 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <JFXButton layoutX="503.0" layoutY="142.0" onAction="#readFiles" prefHeight="25.0" prefWidth="62.0" styleClass="Special-buttons" text="View" textFill="#b9d5fd">
-         <font>
-            <Font size="15.0" />
-         </font>
-      </JFXButton>
       <JFXButton layoutX="720.0" layoutY="142.0" onAction="#MOChangePasswordBtn" prefHeight="31.0" prefWidth="143.0" styleClass="Special-buttons" text="Change Password" textFill="#b9d5fd">
          <font>
             <Font size="15.0" />
