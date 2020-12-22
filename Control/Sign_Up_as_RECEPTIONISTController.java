@@ -5,6 +5,7 @@
  */
 package Control;
 
+import Model.Receptionist;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXDatePicker;
@@ -110,13 +111,21 @@ public class Sign_Up_as_RECEPTIONISTController extends DashboardUIController imp
         
          try
        {
-           File file = new File("user data\\receptionist\\data\\"+recStaffIDtxt.getText()+".txt");
-           PrintWriter printer = new PrintWriter(new FileOutputStream(file,true));
+           Receptionist recObj = new Receptionist();
+           
+           recObj.setFName(recFirstNametxt.getText());
+           recObj.setLName(recLastNametxt.getText());
+           recObj.setAddress(recAddresstxt.getText());
+           recObj.setPhoneNumber(recPhoneNumtxt.getText());
+           recObj.setDOB(recDateOfBirth.getValue().toString());
+           recObj.setStaffID(recStaffIDtxt.getText());
+           recObj.setStaffEmail(recStaffEmailtxt.getText());
+           recObj.setJoinDate(recDateOfJoin.getValue().toString());
+           recObj.setGender(series.getValue());
+         
           
-           printer.append(recFirstNametxt.getText()+"\n"+""+recLastNametxt.getText()
-                   +"\n"+""+recAddresstxt.getText()+"\n"+""+recPhoneNumtxt.getText()+"\n"+""+recDateOfBirth.getValue().toString()+"\n"+""+series.getValue()+"\n"+""+recStaffIDtxt.getText()
-                   +"\n"+""+recStaffEmailtxt.getText()+"\n"+""+recDateOfJoin.getValue().toString()+"\n");
-           printer.close();
+           recObj.signup(event);
+          
           
             
         //Write credentials file of receptionist
@@ -215,7 +224,7 @@ public class Sign_Up_as_RECEPTIONISTController extends DashboardUIController imp
          
          Image OriginalPhoto = new Image(selectedFile.toURI().toString());
       
-         Image img1= new Image(selectedFile.toURI().toString(),100,100,false,false);
+         Image img1= new Image(selectedFile.toURI().toString());
          saveToFile(img1,"photo");
          
      }
