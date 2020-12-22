@@ -4,11 +4,11 @@
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.effect.InnerShadow?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.paint.LinearGradient?>
 <?import javafx.scene.paint.Stop?>
@@ -138,36 +138,35 @@
             </AnchorPane>
             <AnchorPane layoutX="218.0" layoutY="203.0" prefHeight="583.0" prefWidth="1550.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="218.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="203.0">
                <children>
-                  <ScrollPane layoutX="2.0" prefHeight="489.0" prefWidth="714.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                     <content>
-                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="898.0" prefWidth="962.0">
-                           <children>
-                              <JFXButton onAction="#AdminReceivedpostalBtn" prefHeight="39.0" prefWidth="120.0" styleClass="Side-Button" stylesheets="@../../Styles.css" text="Received" textFill="#b3d1f4">
-                                 <font>
-                                    <Font name="Segoe UI Italic" size="19.0" />
-                                 </font>
-                                 <effect>
-                                    <DropShadow color="#ff2727" height="121.09" radius="58.2575" spread="0.5" width="113.94" />
-                                 </effect>
-                              </JFXButton>
-                              <JFXButton layoutX="123.0" prefHeight="39.0" prefWidth="130.0" styleClass="Side-Button-select" stylesheets="@../../Styles.css" text="Dispatched" textFill="#b3d1f4">
-                                 <font>
-                                    <Font name="Segoe UI Italic" size="19.0" />
-                                 </font>
-                              </JFXButton>
-                              <Pane layoutX="-2.0" layoutY="39.0" prefHeight="158.0" prefWidth="1330.0" styleClass="Table-pane">
-                                 <children>
-                                    <Label layoutX="14.0" layoutY="63.0" prefHeight="92.0" prefWidth="218.0" text="Dispatched Post">
-                                       <font>
-                                          <Font name="Segoe UI Emoji" size="28.0" />
-                                       </font>
-                                    </Label>
-                                 </children>
-                              </Pane>
-                           </children>
-                        </AnchorPane>
-                     </content>
-                  </ScrollPane>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="493.0" prefWidth="982.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <children>
+                        <JFXButton layoutX="6.0" onAction="#AdminReceivedpostalBtn" prefHeight="39.0" prefWidth="120.0" styleClass="Side-Button" stylesheets="@../../Styles.css" text="Received" textFill="#b3d1f4" AnchorPane.leftAnchor="6.0">
+                           <font>
+                              <Font name="Segoe UI Italic" size="19.0" />
+                           </font>
+                           <effect>
+                              <DropShadow color="#ff2727" height="121.09" radius="58.2575" spread="0.5" width="113.94" />
+                           </effect>
+                        </JFXButton>
+                        <JFXButton layoutX="129.0" prefHeight="39.0" prefWidth="130.0" styleClass="Side-Button-select" stylesheets="@../../Styles.css" text="Dispatched" textFill="#b3d1f4">
+                           <font>
+                              <Font name="Segoe UI Italic" size="19.0" />
+                           </font>
+                        </JFXButton>
+                        <TableView fx:id="dispatchedPostAdminTable" prefHeight="448.0" prefWidth="970.0" AnchorPane.bottomAnchor="6.0" AnchorPane.leftAnchor="6.0" AnchorPane.rightAnchor="6.0" AnchorPane.topAnchor="45.0">
+                           <columns>
+                              <TableColumn fx:id="refCol" prefWidth="93.33329772949219" text="Ref No" />
+                              <TableColumn fx:id="fromCol" prefWidth="124.26669311523438" text="From" />
+                              <TableColumn fx:id="fromAddressCol" prefWidth="127.99996948242188" text="From Address" />
+                              <TableColumn fx:id="noteCol" prefWidth="96.26669311523438" text="Note" />
+                              <TableColumn fx:id="dateCol" prefWidth="117.33343505859375" text="Date" />
+                              <TableColumn fx:id="toCol" prefWidth="129.066650390625" text="To" />
+                              <TableColumn fx:id="docCol" prefWidth="119.46661376953125" text="Document" />
+                              <TableColumn fx:id="optionsCol" prefWidth="126.6666259765625" text="Options" />
+                           </columns>
+                        </TableView>
+                     </children>
+                  </AnchorPane>
                </children>
             </AnchorPane>
             <Label layoutX="226.0" layoutY="46.0" text="MEDUZA HOSPITALS PVT(Ltd.)" textFill="#50506d">
@@ -185,7 +184,6 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Button layoutX="226.0" layoutY="156.0" mnemonicParsing="false" text="Button" />
          </children>
       </AnchorPane>
    </children>

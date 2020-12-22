@@ -255,6 +255,61 @@ public class DashboardUIController implements Initializable {
     window.centerOnScreen();
        
     }
+    @FXML
+    public void AppointmentApprovedBtn(ActionEvent event) throws IOException{
+      
+    
+    FXMLLoader loader =new FXMLLoader(getClass().getResource("/View/Dashboards/Receptionist/RecAppointmentApproved.fxml"));
+    Parent root = loader.load();
+    DashboardUIController welcome =loader.getController();
+    welcome.showInformation(staticUserName);
+    welcome.showProfilePicture(profilePicture);
+    RecAppointmentWindowController viewTable = new RecAppointmentWindowController();
+    viewTable.initialize();
+    
+    Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+    window.setScene(new Scene(root));
+    window.show();
+    window.centerOnScreen();
+       
+    }
+    @FXML
+    public void AppointmentCompletedBtn(ActionEvent event) throws IOException{
+      
+    
+    FXMLLoader loader =new FXMLLoader(getClass().getResource("/View/Dashboards/Receptionist/RecAppointmentCompleted.fxml"));
+    Parent root = loader.load();
+    DashboardUIController welcome =loader.getController();
+    welcome.showInformation(staticUserName);
+    welcome.showProfilePicture(profilePicture);
+    RecAppointmentWindowController viewTable = new RecAppointmentWindowController();
+    viewTable.initialize();
+    
+    Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+    window.setScene(new Scene(root));
+    window.show();
+    window.centerOnScreen();
+       
+    }
+    
+    @FXML
+    public void addNewAppointment(ActionEvent event) throws IOException{
+       
+            
+    FXMLLoader loader =new FXMLLoader(getClass().getResource("/View/Dashboards/Receptionist/RecAddAppointmentWindow.fxml"));
+    Parent root = loader.load();
+    DashboardUIController welcome =loader.getController();
+    welcome.showInformation(staticUserName);
+    welcome.showProfilePicture(profilePicture);
+
+
+    Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+    window.setScene(new Scene(root));
+    window.show();
+    window.centerOnScreen();
+        
+       
+    }
     
     //Visitors button - (Side Vbox)
     @FXML
@@ -274,6 +329,7 @@ public class DashboardUIController implements Initializable {
     window.centerOnScreen();
         
        }
+    
     
     //Complaints button - (Side Vbox)
     @FXML
