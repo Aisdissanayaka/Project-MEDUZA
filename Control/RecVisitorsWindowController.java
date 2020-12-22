@@ -113,7 +113,33 @@ public class RecVisitorsWindowController extends DashboardUIController implement
      
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+       try {
+          ArrayList<Visitor> visitorArrayList = Visitor.viewVisitor();
+          
+          int postalCount = visitorArrayList.size();
+          
+          
+             System.out.println(postalCount);
+          
+          ObservableList<Visitor> Visitors = FXCollections.observableArrayList();
+          for(int i =0;i< postalCount;i++){
+          Visitors.add(visitorArrayList.get(i));
+      
+          }
+          idCol.setCellValueFactory(new PropertyValueFactory<Visitor,String>("nic"));
+          nameCol.setCellValueFactory(new PropertyValueFactory<Visitor,String>("name"));
+          intimeCol.setCellValueFactory(new PropertyValueFactory<Visitor,String>("inTime"));
+          outTimeCol.setCellValueFactory(new PropertyValueFactory<Visitor,String>("outTime"));
+          docCol.setCellValueFactory(new PropertyValueFactory<Visitor,String>("document"));
+          noteCol.setCellValueFactory(new PropertyValueFactory<Visitor,String>("note"));
+          optionsCol.setCellValueFactory(new PropertyValueFactory<Visitor,String>("options"));
+          
+       
+          visitorTable.setItems(Visitors);
+          
+             
+         }catch(Exception e){}
+       
     }    
     
 }

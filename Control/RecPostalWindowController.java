@@ -150,7 +150,34 @@ public class RecPostalWindowController extends DashboardUIController implements 
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+       
+        try {
+          ArrayList<Postal> postalArrayList = Postal.viewReceivedPostal();
+          
+          int postalCount = postalArrayList.size();
+          
+          
+             System.out.println(postalCount);
+          
+          ObservableList<Postal> recievedPostal = FXCollections.observableArrayList();
+          for(int i =0;i< postalCount;i++){
+          recievedPostal.add(postalArrayList.get(i));
+      
+          }
+          refCol.setCellValueFactory(new PropertyValueFactory<Postal,String>("RefferenceNum"));
+          fromCol.setCellValueFactory(new PropertyValueFactory<Postal,String>("From"));
+          fromAddressCol.setCellValueFactory(new PropertyValueFactory<Postal,String>("Address"));
+          noteCol.setCellValueFactory(new PropertyValueFactory<Postal,String>("Note"));
+          dateCol.setCellValueFactory(new PropertyValueFactory<Postal,String>("Date"));
+          toCol.setCellValueFactory(new PropertyValueFactory<Postal,String>("To"));
+          docCol.setCellValueFactory(new PropertyValueFactory<Postal,String>("Document"));
+          optionsCol.setCellValueFactory(new PropertyValueFactory<Postal,String>("Options"));
+       
+          receivedPostTable.setItems(recievedPostal);
+          
+             
+         }catch(Exception e){}
+        
     }    
     
 }

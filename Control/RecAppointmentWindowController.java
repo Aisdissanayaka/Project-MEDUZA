@@ -60,7 +60,7 @@ public class RecAppointmentWindowController extends DashboardUIController implem
     private TableColumn<Appointment,String>optionsCol;
     
     
-   @FXML
+
     public void initialize(){
          try {
           ArrayList<Appointment> appointmentArrayList = Appointment.viewAppointment();
@@ -72,7 +72,7 @@ public class RecAppointmentWindowController extends DashboardUIController implem
           appointments.add(appointmentArrayList.get(i));
       
           }
-           idCol.setCellValueFactory(new PropertyValueFactory<Appointment,String>("userID"));
+          idCol.setCellValueFactory(new PropertyValueFactory<Appointment,String>("userID"));
           patientCol.setCellValueFactory(new PropertyValueFactory<Appointment,String>("name"));
           dateCol.setCellValueFactory(new PropertyValueFactory<Appointment,String>("appDate"));
           timeCol.setCellValueFactory(new PropertyValueFactory<Appointment,String>("appTime"));
@@ -82,9 +82,10 @@ public class RecAppointmentWindowController extends DashboardUIController implem
           optionsCol.setCellValueFactory(new PropertyValueFactory<Appointment,String>("options"));
        
           appointmentTable.setItems(appointments);
-          
-             
+           
          }catch(Exception e){}
+             
+        
 // 
     }
     
@@ -108,6 +109,33 @@ public class RecAppointmentWindowController extends DashboardUIController implem
         
        
     }
+     @Override
+    public void initialize(URL url, ResourceBundle rb) {
+       
+        try {
+          ArrayList<Appointment> appointmentArrayList = Appointment.viewAppointment();
+          
+          int appointmentCount = appointmentArrayList.size();
+          
+          ObservableList<Appointment> appointments = FXCollections.observableArrayList();
+          for(int i =0;i< appointmentCount;i++){
+          appointments.add(appointmentArrayList.get(i));
+      
+          }
+          idCol.setCellValueFactory(new PropertyValueFactory<Appointment,String>("userID"));
+          patientCol.setCellValueFactory(new PropertyValueFactory<Appointment,String>("name"));
+          dateCol.setCellValueFactory(new PropertyValueFactory<Appointment,String>("appDate"));
+          timeCol.setCellValueFactory(new PropertyValueFactory<Appointment,String>("appTime"));
+          symptomsCol.setCellValueFactory(new PropertyValueFactory<Appointment,String>("symptoms"));
+          moCol.setCellValueFactory(new PropertyValueFactory<Appointment,String>("specArea"));
+          statusCol.setCellValueFactory(new PropertyValueFactory<Appointment,String>("status"));
+          optionsCol.setCellValueFactory(new PropertyValueFactory<Appointment,String>("options"));
+       
+          appointmentTable.setItems(appointments);
+           
+         }catch(Exception e){}
+        
+    }  
     
    
     
