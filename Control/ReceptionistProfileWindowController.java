@@ -83,7 +83,7 @@ public class ReceptionistProfileWindowController extends DashboardUIController i
     @FXML
     private Button view; 
    
-    // view button. It's open MO's CV
+    // view button. It's open receptionist's CV
     @FXML
     private void view(ActionEvent event) {
  
