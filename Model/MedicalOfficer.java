@@ -57,7 +57,7 @@ public class MedicalOfficer extends user{
      
         File file = new File("user data\\medical officer\\data\\"+getStaffID()+".txt");
            PrintWriter print = new PrintWriter(new FileOutputStream(file,true));
-           print.append(getFName()+"\n"+getLName()
+           print.append(getFName()+" "+getLName()
                    +"\n"+getAddress()+"\n"+getPhoneNumber()+"\n"+getDOB()+"\n"+getStaffID()
                    +"\n"+getEmail()+"\n"+getDateJoined()+"\n" +getGender()+"\n"+getSpecialityArea()+"\n");
           
