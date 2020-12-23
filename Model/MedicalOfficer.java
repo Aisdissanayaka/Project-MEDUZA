@@ -5,17 +5,21 @@
  */
 package Model;
 
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 
 public class MedicalOfficer extends user{
     
-    private String staffID,email,dateJoined,specialityArea;
+    private String staffID,email,dateJoined,specialityArea,options;
 
     
 
@@ -32,6 +36,9 @@ public class MedicalOfficer extends user{
 
     public String getSpecialityArea() {
         return specialityArea;
+    }
+     public String getOptions() {
+        return options;
     }
     
     //Setters
@@ -50,6 +57,10 @@ public class MedicalOfficer extends user{
     public void setSpecialityArea(String specialityArea) {
         this.specialityArea = specialityArea;
     }
+       public void setOptions(String options) {
+        this.options = options;
+    }
+    
     
     
     
@@ -64,4 +75,42 @@ public class MedicalOfficer extends user{
            print.close();
     
     }
+    
+     @FXML
+      public static ArrayList<MedicalOfficer> viewMO() throws IOException{
+        
+        ArrayList<MedicalOfficer> moArrayList = new ArrayList<>();
+        
+        
+        File moFile = new File("user data//database//medicalOfficers.txt");
+        FileReader fr = new FileReader(moFile);
+        BufferedReader br = new BufferedReader(fr);
+        String currentLine;
+      
+        
+        while ((currentLine = br.readLine())!=null){
+            String[] moData = currentLine.split(",");
+            MedicalOfficer moLine = new MedicalOfficer();
+            moLine.setStaffID(moData[0]);
+            moLine.setFName(moData[1]);
+            moLine.setLName(moData[2]);
+            moLine.setGender(moData[3]);
+            moLine.setDOB(moData[4]);
+            moLine.setAddress(moData[5]);
+            moLine.setPhoneNumber(moData[6]);
+            moLine.setSpecialityArea(moData[7]);
+            moLine.setEmail(moData[8]);
+            moLine.setPassword(moData[9]);
+            moLine.setOptions(moData[10]);
+           
+        moArrayList.add(moLine);
+     
+        }
+        
+        fr.close();
+        br.close();
+        return moArrayList;
+        
+    }
+      
 }

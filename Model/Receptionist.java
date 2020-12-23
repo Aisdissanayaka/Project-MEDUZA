@@ -5,15 +5,20 @@
  */
 package Model;
 
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.FileReader;
+import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 
 public class Receptionist extends user {
     
-    private String series,staffID,staffEmail,joinDate;
+    private String series,staffID,staffEmail,joinDate,options;
     
     //getters
 
@@ -31,6 +36,9 @@ public class Receptionist extends user {
 
     public String getJoinDate() {
         return joinDate;
+    }
+    public String getOptions() {
+        return options;
     }
     
     //setters
@@ -50,6 +58,9 @@ public class Receptionist extends user {
     public void setJoinDate(String joinDate) {
         this.joinDate = joinDate;
     }
+      public void setOptions(String options) {
+        this.options = options;
+    }
     
     
     public void signup(ActionEvent event) throws FileNotFoundException{
@@ -62,6 +73,42 @@ public class Receptionist extends user {
                    +"\n"+""+getStaffEmail()+"\n"+""+getJoinDate().toString()+"\n");
            printer.close();
           
+        
+    }
+    
+    @FXML
+      public static ArrayList<Receptionist> viewReceptionist() throws IOException{
+        
+        ArrayList<Receptionist> receptionistArrayList = new ArrayList<>();
+        
+        
+        File recFile = new File("user data//database//receptionists.txt");
+        FileReader fr = new FileReader(recFile);
+        BufferedReader br = new BufferedReader(fr);
+        String currentLine;
+      
+        
+        while ((currentLine = br.readLine())!=null){
+            String[] recData = currentLine.split(",");
+            Receptionist receptionistLine = new Receptionist();
+            receptionistLine.setStaffID(recData[0]);
+            receptionistLine.setFName(recData[1]);
+            receptionistLine.setLName(recData[2]);
+            receptionistLine.setGender(recData[3]);
+            receptionistLine.setDOB(recData[4]);
+            receptionistLine.setAddress(recData[5]);
+            receptionistLine.setPhoneNumber(recData[6]);
+            receptionistLine.setStaffEmail(recData[7]);
+            receptionistLine.setPassword(recData[8]);
+            receptionistLine.setOptions(recData[9]);
+           
+        receptionistArrayList.add(receptionistLine);
+     
+        }
+        
+        fr.close();
+        br.close();
+        return receptionistArrayList;
         
     }
     
