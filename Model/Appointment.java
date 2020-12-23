@@ -113,12 +113,12 @@ public class Appointment {
     }
     
     @FXML
-      public static ArrayList<Appointment> viewAppointment() throws IOException{
+      public static ArrayList<Appointment> viewAppointment(String filepath) throws IOException{
         
         ArrayList<Appointment> appointmentArrayList = new ArrayList<>();
         
         
-        File appFile = new File("user data//database//pendingappointment.txt");
+        File appFile = new File(filepath);
         FileReader fr = new FileReader(appFile);
         BufferedReader br = new BufferedReader(fr);
         String currentLine;
