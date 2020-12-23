@@ -246,9 +246,7 @@ public class DashboardUIController implements Initializable {
     DashboardUIController welcome =loader.getController();
     welcome.showInformation(staticUserName);
     welcome.showProfilePicture(profilePicture);
-    RecAppointmentWindowController viewTable = new RecAppointmentWindowController();
-    viewTable.initialize();
-    
+        
     Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
     window.setScene(new Scene(root));
     window.show();
@@ -264,8 +262,7 @@ public class DashboardUIController implements Initializable {
     DashboardUIController welcome =loader.getController();
     welcome.showInformation(staticUserName);
     welcome.showProfilePicture(profilePicture);
-    RecAppointmentWindowController viewTable = new RecAppointmentWindowController();
-    viewTable.initialize();
+    
     
     Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
     window.setScene(new Scene(root));
@@ -282,8 +279,7 @@ public class DashboardUIController implements Initializable {
     DashboardUIController welcome =loader.getController();
     welcome.showInformation(staticUserName);
     welcome.showProfilePicture(profilePicture);
-    RecAppointmentWindowController viewTable = new RecAppointmentWindowController();
-    viewTable.initialize();
+   
     
     Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
     window.setScene(new Scene(root));

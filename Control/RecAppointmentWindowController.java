@@ -68,33 +68,7 @@ public class RecAppointmentWindowController extends DashboardUIController implem
     //assign the file path in string variable because we can't pass the parameter into initialize methode
     String filepathpending ="user data//database//pendingappointment.txt";
 
-    public void initialize(){
-         try {
-          ArrayList<Appointment> appointmentArrayList = Appointment.viewAppointment(filepathpending);
-          
-          int appointmentCount = appointmentArrayList.size();
-          
-          ObservableList<Appointment> appointments = FXCollections.observableArrayList();
-          for(int i =0;i< appointmentCount;i++){
-          appointments.add(appointmentArrayList.get(i));
-      
-          }
-          idCol.setCellValueFactory(new PropertyValueFactory<Appointment,String>("userID"));
-          patientCol.setCellValueFactory(new PropertyValueFactory<Appointment,String>("name"));
-          dateCol.setCellValueFactory(new PropertyValueFactory<Appointment,String>("appDate"));
-          timeCol.setCellValueFactory(new PropertyValueFactory<Appointment,String>("appTime"));
-          symptomsCol.setCellValueFactory(new PropertyValueFactory<Appointment,String>("symptoms"));
-          moCol.setCellValueFactory(new PropertyValueFactory<Appointment,String>("specArea"));
-          statusCol.setCellValueFactory(new PropertyValueFactory<Appointment,String>("status"));
-          optionsCol.setCellValueFactory(new PropertyValueFactory<Appointment,String>("options"));
-       
-          appointmentTable.setItems(appointments);
-           
-         }catch(Exception e){}
-             
-        
-// 
-    }
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
        
