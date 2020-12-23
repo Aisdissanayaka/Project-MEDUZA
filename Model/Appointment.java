@@ -220,7 +220,7 @@ public class Appointment {
                 op=x.next();
                 if(id.equals(userIDAppointment)){
                     // userid are equal display message
-                    Alert alert = new Alert(Alert.AlertType.WARNING);
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
                     alert.setContentText("You approved "+name.toUpperCase()+"'s appointment..!");
                     alert.show();
                     //write new file approved appointment in approvedappointment file
@@ -238,6 +238,53 @@ public class Appointment {
        }
        
    }
+ 
+   // Appointment completed method
+   public void completedAppointment(String filepath,String completefilepath){
+        File approvedFile = new File(filepath);
+        File completeFile = new File (completefilepath);
+        //idintyfiy each component
+        String id = "" ; String name = ""; String appdate =""; String apptime =""; String syp =""; String mo=""; String status ="";String op="";   
+        try {
+            FileWriter fw = new FileWriter(completefilepath,true);
+            BufferedWriter bw = new BufferedWriter(fw);
+            PrintWriter pw = new PrintWriter(bw);
+            x = new Scanner (new File (filepath)); // scan file 
+            x.useDelimiter("[,\n]"); // set delimiter
+            
+            while(x.hasNext()){
+                //assign value in variable in tempary
+                id=x.next();
+                name=x.next();
+                appdate=x.next();
+                apptime=x.next();
+                syp=x.next();
+                mo=x.next();
+                status=x.next();
+                op=x.next();
+                if(id.equals(userIDAppointment)){
+                    // userid are equal display message
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setContentText("You completed "+name.toUpperCase()+"'s appointment..!");
+                    alert.show();
+                    //write new file completed appointment in completed appointment file
+                    pw.print(id+","+name+","+appdate+","+apptime+","+syp+","+mo+","+"completed"+","+op+"\n");
+                }
+                
+            }
+            x.close();  //scanner close
+            pw.flush(); //print writer fush
+            pw.close();  //print writer close
+             
+            
+            
+       } catch (Exception e) {
+       }
+       
+   }
+   
    
     
 }
+
+
