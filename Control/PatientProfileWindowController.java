@@ -18,6 +18,8 @@ import java.net.URL;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
 import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.embed.swing.SwingFXUtils;
@@ -85,6 +87,7 @@ public class PatientProfileWindowController extends DashboardUIController implem
   // update button. It's update receptionist data
     @FXML
     private void updateBtn(){
+         if(validateFields()&&validatePhoneNum()){
         try{
         File file = new File("user data\\patient\\data\\"+ NICTxt.getText()+".txt");  
         file.delete();
@@ -99,7 +102,37 @@ public class PatientProfileWindowController extends DashboardUIController implem
         alert.show();
         
     }
-    
+    }
+    //warnig message to invalide Phone Number 
+     private boolean validatePhoneNum(){
+         Pattern p=Pattern.compile("[0][0-9]{9}");
+         Matcher m = p.matcher(phoneNumTxt.getText());
+         if(m.find() && m.group().equals(phoneNumTxt.getText())){
+           return true;
+         }else{
+              Alert alert = new Alert(Alert.AlertType.WARNING);
+             alert.setTitle("Validate Phone Number");
+             alert.setHeaderText(null);
+             alert.setContentText("Please Enter The Valid Phone Number");
+             alert.showAndWait();
+             return false;
+         }
+       }
+     // warning message for null validation
+     private boolean validateFields(){
+         
+   if(firstNameTxt.getText().isEmpty() |lastNameTxt.getText().isEmpty()| 
+       phoneNumTxt.getText().isEmpty()| addressTxt.getText().isEmpty())
+         {
+              Alert alert = new Alert(Alert.AlertType.WARNING);
+             alert.setTitle("Validate Fields");
+             alert.setHeaderText(null);
+             alert.setContentText("Please Enter Into The Fields");
+             alert.showAndWait();
+             return false;
+            }
+        return true;
+         }
      //upload to photograph
      @FXML
      private void addPhoto(ActionEvent event)throws IOException{
