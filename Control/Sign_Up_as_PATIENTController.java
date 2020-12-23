@@ -5,15 +5,17 @@
  */
 package Control;
 
+import Model.Patient;
+import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
 import com.jfoenix.validation.NumberValidator;
 import com.jfoenix.validation.RequiredFieldValidator;
+import java.awt.image.BufferedImage;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -25,6 +27,7 @@ import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.embed.swing.SwingFXUtils;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -33,8 +36,10 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
-import javafx.scene.control.ComboBox;
+import javafx.scene.image.Image;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
+import javax.imageio.ImageIO;
 
 
 /**
@@ -61,13 +66,13 @@ public class Sign_Up_as_PATIENTController extends DashboardUIController implemen
     private JFXDatePicker dateOfBirthDate;
 
     @FXML
-    private ComboBox genderTxt;
+    private JFXComboBox<String> genderTxt;
 
     @FXML
     private JFXTextArea allergiesTxt;
 
     @FXML
-    private ComboBox bloodGroupTxt;
+    private JFXComboBox<String> bloodGroupTxt;
     
     @FXML
     private JFXTextField nicTxt;
@@ -85,12 +90,23 @@ public class Sign_Up_as_PATIENTController extends DashboardUIController implemen
         
         if(validateFields()&& validatePhoneNum()){
         try{
-        File file = new File("user data\\patient\\data\\"+nicTxt.getText()+".txt");    
-        PrintWriter printer = new PrintWriter(new FileOutputStream(file,true));  
-        printer.append(firstNameTxt.getText()+" "  + lastNameTxt.getText()+ "\n" +  addressTxt.getText()+"\n"+ nicTxt.getText()+"\n"+ bloodGroupTxt.getValue() + "\n"+
-                 dateOfBirthDate.getValue()+ "\n"+ genderTxt.getValue() +"\n" +phoneNumberTxt.getText() +"\n"+ allergiesTxt.getText());
-             printer.close();
-        }catch(FileNotFoundException e){}
+        
+            Patient patObj=new Patient();
+            
+           patObj.setFName(firstNameTxt.getText());
+           patObj.setLName(lastNameTxt.getText());
+           patObj.setAddress(addressTxt.getText());
+           patObj.setPhoneNumber(phoneNumberTxt.getText());
+           patObj.setDOB(dateOfBirthDate.getValue().toString());
+           patObj.setNic(nicTxt.getText());
+           patObj.setGender(genderTxt.getValue().toString());
+           patObj.setAllergies(allergiesTxt.getText());
+           patObj.setBloodGroup(bloodGroupTxt.getValue().toString());
+         
+          
+           patObj.signup(event);
+          
+        
          
        
         
@@ -103,6 +119,9 @@ public class Sign_Up_as_PATIENTController extends DashboardUIController implemen
          pw.write(nicTxt.getText()+","+nicTxt.getText()+"\n");
          pw.close();
          }catch(FileNotFoundException  e){}
+        
+        }
+        catch(Exception e){}
           firstNameTxt.setText(null);
           lastNameTxt.setText(null);
          addressTxt.setText(null);
@@ -115,10 +134,33 @@ public class Sign_Up_as_PATIENTController extends DashboardUIController implemen
         
         }
         
-        
-        
     }
     
+    //upload a photograph
+     @FXML
+     private void onclickbtnsave(ActionEvent event)throws IOException{
+         Stage stage =new Stage();
+         FileChooser fileChooser =new FileChooser();
+         fileChooser.setTitle("Choose an Image");
+         
+         fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("jpg","*.jpg","*.png"));
+         
+         File selectedFile = fileChooser.showOpenDialog(stage);
+         
+         Image OriginalPhoto = new Image(selectedFile.toURI().toString());
+      
+         Image img1= new Image(selectedFile.toURI().toString());
+         saveToFile(img1,"photo");
+         
+     }
+     //save photogrgaph
+     private void saveToFile(Image image,String name)throws IOException{
+         File fileoutput = new File ("user data\\patient\\photo\\"+nicTxt.getText()+".jpg");
+         BufferedImage BI= SwingFXUtils.fromFXImage(image,null);
+         ImageIO.write(BI,"jpg",fileoutput);
+         
+    }
+     
     
     
     
@@ -168,12 +210,15 @@ public class Sign_Up_as_PATIENTController extends DashboardUIController implemen
          }
        }
      
+      
+     
+     
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         
-        ObservableList<String>list1=FXCollections.observableArrayList("Male","Female");
+        ObservableList<String>list1=FXCollections.observableArrayList("Male","Female","Other");
        genderTxt.setItems(list1);
        
        ObservableList<String>list2=FXCollections.observableArrayList("A+","O+","B+","AB+","A-","O-","B-","AB-");
@@ -196,7 +241,8 @@ public class Sign_Up_as_PATIENTController extends DashboardUIController implemen
         dateOfBirthDate.getValidators().add(validator);
         allergiesTxt.getValidators().add(validator);
         nicTxt.getValidators().add(validator);
-   
+        genderTxt.getValidators().add(validator);
+        bloodGroupTxt.getValidators().add(validator);
         
         
        phoneNumberTxt.focusedProperty().addListener(new ChangeListener <Boolean>() {
@@ -270,6 +316,24 @@ public class Sign_Up_as_PATIENTController extends DashboardUIController implemen
                nicTxt.validate();
                 }}
         }); 
+       
+       genderTxt.focusedProperty().addListener(new ChangeListener <Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+                if(!newValue)
+                {
+                genderTxt.validate();
+                }}
+         }); 
+       
+        bloodGroupTxt.focusedProperty().addListener(new ChangeListener <Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+                if(!newValue)
+                {
+                bloodGroupTxt.validate();
+                }}
+         }); 
 
     }    
     
