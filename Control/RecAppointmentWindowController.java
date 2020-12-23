@@ -64,10 +64,13 @@ public class RecAppointmentWindowController extends DashboardUIController implem
     private static String status;
     
     private static String pending ="pending";
+    
+    //assign the file path in string variable because we can't pass the parameter into initialize methode
+    String filepathpending ="user data//database//pendingappointment.txt";
 
     public void initialize(){
          try {
-          ArrayList<Appointment> appointmentArrayList = Appointment.viewAppointment();
+          ArrayList<Appointment> appointmentArrayList = Appointment.viewAppointment(filepathpending);
           
           int appointmentCount = appointmentArrayList.size();
           
@@ -92,11 +95,11 @@ public class RecAppointmentWindowController extends DashboardUIController implem
         
 // 
     }
-@Override
+    @Override
     public void initialize(URL url, ResourceBundle rb) {
        
         try {
-          ArrayList<Appointment> appointmentArrayList = Appointment.viewAppointment();
+          ArrayList<Appointment> appointmentArrayList = Appointment.viewAppointment(filepathpending);
           
           int appointmentCount = appointmentArrayList.size();
           
