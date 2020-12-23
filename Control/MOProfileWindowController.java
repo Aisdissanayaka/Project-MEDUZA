@@ -19,6 +19,8 @@ import java.net.URL;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
 import java.util.Scanner;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.embed.swing.SwingFXUtils;
@@ -26,6 +28,7 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
@@ -111,6 +114,7 @@ public class MOProfileWindowController extends DashboardUIController implements 
   // update button. It's update medical officer data
     @FXML
     private void updateBtn(){
+        if(validateFields()&&validatePhoneNum()&& validateEmail()){
         try{
         File file = new File("user data\\medical officer\\data\\"+ primaryKey+".txt");  
         file.delete();
@@ -122,9 +126,59 @@ public class MOProfileWindowController extends DashboardUIController implements 
            
         printer.close();
         }catch(FileNotFoundException e){}
+         Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setContentText("Your profile was updated..!");
+        alert.show();
         
         
-    }
+    }}
+    
+     //warnig message to invalide Email Address 
+     private boolean validateEmail(){
+         Pattern p=Pattern.compile("[a-zA-Z0-9][a-zA-Z0-9._]*@[a-zA-Z0-9]+([.][a-zA-Z0-9]+)+");
+         Matcher m = p.matcher(staffEmailTxt.getText());
+         if(m.find() && m.group().equals(staffEmailTxt.getText())){
+           return true;
+         }else{
+              Alert alert = new Alert(Alert.AlertType.WARNING);
+             alert.setTitle("Validate Email");
+             alert.setHeaderText(null);
+             alert.setContentText("Please Enter The Valid Email");
+             alert.showAndWait();
+             return false;
+         }
+       }
+     //warnig message to invalide Phone Number 
+     private boolean validatePhoneNum(){
+         Pattern p=Pattern.compile("[0][0-9]{9}");
+         Matcher m = p.matcher(phoneNumTxt.getText());
+         if(m.find() && m.group().equals(phoneNumTxt.getText())){
+           return true;
+         }else{
+              Alert alert = new Alert(Alert.AlertType.WARNING);
+             alert.setTitle("Validate Phone Number");
+             alert.setHeaderText(null);
+             alert.setContentText("Please Enter The Valid Phone Number");
+             alert.showAndWait();
+             return false;
+         }
+       }
+     // warning message for null validation
+     private boolean validateFields(){
+         
+   if(firstNameTxt.getText().isEmpty() |lastNameTxt.getText().isEmpty()| 
+       phoneNumTxt.getText().isEmpty()| addressTxt.getText().isEmpty()|staffEmailTxt.getText().isEmpty())
+         {
+              Alert alert = new Alert(Alert.AlertType.WARNING);
+             alert.setTitle("Validate Fields");
+             alert.setHeaderText(null);
+             alert.setContentText("Please Enter Into The Fields");
+             alert.showAndWait();
+             return false;
+            }
+        return true;
+         }
+     
     
      //upload to photograph
      @FXML
