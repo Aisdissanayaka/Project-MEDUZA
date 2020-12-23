@@ -50,11 +50,11 @@ public class AdminAppointmentsController extends DashboardUIController implement
     @FXML
     private TableColumn<Appointment, String>optionsCol;
     
-    
+    String filepathpending ="user data//database//pendingappointment.txt";
     @Override
     public void initialize(URL url, ResourceBundle rb) {
        try {
-          ArrayList<Appointment> appointmentArrayList = Appointment.viewAppointment();
+          ArrayList<Appointment> appointmentArrayList = Appointment.viewAppointment(filepathpending);
           
           int appointmentCount = appointmentArrayList.size();
           
