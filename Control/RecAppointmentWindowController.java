@@ -21,6 +21,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -59,8 +60,11 @@ public class RecAppointmentWindowController extends DashboardUIController implem
     @FXML
     private TableColumn<Appointment,String>optionsCol;
     
+    public static String userIDAppointment;
+    private static String status;
     
-   @FXML
+    private static String pending ="pending";
+
     public void initialize(){
          try {
           ArrayList<Appointment> appointmentArrayList = Appointment.viewAppointment();
@@ -72,7 +76,7 @@ public class RecAppointmentWindowController extends DashboardUIController implem
           appointments.add(appointmentArrayList.get(i));
       
           }
-           idCol.setCellValueFactory(new PropertyValueFactory<Appointment,String>("userID"));
+          idCol.setCellValueFactory(new PropertyValueFactory<Appointment,String>("userID"));
           patientCol.setCellValueFactory(new PropertyValueFactory<Appointment,String>("name"));
           dateCol.setCellValueFactory(new PropertyValueFactory<Appointment,String>("appDate"));
           timeCol.setCellValueFactory(new PropertyValueFactory<Appointment,String>("appTime"));
@@ -82,33 +86,84 @@ public class RecAppointmentWindowController extends DashboardUIController implem
           optionsCol.setCellValueFactory(new PropertyValueFactory<Appointment,String>("options"));
        
           appointmentTable.setItems(appointments);
-          
-             
+           
          }catch(Exception e){}
+             
+        
 // 
     }
-    
-    
-    
-    @FXML
-    public void addNewAppointment(ActionEvent event) throws IOException{
+@Override
+    public void initialize(URL url, ResourceBundle rb) {
        
-            
-    FXMLLoader loader =new FXMLLoader(getClass().getResource("/View/Dashboards/Receptionist/RecAddAppointmentWindow.fxml"));
-    Parent root = loader.load();
-    DashboardUIController welcome =loader.getController();
-    welcome.showInformation(staticUserName);
-    welcome.showProfilePicture(profilePicture);
-
-
-    Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
-    window.setScene(new Scene(root));
-    window.show();
-    window.centerOnScreen();
+        try {
+          ArrayList<Appointment> appointmentArrayList = Appointment.viewAppointment();
+          
+          int appointmentCount = appointmentArrayList.size();
+          
+          ObservableList<Appointment> appointments = FXCollections.observableArrayList();
+          for(int i =0;i< appointmentCount;i++){
+          appointments.add(appointmentArrayList.get(i));
+      
+          }
+          idCol.setCellValueFactory(new PropertyValueFactory<Appointment,String>("userID"));
+          patientCol.setCellValueFactory(new PropertyValueFactory<Appointment,String>("name"));
+          dateCol.setCellValueFactory(new PropertyValueFactory<Appointment,String>("appDate"));
+          timeCol.setCellValueFactory(new PropertyValueFactory<Appointment,String>("appTime"));
+          symptomsCol.setCellValueFactory(new PropertyValueFactory<Appointment,String>("symptoms"));
+          moCol.setCellValueFactory(new PropertyValueFactory<Appointment,String>("specArea"));
+          statusCol.setCellValueFactory(new PropertyValueFactory<Appointment,String>("status"));
+          optionsCol.setCellValueFactory(new PropertyValueFactory<Appointment,String>("options"));
+       
+          appointmentTable.setItems(appointments);
+           
+         }catch(Exception e){}
         
-       
+        
+        
+        
+        
+    }  
+    
+     @FXML
+    void deleteAppointment(ActionEvent event) {  // deleteaction event
+        String name; 
+        ObservableList<Appointment> allAppointment,singleAppointment;
+        allAppointment = appointmentTable.getItems();
+        singleAppointment =appointmentTable.getSelectionModel().getSelectedItems();
+        userIDAppointment = appointmentTable.getSelectionModel().getSelectedItem().getUserID(); // get user id in select row and set it static variable
+        name=appointmentTable.getSelectionModel().getSelectedItem().getName(); //get name in table set it name
+        singleAppointment.forEach(allAppointment::remove); //delete select row
+        Appointment appObj = new Appointment();            //create object in appointmen class
+        appObj.deleteAppointment("user data//database//pendingappointment.txt", "user data//database//temp.txt"); //call appointment delete methode
+        Alert alert = new Alert(Alert.AlertType.WARNING); //display Warning message
+        alert.setContentText("You deleted "+name.toUpperCase()+"'s appointment..!");
+        alert.show();
+    }
+
+    @FXML
+    void editAppointment(ActionEvent event) {
+
     }
     
-   
     
-}
+    @FXML  //approved appointment action event
+    void approveAppointment(ActionEvent event) {
+        ObservableList<Appointment> allAppointment,singleAppointment;
+        allAppointment = appointmentTable.getItems();
+        singleAppointment =appointmentTable.getSelectionModel().getSelectedItems();
+        userIDAppointment = appointmentTable.getSelectionModel().getSelectedItem().getUserID(); // get user id in select row and set it static variable
+        status=appointmentTable.getSelectionModel().getSelectedItem().getStatus();  //get status in table and asign the value in static variable
+        if (status.equals(pending)){        //compare  status (pending is an static variable)
+        Appointment appObj = new Appointment();       //create object in appointment class
+        appObj.approveAppointment("user data//database//pendingappointment.txt", "user data//database//approveappointment.txt");  //call approved appointment methode
+        appObj.deleteAppointment("user data//database//pendingappointment.txt", "user data//database//temp.txt");  //call delete appointment methode
+        singleAppointment.forEach(allAppointment::remove);   // delete selected row in table
+
+        
+        }
+    }
+    
+    
+    
+    
+}  

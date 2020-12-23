@@ -184,6 +184,44 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <Button layoutX="594.0" layoutY="126.0" mnemonicParsing="false" onAction="#initialize" text="Button" />
+      <JFXButton buttonType="RAISED" layoutX="493.0" layoutY="126.0" onAction="#deleteAppointment" prefHeight="47.0" prefWidth="260.0" style="-fx-background-radius: 30;" styleClass="Special-buttons" stylesheets="@../../Styles.css" text="Delete" textFill="#b3d1f4">
+         <font>
+            <Font name="Segoe UI Symbol" size="20.0" />
+         </font>
+         <ripplerFill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop color="#176694" />
+                  <Stop color="#5454cc" offset="1.0" />
+               </stops>
+            </LinearGradient>
+         </ripplerFill>
+      </JFXButton>
+      <JFXButton buttonType="RAISED" layoutX="760.0" layoutY="126.0" onAction="#editAppointment" prefHeight="47.0" prefWidth="260.0" style="-fx-background-radius: 30;" styleClass="Special-buttons" stylesheets="@../../Styles.css" text="Edit" textFill="#b3d1f4">
+         <font>
+            <Font name="Segoe UI Symbol" size="20.0" />
+         </font>
+         <ripplerFill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop color="#176694" />
+                  <Stop color="#5454cc" offset="1.0" />
+               </stops>
+            </LinearGradient>
+         </ripplerFill>
+      </JFXButton>
+      <JFXButton buttonType="RAISED" layoutX="760.0" layoutY="70.0" onAction="#approveAppointment" prefHeight="47.0" prefWidth="260.0" style="-fx-background-radius: 30;" styleClass="Special-buttons" stylesheets="@../../Styles.css" text="Approve" textFill="#b3d1f4">
+         <font>
+            <Font name="Segoe UI Symbol" size="20.0" />
+         </font>
+         <ripplerFill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop color="#176694" />
+                  <Stop color="#5454cc" offset="1.0" />
+               </stops>
+            </LinearGradient>
+         </ripplerFill>
+      </JFXButton>
    </children>
 </AnchorPane>

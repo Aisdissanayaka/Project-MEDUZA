@@ -126,7 +126,37 @@ public class RecComplaintsWindowController extends DashboardUIController impleme
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+       
+        try {
+          ArrayList<Complaint> complaintArrayList = Complaint.viewComplaint();
+          
+          int complaintCount = complaintArrayList.size();
+          
+          
+             System.out.println(complaintCount);
+          
+          ObservableList<Complaint> complaints = FXCollections.observableArrayList();
+          for(int i =0;i< complaintCount;i++){
+          complaints.add(complaintArrayList.get(i));
+      
+          }
+          idCol.setCellValueFactory(new PropertyValueFactory<>("id"));
+          comTypeCol.setCellValueFactory(new PropertyValueFactory<>("type"));
+          comByCol.setCellValueFactory(new PropertyValueFactory<>("name"));
+          phoneNoCol.setCellValueFactory(new PropertyValueFactory<>("phoneNo"));
+          dateCol.setCellValueFactory(new PropertyValueFactory<>("date"));
+          desCol.setCellValueFactory(new PropertyValueFactory<>("description"));
+          actionCol.setCellValueFactory(new PropertyValueFactory<>("actionTaken"));
+          noteCol.setCellValueFactory(new PropertyValueFactory<>("note"));
+          docCol.setCellValueFactory(new PropertyValueFactory<>("document"));
+          optionsCol.setCellValueFactory(new PropertyValueFactory<>("options"));
+       
+       
+          complaintsTable.setItems(complaints);
+          
+             
+         }catch(Exception e){}
+        
     }    
     
 }
