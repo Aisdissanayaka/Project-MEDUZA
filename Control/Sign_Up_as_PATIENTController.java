@@ -6,6 +6,7 @@
 package Control;
 
 import Model.Patient;
+import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
@@ -15,7 +16,6 @@ import java.awt.image.BufferedImage;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -67,13 +67,13 @@ public class Sign_Up_as_PATIENTController extends DashboardUIController implemen
     private JFXDatePicker dateOfBirthDate;
 
     @FXML
-    private ComboBox genderTxt;
+    private JFXComboBox<String> genderTxt;
 
     @FXML
     private JFXTextArea allergiesTxt;
 
     @FXML
-    private ComboBox bloodGroupTxt;
+    private JFXComboBox<String> bloodGroupTxt;
     
     @FXML
     private JFXTextField nicTxt;
@@ -219,7 +219,7 @@ public class Sign_Up_as_PATIENTController extends DashboardUIController implemen
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
         
-        ObservableList<String>list1=FXCollections.observableArrayList("Male","Female");
+        ObservableList<String>list1=FXCollections.observableArrayList("Male","Female","Other");
        genderTxt.setItems(list1);
        
        ObservableList<String>list2=FXCollections.observableArrayList("A+","O+","B+","AB+","A-","O-","B-","AB-");
@@ -242,7 +242,8 @@ public class Sign_Up_as_PATIENTController extends DashboardUIController implemen
         dateOfBirthDate.getValidators().add(validator);
         allergiesTxt.getValidators().add(validator);
         nicTxt.getValidators().add(validator);
-   
+        genderTxt.getValidators().add(validator);
+        bloodGroupTxt.getValidators().add(validator);
         
         
        phoneNumberTxt.focusedProperty().addListener(new ChangeListener <Boolean>() {
@@ -316,6 +317,24 @@ public class Sign_Up_as_PATIENTController extends DashboardUIController implemen
                nicTxt.validate();
                 }}
         }); 
+       
+       genderTxt.focusedProperty().addListener(new ChangeListener <Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+                if(!newValue)
+                {
+                genderTxt.validate();
+                }}
+         }); 
+       
+        bloodGroupTxt.focusedProperty().addListener(new ChangeListener <Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+                if(!newValue)
+                {
+                bloodGroupTxt.validate();
+                }}
+         }); 
 
     }    
     

@@ -62,7 +62,7 @@ public class Patient extends user {
         
         File file = new File("user data\\patient\\data\\"+getNic()+".txt");    
         PrintWriter printer = new PrintWriter(new FileOutputStream(file,true));  
-        printer.append(getFName()+" "  + getLName()+ "\n" +  getAddress()+"\n"+ getNic()+"\n"+ getBloodGroup() + "\n"+
+        printer.append(getFName()+"\n"  + getLName()+ "\n" +  getAddress()+"\n"+ getNic()+"\n"+ getBloodGroup() + "\n"+
                  getDOB()+ "\n"+ getGender() +"\n" +getPhoneNumber() +"\n"+ getAllergies());
              printer.close();
     }
