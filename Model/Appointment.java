@@ -90,19 +90,19 @@ public class Appointment {
         this.options = options;
     }
     
-    
+    // add oppointment method
     public void addAppointmentRec(ActionEvent event) throws FileNotFoundException, IOException{
         File file = new File ("user data\\appointment\\"+getUserID()+".txt");
         PrintWriter print = new PrintWriter(new FileOutputStream(file,true));
-        print.println(getUserID()+","+getName()+","+getAppDate()+","+
-                getAppTime()+","+getSymptoms()+","+getSpecArea()+","+"pending");
+        print.print(getUserID()+","+getName()+","+getAppDate()+","+
+                getAppTime()+","+getSymptoms()+","+getSpecArea()+","+"pending"+"option"+"\n");
         print.close();
         try{
          //database\appointment.txt  file write in all of data
          FileWriter fw = new FileWriter("user data\\database\\pendingappointment.txt",true);
          BufferedWriter bw = new BufferedWriter(fw);
          PrintWriter pw = new PrintWriter(bw);
-         pw.println(getUserID()+","+getName()+","+getAppDate()+","+getAppTime()+","+getSymptoms()+","+getSpecArea()+","+"pending");
+         pw.print(getUserID()+","+getName()+","+getAppDate()+","+getAppTime()+","+getSymptoms()+","+getSpecArea()+","+"pending"+","+"option"+"\n");
          pw.close();
          Alert alert = new Alert(Alert.AlertType.INFORMATION);
          alert.setContentText("Appointment was saved..!");  //display data saved message
@@ -112,7 +112,7 @@ public class Appointment {
         
     }
     
-    @FXML
+      @FXML
       public static ArrayList<Appointment> viewAppointment(String filepath) throws IOException{
         
         ArrayList<Appointment> appointmentArrayList = new ArrayList<>();
@@ -282,6 +282,58 @@ public class Appointment {
        }
        
    }
+   
+   // edit appointment method
+   public void editAppointment(String filepath,String tempFile,String editname,String appDate,String appTime,String sypt,String mOfficer){
+        File oldFile = new File(filepath);//create object in oldfile
+        File newFile = new File (tempFile);//create object in newfile
+        //idintyfiy each component
+        String id = "" ; String name = ""; String appdate =""; String apptime =""; String syp =""; String mo=""; String status ="";String op="";   
+        try {
+            FileWriter fw = new FileWriter(tempFile,true); 
+            BufferedWriter bw = new BufferedWriter(fw);
+            PrintWriter pw = new PrintWriter(bw);
+            x = new Scanner (new File (filepath));  // scan file
+            x.useDelimiter("[,\n]"); // set delimiter
+            
+            while(x.hasNext()){
+                //assign value in variable in tempary
+                id=x.next();
+                name=x.next();
+                appdate=x.next();
+                apptime=x.next();
+                syp=x.next();
+                mo=x.next();
+                status=x.next();
+                op=x.next();
+                if(id.equals(userIDAppointment)){  //compare idnumber
+                    pw.print(id+","+editname+","+appDate+","+appTime+","+sypt+","+mOfficer+","+status+","+op+"\n"); //is it true update new component
+                    
+                }else{
+                    pw.print(id+","+name+","+appdate+","+apptime+","+syp+","+mo+","+status+","+op+"\n"); //else write other data in new file
+                }
+                
+            }
+            x.close();   //scanner close
+            pw.flush();  //print writer flush
+            pw.close();   //print writer close
+            oldFile.delete();   // file deleted
+            File dump = new File (filepath); 
+            newFile.renameTo(dump);  // new file rename old file name
+            
+            
+       } catch (Exception e) {
+        Alert alert = new Alert(Alert.AlertType.WARNING); //display Warning message
+        alert.setContentText("Go back and try agin..!");
+        alert.show();
+        System.out.println(e);  
+       }
+        
+        
+        
+   }
+   
+   
    
    
     

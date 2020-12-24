@@ -89,9 +89,10 @@ public class RecAppointmentCompletedController extends DashboardUIController imp
         singleAppointment =appointmentTable.getSelectionModel().getSelectedItems();
         userIDAppointment = appointmentTable.getSelectionModel().getSelectedItem().getUserID(); // get user id in select row and set it static variable
         name=appointmentTable.getSelectionModel().getSelectedItem().getName(); //get name in table set it name
-        singleAppointment.forEach(allAppointment::remove); //delete select row
+         
         Appointment appObj = new Appointment();            //create object in appointmen class
-        appObj.deleteAppointment("user data//database//approveappointment.txt", "user data//database//temp.txt"); //call appointment delete methode
+        appObj.deleteAppointment("user data//database//completedappointment.txt", "user data//database//temp.txt"); //call appointment delete methode
+        singleAppointment.forEach(allAppointment::remove);//delete select row
         Alert alert = new Alert(Alert.AlertType.WARNING); //display Warning message
         alert.setContentText("You deleted "+name.toUpperCase()+"'s appointment..!");
         alert.show();
