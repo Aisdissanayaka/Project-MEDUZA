@@ -8,6 +8,7 @@ package Control;
 import static Control.UserLoginController.profilePicture;
 import static Control.UserLoginController.staticUserName;
 import Model.Appointment;
+import com.jfoenix.controls.JFXButton;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -25,6 +26,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 /**
@@ -103,6 +105,8 @@ public class RecAppointmentWindowController extends DashboardUIController implem
     
      @FXML
     void deleteAppointment(ActionEvent event) {  // deleteaction event
+        
+        try{
         String name; 
         ObservableList<Appointment> allAppointment,singleAppointment;
         allAppointment = appointmentTable.getItems();
@@ -115,21 +119,58 @@ public class RecAppointmentWindowController extends DashboardUIController implem
         Alert alert = new Alert(Alert.AlertType.WARNING); //display Warning message
         alert.setContentText("You deleted "+name.toUpperCase()+"'s appointment..!");
         alert.show();
+        }catch(Exception e){
+        Alert alert = new Alert(Alert.AlertType.WARNING); //display Warning message
+        alert.setContentText("Selecet Appointment and press delete button");
+        alert.show();   
+        }
+        
+        
     }
 
-    @FXML
-    void editAppointment(ActionEvent event) {
-
-    }
-    
-    
-    @FXML  //approved appointment action event
-    void approveAppointment(ActionEvent event) {
+    @FXML // edit button
+    void editAppointment(ActionEvent event) throws IOException {
+        try{
         ObservableList<Appointment> allAppointment,singleAppointment;
         allAppointment = appointmentTable.getItems();
         singleAppointment =appointmentTable.getSelectionModel().getSelectedItems();
         userIDAppointment = appointmentTable.getSelectionModel().getSelectedItem().getUserID(); // get user id in select row and set it static variable
-        status=appointmentTable.getSelectionModel().getSelectedItem().getStatus();  //get status in table and asign the value in static variable
+        // all items store in static object in appointment class 
+        RecAppointmentEditController.selectedFeield=(Appointment)appointmentTable.getSelectionModel().getSelectedItem();
+        singleAppointment.forEach(allAppointment::remove);
+        // load appointment edit window   
+        FXMLLoader loader =new FXMLLoader(getClass().getResource("/View/Dashboards/Receptionist/RecAppointmentEdit.fxml"));
+        Parent root = loader.load();
+        DashboardUIController welcome =loader.getController();
+        welcome.showInformation(staticUserName);
+        welcome.showProfilePicture(profilePicture);
+         
+        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+        window.setScene(new Scene(root));
+        window.show();
+        window.centerOnScreen();
+        }catch(Exception e){
+        
+        Alert alert = new Alert(Alert.AlertType.WARNING); //display Warning message
+        alert.setContentText("Selecet Appointment and then press edit  button");
+        alert.show();
+        System.out.println(e);
+        }
+        
+    }
+    
+        
+    
+    @FXML  //approved appointment action event
+    void approveAppointment(ActionEvent event) {
+        try{
+        ObservableList<Appointment> allAppointment,singleAppointment;
+        allAppointment = appointmentTable.getItems();
+        singleAppointment =appointmentTable.getSelectionModel().getSelectedItems();
+        userIDAppointment = appointmentTable.getSelectionModel().getSelectedItem().getUserID(); // get user id in select row and set it static variable
+        status=appointmentTable.getSelectionModel().getSelectedItem().getStatus();
+         
+        //get status in table and asign the value in static variable
         if (status.equals(pending)){        //compare  status (pending is an static variable)
         Appointment appObj = new Appointment();       //create object in appointment class
         appObj.approveAppointment("user data//database//pendingappointment.txt", "user data//database//approveappointment.txt");  //call approved appointment methode
@@ -137,6 +178,12 @@ public class RecAppointmentWindowController extends DashboardUIController implem
         singleAppointment.forEach(allAppointment::remove);   // delete selected row in table
 
         
+        }
+        }
+        catch(Exception e){
+         Alert alert = new Alert(Alert.AlertType.WARNING); //display Warning message
+        alert.setContentText("Selecet Appointment and press approved button");
+        alert.show();  
         }
     }
     
