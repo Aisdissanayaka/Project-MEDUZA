@@ -16,7 +16,7 @@
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" maxHeight="780.0" maxWidth="1500.0" minHeight="500.0" minWidth="500.0" prefHeight="700.0" prefWidth="1200.0" styleClass="BackgroundPane" stylesheets="@../../Styles.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Control.AdminAppointmentsController">
+<AnchorPane id="AnchorPane" maxHeight="780.0" maxWidth="1500.0" minHeight="500.0" minWidth="500.0" prefHeight="700.0" prefWidth="1200.0" styleClass="BackgroundPane" stylesheets="@../../Styles.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Control.AdminAppointmentsCompletedController">
    <children>
       <AnchorPane id="AnchorPane" maxHeight="780.0" maxWidth="1500.0" minHeight="500.0" minWidth="500.0" prefHeight="700.0" prefWidth="1200.0" styleClass="BackgroundPane" stylesheets="@../../Styles.css">
          <children>
@@ -141,7 +141,7 @@
                <children>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="482.0" prefWidth="962.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
-                        <TableView fx:id="appointmentTableAdmin" editable="true" layoutX="6.0" layoutY="70.0" prefHeight="428.0" prefWidth="970.0" tableMenuButtonVisible="true" AnchorPane.bottomAnchor="-1.0" AnchorPane.leftAnchor="6.0" AnchorPane.rightAnchor="6.0" AnchorPane.topAnchor="46.0">
+                        <TableView fx:id="appointmentTableAdmin" editable="true" layoutX="6.0" layoutY="47.0" prefHeight="451.0" prefWidth="970.0" tableMenuButtonVisible="true" AnchorPane.bottomAnchor="-1.0" AnchorPane.leftAnchor="6.0" AnchorPane.rightAnchor="6.0" AnchorPane.topAnchor="47.0">
                            <columns>
                               <TableColumn fx:id="idCol" maxWidth="1000.0" minWidth="30.0" prefWidth="50.0" text="ID" />
                               <TableColumn fx:id="patientCol" minWidth="30.0" prefWidth="75.0" text="Patient" />
@@ -159,32 +159,32 @@
                               <Insets bottom="2.0" left="2.0" right="2.0" top="2.0" />
                            </opaqueInsets>
                         </TableView>
+                        <JFXButton layoutX="38.0" layoutY="3.0" onAction="#AdminAppointmentBtn" prefHeight="39.0" prefWidth="120.0" styleClass="Side-Button" stylesheets="@../../Styles.css" text="Pending" textFill="#b3d1f4" AnchorPane.leftAnchor="6.0">
+                           <font>
+                              <Font name="Segoe UI Italic" size="19.0" />
+                           </font>
+                           <effect>
+                              <DropShadow color="#ff2727" height="121.09" radius="58.2575" spread="0.5" width="113.94" />
+                           </effect>
+                        </JFXButton>
+                        <JFXButton layoutX="131.0" layoutY="3.0" onAction="#AdminAppointmentApprovedBtn" prefHeight="39.0" prefWidth="120.0" styleClass="Side-Button" stylesheets="@../../Styles.css" text="Approved" textFill="#b3d1f4">
+                           <font>
+                              <Font name="Segoe UI Italic" size="19.0" />
+                           </font>
+                           <effect>
+                              <DropShadow color="#ff2727" height="121.09" radius="58.2575" spread="0.5" width="113.94" />
+                           </effect>
+                        </JFXButton>
+                        <JFXButton layoutX="256.0" layoutY="3.0" prefHeight="39.0" prefWidth="120.0" styleClass="Side-Button-select" stylesheets="@../../Styles.css" text="Completed" textFill="#b3d1f4">
+                           <font>
+                              <Font name="Segoe UI Italic" size="19.0" />
+                           </font>
+                           <effect>
+                              <DropShadow color="#ff2727" height="121.09" radius="58.2575" spread="0.5" width="113.94" />
+                           </effect>
+                        </JFXButton>
                      </children>
                   </AnchorPane>
-                  <JFXButton layoutX="4.0" layoutY="1.0" prefHeight="39.0" prefWidth="120.0" styleClass="Side-Button-select" stylesheets="@../../Styles.css" text="Pending" textFill="#b3d1f4" AnchorPane.leftAnchor="6.0" AnchorPane.topAnchor="0.0">
-                     <font>
-                        <Font name="Segoe UI Italic" size="19.0" />
-                     </font>
-                     <effect>
-                        <DropShadow color="#ff2727" height="121.09" radius="58.2575" spread="0.5" width="113.94" />
-                     </effect>
-                  </JFXButton>
-                  <JFXButton layoutX="131.0" onAction="#AdminAppointmentApprovedBtn" prefHeight="39.0" prefWidth="120.0" styleClass="Side-Button" stylesheets="@../../Styles.css" text="Approved" textFill="#b3d1f4" AnchorPane.topAnchor="0.0">
-                     <font>
-                        <Font name="Segoe UI Italic" size="19.0" />
-                     </font>
-                     <effect>
-                        <DropShadow color="#ff2727" height="121.09" radius="58.2575" spread="0.5" width="113.94" />
-                     </effect>
-                  </JFXButton>
-                  <JFXButton layoutX="255.0" onAction="#AdminAppointmentCompletedBtn" prefHeight="39.0" prefWidth="120.0" styleClass="Side-Button" stylesheets="@../../Styles.css" text="Completed" textFill="#b3d1f4" AnchorPane.topAnchor="0.0">
-                     <font>
-                        <Font name="Segoe UI Italic" size="19.0" />
-                     </font>
-                     <effect>
-                        <DropShadow color="#ff2727" height="121.09" radius="58.2575" spread="0.5" width="113.94" />
-                     </effect>
-                  </JFXButton>
                </children>
             </AnchorPane>
             <Label layoutX="226.0" layoutY="46.0" text="MEDUZA HOSPITALS PVT(Ltd.)" textFill="#50506d">
@@ -204,18 +204,5 @@
             </Button>
          </children>
       </AnchorPane>
-      <JFXButton buttonType="RAISED" layoutX="503.0" layoutY="136.0" prefHeight="47.0" prefWidth="260.0" style="-fx-background-radius: 30;" styleClass="Special-buttons" stylesheets="@../../Styles.css" text="Delete" textFill="#b3d1f4">
-         <font>
-            <Font name="Segoe UI Symbol" size="20.0" />
-         </font>
-         <ripplerFill>
-            <LinearGradient endX="1.0" endY="1.0">
-               <stops>
-                  <Stop color="#176694" />
-                  <Stop color="#5454cc" offset="1.0" />
-               </stops>
-            </LinearGradient>
-         </ripplerFill>
-      </JFXButton>
    </children>
 </AnchorPane>
