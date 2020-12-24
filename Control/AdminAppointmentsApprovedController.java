@@ -22,7 +22,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
  *
  * @author ASUS
  */
-public class AdminAppointmentsController extends DashboardUIController implements Initializable {
+public class AdminAppointmentsApprovedController extends DashboardUIController implements Initializable {
     @FXML
     private TableView<Appointment> appointmentTableAdmin;
 
@@ -50,7 +50,7 @@ public class AdminAppointmentsController extends DashboardUIController implement
     @FXML
     private TableColumn<Appointment, String>optionsCol;
     
-    String filepathpending ="user data//database//pendingappointment.txt";
+    String filepathpending ="user data//database//approveappointment.txt";
     @Override
     public void initialize(URL url, ResourceBundle rb) {
        try {
