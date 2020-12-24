@@ -6,7 +6,7 @@
 package Model;
 
 import static Control.RecAppointmentWindowController.userIDAppointment;
-import static Control.RecPostalWindowController.reffNumber;
+import static Control.RecPostalWindowController.refNumber;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -178,7 +178,7 @@ public class Postal {
         File oldFile = new File(filepath);//create object in oldfile
         File newFile = new File (tempFile);//create object in newfile
         //idintyfiy each component
-        String ref = "" ; String from = ""; String fromadd =""; String note =""; String date =""; String to=""; String document ="";String op;   
+        String ref = "" ; String from = ""; String fromadd =""; String note =""; String date =""; String to=""; String document ="";String option;   
         try {
             FileWriter fw = new FileWriter(tempFile,true); 
             BufferedWriter bw = new BufferedWriter(fw);
@@ -195,12 +195,12 @@ public class Postal {
                 date=x.next();
                 to=x.next();
                 document=x.next();
-                op=x.next();
-                if(ref.equals(reffNumber)){  //compare idnumber
+                option=x.next();
+                if(ref.equals(refNumber)){  //compare idnumber
                     System.out.println("You deleted "+ref+"postal"); // is it true display message
                     
                 }else{
-                    pw.print(ref+","+from+","+fromadd+","+note+","+date+","+to+","+document+","+op+"\n"); //else write other data in new file
+                    pw.print(ref+","+from+","+fromadd+","+note+","+date+","+to+","+document+","+option+"\n"); //else write other data in new file
                 }
                 
             }
