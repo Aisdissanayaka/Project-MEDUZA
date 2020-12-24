@@ -22,6 +22,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -33,7 +34,7 @@ import javafx.stage.Stage;
  * @author ASUS
  */
 public class RecPostalWindowController extends DashboardUIController implements Initializable {
-    
+    public static String reffNumber;
   
    //Trigers the Dispatched postal side window in the postal window
     @FXML
@@ -147,6 +148,32 @@ public class RecPostalWindowController extends DashboardUIController implements 
     
     
     }
+    
+     @FXML // receved postal delete button
+    void deletePostal(ActionEvent event) {
+
+        try{
+        
+        ObservableList<Postal> allReceved,singleReceved;
+        allReceved = receivedPostTable.getItems();
+        singleReceved =receivedPostTable.getSelectionModel().getSelectedItems();
+        reffNumber = receivedPostTable.getSelectionModel().getSelectedItem().getRefferenceNum(); // get user id in select row and set it static variable
+     
+        Postal appObj = new Postal();            //create object in appointmen class
+        appObj.deletePostal("user data//database//recievedPostals.txt", "user data//database//temp.txt"); //call postal delete methode
+        singleReceved.forEach(allReceved::remove); //delete select row
+        Alert alert = new Alert(Alert.AlertType.WARNING); //display Warning message
+        alert.setContentText("You deleted "+reffNumber.toUpperCase()+"'s Receved Posatal..!");
+        alert.show();
+        }catch(Exception e){
+        Alert alert = new Alert(Alert.AlertType.WARNING); //display Warning message
+        alert.setContentText("Selecet Postal and press delete button");
+        alert.show();   
+        }
+        
+    }
+    
+    
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
