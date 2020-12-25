@@ -95,6 +95,7 @@ public class ReceptionistProfileWindowController extends DashboardUIController i
         Desktop desktop = Desktop.getDesktop();
 
         view.setOnAction(new EventHandler<ActionEvent>() {
+           
  
         @Override 
         public void handle(ActionEvent event) { 
