@@ -179,5 +179,18 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
+      <JFXButton buttonType="RAISED" layoutX="553.0" layoutY="126.0" onAction="#deleteVisitor" prefHeight="47.0" prefWidth="253.0" style="-fx-background-radius: 30;" styleClass="Special-buttons" stylesheets="@../../Styles.css" text="Delete Visitor Record" textFill="#b3d1f4">
+         <font>
+            <Font name="Segoe UI Symbol" size="20.0" />
+         </font>
+         <ripplerFill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop color="#176694" />
+                  <Stop color="#5454cc" offset="1.0" />
+               </stops>
+            </LinearGradient>
+         </ripplerFill>
+      </JFXButton>
    </children>
 </AnchorPane>
