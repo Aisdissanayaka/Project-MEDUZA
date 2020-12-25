@@ -5,6 +5,7 @@
  */
 package Control;
 
+import Model.Visitor;
 import static Control.UserLoginController.profilePicture;
 import static Control.UserLoginController.staticUserName;
 import Model.Patient;

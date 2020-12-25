@@ -161,7 +161,7 @@
             </JFXTextField>
             <JFXComboBox fx:id="bloodGroup" layoutX="84.0" layoutY="319.0" promptText="Blood Group" />
             <JFXTextArea fx:id="allergies" layoutX="84.0" layoutY="363.0" prefHeight="51.0" prefWidth="454.0" promptText="Allergies" styleClass="BackgroundPane" stylesheets="@../../Styles.css" />
-            <JFXTextField fx:id="nic" labelFloat="true" layoutX="87.0" layoutY="44.0" promptText="NIC" unFocusColor="#1d7fff">
+            <JFXTextField fx:id="nic" disable="true" labelFloat="true" layoutX="87.0" layoutY="44.0" promptText="NIC" unFocusColor="#1d7fff">
                <font>
                   <Font size="17.0" />
                </font>
@@ -187,6 +187,11 @@
                   <Image url="@../../images/big%20logo.png" />
                </image>
             </ImageView>
+            <JFXButton layoutX="688.0" layoutY="441.0" onAction="#passwordResetBtn" prefHeight="31.0" prefWidth="143.0" style="-fx-background-radius: 30;" styleClass="Special-buttons" text="Password Reset" textFill="#b9d5fd">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </JFXButton>
          </children>
       </AnchorPane>
       <Label layoutX="226.0" layoutY="46.0" text="MEDUZA HOSPITALS PVT(Ltd.)" textFill="#50506d">
