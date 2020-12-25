@@ -8,10 +8,12 @@ package Control;
 import static Control.UserLoginController.profilePicture;
 import static Control.UserLoginController.staticUserName;
 import Model.Patient;
+import Model.user;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -25,6 +27,9 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.image.Image;
+import javafx.scene.paint.ImagePattern;
+import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
 
 /**
@@ -59,6 +64,9 @@ public class RecPatientEditWindowController extends DashboardUIController implem
 
     @FXML
     private JFXTextField nic;
+    
+     @FXML
+    private Circle patientProfilePhoto;
 
     public static Patient selectedUser;
     
@@ -95,6 +103,20 @@ public class RecPatientEditWindowController extends DashboardUIController implem
         
     }
     
+     @FXML //Password reset button
+    void passwordResetBtn(ActionEvent event) {
+         try {
+             user obj = new user(); // create object in user class and call password reset method
+             obj.passwordReset("user data\\patient\\credentials\\patientlogin.txt", "user data\\patient\\credentials\\temp.txt", selectedUser.getNic());
+             Alert alert = new Alert(Alert.AlertType.INFORMATION); //display Warning message
+             alert.setContentText("You reset"+selectedUser.getFName().toUpperCase()+"'s Password..!");
+             alert.show();
+         } catch (Exception e) {
+         }
+
+    }
+    
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
       firstName.setText(selectedUser.getFName());
@@ -113,7 +135,21 @@ public class RecPatientEditWindowController extends DashboardUIController implem
        
        ObservableList<String>list2=FXCollections.observableArrayList("A+","O+","B+","AB+","A-","O-","B-","AB-");
        bloodGroup.setItems(list2);
-      
+       
+       //set patient profile photo
+          
+       try{
+        FileInputStream input = new FileInputStream("user data\\patient\\photo\\"+selectedUser.getNic()+".jpg");
+ 
+        Image img1 = new Image(input);
+     
+        patientProfilePhoto.setFill(new ImagePattern(img1));
+        }catch(Exception e){
+            
+        }
+       
+       
+       
       
     }    
     

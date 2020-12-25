@@ -192,6 +192,45 @@ public class user {
     }
     
     
+  //The following method will check the user is genuine and allows to reset password
+    public void passwordReset(String filepath,String tempFile,String userusername){
+        File oldFile = new File(filepath);
+        File newFile = new File (tempFile);
+        String uName = "" ; String pWord = "";
+        
+        
+            try {
+            
+            FileWriter fw = new FileWriter(tempFile,true);
+            BufferedWriter bw = new BufferedWriter(fw);
+            PrintWriter pw = new PrintWriter(bw);
+            x = new Scanner (new File (filepath));
+            x.useDelimiter("[,\n]");
+            
+            while(x.hasNext()){
+                uName = x.next();
+                pWord = x.next();
+                
+                if (uName.equals(userusername)){
+                    pw.print(uName + "," + uName + "\n");   
+                }else{
+                    pw.print(uName + "," + pWord + "\n");
+                }
+                
+              
+            }   
+            x.close();
+            pw.flush();
+            pw.close();
+            oldFile.delete();
+            File dump = new File (filepath);
+            newFile.renameTo(dump); 
+          
+        } catch (Exception e) {
+            System.out.println("Error");
+          }
+        
+    }
   
 
 
