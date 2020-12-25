@@ -150,6 +150,26 @@
                   <Image url="@../images/big%20logo.png" />
                </image>
             </ImageView>
+            <Label layoutX="297.0" layoutY="202.0" text="Pending Appointments" />
+            <Label layoutX="297.0" layoutY="242.0" text="Approved Appointments" />
+            <Label layoutX="297.0" layoutY="284.0" text="Completed Appointments" />
+            <Label layoutX="297.0" layoutY="328.0" text="Visitor records" />
+            <Label layoutX="297.0" layoutY="373.0" text="Complaints" />
+            <Label layoutX="300.0" layoutY="404.0" text="Received Postal" />
+            <Label layoutX="300.0" layoutY="437.0" text="Dispatched Postal" />
+            <Label layoutX="297.0" layoutY="473.0" text="Patients" />
+            <Label layoutX="300.0" layoutY="514.0" text="Receptionists" />
+            <Label layoutX="297.0" layoutY="552.0" text="Mos" />
+            <Label fx:id="pendingAppointmentCount" layoutX="543.0" layoutY="201.0" prefHeight="18.0" prefWidth="42.0" text="-" />
+            <Label fx:id="approvedAppointmentCount" layoutX="543.0" layoutY="241.0" prefHeight="18.0" prefWidth="42.0" text="-" />
+            <Label fx:id="completedAppointmentsCount" layoutX="543.0" layoutY="283.0" prefHeight="18.0" prefWidth="42.0" text="-" />
+            <Label fx:id="visitorRecordsCount" layoutX="543.0" layoutY="327.0" prefHeight="18.0" prefWidth="42.0" text="-" />
+            <Label fx:id="complaintsCount" layoutX="543.0" layoutY="372.0" prefHeight="18.0" prefWidth="42.0" text="-" />
+            <Label fx:id="receivedPostalCount" layoutX="533.0" layoutY="403.0" prefHeight="18.0" prefWidth="42.0" text="-" />
+            <Label fx:id="dispatchedPostalCount" layoutX="533.0" layoutY="436.0" prefHeight="18.0" prefWidth="42.0" text="-" />
+            <Label fx:id="patientsCount" layoutX="522.0" layoutY="472.0" prefHeight="18.0" prefWidth="42.0" text="-" />
+            <Label fx:id="receptionistCount" layoutX="533.0" layoutY="513.0" prefHeight="18.0" prefWidth="42.0" text="-" />
+            <Label fx:id="moCount" layoutX="533.0" layoutY="551.0" prefHeight="18.0" prefWidth="42.0" text="-" />
          </children>
       </AnchorPane>
    </children>
