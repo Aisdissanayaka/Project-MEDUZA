@@ -58,7 +58,8 @@ public class RecAppointmentEditController extends DashboardUIController implemen
     //create object in appointment class    
     Appointment obj = new Appointment();
     try{
-    //called edit appointment metode    
+    //called edit appointment metode  
+    obj.setUserID(userID.getText());
     obj.editAppointment("user data//database//pendingappointment.txt", "user data//database//temp.txt", name.getText(), appDate.getValue().toString(), appTime.getValue().toString(),Symptoms.getText(), specAreaCombo.getValue());
     Alert alert = new Alert(Alert.AlertType.INFORMATION); //display Warning message
     alert.setContentText("Updated appointment.!");

@@ -5,6 +5,7 @@
  */
 package Control;
 
+import Model.Patient;
 import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
 import java.awt.image.BufferedImage;
@@ -86,20 +87,24 @@ public class PatientProfileWindowController extends DashboardUIController implem
     
   // update button. It's update receptionist data
     @FXML
-    private void updateBtn(){
-         if(validateFields()&&validatePhoneNum()){
-        try{
-        File file = new File("user data\\patient\\data\\"+ NICTxt.getText()+".txt");  
-        file.delete();
-        PrintWriter printer = new PrintWriter(new FileOutputStream(file,true)); 
+    private void updateBtn()throws IOException{
         
-         printer.append(firstNameTxt.getText()+"\n"  + lastNameTxt.getText()+ "\n" +  addressTxt.getText()+"\n"+ NICTxt.getText()+"\n"+ bloodGroupBox.getValue() + "\n"+
-             dateOfBirthTxt.getText()+ "\n"+ genderBox.getValue() +"\n" +phoneNumTxt.getText() +"\n"+ allergiesTxt.getText());
-             printer.close();
-        }catch(FileNotFoundException e){}
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setContentText("Your profile was updated..!");
-        alert.show();
+        
+        
+    try {
+            
+    Patient obj = new Patient(); //create object in patient class and call edit patient methode
+    obj.editPatient("user data//database//patients.txt", "user data//database//temp.txt", NICTxt.getText(), firstNameTxt.getText(), lastNameTxt.getText(), genderBox.getValue().toString(), dateOfBirthTxt.getText(),
+            phoneNumTxt.getText(),addressTxt.getText(),bloodGroupBox.getValue().toString(),allergiesTxt.getText());
+    Alert alert = new Alert(Alert.AlertType.INFORMATION); //display Warning message
+    alert.setContentText("Updated Profile..!");
+    alert.show();
+            
+        } catch (Exception e) {
+        }
+         if(validateFields()&&validatePhoneNum()){
+
+        
         
     }
     }

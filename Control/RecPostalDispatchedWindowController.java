@@ -5,7 +5,8 @@
  */
 package Control;
 
-import static Control.RecPostalWindowController.reffNumber;
+
+import static Control.RecPostalWindowController.refNumber;
 import static Control.UserLoginController.profilePicture;
 import static Control.UserLoginController.staticUserName;
 import Model.Postal;
@@ -186,13 +187,13 @@ public class RecPostalDispatchedWindowController extends DashboardUIController i
         ObservableList<Postal> allReceved,singleReceved;
         allReceved = dispatchedPostTable.getItems();
         singleReceved =dispatchedPostTable.getSelectionModel().getSelectedItems();
-        reffNumber = dispatchedPostTable.getSelectionModel().getSelectedItem().getRefferenceNum(); // get reff no in select row and set it static variable
+        refNumber = dispatchedPostTable.getSelectionModel().getSelectedItem().getRefferenceNum(); // get reff no in select row and set it static variable
      
         Postal appObj = new Postal();            //create object in Postal class
         appObj.deletePostal("user data//database//dispatchedPostals.txt", "user data//database//temp.txt"); //call postal delete methode
         singleReceved.forEach(allReceved::remove); //delete select row
         Alert alert = new Alert(Alert.AlertType.WARNING); //display Warning message
-        alert.setContentText("You deleted "+reffNumber.toUpperCase()+"'s Dispatched Posatal..!");
+        alert.setContentText("You deleted "+refNumber.toUpperCase()+"'s Dispatched Posatal..!");
         alert.show();
         }catch(Exception e){
         Alert alert = new Alert(Alert.AlertType.WARNING); //display Warning message

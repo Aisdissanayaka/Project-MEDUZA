@@ -173,6 +173,7 @@ public class RecAppointmentWindowController extends DashboardUIController implem
         //get status in table and asign the value in static variable
         if (status.equals(pending)){        //compare  status (pending is an static variable)
         Appointment appObj = new Appointment();       //create object in appointment class
+        
         appObj.approveAppointment("user data//database//pendingappointment.txt", "user data//database//approveappointment.txt");  //call approved appointment methode
         appObj.deleteAppointment("user data//database//pendingappointment.txt", "user data//database//temp.txt");  //call delete appointment methode
         singleAppointment.forEach(allAppointment::remove);   // delete selected row in table

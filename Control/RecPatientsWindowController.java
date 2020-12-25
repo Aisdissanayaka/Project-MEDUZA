@@ -5,8 +5,10 @@
  */
 package Control;
 
+import static Control.RecAppointmentWindowController.userIDAppointment;
 import static Control.UserLoginController.profilePicture;
 import static Control.UserLoginController.staticUserName;
+import Model.Appointment;
 import Model.Patient;
 import Model.Postal;
 import java.io.IOException;
@@ -22,6 +24,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -33,7 +36,7 @@ import javafx.stage.Stage;
  * @author ASUS
  */
 public class RecPatientsWindowController extends DashboardUIController implements Initializable {
- 
+    public static String patientID;
     
     //Triggers the add patient window
     @FXML
@@ -89,6 +92,7 @@ public class RecPatientsWindowController extends DashboardUIController implement
 
     @FXML
     private TableColumn<Patient, String> optionsCol;
+    
     
     @FXML
     public void viewPatients(){
@@ -160,5 +164,39 @@ public class RecPatientsWindowController extends DashboardUIController implement
          }catch(Exception e){}
         
     }    
+    
+    @FXML
+    void editPatientBtn(ActionEvent event) throws IOException {
+    try{
+        ObservableList<Patient> allUser,singleUser;
+        allUser = patientsTable.getItems();
+        singleUser =patientsTable.getSelectionModel().getSelectedItems();
+        patientID = patientsTable.getSelectionModel().getSelectedItem().getNic();
+        // all items store in static object in patient class 
+        RecPatientEditWindowController.selectedUser=(Patient)patientsTable.getSelectionModel().getSelectedItem();
+        singleUser.forEach(allUser::remove);
+        // load patient edit window   
+        FXMLLoader loader =new FXMLLoader(getClass().getResource("/View/Dashboards/Receptionist/RecPatientEditWindow.fxml"));
+        Parent root = loader.load();
+        DashboardUIController welcome =loader.getController();
+        welcome.showInformation(staticUserName);
+        welcome.showProfilePicture(profilePicture);
+         
+        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+        window.setScene(new Scene(root));
+        window.show();
+        window.centerOnScreen();
+        }catch(Exception e){
+        
+        Alert alert = new Alert(Alert.AlertType.WARNING); //display Warning message
+        alert.setContentText("Selecet Patient and then press edit  button");
+        alert.show();
+        System.out.println(e);
+        }
+        
+    }
+    
+    
+    
     
 }
