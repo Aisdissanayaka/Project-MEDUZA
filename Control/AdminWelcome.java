@@ -30,7 +30,7 @@ public class AdminWelcome extends DashboardUIController implements Initializable
     Circle profilePhoto;
     
     
-     @FXML
+    @FXML
     private Label pendingAppointmentCount;
 
     @FXML
