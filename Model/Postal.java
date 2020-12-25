@@ -5,14 +5,19 @@
  */
 package Model;
 
+import static Control.RecAppointmentWindowController.userIDAppointment;
+import static Control.RecPostalWindowController.reffNumber;
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.Scanner;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 
@@ -83,7 +88,7 @@ public class Postal {
     public void AddReceivedPost(ActionEvent event)throws FileNotFoundException{
                 File file = new File ("user data\\receptionist\\postal\\recieved\\"+getRefferenceNum()+".txt");
                 PrintWriter print = new PrintWriter(new FileOutputStream(file,true)); 
-                print.append(getFrom()+"\n"+getRefferenceNum()+"\n"+getAddress()+"\n"+getNote()+"\n"+getDate()+"\n"+getTo()+"\n");
+                print.append(getRefferenceNum()+"\n"+getFrom()+"\n"+getAddress()+"\n"+getNote()+"\n"+getDate()+"\n"+getTo()+"\n");
                 print.close();
         
         
@@ -92,7 +97,7 @@ public class Postal {
      public void AddDispatchedPost(ActionEvent event)throws FileNotFoundException{
                 File file = new File ("user data\\receptionist\\postal\\dispatched post\\"+getRefferenceNum()+".txt");
                 PrintWriter print = new PrintWriter(new FileOutputStream(file,true)); 
-                print.append(getTo()+"\n"+getRefferenceNum()+"\n"+getAddress()+"\n"+getNote()+"\n"+getDate()+"\n"+getFrom()+"\n");
+                print.append(getRefferenceNum()+"\n"+getTo()+"\n"+getAddress()+"\n"+getNote()+"\n"+getDate()+"\n"+getFrom()+"\n");
                 print.close();
      }
     @FXML
@@ -168,6 +173,50 @@ public class Postal {
         return dispatchedPostalArrayList;
         
     }
+      private Scanner x;
+      public void deletePostal(String filepath,String tempFile){
+        File oldFile = new File(filepath);//create object in oldfile
+        File newFile = new File (tempFile);//create object in newfile
+        //idintyfiy each component
+        String ref = "" ; String from = ""; String fromadd =""; String note =""; String date =""; String to=""; String document ="";String op;   
+        try {
+            FileWriter fw = new FileWriter(tempFile,true); 
+            BufferedWriter bw = new BufferedWriter(fw);
+            PrintWriter pw = new PrintWriter(bw);
+            x = new Scanner (new File (filepath));  // scan file
+            x.useDelimiter("[,\n]"); // set delimiter
+            
+            while(x.hasNext()){
+                //assign value in variable in tempary
+                ref=x.next();
+                from=x.next();
+                fromadd=x.next();
+                note=x.next();
+                date=x.next();
+                to=x.next();
+                document=x.next();
+                op=x.next();
+                if(ref.equals(reffNumber)){  //compare idnumber
+                    System.out.println("You deleted "+ref+"postal"); // is it true display message
+                    
+                }else{
+                    pw.print(ref+","+from+","+fromadd+","+note+","+date+","+to+","+document+","+op+"\n"); //else write other data in new file
+                }
+                
+            }
+            x.close();   //scanner close
+            pw.flush();  //print writer flush
+            pw.close();   //print writer close
+            oldFile.delete();   // file deleted
+            File dump = new File (filepath); 
+            newFile.renameTo(dump);  // new file rename old file name
+            
+            
+       } catch (Exception e) {
+       }
+         
+          
+      }
 
 
 
