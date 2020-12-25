@@ -105,7 +105,7 @@
       </AnchorPane>
       <AnchorPane layoutX="295.0" layoutY="201.0" prefHeight="499.0" prefWidth="849.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="295.0" AnchorPane.rightAnchor="56.0" AnchorPane.topAnchor="201.0">
          <children>
-            <Pane layoutX="114.0" layoutY="114.0" prefHeight="499.0" prefWidth="840.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="442.0" AnchorPane.topAnchor="0.0">
+            <Pane layoutX="114.0" layoutY="114.0" prefHeight="499.0" prefWidth="849.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
                   <JFXTextField fx:id="firstNameTxt" labelFloat="true" layoutX="52.0" layoutY="27.0" promptText="First Name" unFocusColor="#1d7fff">
                      <font>

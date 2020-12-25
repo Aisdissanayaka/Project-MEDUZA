@@ -5,6 +5,7 @@
  */
 package Control;
 
+import Model.Patient;
 import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
@@ -62,7 +63,7 @@ public class RecAddPatientController extends DashboardUIController implements In
     private JFXTextArea address;
     
     @FXML
-    private ComboBox bloodGroup;
+    private ComboBox<String> bloodGroup;
     
     @FXML
     private JFXTextArea allergies;
@@ -72,16 +73,22 @@ public class RecAddPatientController extends DashboardUIController implements In
     public void submitBtn(ActionEvent event)throws  IOException{
         
         if(validateFields()){
-    
-        try
-        {
-          File file = new File("user data\\patient\\data\\"+ nic.getText()+".txt"); 
-        PrintWriter printer = new PrintWriter(new FileOutputStream(file,true));  
-        printer.append(firstName.getText()+" "  + lastName.getText()+"\n"  +address.getText() + "\n"+ nic.getText()+"\n"+bloodGroup.getValue()+"\n"+dateOfBirth.getValue()+"\n"+gender.getValue()+  
-                "\n"+ phoneNumber.getText()+"\n"+ allergies.getText());
-             printer.close();
-           }
-        catch (Exception ioException) {}
+    try{ //set value in setters
+        Patient obj = new Patient();
+        obj.setNic(nic.getText());
+        obj.setFName(firstName.getText());
+        obj.setLName(lastName.getText());
+        obj.setAddress(address.getText());
+        obj.setBloodGroup(bloodGroup.getValue());
+        obj.setAllergies(allergies.getText());
+        obj.setGender(gender.getValue().toString());
+        obj.setAddress(address.getText());
+        obj.setDOB(dateOfBirth.getValue().toString());
+        obj.signup(event);// call patient add methode
+    }catch(Exception e){
+        
+    }
+        
         
          //setiing values for declared variables
          firstName.setText(null);

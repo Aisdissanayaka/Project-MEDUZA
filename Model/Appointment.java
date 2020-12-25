@@ -232,7 +232,7 @@ public class Appointment {
             pw.flush(); //print writer fush
             pw.close();  //print writer close
              
-            
+           
             
        } catch (Exception e) {
        }
@@ -320,6 +320,15 @@ public class Appointment {
             oldFile.delete();   // file deleted
             File dump = new File (filepath); 
             newFile.renameTo(dump);  // new file rename old file name
+            
+           File file = new File("user data\\appointment\\"+userIDAppointment+".txt");  
+           file.delete();
+           PrintWriter printer = new PrintWriter(new FileOutputStream(file)); 
+        
+           printer.print(userIDAppointment+","+getName()+","+getAppDate()+","+
+                getAppTime()+","+getSymptoms()+","+getSpecArea()+","+"pending"+"option"+"\n");
+           printer.close();
+            
             
             
        } catch (Exception e) {
