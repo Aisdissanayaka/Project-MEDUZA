@@ -35,7 +35,7 @@
                               <Font name="Segoe UI" size="17.0" />
                            </font>
                         </Label>
-                        <Button layoutX="83.0" layoutY="61.0" mnemonicParsing="false" onAction="#Profilebtn" opacity="0.0" prefHeight="200.0" prefWidth="218.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                        <Button layoutX="83.0" layoutY="61.0" mnemonicParsing="false" onAction="#AdminProfileBtn" opacity="0.0" prefHeight="200.0" prefWidth="218.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                      </children>
                      <cursor>
                         <Cursor fx:constant="HAND" />
@@ -109,7 +109,7 @@
                               <InnerShadow blurType="GAUSSIAN" height="205.44" radius="70.52" width="78.64" />
                            </effect>
                         </JFXButton>
-                        <JFXButton alignment="TOP_RIGHT" buttonType="RAISED" lineSpacing="3.0" nodeOrientation="RIGHT_TO_LEFT" onAction="#AdminProfileBtn" prefHeight="73.0" prefWidth="256.0" ripplerFill="#206afd" styleClass="Side-Button" stylesheets="@../Styles.css" text="References" textFill="#b9d5fd" textOverrun="CLIP">
+                        <JFXButton alignment="TOP_RIGHT" buttonType="RAISED" lineSpacing="3.0" nodeOrientation="RIGHT_TO_LEFT" onAction="#refSpecArea" prefHeight="73.0" prefWidth="256.0" ripplerFill="#206afd" styleClass="Side-Button" stylesheets="@../Styles.css" text="References" textFill="#b9d5fd" textOverrun="CLIP">
                            <font>
                               <Font name="Segoe UI" size="27.0" />
                            </font>
