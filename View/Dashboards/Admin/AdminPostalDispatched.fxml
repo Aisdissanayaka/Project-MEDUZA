@@ -108,7 +108,7 @@
                               <InnerShadow blurType="GAUSSIAN" height="205.44" radius="70.52" width="78.64" />
                            </effect>
                         </JFXButton>
-                        <JFXButton alignment="TOP_RIGHT" buttonType="RAISED" lineSpacing="3.0" nodeOrientation="RIGHT_TO_LEFT" prefHeight="73.0" prefWidth="256.0" ripplerFill="#206afd" styleClass="Side-Button" stylesheets="@../Styles.css" text="References" textFill="#b9d5fd" textOverrun="CLIP">
+                        <JFXButton alignment="TOP_RIGHT" buttonType="RAISED" lineSpacing="3.0" nodeOrientation="RIGHT_TO_LEFT" onAction="#refSpecArea" prefHeight="73.0" prefWidth="256.0" ripplerFill="#206afd" styleClass="Side-Button" stylesheets="@../Styles.css" text="References" textFill="#b9d5fd" textOverrun="CLIP">
                            <font>
                               <Font name="Segoe UI" size="27.0" />
                            </font>
