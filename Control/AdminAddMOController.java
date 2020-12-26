@@ -14,9 +14,11 @@ import com.jfoenix.controls.JFXTextField;
 import com.jfoenix.validation.NumberValidator;
 import com.jfoenix.validation.RequiredFieldValidator;
 import java.awt.image.BufferedImage;
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -24,6 +26,8 @@ import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javafx.beans.value.ChangeListener;
@@ -234,16 +238,37 @@ public class AdminAddMOController extends DashboardUIController implements Initi
          }
        }
      
+      ObservableList list1=FXCollections.observableArrayList();
+    
+     //Speciality Area drop down list
+     private void loadData() throws FileNotFoundException, IOException{
+        list1.removeAll(list1);
+        
+        File myfile = new File("user data\\reference\\category.txt"); 
+    BufferedReader abc = new BufferedReader(new FileReader(myfile));
+     String s;
+        while((s=abc.readLine())!=null) {
+            list1.add(s);
+      
+     }
+        moSpecialityArea.getItems().addAll(list1);
+     }
     
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        
+        //add Speciality Area combo box values
+        try {
+            loadData();
+        } catch (IOException ex) {
+            Logger.getLogger(AdminAddMOController.class.getName()).log(Level.SEVERE, null, ex);
+        }
     
-         //add combo box values
+         //add Gender combo box values
        ObservableList<String>list=FXCollections.observableArrayList("Male","Female");
        moGender.setItems(list);
-       ObservableList<String>list1=FXCollections.observableArrayList("A","B","C");
-       moSpecialityArea.setItems(list1);
+       
        
        //show validation status
         RequiredFieldValidator validator = new RequiredFieldValidator();
