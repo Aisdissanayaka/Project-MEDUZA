@@ -47,6 +47,7 @@ public class main extends Application {
                        
             LauncherImpl.notifyPreloader(this, new Preloader.ProgressNotification(progress));
             Thread.sleep(50);
+
         }
         
     }

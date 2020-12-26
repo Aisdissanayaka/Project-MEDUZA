@@ -75,6 +75,7 @@ public class PatChangePasswordController implements Initializable {
 
     @FXML
    public void submitBtn(ActionEvent event)throws IOException {
+       try{
         if(primaryKey1.equals(currentPassword.getText())){
             warningMsg.setText(null);
             if(newPassword1.getText().equals(newPassword2.getText())){
@@ -101,6 +102,9 @@ public class PatChangePasswordController implements Initializable {
         }else{
             warningMsg.setText("Your current password was incorrect.");
         }
+       }catch(Exception e){
+           System.out.println("Try again..!");
+       }
     }
     
     
