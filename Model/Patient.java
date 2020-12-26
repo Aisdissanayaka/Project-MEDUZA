@@ -94,7 +94,7 @@ public class Patient extends user {
          BufferedWriter bw = new BufferedWriter(fw);
          PrintWriter pw = new PrintWriter(bw);
          pw.print(getNic()+","  + getFName()+ "," +  getLName()+","+ getGender()+","+ getDOB() + ","+
-              getPhoneNumber()+ ","+ getAddress() +"," +getBloodGroup() +","+getAllergies() +","+"password"+","+"op"+"\n");
+              getPhoneNumber()+ ","+ getAddress() +"," +getBloodGroup() +","+getAllergies() +"\n");
          pw.close();
          }catch(FileNotFoundException  e){} 
              
@@ -126,8 +126,8 @@ public class Patient extends user {
             patientLine.setAddress(patData[6]);
             patientLine.setBloodGroup(patData[7]);
             patientLine.setAllergies(patData[8]);
-            patientLine.setPassword(patData[9]);
-            patientLine.setOptions(patData[10]);
+            //patientLine.setPassword(patData[9]);
+           // patientLine.setOptions(patData[10]);
             
             patientArrayList.add(patientLine);
      
@@ -144,7 +144,7 @@ public class Patient extends user {
        File oldFile = new File(filepath);//create object in oldfile
        File newFile = new File (tempFile);//create object in newfile
         //idintyfiy each component
-        String idno;String fullname;String lastname;String usergender;String birthday;String phoneNo;String Address;String bloodGroup;String patienallergies;String password;String op;
+        String idno;String fullname;String lastname;String usergender;String birthday;String phoneNo;String Address;String bloodGroup;String patienallergies;
         try {
             FileWriter fw = new FileWriter(tempFile,true); 
             BufferedWriter bw = new BufferedWriter(fw);
@@ -162,13 +162,13 @@ public class Patient extends user {
                 Address=x.next();
                 bloodGroup=x.next();
                 patienallergies=x.next();
-                password=x.next();
-                op=x.next();
+               
+                
                 if(idno.equals(id)){  //compare idnumber
-                    pw.print(id+","+fname+","+lname+","+gender+","+dob+","+phone+","+address+","+blood+","+allergies+","+password+","+op+"\n"); //is it true update new component
+                    pw.print(id+","+fname+","+lname+","+gender+","+dob+","+phone+","+address+","+blood+","+allergies+"\n"); //is it true update new component
                     
                 }else{
-                    pw.print(idno+","+fullname+","+lastname+","+usergender+","+birthday+","+phoneNo+","+Address+","+bloodGroup+","+patienallergies+","+password+","+op+"\n"); //else write other data in new file
+                    pw.print(idno+","+fullname+","+lastname+","+usergender+","+birthday+","+phoneNo+","+Address+","+bloodGroup+","+patienallergies+"\n"); //else write other data in new file
                 }
                     
             } 

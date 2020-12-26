@@ -6,6 +6,7 @@
 package Model;
 
 import Control.RecAddAppointmentWindowController;
+import static Control.RecAppointmentWindowController.appointmentNo;
 import static Control.RecAppointmentWindowController.userIDAppointment;
 import static Control.UserLoginController.primaryKey;
 import java.io.BufferedReader;
@@ -19,6 +20,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Random;
 import java.util.Scanner;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -92,17 +94,19 @@ public class Appointment {
     
     // add oppointment method
     public void addAppointmentRec(ActionEvent event) throws FileNotFoundException, IOException{
+        Random randomObj = new Random();
+        String  randomNumber = Integer.toString( randomObj.nextInt(1000000)+100000);
         File file = new File ("user data\\appointment\\"+getUserID()+".txt");
         PrintWriter print = new PrintWriter(new FileOutputStream(file,true));
         print.print(getUserID()+","+getName()+","+getAppDate()+","+
-                getAppTime()+","+getSymptoms()+","+getSpecArea()+","+"pending"+"option"+"\n");
+                getAppTime()+","+getSymptoms()+","+getSpecArea()+","+"pending"+","+randomNumber+"\n");
         print.close();
         try{
          //database\appointment.txt  file write in all of data
          FileWriter fw = new FileWriter("user data\\database\\pendingappointment.txt",true);
          BufferedWriter bw = new BufferedWriter(fw);
          PrintWriter pw = new PrintWriter(bw);
-         pw.print(getUserID()+","+getName()+","+getAppDate()+","+getAppTime()+","+getSymptoms()+","+getSpecArea()+","+"pending"+","+"option"+"\n");
+         pw.print(getUserID()+","+getName()+","+getAppDate()+","+getAppTime()+","+getSymptoms()+","+getSpecArea()+","+"pending"+","+randomNumber+"\n");
          pw.close();
          Alert alert = new Alert(Alert.AlertType.INFORMATION);
          alert.setContentText("Appointment was saved..!");  //display data saved message
@@ -155,7 +159,7 @@ public class Appointment {
         File oldFile = new File(filepath);//create object in oldfile
         File newFile = new File (tempFile);//create object in newfile
         //idintyfiy each component
-        String id = "" ; String name = ""; String appdate =""; String apptime =""; String syp =""; String mo=""; String status ="";String op="";   
+        String id = "" ; String name = ""; String appdate =""; String apptime =""; String syp =""; String mo=""; String status ="";String appno="";   
         try {
             FileWriter fw = new FileWriter(tempFile,true); 
             BufferedWriter bw = new BufferedWriter(fw);
@@ -172,12 +176,12 @@ public class Appointment {
                 syp=x.next();
                 mo=x.next();
                 status=x.next();
-                op=x.next();
-                if(id.equals(userIDAppointment)){  //compare idnumber
+                appno=x.next();
+                if(id.equals(userIDAppointment)&& appno.equals(appointmentNo)){  //compare idnumber
                     System.out.println("delete"+name+"'s appointment"); // is it true display message
                     
                 }else{
-                    pw.print(id+","+name+","+appdate+","+apptime+","+syp+","+mo+","+status+","+op+"\n"); //else write other data in new file
+                    pw.print(id+","+name+","+appdate+","+apptime+","+syp+","+mo+","+status+","+appno+"\n"); //else write other data in new file
                 }
                 
             }
@@ -192,7 +196,7 @@ public class Appointment {
        } catch (Exception e) {
        }
         
-        
+       
         
    }
    // Appointment approved method
@@ -200,7 +204,7 @@ public class Appointment {
         File pendingFile = new File(filepath);
         File approveFile = new File (approvefilepath);
         //idintyfiy each component
-        String id = "" ; String name = ""; String appdate =""; String apptime =""; String syp =""; String mo=""; String status ="";String op="";   
+        String id = "" ; String name = ""; String appdate =""; String apptime =""; String syp =""; String mo=""; String status ="";String appno="";   
         try {
             FileWriter fw = new FileWriter(approvefilepath,true);
             BufferedWriter bw = new BufferedWriter(fw);
@@ -217,14 +221,11 @@ public class Appointment {
                 syp=x.next();
                 mo=x.next();
                 status=x.next();
-                op=x.next();
-                if(id.equals(userIDAppointment)){
-                    // userid are equal display message
-                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                    alert.setContentText("You approved "+name.toUpperCase()+"'s appointment..!");
-                    alert.show();
+                appno=x.next();
+                if(id.equals(userIDAppointment)&& appno.equals(appointmentNo) ){
+                    
                     //write new file approved appointment in approvedappointment file
-                    pw.print(id+","+name+","+appdate+","+apptime+","+syp+","+mo+","+"approved"+","+op+"\n");
+                    pw.print(id+","+name+","+appdate+","+apptime+","+syp+","+mo+","+"approved"+","+appno+"\n");
                 }
                 
             }
@@ -236,7 +237,45 @@ public class Appointment {
             
        } catch (Exception e) {
        }
-       
+        File oldFileappointment = new File("user data\\appointment\\"+userIDAppointment+".txt");//create object in oldfile
+        File newFileappointment = new File ("user data\\appointment\\temp.txt");//create object in newfile
+        //idintyfiy each component
+        //String id = "" ; String name = ""; String appdate =""; String apptime =""; String syp =""; String mo=""; String status ="";String op="";   
+        try {
+            FileWriter fw = new FileWriter("user data\\appointment\\temp.txt",true); 
+            BufferedWriter bw = new BufferedWriter(fw);
+            PrintWriter pw = new PrintWriter(bw);
+            x = new Scanner (new File ("user data\\appointment\\"+userIDAppointment+".txt"));  // scan file
+            x.useDelimiter("[,\n]"); // set delimiter
+            
+            while(x.hasNext()){
+                //assign value in variable in tempary
+                id=x.next();
+                name=x.next();
+                appdate=x.next();
+                apptime=x.next();
+                syp=x.next();
+                mo=x.next();
+                status=x.next();
+                appno=x.next();
+                if(id.equals(userIDAppointment)&& appno.equals(appointmentNo)){  //compare idnumber
+                    System.out.println("delete"+name+"'s appointment"); // is it true display message
+                    pw.print(id+","+name+","+appdate+","+apptime+","+syp+","+mo+","+"approved"+","+appno+"\n");
+                }else{
+                    pw.print(id+","+name+","+appdate+","+apptime+","+syp+","+mo+","+status+","+appno+"\n"); //else write other data in new file
+                }
+                
+            }
+            x.close();   //scanner close
+            pw.flush();  //print writer flush
+            pw.close();   //print writer close
+            oldFileappointment.delete();   // file deleted
+            File dump = new File ("user data\\appointment\\"+userIDAppointment+".txt"); 
+            newFileappointment.renameTo(dump);  // new file rename old file name
+            
+            
+       } catch (Exception e) {
+       }
    }
  
    // Appointment completed method
@@ -244,7 +283,7 @@ public class Appointment {
         File approvedFile = new File(filepath);
         File completeFile = new File (completefilepath);
         //idintyfiy each component
-        String id = "" ; String name = ""; String appdate =""; String apptime =""; String syp =""; String mo=""; String status ="";String op="";   
+        String id = "" ; String name = ""; String appdate =""; String apptime =""; String syp =""; String mo=""; String status ="";String appno="";   
         try {
             FileWriter fw = new FileWriter(completefilepath,true);
             BufferedWriter bw = new BufferedWriter(fw);
@@ -261,14 +300,14 @@ public class Appointment {
                 syp=x.next();
                 mo=x.next();
                 status=x.next();
-                op=x.next();
-                if(id.equals(userIDAppointment)){
+                appno=x.next();
+                if(id.equals(userIDAppointment)&& appno.equals(appointmentNo)){
                     // userid are equal display message
                     Alert alert = new Alert(Alert.AlertType.INFORMATION);
                     alert.setContentText("You completed "+name.toUpperCase()+"'s appointment..!");
                     alert.show();
                     //write new file completed appointment in completed appointment file
-                    pw.print(id+","+name+","+appdate+","+apptime+","+syp+","+mo+","+"completed"+","+op+"\n");
+                    pw.print(id+","+name+","+appdate+","+apptime+","+syp+","+mo+","+"completed"+","+appno+"\n");
                 }
                 
             }
@@ -280,7 +319,45 @@ public class Appointment {
             
        } catch (Exception e) {
        }
-       
+        File oldFileappointment = new File("user data\\appointment\\"+userIDAppointment+".txt");//create object in oldfile
+        File newFileappointment = new File ("user data\\appointment\\temp.txt");//create object in newfile
+        //idintyfiy each component
+        //String id = "" ; String name = ""; String appdate =""; String apptime =""; String syp =""; String mo=""; String status ="";String op="";   
+        try {
+            FileWriter fw = new FileWriter("user data\\appointment\\temp.txt",true); 
+            BufferedWriter bw = new BufferedWriter(fw);
+            PrintWriter pw = new PrintWriter(bw);
+            x = new Scanner (new File ("user data\\appointment\\"+userIDAppointment+".txt"));  // scan file
+            x.useDelimiter("[,\n]"); // set delimiter
+            
+            while(x.hasNext()){
+                //assign value in variable in tempary
+                id=x.next();
+                name=x.next();
+                appdate=x.next();
+                apptime=x.next();
+                syp=x.next();
+                mo=x.next();
+                status=x.next();
+                appno=x.next();
+                if(id.equals(userIDAppointment)&& appno.equals(appointmentNo)){  //compare idnumber
+                    
+                    pw.print(id+","+name+","+appdate+","+apptime+","+syp+","+mo+","+"completed"+","+appno+"\n");
+                }else{
+                    pw.print(id+","+name+","+appdate+","+apptime+","+syp+","+mo+","+status+","+appno+"\n"); //else write other data in new file
+                }
+                
+            }
+            x.close();   //scanner close
+            pw.flush();  //print writer flush
+            pw.close();   //print writer close
+            oldFileappointment.delete();   // file deleted
+            File dump = new File ("user data\\appointment\\"+userIDAppointment+".txt"); 
+            newFileappointment.renameTo(dump);  // new file rename old file name
+            
+            
+       } catch (Exception e) {
+       }
    }
    
    // edit appointment method
@@ -288,7 +365,7 @@ public class Appointment {
         File oldFile = new File(filepath);//create object in oldfile
         File newFile = new File (tempFile);//create object in newfile
         //idintyfiy each component
-        String id = "" ; String name = ""; String appdate =""; String apptime =""; String syp =""; String mo=""; String status ="";String op="";   
+        String id = "" ; String name = ""; String appdate =""; String apptime =""; String syp =""; String mo=""; String status ="";String appno="";   
         try {
             FileWriter fw = new FileWriter(tempFile,true); 
             BufferedWriter bw = new BufferedWriter(fw);
@@ -305,12 +382,12 @@ public class Appointment {
                 syp=x.next();
                 mo=x.next();
                 status=x.next();
-                op=x.next();
-                if(id.equals(userIDAppointment)){  //compare idnumber
-                    pw.print(id+","+editname+","+appDate+","+appTime+","+sypt+","+mOfficer+","+status+","+op+"\n"); //is it true update new component
+                appno=x.next();
+                if(id.equals(userIDAppointment)&& appno.equals(appointmentNo)){  //compare idnumber
+                    pw.print(id+","+editname+","+appDate+","+appTime+","+sypt+","+mOfficer+","+status+","+appno+"\n"); //is it true update new component
                     
                 }else{
-                    pw.print(id+","+name+","+appdate+","+apptime+","+syp+","+mo+","+status+","+op+"\n"); //else write other data in new file
+                    pw.print(id+","+name+","+appdate+","+apptime+","+syp+","+mo+","+status+","+appno+"\n"); //else write other data in new file
                 }
                 
             }
@@ -321,23 +398,52 @@ public class Appointment {
             File dump = new File (filepath); 
             newFile.renameTo(dump);  // new file rename old file name
             
-           File file = new File("user data\\appointment\\"+userIDAppointment+".txt");  
-           file.delete();
-           PrintWriter printer = new PrintWriter(new FileOutputStream(file)); 
-        
-           printer.print(userIDAppointment+","+getName()+","+getAppDate()+","+
-                getAppTime()+","+getSymptoms()+","+getSpecArea()+","+"pending"+"option"+"\n");
-           printer.close();
-            
-            
-            
+
        } catch (Exception e) {
         Alert alert = new Alert(Alert.AlertType.WARNING); //display Warning message
         alert.setContentText("Go back and try agin..!");
         alert.show();
         System.out.println(e);  
        }
-        
+        File oldFileappointment = new File("user data\\appointment\\"+userIDAppointment+".txt");//create object in oldfile
+        File newFileappointment = new File ("user data\\appointment\\temp.txt");//create object in newfile
+        //idintyfiy each component
+        //String id = "" ; String name = ""; String appdate =""; String apptime =""; String syp =""; String mo=""; String status ="";String op="";   
+        try {
+            FileWriter fw = new FileWriter("user data\\appointment\\temp.txt",true); 
+            BufferedWriter bw = new BufferedWriter(fw);
+            PrintWriter pw = new PrintWriter(bw);
+            x = new Scanner (new File ("user data\\appointment\\"+userIDAppointment+".txt"));  // scan file
+            x.useDelimiter("[,\n]"); // set delimiter
+            
+            while(x.hasNext()){
+                //assign value in variable in tempary
+                id=x.next();
+                name=x.next();
+                appdate=x.next();
+                apptime=x.next();
+                syp=x.next();
+                mo=x.next();
+                status=x.next();
+                appno=x.next();
+                if(id.equals(userIDAppointment)&& appno.equals(appointmentNo)){  //compare idnumber
+                   
+                    pw.print(id+","+editname+","+appDate+","+appTime+","+sypt+","+mOfficer+","+status+","+appno+"\n"); //is it true update new component
+                }else{
+                    pw.print(id+","+name+","+appdate+","+apptime+","+syp+","+mo+","+status+","+appno+"\n"); //else write other data in new file
+                }
+                
+            }
+            x.close();   //scanner close
+            pw.flush();  //print writer flush
+            pw.close();   //print writer close
+            oldFileappointment.delete();   // file deleted
+            File dump = new File ("user data\\appointment\\"+userIDAppointment+".txt"); 
+            newFileappointment.renameTo(dump);  // new file rename old file name
+            
+            
+       } catch (Exception e) {
+       } 
         
         
    }

@@ -62,7 +62,7 @@ public class RecAppointmentWindowController extends DashboardUIController implem
     @FXML
     private TableColumn<Appointment,String>optionsCol;
     
-    public static String userIDAppointment;
+    public static String userIDAppointment,appointmentNo;
     private static String status;
     
     private static String pending ="pending";
@@ -113,9 +113,11 @@ public class RecAppointmentWindowController extends DashboardUIController implem
         singleAppointment =appointmentTable.getSelectionModel().getSelectedItems();
         userIDAppointment = appointmentTable.getSelectionModel().getSelectedItem().getUserID(); // get user id in select row and set it static variable
         name=appointmentTable.getSelectionModel().getSelectedItem().getName(); //get name in table set it name
+        appointmentNo =appointmentTable.getSelectionModel().getSelectedItem().getOptions();//get user id in selected row
         singleAppointment.forEach(allAppointment::remove); //delete select row
         Appointment appObj = new Appointment();            //create object in appointmen class
         appObj.deleteAppointment("user data//database//pendingappointment.txt", "user data//database//temp.txt"); //call appointment delete methode
+        appObj.deleteAppointment("user data\\appointment\\"+userIDAppointment+".txt", "user data\\appointment\\temp.txt");
         Alert alert = new Alert(Alert.AlertType.WARNING); //display Warning message
         alert.setContentText("You deleted "+name.toUpperCase()+"'s appointment..!");
         alert.show();
@@ -135,6 +137,7 @@ public class RecAppointmentWindowController extends DashboardUIController implem
         allAppointment = appointmentTable.getItems();
         singleAppointment =appointmentTable.getSelectionModel().getSelectedItems();
         userIDAppointment = appointmentTable.getSelectionModel().getSelectedItem().getUserID(); // get user id in select row and set it static variable
+        appointmentNo =appointmentTable.getSelectionModel().getSelectedItem().getOptions();//get user id in selected row
         // all items store in static object in appointment class 
         RecAppointmentEditController.selectedFeield=(Appointment)appointmentTable.getSelectionModel().getSelectedItem();
         singleAppointment.forEach(allAppointment::remove);
@@ -169,7 +172,8 @@ public class RecAppointmentWindowController extends DashboardUIController implem
         singleAppointment =appointmentTable.getSelectionModel().getSelectedItems();
         userIDAppointment = appointmentTable.getSelectionModel().getSelectedItem().getUserID(); // get user id in select row and set it static variable
         status=appointmentTable.getSelectionModel().getSelectedItem().getStatus();
-         
+        appointmentNo =appointmentTable.getSelectionModel().getSelectedItem().getOptions();//get user id in selected row
+       
         //get status in table and asign the value in static variable
         if (status.equals(pending)){        //compare  status (pending is an static variable)
         Appointment appObj = new Appointment();       //create object in appointment class
@@ -177,7 +181,10 @@ public class RecAppointmentWindowController extends DashboardUIController implem
         appObj.approveAppointment("user data//database//pendingappointment.txt", "user data//database//approveappointment.txt");  //call approved appointment methode
         appObj.deleteAppointment("user data//database//pendingappointment.txt", "user data//database//temp.txt");  //call delete appointment methode
         singleAppointment.forEach(allAppointment::remove);   // delete selected row in table
-
+        // userid are equal display message
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setContentText("You approved "+appointmentTable.getSelectionModel().getSelectedItem().getName().toUpperCase()+"'s appointment..!");
+        alert.show();
         
         }
         }

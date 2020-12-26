@@ -83,6 +83,7 @@ public class RecAppointmentCompletedController extends DashboardUIController imp
    
     @FXML
     void deleteAppointment(ActionEvent event) {  // deleteaction event
+        try{
         String name; 
         ObservableList<Appointment> allAppointment,singleAppointment;
         allAppointment = appointmentTable.getItems();
@@ -96,6 +97,12 @@ public class RecAppointmentCompletedController extends DashboardUIController imp
         Alert alert = new Alert(Alert.AlertType.WARNING); //display Warning message
         alert.setContentText("You deleted "+name.toUpperCase()+"'s appointment..!");
         alert.show();
+        }
+        catch(Exception e){
+         Alert alert = new Alert(Alert.AlertType.WARNING); //display Warning message
+        alert.setContentText("Selecet Appointment and press delete button");
+        alert.show();  
+        }
     }
     
 }

@@ -93,7 +93,7 @@ public class RecAddComplaintWindowController extends DashboardUIController imple
         recCom.setActionTaken(actionTakenTxt.getText());
         recCom.setNote(noteTxt.getText());
         
-        recCom.addComplaint(event);
+        recCom.addComplaint();
         
         comTypeBox.setValue(null);
         nameTxt.setText(null);
