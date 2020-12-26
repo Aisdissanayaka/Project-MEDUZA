@@ -5,20 +5,25 @@
  */
 package Model;
 
+import static Control.RecVisitorsWindowController.visitorID;
 import Model.Patient;
 import java.awt.Desktop.Action;
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Scanner;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
@@ -91,13 +96,26 @@ public class Visitor {
         this.options = options;
     }
     
- public void addVisitor(ActionEvent event) throws FileNotFoundException{ 
+ public void addVisitor(ActionEvent event) throws FileNotFoundException, IOException{ 
         
         
-        File file = new File ("user data\\visitors\\data\\"+getName()+".txt");
+        File file = new File ("user data\\visitors\\data\\"+getNic()+".txt");
                 PrintWriter print = new PrintWriter(new FileOutputStream(file,true)); 
                 print.append(getName()+"\n"+getNic()+"\n"+getDate()+"\n"+getInTime()+"\n"+getOutTime()+"\n"+getNote()+"\n");
                 print.close();
+                
+                try{
+         //database\visitors.txt  file write in all of data
+         FileWriter fw = new FileWriter("user data\\database\\visitors.txt",true);
+         BufferedWriter bw = new BufferedWriter(fw);
+         PrintWriter pw = new PrintWriter(bw);
+         pw.print(getNic()+","+getName()+","+getInTime()+","+getOutTime()+","+getDocument()+","+getNote()+","+"op"+"\n");
+         pw.close();
+         Alert alert = new Alert(Alert.AlertType.INFORMATION);
+         alert.setContentText("Visitor  was added..!");  //display data saved message
+         alert.show();
+         
+         }catch(FileNotFoundException e){}
     }
     
     
@@ -118,7 +136,7 @@ public class Visitor {
         
          //saving file given path
           try {
-                Files.copy(file.toPath(),Paths.get("user data\\visitors\\cv\\"+getName()+".doc"));
+                Files.copy(file.toPath(),Paths.get("user data\\visitors\\cv\\"+getNic()+".doc"));
             } catch (Exception ioException) {
                ioException.printStackTrace();
             }
@@ -126,7 +144,7 @@ public class Visitor {
           //create new object file1
           File file1 = new File(String.valueOf(path));
        
-        fileChooser.setInitialFileName(getName()+".doc");  
+        fileChooser.setInitialFileName(getNic()+".doc");  
         //getting type of files 
         fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("doc file","*.doc","*.docx"));
         
@@ -168,7 +186,49 @@ public class Visitor {
         
     }
     
-    
+     // delete visitor method
+     private Scanner x;
+     public void deleteVisitor(String filepath,String tempFile){
+        File oldFile = new File(filepath);//create object in oldfile
+        File newFile = new File (tempFile);//create object in newfile
+        //idintyfiy each component
+        String id = "" ; String name = ""; String inTime =""; String outTime =""; String document =""; String note=""; String op ="";   
+        try {
+            FileWriter fw = new FileWriter(tempFile,true); 
+            BufferedWriter bw = new BufferedWriter(fw);
+            PrintWriter pw = new PrintWriter(bw);
+            x = new Scanner (new File (filepath));  // scan file
+            x.useDelimiter("[,\n]"); // set delimiter
+            
+            while(x.hasNext()){
+                //assign value in variable in tempary
+                id=x.next();
+                name=x.next();
+                inTime=x.next();
+                outTime=x.next();
+                document=x.next();
+                note=x.next();
+                op=x.next();
+                if(id.equals(visitorID)){  //compare idnumber
+                    System.out.println("delete"+name+"'s visitor"); // is it true display message
+                    
+                }else{
+                    pw.print(id+","+name+","+inTime+","+outTime+","+document+","+note+","+op+"\n"); //else write other data in new file
+                }
+                
+            }
+            x.close();   //scanner close
+            pw.flush();  //print writer flush
+            pw.close();   //print writer close
+            oldFile.delete();   // file deleted
+            File dump = new File (filepath); 
+            newFile.renameTo(dump);  // new file rename old file name
+             File file = new File("user data\\visitors\\data\\"+ visitorID+".txt");  
+        file.delete();
+            
+       } catch (Exception e) {
+       }
           
     
+}
 }
