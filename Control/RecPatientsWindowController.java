@@ -94,40 +94,7 @@ public class RecPatientsWindowController extends DashboardUIController implement
     private TableColumn<Patient, String> optionsCol;
     
     
-    @FXML
-    public void viewPatients(){
-         try {
-          ArrayList<Patient> patientArrayList = Patient.viewPatient();
-          
-          int postalCount = patientArrayList.size();
-          
-          
-             System.out.println(postalCount);
-          
-          ObservableList<Patient> patients = FXCollections.observableArrayList();
-          for(int i =0;i< postalCount;i++){
-          patients.add(patientArrayList.get(i));
-      
-          }
-          idCol.setCellValueFactory(new PropertyValueFactory<Patient,String>("nic"));
-          fNameCol.setCellValueFactory(new PropertyValueFactory<Patient,String>("fName"));
-          lNameCol.setCellValueFactory(new PropertyValueFactory<Patient,String>("lName"));
-          genderCol.setCellValueFactory(new PropertyValueFactory<Patient,String>("gender"));
-          dobCol.setCellValueFactory(new PropertyValueFactory<Patient,String>("DOB"));
-          phoneCol.setCellValueFactory(new PropertyValueFactory<Patient,String>("phoneNumber"));
-          addressCol.setCellValueFactory(new PropertyValueFactory<Patient,String>("address"));
-          bloodGroupCol.setCellValueFactory(new PropertyValueFactory<Patient,String>("bloodGroup"));
-          allergiesCol.setCellValueFactory(new PropertyValueFactory<Patient,String>("allergies"));
-          passwordCol.setCellValueFactory(new PropertyValueFactory<Patient,String>("password"));
-          optionsCol.setCellValueFactory(new PropertyValueFactory<Patient,String>("options"));
-          
-       
-          patientsTable.setItems(patients);
-          
-             
-         }catch(Exception e){}
     
-    }
     
     
     @Override
@@ -154,8 +121,8 @@ public class RecPatientsWindowController extends DashboardUIController implement
           addressCol.setCellValueFactory(new PropertyValueFactory<Patient,String>("address"));
           bloodGroupCol.setCellValueFactory(new PropertyValueFactory<Patient,String>("bloodGroup"));
           allergiesCol.setCellValueFactory(new PropertyValueFactory<Patient,String>("allergies"));
-          passwordCol.setCellValueFactory(new PropertyValueFactory<Patient,String>("password"));
-          optionsCol.setCellValueFactory(new PropertyValueFactory<Patient,String>("options"));
+          //passwordCol.setCellValueFactory(new PropertyValueFactory<Patient,String>("password"));
+          //optionsCol.setCellValueFactory(new PropertyValueFactory<Patient,String>("options"));
           
        
           patientsTable.setItems(patients);

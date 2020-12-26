@@ -2,7 +2,6 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXComboBox?>
-<?import com.jfoenix.controls.JFXDatePicker?>
 <?import com.jfoenix.controls.JFXTextArea?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.geometry.Insets?>
@@ -147,7 +146,6 @@
                </opaqueInsets>
             </JFXTextField>
             <JFXComboBox fx:id="gender" layoutX="89.0" layoutY="114.0" promptText="Gender" />
-            <JFXDatePicker fx:id="dateOfBirth" defaultColor="#4059a9" layoutX="185.0" layoutY="111.0" prefHeight="28.0" prefWidth="142.0" promptText="Date of birth" />
             <JFXTextField fx:id="phoneNumber" labelFloat="true" layoutX="82.0" layoutY="173.0" promptText="Phone Number" unFocusColor="#1d7fff">
                <font>
                   <Font size="17.0" />
@@ -192,6 +190,14 @@
                   <Font size="15.0" />
                </font>
             </JFXButton>
+            <JFXTextField fx:id="dateOfBirth" disable="true" labelFloat="true" layoutX="183.0" layoutY="105.0" prefHeight="36.0" prefWidth="133.0" promptText="Date Of Birth" unFocusColor="#1d7fff">
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
+               <opaqueInsets>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </opaqueInsets>
+            </JFXTextField>
          </children>
       </AnchorPane>
       <Label layoutX="226.0" layoutY="46.0" text="MEDUZA HOSPITALS PVT(Ltd.)" textFill="#50506d">

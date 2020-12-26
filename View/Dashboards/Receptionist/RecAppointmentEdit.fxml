@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
-<?import com.jfoenix.controls.JFXDatePicker?>
 <?import com.jfoenix.controls.JFXTextArea?>
 <?import com.jfoenix.controls.JFXTextField?>
-<?import com.jfoenix.controls.JFXTimePicker?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
@@ -160,9 +158,9 @@
       </Label>
       <Pane layoutX="280.0" layoutY="128.0" prefHeight="577.0" prefWidth="519.0">
          <children>
-            <JFXTextField fx:id="name" labelFloat="true" layoutX="36.0" layoutY="92.0" promptText="Name" unFocusColor="#1d7fff">
+            <JFXTextField fx:id="name" labelFloat="true" layoutX="36.0" layoutY="82.0" promptText="Name" unFocusColor="#1d7fff">
                <font>
-                  <Font size="21.0" />
+                  <Font size="19.0" />
                </font>
                <padding>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
@@ -171,12 +169,6 @@
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </opaqueInsets>
             </JFXTextField>
-            <JFXDatePicker fx:id="appDate" defaultColor="#274684" layoutX="34.0" layoutY="153.0" prefHeight="46.0" prefWidth="242.0" promptText="Appointment Date" showWeekNumbers="true">
-               <padding>
-                  <Insets bottom="5.0" left="5.0" top="5.0" />
-               </padding>
-            </JFXDatePicker>
-            <JFXTimePicker fx:id="appTime" defaultColor="#274684" layoutX="38.0" layoutY="222.0" prefHeight="28.0" prefWidth="242.0" promptText="Appointment Time" />
             <ComboBox fx:id="specAreaCombo" layoutX="215.0" layoutY="292.0" prefWidth="150.0" promptText="Select" styleClass="Table-pane" stylesheets="@../../Styles.css">
                <cursor>
                   <Cursor fx:constant="HAND" />
@@ -188,9 +180,9 @@
                   <Font size="15.0" />
                </font>
             </JFXButton>
-            <JFXTextField fx:id="userID" disable="true" labelFloat="true" layoutX="36.0" layoutY="17.0" promptText="User ID" unFocusColor="#1d7fff">
+            <JFXTextField fx:id="userID" disable="true" labelFloat="true" layoutX="36.0" layoutY="12.0" promptText="User ID" unFocusColor="#1d7fff">
                <font>
-                  <Font size="21.0" />
+                  <Font size="19.0" />
                </font>
                <padding>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
@@ -209,6 +201,28 @@
                   <Font size="15.0" />
                </font>
             </JFXButton>
+            <JFXTextField fx:id="appDate" labelFloat="true" layoutX="36.0" layoutY="149.0" prefHeight="41.0" prefWidth="150.0" promptText="Appointment Date" unFocusColor="#1d7fff">
+               <font>
+                  <Font size="13.0" />
+               </font>
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
+               <opaqueInsets>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </opaqueInsets>
+            </JFXTextField>
+            <JFXTextField fx:id="appTime" labelFloat="true" layoutX="36.0" layoutY="212.0" prefHeight="41.0" prefWidth="150.0" promptText="Appointment Time" unFocusColor="#1d7fff">
+               <font>
+                  <Font size="13.0" />
+               </font>
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
+               <opaqueInsets>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </opaqueInsets>
+            </JFXTextField>
          </children>
       </Pane>
    </children>

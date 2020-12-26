@@ -51,7 +51,7 @@ public class RecPatientEditWindowController extends DashboardUIController implem
     private JFXComboBox<String> gender;
 
     @FXML
-    private JFXDatePicker dateOfBirth;
+    private JFXTextField dateOfBirth;
 
     @FXML
     private JFXTextField phoneNumber;
@@ -91,7 +91,7 @@ public class RecPatientEditWindowController extends DashboardUIController implem
   try {
             
     Patient obj = new Patient();
-    obj.editPatient("user data//database//patients.txt", "user data//database//temp.txt", nic.getText(), firstName.getText(), lastName.getText(), gender.getValue(), dateOfBirth.getValue().toString(),
+    obj.editPatient("user data//database//patients.txt", "user data//database//temp.txt", nic.getText(), firstName.getText(), lastName.getText(), gender.getValue(), dateOfBirth.getText(),
                     phoneNumber.getText(),address.getText(),bloodGroup.getValue(), allergies.getText());
     Alert alert = new Alert(Alert.AlertType.INFORMATION); //display Warning message
     alert.setContentText("Updated patient profile.!");
@@ -123,7 +123,7 @@ public class RecPatientEditWindowController extends DashboardUIController implem
       address.setText(selectedUser.getAddress());
       lastName.setText(selectedUser.getLName());
       gender.setValue(selectedUser.getGender());
-      dateOfBirth.setPromptText(selectedUser.getDOB());
+      dateOfBirth.setText(selectedUser.getDOB());
       phoneNumber.setText(selectedUser.getPhoneNumber());
       bloodGroup.setValue(selectedUser.getBloodGroup());
       allergies.setText(selectedUser.getAllergies());

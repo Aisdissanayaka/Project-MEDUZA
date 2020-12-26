@@ -36,10 +36,10 @@ public class RecAppointmentEditController extends DashboardUIController implemen
     private JFXTextField name;
 
     @FXML
-    private JFXDatePicker appDate;
+    private JFXTextField appDate;
 
     @FXML
-    private JFXTimePicker appTime;
+    private JFXTextField appTime;
 
     @FXML
     private ComboBox<String> specAreaCombo;
@@ -60,12 +60,14 @@ public class RecAppointmentEditController extends DashboardUIController implemen
     try{
     //called edit appointment metode  
     obj.setUserID(userID.getText());
-    obj.editAppointment("user data//database//pendingappointment.txt", "user data//database//temp.txt", name.getText(), appDate.getValue().toString(), appTime.getValue().toString(),Symptoms.getText(), specAreaCombo.getValue());
+    obj.editAppointment("user data//database//pendingappointment.txt", "user data//database//temp.txt", name.getText(), appDate.getText(), appTime.getText(),Symptoms.getText(), specAreaCombo.getValue());
     Alert alert = new Alert(Alert.AlertType.INFORMATION); //display Warning message
     alert.setContentText("Updated appointment.!");
     alert.show();
     }catch(Exception e){
-      
+      Alert alert = new Alert(Alert.AlertType.INFORMATION); //display Warning message
+    alert.setContentText("Please update date and time..!");
+    alert.show();
     }
     }
 
@@ -83,8 +85,8 @@ public class RecAppointmentEditController extends DashboardUIController implemen
        Symptoms.setText(selectedFeield.getSymptoms());
        userID.setText(selectedFeield.getUserID());
        specAreaCombo.setValue(selectedFeield.getSpecArea());
-       appTime.setPromptText(selectedFeield.getAppTime());
-       appDate.setPromptText(selectedFeield.getAppDate());
+       appTime.setText(selectedFeield.getAppTime());
+       appDate.setText(selectedFeield.getAppDate());
      
       ObservableList<String>list1=FXCollections.observableArrayList("A","B","C","D");
         specAreaCombo.setItems(list1);

@@ -92,7 +92,7 @@ public class PatAddComplaintWindowController extends DashboardUIController imple
         patCom.setActionTaken(actionTakenTxt.getText());
         patCom.setNote(noteTxt.getText());
         
-        patCom.addComplaint(event);
+        patCom.addComplaint();
         
         comTypeBox.setValue(null);
         nameTxt.setText(null);
