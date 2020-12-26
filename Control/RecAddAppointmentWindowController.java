@@ -32,6 +32,8 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.scene.control.Alert;
@@ -53,6 +55,9 @@ public class RecAddAppointmentWindowController extends DashboardUIController imp
 
     @FXML
     private ComboBox<String> specAreaCombo;
+    
+      @FXML
+    private ComboBox<?> category;
 
     @FXML
     private JFXTextArea Symptoms;
@@ -104,18 +109,53 @@ public class RecAddAppointmentWindowController extends DashboardUIController imp
         return true;
      }
     
+     
+     
+  ObservableList list1=FXCollections.observableArrayList();
+ ObservableList list2=FXCollections.observableArrayList();
     
-
-   //Create an arrayList to store the appointment reco
+     //Gender drop down list
+     private void loadData() throws FileNotFoundException, IOException{
+        //list1.removeAll(list1);
+      
+        File myfile = new File("user data\\reference\\category.txt"); 
+    BufferedReader abc = new BufferedReader(new FileReader(myfile));
+     String s;
+        while((s=abc.readLine())!=null) {
+            list1.add(s);
+      
+     }
+        category.getItems().addAll(list1);
+     }
+    
+    
+    @FXML
+    void getMO() throws IOException {
+        specAreaCombo.getItems().removeAll(list2);
+        list2.removeAll(list2);
+        
+        File myfile2 = new File("user data\\reference\\Speciality Area\\"+category.getValue()+".txt"); 
+    BufferedReader abc = new BufferedReader(new FileReader(myfile2));
+     String s;
+        while((s=abc.readLine())!=null) {
+            list2.add(s);
+      
+     }
+        specAreaCombo.getItems().addAll(list2);
+        
+    }
     
     
     
     @Override
        public void initialize(URL url, ResourceBundle rb) {
            
-      //Combo-box data foe the Medical officer speciality     
-       ObservableList<String>list1=FXCollections.observableArrayList("A","B","C","D");
-        specAreaCombo.setItems(list1);
+             //Combo-box data for the Medical officer speciality
+        try {
+              loadData();
+        } catch (IOException ex) {
+            Logger.getLogger(RecAddAppointmentWindowController.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
        
       //show validation status

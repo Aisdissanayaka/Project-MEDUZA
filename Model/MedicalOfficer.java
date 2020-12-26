@@ -73,6 +73,12 @@ public class MedicalOfficer extends user{
                    +"\n"+getEmail()+"\n"+getDateJoined()+"\n" +getGender()+"\n"+getSpecialityArea()+"\n");
           
            print.close();
+           
+        File file2 = new File("user data\\reference\\Speciality Area\\"+getSpecialityArea()+".txt");
+           PrintWriter print2 = new PrintWriter(new FileOutputStream(file2,true));
+           print2.append("Dr. "+getFName()+" "+getLName()+"\n");
+          
+           print2.close();
     
     }
     

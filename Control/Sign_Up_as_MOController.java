@@ -22,6 +22,8 @@ import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javafx.beans.value.ChangeListener;
@@ -247,18 +249,41 @@ public class Sign_Up_as_MOController extends DashboardUIController implements In
         fileChooser.setInitialFileName(moStaffID.getText()+".pdf");  
         //getting type of files 
         fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("pdf file","*.pdf","*.PDF"));
-        
-         
+      
     }
+    
+     ObservableList list1=FXCollections.observableArrayList();
+    
+     //Speciality Area drop down list
+     private void loadData() throws FileNotFoundException, IOException{
+        list1.removeAll(list1);
+        
+        File myfile = new File("user data\\reference\\category.txt"); 
+    BufferedReader abc = new BufferedReader(new FileReader(myfile));
+     String s;
+        while((s=abc.readLine())!=null) {
+            list1.add(s);
+      
+     }
+        moSpecialityArea.getItems().addAll(list1);
+     }
 
    
  @Override
     public void initialize(URL url, ResourceBundle rb) {
-       //add combo box values
+        
+        try {
+            //add Speciality Area combo box values
+
+            loadData();
+        } catch (IOException ex) {
+            Logger.getLogger(Sign_Up_as_MOController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+       //add Gender combo box values
        ObservableList<String>list=FXCollections.observableArrayList("Male","Female");
        moGender.setItems(list);
-       ObservableList<String>list1=FXCollections.observableArrayList("A","B","C");
-       moSpecialityArea.setItems(list1);
+       
        
        //show validation status
         RequiredFieldValidator validator = new RequiredFieldValidator();
