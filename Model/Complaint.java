@@ -7,6 +7,7 @@ package Model;
 
 
 import static Control.RecComplaintsWindowController.complaintID;
+import static Control.UserLoginController.primaryKey;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -124,7 +125,7 @@ public class Complaint {
         File oldFile = new File(filepath);//create object in oldfile
         File newFile = new File (tempFile);//create object in newfile
         //idintyfiy each component
-        String id = "" ; String type = ""; String name =""; String phoneno =""; String date =""; String description=""; String act ="";String note;String doc;  
+        String id = "" ; String type = ""; String name =""; String phoneno =""; String date =""; String description=""; String act ="";String note;
         try {
             FileWriter fw = new FileWriter(tempFile,true); 
             BufferedWriter bw = new BufferedWriter(fw);
@@ -142,12 +143,12 @@ public class Complaint {
                 description=x.next();
                 act=x.next();
                 note=x.next();
-                doc=x.next();
+                
                 if(id.equals(complaintID)){  //compare idnumber
                     System.out.println("delete"+name+"'s visitor"); // is it true display message
                     
                 }else{
-                    pw.print(id+","+type+","+name+","+phoneno+","+date+","+description+","+act+","+note+","+doc+"\n"); //else write other data in new file
+                    pw.print(id+","+type+","+name+","+phoneno+","+date+","+description+","+act+","+note+"\n"); //else write other data in new file
                 }
                 
             }
@@ -171,18 +172,19 @@ public class Complaint {
         try{
        Random randomObj = new Random();
         String  randomNumber = Integer.toString( randomObj.nextInt(1000000)+100000);
-         File file = new File("user data\\complaint\\data\\"+ randomNumber+".txt"); 
-        PrintWriter printer = new PrintWriter(new FileOutputStream(file,true));  
-        printer.append(randomNumber+"\n"  + getType()+"\n"  + getName()+ "\n" +  
-                getPhoneNo()+"\n"+getDate()+"\n"+getDescription()+"\n"+ getActionTaken() + "\n"+
+         FileWriter fw1 = new FileWriter("user data\\complaint\\data\\"+ primaryKey+".txt",true);
+         BufferedWriter bw1 = new BufferedWriter(fw1);
+         PrintWriter pw1 = new PrintWriter(bw1);
+         pw1.append(randomNumber+","  + getType()+","  + getName()+ "," +  
+                getPhoneNo()+","+getDate()+","+getDescription()+","+"pending" + ","+
                     getNote()+ "\n");
-        printer.close();
+         pw1.close();
         
          //database\Complaint.txt  file write in all of data
          FileWriter fw = new FileWriter("user data\\database\\complaints.txt",true);
          BufferedWriter bw = new BufferedWriter(fw);
          PrintWriter pw = new PrintWriter(bw);
-         pw.print(randomNumber+","+getType()+","+getName()+","+getPhoneNo()+","+getDate()+","+getDescription()+","+getActionTaken()+","+getNote()+"\n");
+         pw.print(randomNumber+","+getType()+","+getName()+","+getPhoneNo()+","+getDate()+","+getDescription()+","+"pending"+","+getNote()+"\n");
          pw.close();
          Alert alert = new Alert(Alert.AlertType.INFORMATION);
          alert.setContentText("Complaint  was added..!");  //display data saved message
@@ -194,12 +196,12 @@ public class Complaint {
     
     
       @FXML
-     public static ArrayList<Complaint> viewComplaint() throws IOException{
+     public static ArrayList<Complaint> viewComplaint(String filePath) throws IOException{
         
         ArrayList<Complaint> complaintArrayList = new ArrayList<>();
         
         
-        File appFile = new File("user data//database//complaints.txt");
+        File appFile = new File(filePath);
         FileReader fr = new FileReader(appFile);
         BufferedReader br = new BufferedReader(fr);
         String currentLine;
@@ -220,7 +222,7 @@ public class Complaint {
             complaintLine.setDescription(comData[5]);
             complaintLine.setActionTaken(comData[6]);
             complaintLine.setNote(comData[7]);
-            complaintLine.setDocument(comData[8]);
+            //complaintLine.setDocument(comData[8]);
             //complaintLine.setOptions(comData[9]);
             
             complaintArrayList.add(complaintLine);

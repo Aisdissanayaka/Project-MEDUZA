@@ -96,26 +96,30 @@ public class Visitor {
         this.options = options;
     }
     
- public void addVisitor(ActionEvent event) throws FileNotFoundException, IOException{ 
+ public void addVisitor(ActionEvent event) throws  IOException{ 
         
-        
-        File file = new File ("user data\\visitors\\data\\"+getNic()+".txt");
-                PrintWriter print = new PrintWriter(new FileOutputStream(file,true)); 
-                print.append(getName()+"\n"+getNic()+"\n"+getDate()+"\n"+getInTime()+"\n"+getOutTime()+"\n"+getNote()+"\n");
-                print.close();
+        try{ 
+       // File file = new File ("user data\\visitors\\data\\"+getNic()+".txt");
+        FileWriter fw1 = new FileWriter("user data\\visitors\\data\\"+getNic()+".txt");
+        BufferedWriter bw1 = new BufferedWriter(fw1);
+        PrintWriter pw1 = new PrintWriter(bw1);
+        pw1.print(getNic()+","+getName()+","+getInTime()+","+getOutTime()+","+getDate()+","+getNote()+"\n");
+        pw1.close();
+            System.out.println("error 0");       
                 
-                try{
          //database\visitors.txt  file write in all of data
          FileWriter fw = new FileWriter("user data\\database\\visitors.txt",true);
          BufferedWriter bw = new BufferedWriter(fw);
          PrintWriter pw = new PrintWriter(bw);
-         pw.print(getNic()+","+getName()+","+getInTime()+","+getOutTime()+","+getDocument()+","+getNote()+","+"op"+"\n");
+         pw.print(getNic()+","+getName()+","+getInTime()+","+getOutTime()+","+getDate()+","+getNote()+"\n");
          pw.close();
          Alert alert = new Alert(Alert.AlertType.INFORMATION);
          alert.setContentText("Visitor  was added..!");  //display data saved message
          alert.show();
          
-         }catch(FileNotFoundException e){}
+         }catch(Exception e){
+            System.out.println("Error");
+         }
     }
     
     
@@ -172,9 +176,9 @@ public class Visitor {
             visitorLine.setName(visData[1]);
             visitorLine.setInTime(visData[2]);
             visitorLine.setOutTime(visData[3]);
-            visitorLine.setDocument(visData[4]);
+            visitorLine.setDate(visData[4]);
             visitorLine.setNote(visData[5]);
-            visitorLine.setOptions(visData[6]);
+            //visitorLine.setOptions(visData[6]);
             
             visitorArrayList.add(visitorLine);
      
@@ -192,7 +196,7 @@ public class Visitor {
         File oldFile = new File(filepath);//create object in oldfile
         File newFile = new File (tempFile);//create object in newfile
         //idintyfiy each component
-        String id = "" ; String name = ""; String inTime =""; String outTime =""; String document =""; String note=""; String op ="";   
+        String id = "" ; String name = ""; String inTime =""; String outTime =""; String date =""; String note=""; 
         try {
             FileWriter fw = new FileWriter(tempFile,true); 
             BufferedWriter bw = new BufferedWriter(fw);
@@ -206,14 +210,14 @@ public class Visitor {
                 name=x.next();
                 inTime=x.next();
                 outTime=x.next();
-                document=x.next();
+                date=x.next();
                 note=x.next();
-                op=x.next();
+                
                 if(id.equals(visitorID)){  //compare idnumber
                     System.out.println("delete"+name+"'s visitor"); // is it true display message
                     
                 }else{
-                    pw.print(id+","+name+","+inTime+","+outTime+","+document+","+note+","+op+"\n"); //else write other data in new file
+                    pw.print(id+","+name+","+inTime+","+outTime+","+date+","+note+","+"\n"); //else write other data in new file
                 }
                 
             }
@@ -224,7 +228,7 @@ public class Visitor {
             File dump = new File (filepath); 
             newFile.renameTo(dump);  // new file rename old file name
              File file = new File("user data\\visitors\\data\\"+ visitorID+".txt");  
-        file.delete();
+             file.delete();
             
        } catch (Exception e) {
        }

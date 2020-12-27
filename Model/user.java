@@ -129,7 +129,7 @@ public class user {
                      DashboardUIController welcome =loader.getController();
                      
                      welcome.showInformation(staticUserName);
-                     welcome.showWelcome(staticUserName+"!");
+                    // welcome.showWelcome(staticUserName+"!");
                      welcome.showProfilePicture(profilePicture);
                      
                     Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();

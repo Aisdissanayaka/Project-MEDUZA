@@ -133,9 +133,9 @@ public class RecVisitorsWindowController extends DashboardUIController implement
           nameCol.setCellValueFactory(new PropertyValueFactory<Visitor,String>("name"));
           intimeCol.setCellValueFactory(new PropertyValueFactory<Visitor,String>("inTime"));
           outTimeCol.setCellValueFactory(new PropertyValueFactory<Visitor,String>("outTime"));
-          docCol.setCellValueFactory(new PropertyValueFactory<Visitor,String>("document"));
+          docCol.setCellValueFactory(new PropertyValueFactory<Visitor,String>("date"));
           noteCol.setCellValueFactory(new PropertyValueFactory<Visitor,String>("note"));
-          optionsCol.setCellValueFactory(new PropertyValueFactory<Visitor,String>("options"));
+         // optionsCol.setCellValueFactory(new PropertyValueFactory<Visitor,String>("options"));
           
        
           visitorTable.setItems(Visitors);

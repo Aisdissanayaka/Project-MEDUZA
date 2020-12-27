@@ -86,19 +86,41 @@ public class Postal {
 
 //Receptionist Add Received Post  Submit button  Action Method Call
     public void AddReceivedPost(ActionEvent event)throws FileNotFoundException{
-                File file = new File ("user data\\receptionist\\postal\\recieved\\"+getRefferenceNum()+".txt");
-                PrintWriter print = new PrintWriter(new FileOutputStream(file,true)); 
-                print.append(getRefferenceNum()+"\n"+getFrom()+"\n"+getAddress()+"\n"+getNote()+"\n"+getDate()+"\n"+getTo()+"\n");
-                print.close();
-        
+     try{           
+    File file = new File ("user data\\receptionist\\postal\\received postal\\"+getRefferenceNum()+".txt");
+    PrintWriter print = new PrintWriter(new FileOutputStream(file,true)); 
+    print.append(getRefferenceNum()+","+getFrom()+","+getAddress()+","+getNote()+","+getDate()+","+getTo()+"\n");
+    print.close();
+    
+    //write database file
+    FileWriter fw = new FileWriter("user data\\database\\recievedPostals.txt",true);
+    BufferedWriter bw = new BufferedWriter(fw);
+    PrintWriter pw = new PrintWriter(bw);
+    pw.print(getRefferenceNum()+","+getFrom()+","+getAddress()+","+getNote()+","+getDate()+","+getTo()+"\n");
+    pw.close();
+     }catch(Exception e){
+         
+     }         
         
      }
     //Receptionist Add Dispatched Post  Submit button Action Method Call
      public void AddDispatchedPost(ActionEvent event)throws FileNotFoundException{
-                File file = new File ("user data\\receptionist\\postal\\dispatched post\\"+getRefferenceNum()+".txt");
-                PrintWriter print = new PrintWriter(new FileOutputStream(file,true)); 
-                print.append(getRefferenceNum()+"\n"+getTo()+"\n"+getAddress()+"\n"+getNote()+"\n"+getDate()+"\n"+getFrom()+"\n");
-                print.close();
+     try{    
+     File file = new File ("user data\\receptionist\\postal\\dispatched post\\"+getRefferenceNum()+".txt");
+     PrintWriter print = new PrintWriter(new FileOutputStream(file,true)); 
+     print.append(getRefferenceNum()+","+getTo()+","+getAddress()+","+getNote()+","+getDate()+","+getFrom()+"\n");
+     print.close();
+     
+     //write database file
+     FileWriter fw = new FileWriter("user data\\database\\dispatchedPostals.txt",true);
+     BufferedWriter bw = new BufferedWriter(fw);
+     PrintWriter pw = new PrintWriter(bw);
+     pw.print(getRefferenceNum()+","+getTo()+","+getAddress()+","+getNote()+","+getDate()+","+getFrom()+"\n");
+     pw.close();
+     
+     }catch(Exception e){
+         
+     }
      }
     @FXML
       public static ArrayList<Postal> viewReceivedPostal() throws IOException{
@@ -124,8 +146,8 @@ public class Postal {
             receivedPostalLine.setNote(postalData[3]);
             receivedPostalLine.setDate(postalData[4]);
             receivedPostalLine.setTo(postalData[5]);
-            receivedPostalLine.setDocument(postalData[6]);
-            receivedPostalLine.setOptions(postalData[7]);
+            //receivedPostalLine.setDocument(postalData[6]);
+           // receivedPostalLine.setOptions(postalData[7]);
            
         receivedPostalArrayList.add(receivedPostalLine);
      
@@ -161,8 +183,8 @@ public class Postal {
             dispatchedPostalLine.setNote(postalData[3]);
             dispatchedPostalLine.setDate(postalData[4]);
             dispatchedPostalLine.setTo(postalData[5]);
-            dispatchedPostalLine.setDocument(postalData[6]);
-            dispatchedPostalLine.setOptions(postalData[7]);
+            //dispatchedPostalLine.setDocument(postalData[6]);
+           // dispatchedPostalLine.setOptions(postalData[7]);
            
         dispatchedPostalArrayList.add(dispatchedPostalLine);
      
@@ -178,7 +200,7 @@ public class Postal {
         File oldFile = new File(filepath);//create object in oldfile
         File newFile = new File (tempFile);//create object in newfile
         //idintyfiy each component
-        String ref = "" ; String from = ""; String fromadd =""; String note =""; String date =""; String to=""; String document ="";String option;   
+        String ref = "" ; String from = ""; String fromadd =""; String note =""; String date =""; String to="";  
         try {
             FileWriter fw = new FileWriter(tempFile,true); 
             BufferedWriter bw = new BufferedWriter(fw);
@@ -194,13 +216,12 @@ public class Postal {
                 note=x.next();
                 date=x.next();
                 to=x.next();
-                document=x.next();
-                option=x.next();
+                
                 if(ref.equals(refNumber)){  //compare idnumber
                     System.out.println("You deleted "+ref+"postal"); // is it true display message
                     
                 }else{
-                    pw.print(ref+","+from+","+fromadd+","+note+","+date+","+to+","+document+","+option+"\n"); //else write other data in new file
+                    pw.print(ref+","+from+","+fromadd+","+note+","+date+","+to+","+"\n"); //else write other data in new file
                 }
                 
             }

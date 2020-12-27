@@ -5,6 +5,7 @@
  */
 package Control;
 
+import static Control.UserLoginController.primaryKey;
 import static Control.UserLoginController.profilePicture;
 import static Control.UserLoginController.staticUserID;
 import static Control.UserLoginController.staticUserName;
@@ -78,7 +79,7 @@ public class PatAppointmentWindowController extends DashboardUIController implem
     private TableColumn<Appointment, String>  optionsCol;
     
     
-    String filepathpending ="user data//database//approveappointment.txt";
+    String filepathpending ="user data//appointment//"+primaryKey+".txt";
     @Override
     public void initialize(URL url, ResourceBundle rb) {
        try{

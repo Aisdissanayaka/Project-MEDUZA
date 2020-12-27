@@ -139,7 +139,7 @@
       </Label>
       <Pane layoutX="270.0" layoutY="118.0" prefHeight="579.0" prefWidth="517.0" AnchorPane.bottomAnchor="3.0" AnchorPane.leftAnchor="270.0" AnchorPane.rightAnchor="413.0" AnchorPane.topAnchor="118.0">
          <children>
-            <JFXTextField fx:id="nameTxt" labelFloat="true" layoutX="36.0" layoutY="74.0" promptText="Complaint By" unFocusColor="#1d7fff">
+            <JFXTextField fx:id="nameTxt" labelFloat="true" layoutX="36.0" layoutY="80.0" promptText="Complaint By" unFocusColor="#1d7fff">
                <font>
                   <Font size="21.0" />
                </font>
@@ -150,7 +150,6 @@
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </opaqueInsets>
             </JFXTextField>
-            <JFXTextArea fx:id="actionTakenTxt" layoutX="38.0" layoutY="283.0" prefHeight="51.0" prefWidth="454.0" promptText="Action Taken" styleClass="BackgroundPane" stylesheets="@../../Styles.css" />
             <JFXButton layoutX="305.0" layoutY="510.0" onAction="#ComplaintsBtn" prefHeight="31.0" prefWidth="74.0" styleClass="Special-buttons" text="Cancel" textFill="#b9d5fd">
                <font>
                   <Font size="15.0" />
@@ -162,7 +161,7 @@
                </font>
             </JFXButton>
             <JFXComboBox fx:id="comTypeBox" labelFloat="true" layoutX="34.0" layoutY="14.0" prefHeight="25.0" prefWidth="245.0" promptText="Complaint Type" />
-            <JFXTextField fx:id="phoneNumTxt" labelFloat="true" layoutX="36.0" layoutY="148.0" promptText="Phone Number" unFocusColor="#1d7fff">
+            <JFXTextField fx:id="phoneNumTxt" labelFloat="true" layoutX="36.0" layoutY="152.0" promptText="Phone Number" unFocusColor="#1d7fff">
                <font>
                   <Font size="21.0" />
                </font>
@@ -173,8 +172,8 @@
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </opaqueInsets>
             </JFXTextField>
-            <JFXTextArea fx:id="descriptionTxt" layoutX="38.0" layoutY="215.0" prefHeight="51.0" prefWidth="454.0" promptText="Description" styleClass="BackgroundPane" stylesheets="@../../Styles.css" />
-            <JFXTextArea fx:id="noteTxt" layoutX="38.0" layoutY="359.0" prefHeight="51.0" prefWidth="454.0" promptText="Note" styleClass="BackgroundPane" stylesheets="@../../Styles.css" />
+            <JFXTextArea fx:id="descriptionTxt" layoutX="38.0" layoutY="235.0" prefHeight="51.0" prefWidth="454.0" promptText="Description" styleClass="BackgroundPane" stylesheets="@../../Styles.css" />
+            <JFXTextArea fx:id="noteTxt" layoutX="38.0" layoutY="335.0" prefHeight="51.0" prefWidth="454.0" promptText="Note" styleClass="BackgroundPane" stylesheets="@../../Styles.css" />
             <JFXButton layoutX="418.0" layoutY="510.0" onAction="#submitBtn" prefHeight="31.0" prefWidth="74.0" styleClass="Special-buttons" text="Submit" textFill="#b9d5fd">
                <font>
                   <Font size="15.0" />

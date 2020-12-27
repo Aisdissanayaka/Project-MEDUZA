@@ -5,6 +5,7 @@
  */
 package Control;
 
+import static Control.RecAppointmentWindowController.appointmentNo;
 import static Control.RecAppointmentWindowController.userIDAppointment;
 import Model.Appointment;
 import java.net.URL;
@@ -90,9 +91,10 @@ public class RecAppointmentCompletedController extends DashboardUIController imp
         singleAppointment =appointmentTable.getSelectionModel().getSelectedItems();
         userIDAppointment = appointmentTable.getSelectionModel().getSelectedItem().getUserID(); // get user id in select row and set it static variable
         name=appointmentTable.getSelectionModel().getSelectedItem().getName(); //get name in table set it name
-         
+        appointmentNo =appointmentTable.getSelectionModel().getSelectedItem().getOptions();//get user id in selected row 
         Appointment appObj = new Appointment();            //create object in appointmen class
         appObj.deleteAppointment("user data//database//completedappointment.txt", "user data//database//temp.txt"); //call appointment delete methode
+        appObj.deleteAppointment("user data\\appointment\\"+userIDAppointment+".txt", "user data\\appointment\\temp.txt");
         singleAppointment.forEach(allAppointment::remove);//delete select row
         Alert alert = new Alert(Alert.AlertType.WARNING); //display Warning message
         alert.setContentText("You deleted "+name.toUpperCase()+"'s appointment..!");
