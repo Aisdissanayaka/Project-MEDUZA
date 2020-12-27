@@ -16,7 +16,7 @@
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" fx:id="ap" maxHeight="780.0" maxWidth="1500.0" minHeight="500.0" minWidth="500.0" prefHeight="700.0" prefWidth="1200.0" styleClass="BackgroundPane" stylesheets="@../../Styles.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Control.RecComplaintsWindowController">
+<AnchorPane id="AnchorPane" fx:id="ap" maxHeight="780.0" maxWidth="1500.0" minHeight="500.0" minWidth="500.0" prefHeight="700.0" prefWidth="1200.0" styleClass="BackgroundPane" stylesheets="@../../Styles.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Control.RecComplaintsWindowController">
    <children>
       <AnchorPane layoutX="113.0" layoutY="40.0" prefHeight="796.0" prefWidth="218.0" styleClass="SubPane" stylesheets="@../Styles.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -146,16 +146,14 @@
                         <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                      </columnResizePolicy>
                      <columns>
-                        <TableColumn fx:id="idCol" prefWidth="66.66664123535156" text="ID" />
-                        <TableColumn fx:id="comTypeCol" minWidth="0.800048828125" prefWidth="113.33331298828125" text="Complaint type" />
-                        <TableColumn fx:id="comByCol" prefWidth="75.0" text="Complaint by" />
-                        <TableColumn fx:id="phoneNoCol" prefWidth="75.0" text="Phone number" />
+                        <TableColumn fx:id="idCol" prefWidth="113.0" text="Complaint ID" />
+                        <TableColumn fx:id="comTypeCol" minWidth="0.800048828125" prefWidth="105.0" text="Complaint type" />
+                        <TableColumn fx:id="comByCol" prefWidth="131.0" text="Complaint by" />
+                        <TableColumn fx:id="phoneNoCol" prefWidth="115.0" text="Phone number" />
                         <TableColumn fx:id="dateCol" prefWidth="75.0" text="Date" />
                         <TableColumn fx:id="desCol" prefWidth="75.0" text="Description" />
                         <TableColumn fx:id="actionCol" prefWidth="75.0" text="Action taken" />
                         <TableColumn fx:id="noteCol" prefWidth="81.5999755859375" text="Note" />
-                        <TableColumn fx:id="docCol" prefWidth="128.0" text="Document" />
-                        <TableColumn fx:id="optionsCol" prefWidth="75.0" text="Options" />
                      </columns>
                   </TableView>
                </children>
@@ -182,5 +180,18 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
+      <JFXButton buttonType="RAISED" layoutX="505.0" layoutY="126.0" onAction="#deleteComplaintBtnAct" prefHeight="47.0" prefWidth="260.0" style="-fx-background-radius: 30;" styleClass="Special-buttons" stylesheets="@../../Styles.css" text="Delete Complaint" textFill="#b3d1f4">
+         <font>
+            <Font name="Segoe UI Symbol" size="20.0" />
+         </font>
+         <ripplerFill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop color="#176694" />
+                  <Stop color="#5454cc" offset="1.0" />
+               </stops>
+            </LinearGradient>
+         </ripplerFill>
+      </JFXButton>
    </children>
 </AnchorPane>

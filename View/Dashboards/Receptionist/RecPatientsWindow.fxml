@@ -148,17 +148,15 @@
                <children>
                   <TableView fx:id="patientsTable" layoutX="1.0" layoutY="10.0" prefHeight="443.0" prefWidth="984.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                     <columns>
-                      <TableColumn fx:id="idCol" prefWidth="51.73329162597656" text="ID" />
-                      <TableColumn fx:id="fNameCol" prefWidth="98.666748046875" text="First Name" />
-                        <TableColumn fx:id="lNameCol" prefWidth="98.666748046875" text="Last Name" />
-                        <TableColumn fx:id="genderCol" prefWidth="98.666748046875" text="Gender" />
-                        <TableColumn fx:id="dobCol" prefWidth="98.666748046875" text="DOB" />
-                        <TableColumn fx:id="phoneCol" prefWidth="98.666748046875" text="Phone Number" />
-                        <TableColumn fx:id="addressCol" prefWidth="66.4000244140625" text="Address" />
-                        <TableColumn fx:id="bloodGroupCol" prefWidth="76.79998779296875" text="Blood Group" />
-                        <TableColumn fx:id="allergiesCol" prefWidth="101.59991455078125" text="Allergies" />
-                        <TableColumn fx:id="passwordCol" prefWidth="75.0" text="Password" />
-                        <TableColumn fx:id="optionsCol" prefWidth="111.2000732421875" text="Options" />
+                      <TableColumn fx:id="idCol" prefWidth="108.0" text="ID" />
+                      <TableColumn fx:id="fNameCol" prefWidth="114.0" text="First Name" />
+                        <TableColumn fx:id="lNameCol" prefWidth="96.0" text="Last Name" />
+                        <TableColumn fx:id="genderCol" prefWidth="68.0" text="Gender" />
+                        <TableColumn fx:id="dobCol" prefWidth="77.0" text="DOB" />
+                        <TableColumn fx:id="phoneCol" prefWidth="127.0" text="Phone Number" />
+                        <TableColumn fx:id="addressCol" prefWidth="128.0" text="Address" />
+                        <TableColumn fx:id="bloodGroupCol" prefWidth="88.0" text="Blood Group" />
+                        <TableColumn fx:id="allergiesCol" prefWidth="170.0" text="Allergies" />
                     </columns>
                   </TableView>
                </children>

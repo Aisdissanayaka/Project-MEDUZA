@@ -23,8 +23,10 @@ import java.io.IOException;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -157,6 +159,10 @@ public class RecAppointmentEditController extends DashboardUIController implemen
        appTime.setText(selectedFeield.getAppTime());
        appDate.setText(selectedFeield.getAppDate());
      
+
+      ObservableList<String>list1=FXCollections.observableArrayList("A","B","C","D");
+        specAreaCombo.setItems(list1);
+
         
          RequiredFieldValidator validator = new RequiredFieldValidator();
         NumberValidator numvalidator = new  NumberValidator();

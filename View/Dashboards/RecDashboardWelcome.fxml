@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTogglePane?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
@@ -13,6 +14,7 @@
 <?import javafx.scene.paint.LinearGradient?>
 <?import javafx.scene.paint.Stop?>
 <?import javafx.scene.shape.Circle?>
+<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 
 <AnchorPane id="AnchorPane" fx:id="ap" maxHeight="780.0" maxWidth="1500.0" minHeight="500.0" minWidth="500.0" prefHeight="700.0" prefWidth="1200.0" styleClass="BackgroundPane" stylesheets="@../Styles.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Control.RecDashboardWelcome">
@@ -146,23 +148,104 @@
             <Image url="@../images/big%20logo.png" />
          </image>
       </ImageView>
-      <Label layoutX="307.0" layoutY="212.0" text="Pending Appointments" />
-      <Label layoutX="307.0" layoutY="252.0" text="Approved Appointments" />
-      <Label layoutX="307.0" layoutY="294.0" text="Completed Appointments" />
-      <Label layoutX="307.0" layoutY="338.0" text="Visitor records" />
-      <Label layoutX="307.0" layoutY="383.0" text="Complaints" />
-      <Label layoutX="310.0" layoutY="414.0" text="Received Postal" />
-      <Label layoutX="310.0" layoutY="447.0" text="Dispatched Postal" />
-      <Label layoutX="307.0" layoutY="483.0" text="Patients" />
-      <Label layoutX="307.0" layoutY="562.0" text="Mos" />
-      <Label fx:id="pendingAppointmentCount" layoutX="553.0" layoutY="211.0" prefHeight="18.0" prefWidth="42.0" text="-" />
-      <Label fx:id="approvedAppointmentCount" layoutX="553.0" layoutY="251.0" prefHeight="18.0" prefWidth="42.0" text="-" />
-      <Label fx:id="completedAppointmentsCount" layoutX="553.0" layoutY="293.0" prefHeight="18.0" prefWidth="42.0" text="-" />
-      <Label fx:id="visitorRecordsCount" layoutX="553.0" layoutY="337.0" prefHeight="18.0" prefWidth="42.0" text="-" />
-      <Label fx:id="complaintsCount" layoutX="553.0" layoutY="382.0" prefHeight="18.0" prefWidth="42.0" text="-" />
-      <Label fx:id="receivedPostalCount" layoutX="543.0" layoutY="413.0" prefHeight="18.0" prefWidth="42.0" text="-" />
-      <Label fx:id="dispatchedPostalCount" layoutX="543.0" layoutY="446.0" prefHeight="18.0" prefWidth="42.0" text="-" />
-      <Label fx:id="patientsCount" layoutX="532.0" layoutY="482.0" prefHeight="18.0" prefWidth="42.0" text="-" />
-      <Label fx:id="moCount" layoutX="543.0" layoutY="561.0" prefHeight="18.0" prefWidth="42.0" text="-" />
+      <Label layoutX="248.0" layoutY="20.0" prefHeight="134.0" prefWidth="142.0" text="Hello">
+         <font>
+            <Font name="Freestyle Script" size="96.0" />
+         </font>
+      </Label>
+      <Label fx:id="nameLbl2" alignment="TOP_LEFT" layoutX="401.0" layoutY="23.0" prefHeight="134.0" prefWidth="627.0" text="John Doe" textFill="#274684">
+         <font>
+            <Font name="Freestyle Script" size="96.0" />
+         </font>
+      </Label>
+      <Label layoutX="820.0" layoutY="226.0" />
+      <Label layoutX="820.0" layoutY="268.0" />
+      <Label layoutX="823.0" layoutY="388.0" />
+      <Label layoutX="823.0" layoutY="421.0" />
+      <Label layoutX="820.0" layoutY="457.0" />
+      <JFXTogglePane layoutX="237.0" layoutY="200.0" prefHeight="51.0" prefWidth="186.0" style="-fx-background-radius: 12;" styleClass="Side-Button" stylesheets="@../Styles.css">
+         <children>
+            <Label text="Pending Appointments" textFill="WHITE" />
+         </children>
+      </JFXTogglePane>
+      <Label fx:id="pendingAppointmentCount" alignment="CENTER" layoutX="434.0" layoutY="192.0" prefHeight="47.0" prefWidth="134.0" text="-">
+         <font>
+            <Font size="45.0" />
+         </font>
+      </Label>
+      <JFXTogglePane layoutX="237.0" layoutY="266.0" prefHeight="51.0" prefWidth="186.0" style="-fx-background-radius: 12;" styleClass="Side-Button" stylesheets="@../Styles.css">
+         <children>
+            <Label text="Approved Appointments" textFill="WHITE" />
+         </children>
+      </JFXTogglePane>
+      <JFXTogglePane layoutX="237.0" layoutY="333.0" prefHeight="51.0" prefWidth="186.0" style="-fx-background-radius: 12;" styleClass="Side-Button" stylesheets="@../Styles.css">
+         <children>
+            <Label text="Completed Appointments" textFill="WHITE" />
+         </children>
+      </JFXTogglePane>
+      <Label fx:id="completedAppointmentsCount" alignment="CENTER" layoutX="435.0" layoutY="327.0" prefHeight="47.0" prefWidth="134.0" text="-">
+         <font>
+            <Font size="45.0" />
+         </font>
+      </Label>
+      <Line endX="270.0" layoutX="330.0" layoutY="182.0" startX="-100.0" />
+      <Line endX="270.0" layoutX="337.0" layoutY="405.0" startX="-100.0" />
+      <JFXTogglePane layoutX="237.0" layoutY="425.0" prefHeight="51.0" prefWidth="186.0" style="-fx-background-radius: 12;" styleClass="Side-Button" stylesheets="@../Styles.css">
+         <children>
+            <Label text="Visitors" textFill="WHITE" />
+         </children>
+      </JFXTogglePane>
+      <Label fx:id="visitorRecordsCount" alignment="CENTER" layoutX="435.0" layoutY="419.0" prefHeight="47.0" prefWidth="134.0" text="-">
+         <font>
+            <Font size="45.0" />
+         </font>
+      </Label>
+      <JFXTogglePane layoutX="238.0" layoutY="493.0" prefHeight="51.0" prefWidth="186.0" style="-fx-background-radius: 12;" styleClass="Side-Button" stylesheets="@../Styles.css">
+         <children>
+            <Label text="Complaints" textFill="WHITE" />
+         </children>
+      </JFXTogglePane>
+      <Label fx:id="complaintsCount" alignment="CENTER" layoutX="436.0" layoutY="487.0" prefHeight="47.0" prefWidth="134.0" text="-">
+         <font>
+            <Font size="45.0" />
+         </font>
+      </Label>
+      <JFXTogglePane layoutX="660.0" layoutY="235.0" prefHeight="51.0" prefWidth="186.0" style="-fx-background-radius: 12;" styleClass="Side-Button" stylesheets="@../Styles.css">
+         <children>
+            <Label text="Received Postal" textFill="WHITE" />
+         </children>
+      </JFXTogglePane>
+      <Label fx:id="receivedPostalCount" alignment="CENTER" layoutX="858.0" layoutY="229.0" prefHeight="47.0" prefWidth="134.0" text="-">
+         <font>
+            <Font size="45.0" />
+         </font>
+      </Label>
+      <JFXTogglePane layoutX="660.0" layoutY="301.0" prefHeight="51.0" prefWidth="186.0" style="-fx-background-radius: 12;" styleClass="Side-Button" stylesheets="@../Styles.css">
+         <children>
+            <Label text="Dispatched Postal" textFill="WHITE" />
+         </children>
+      </JFXTogglePane>
+      <Label fx:id="dispatchedPostalCount" alignment="CENTER" layoutX="858.0" layoutY="295.0" prefHeight="47.0" prefWidth="134.0" text="-">
+         <font>
+            <Font size="45.0" />
+         </font>
+      </Label>
+      <Line endX="270.0" layoutX="758.0" layoutY="182.0" startX="-100.0" />
+      <JFXTogglePane layoutX="660.0" layoutY="431.0" prefHeight="51.0" prefWidth="120.0" style="-fx-background-radius: 12;" styleClass="Side-Button" stylesheets="@../Styles.css">
+         <children>
+            <Label text="Patients" textFill="WHITE" />
+         </children>
+      </JFXTogglePane>
+      <Label fx:id="patientsCount" alignment="CENTER" layoutX="652.0" layoutY="485.0" prefHeight="47.0" prefWidth="134.0" text="-">
+         <font>
+            <Font size="45.0" />
+         </font>
+      </Label>
+      <Line endX="270.0" layoutX="758.0" layoutY="405.0" startX="-100.0" />
+      <Label fx:id="approvedAppointmentCount" alignment="CENTER" layoutX="435.0" layoutY="260.0" prefHeight="47.0" prefWidth="134.0" text="-">
+         <font>
+            <Font size="45.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

@@ -90,16 +90,16 @@ public class RecAddComplaintWindowController extends DashboardUIController imple
         recCom.setName(nameTxt.getText());
         recCom.setPhoneNo(phoneNumTxt.getText());
         recCom.setDescription(descriptionTxt.getText());
-        recCom.setActionTaken(actionTakenTxt.getText());
+        
         recCom.setNote(noteTxt.getText());
         
-        recCom.addComplaint(event);
+        recCom.addComplaint();
         
         comTypeBox.setValue(null);
         nameTxt.setText(null);
         phoneNumTxt.setText(null);
         descriptionTxt.setText(null);
-        actionTakenTxt.setText(null);
+        
         noteTxt.setText(null);
        
         
@@ -228,14 +228,7 @@ public class RecAddComplaintWindowController extends DashboardUIController imple
                 }}
         }); 
        
-        actionTakenTxt.focusedProperty().addListener(new ChangeListener <Boolean>() {
-            @Override
-            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
-                if(!newValue)
-                {
-                actionTakenTxt.validate();
-                }}
-        }); 
+        
        
     }    
     

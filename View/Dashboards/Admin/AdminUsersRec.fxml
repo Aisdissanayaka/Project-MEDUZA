@@ -179,6 +179,7 @@
                               <Font name="Segoe UI Italic" size="19.0" />
                            </font>
                         </JFXButton>
+                        <JFXButton layoutX="916.0" layoutY="7.0" onAction="#AdminUserRecEdit" styleClass="Close-Button" stylesheets="@../../Styles.css" text="Edit" textFill="WHITE" />
                      </children>
                   </AnchorPane>
                </children>

@@ -89,17 +89,17 @@ public class PatAddComplaintWindowController extends DashboardUIController imple
         patCom.setName(nameTxt.getText());
         patCom.setPhoneNo(phoneNumTxt.getText());
         patCom.setDescription(descriptionTxt.getText());
-        patCom.setActionTaken(actionTakenTxt.getText());
+        
         patCom.setNote(noteTxt.getText());
         
-        patCom.addComplaint(event);
+        patCom.addComplaint();
         
         comTypeBox.setValue(null);
         nameTxt.setText(null);
         descriptionTxt.setText(null);
         noteTxt.setText(null);
         phoneNumTxt.setText(null);
-        actionTakenTxt.setText(null);
+        
         
 
     }}
@@ -107,7 +107,7 @@ public class PatAddComplaintWindowController extends DashboardUIController imple
        // warning message for null validation
      private boolean validateFields(){
          
-          if(nameTxt.getText().isEmpty() | descriptionTxt.getText().isEmpty()| actionTakenTxt.getText().isEmpty()|
+          if(nameTxt.getText().isEmpty() | descriptionTxt.getText().isEmpty()| 
              noteTxt.getText().isEmpty()|phoneNumTxt.getText().isEmpty())
          {
               Alert alert = new Alert(Alert.AlertType.WARNING);
@@ -185,7 +185,7 @@ public class PatAddComplaintWindowController extends DashboardUIController imple
        noteTxt.getValidators().add(validator);
        phoneNumTxt.getValidators().add(validator);
        phoneNumTxt.getValidators().add(numvalidator);
-       actionTakenTxt.getValidators().add(validator);
+       
         
         
        nameTxt.focusedProperty().addListener(new ChangeListener <Boolean>() {
@@ -224,14 +224,7 @@ public class PatAddComplaintWindowController extends DashboardUIController imple
                 }}
         }); 
        
-        actionTakenTxt.focusedProperty().addListener(new ChangeListener <Boolean>() {
-            @Override
-            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
-                if(!newValue)
-                {
-                actionTakenTxt.validate();
-                }}
-        }); 
+        
     }    
     
 }

@@ -75,19 +75,14 @@ public class RecAddVisitorWindowController extends DashboardUIController impleme
         
         Visitor visitorObjF = new Visitor();
         
-        visitorObjF.setNic(visID.getText());
-        visitorObjF.setName(visName.getText());
-        visitorObjF.setNote(visNote.getText());
-        visitorObjF.setInTime(inTime.getValue().toString());
-        visitorObjF.setOutTime(outTime.getValue().toString());
-        visitorObjF.setDate(visDate.getValue().toString());
+        
         visitorObjF.addFile(event2);
         
         
     }
     
     @FXML
-    public void submitBtn(ActionEvent event) throws FileNotFoundException {
+    public void submitBtn(ActionEvent event) throws IOException {
         try{
         Visitor visitorObj = new Visitor();
         
