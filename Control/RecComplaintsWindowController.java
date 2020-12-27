@@ -5,6 +5,7 @@
  */
 package Control;
 
+import static Control.UserLoginController.primaryKey;
 import static Control.UserLoginController.profilePicture;
 import static Control.UserLoginController.staticUserName;
 import Model.Appointment;
@@ -82,11 +83,7 @@ public class RecComplaintsWindowController extends DashboardUIController impleme
     @FXML
     private TableColumn<Complaint, String> noteCol;
 
-    @FXML
-    private TableColumn<Complaint, String>  docCol;
-
-    @FXML
-    private TableColumn<Complaint, String>  optionsCol;
+    
 
     //delete Complaint Action event
      public void deleteComplaintBtnAct(ActionEvent event){
@@ -112,13 +109,13 @@ public class RecComplaintsWindowController extends DashboardUIController impleme
         }
     
      
-     
+     String filepath= "user data\\complaint\\data"+primaryKey+".txt";
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
        
         try {
-          ArrayList<Complaint> complaintArrayList = Complaint.viewComplaint();
+          ArrayList<Complaint> complaintArrayList = Complaint.viewComplaint(filepath);
           
           int complaintCount = complaintArrayList.size();
           
@@ -138,7 +135,7 @@ public class RecComplaintsWindowController extends DashboardUIController impleme
           desCol.setCellValueFactory(new PropertyValueFactory<>("description"));
           actionCol.setCellValueFactory(new PropertyValueFactory<>("actionTaken"));
           noteCol.setCellValueFactory(new PropertyValueFactory<>("note"));
-          docCol.setCellValueFactory(new PropertyValueFactory<>("document"));
+         // docCol.setCellValueFactory(new PropertyValueFactory<>("document"));
           //optionsCol.setCellValueFactory(new PropertyValueFactory<>("options"));
        
        

@@ -116,36 +116,7 @@ public class RecPostalDispatchedWindowController extends DashboardUIController i
     @FXML
     private TableColumn<Postal, String> optionsCol;
     
-    @FXML
-    public void postalDispatchedView(){
-         try {
-          ArrayList<Postal> postalArrayList = Postal.viewDispatchedPostal();
-          
-          int postalCount = postalArrayList.size();
-          
-          
-             System.out.println(postalCount);
-          
-          ObservableList<Postal> recievedPostal = FXCollections.observableArrayList();
-          for(int i =0;i< postalCount;i++){
-          recievedPostal.add(postalArrayList.get(i));
-      
-          }
-          refCol.setCellValueFactory(new PropertyValueFactory<Postal,String>("RefferenceNum"));
-          toCol.setCellValueFactory(new PropertyValueFactory<Postal,String>("To"));
-          fromAddressCol.setCellValueFactory(new PropertyValueFactory<Postal,String>("Address"));
-          noteCol.setCellValueFactory(new PropertyValueFactory<Postal,String>("Note"));
-          dateCol.setCellValueFactory(new PropertyValueFactory<Postal,String>("Date"));
-          fromCol.setCellValueFactory(new PropertyValueFactory<Postal,String>("From"));
-          docCol.setCellValueFactory(new PropertyValueFactory<Postal,String>("Document"));
-          optionsCol.setCellValueFactory(new PropertyValueFactory<Postal,String>("Options"));
-       
-          dispatchedPostTable.setItems(recievedPostal);
-          
-             
-         }catch(Exception e){}
-    
-    }
+  
      
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -168,8 +139,8 @@ public class RecPostalDispatchedWindowController extends DashboardUIController i
           noteCol.setCellValueFactory(new PropertyValueFactory<Postal,String>("Note"));
           dateCol.setCellValueFactory(new PropertyValueFactory<Postal,String>("Date"));
           fromCol.setCellValueFactory(new PropertyValueFactory<Postal,String>("From"));
-          docCol.setCellValueFactory(new PropertyValueFactory<Postal,String>("Document"));
-          optionsCol.setCellValueFactory(new PropertyValueFactory<Postal,String>("Options"));
+          //docCol.setCellValueFactory(new PropertyValueFactory<Postal,String>("Document"));
+         // optionsCol.setCellValueFactory(new PropertyValueFactory<Postal,String>("Options"));
        
           dispatchedPostTable.setItems(recievedPostal);
           

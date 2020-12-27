@@ -110,21 +110,19 @@
                <content>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="898.0" prefWidth="1322.0">
                      <children>
-                        <TableView layoutX="17.0" layoutY="26.0" prefHeight="905.0" prefWidth="939.0" tableMenuButtonVisible="true" AnchorPane.bottomAnchor="-33.0" AnchorPane.leftAnchor="17.0" AnchorPane.rightAnchor="366.0" AnchorPane.topAnchor="26.0">
+                        <TableView fx:id="complaintsTable" layoutX="17.0" layoutY="26.0" prefHeight="905.0" prefWidth="939.0" tableMenuButtonVisible="true" AnchorPane.bottomAnchor="-33.0" AnchorPane.leftAnchor="17.0" AnchorPane.rightAnchor="366.0" AnchorPane.topAnchor="26.0">
                            <columnResizePolicy>
                               <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                            </columnResizePolicy>
                            <columns>
-                              <TableColumn prefWidth="258.40000915527344" text="ID" />
-                              <TableColumn prefWidth="783.9999694824219" text="Complaint type" />
-                              <TableColumn prefWidth="75.0" text="Complaint by" />
-                              <TableColumn prefWidth="75.0" text="Phone number" />
-                              <TableColumn prefWidth="75.0" text="Date" />
-                              <TableColumn prefWidth="75.0" text="Description" />
-                              <TableColumn prefWidth="75.0" text="Action taken" />
-                              <TableColumn prefWidth="81.5999755859375" text="Note" />
-                              <TableColumn prefWidth="128.0" text="Document" />
-                              <TableColumn prefWidth="75.0" text="Options" />
+                              <TableColumn fx:id="idCol" prefWidth="258.40000915527344" text="ID" />
+                              <TableColumn fx:id="comTypeCol" prefWidth="783.9999694824219" text="Complaint type" />
+                              <TableColumn fx:id="comByCol" prefWidth="75.0" text="Complaint by" />
+                              <TableColumn fx:id="phoneNoCol" prefWidth="75.0" text="Phone number" />
+                              <TableColumn fx:id="dateCol" prefWidth="75.0" text="Date" />
+                              <TableColumn fx:id="desCol" prefWidth="75.0" text="Description" />
+                              <TableColumn fx:id="actionCol" prefWidth="75.0" text="Action taken" />
+                              <TableColumn fx:id="noteCol" prefWidth="81.5999755859375" text="Note" />
                            </columns>
                         </TableView>
                      </children>

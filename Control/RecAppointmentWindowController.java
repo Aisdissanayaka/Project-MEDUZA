@@ -114,6 +114,7 @@ public class RecAppointmentWindowController extends DashboardUIController implem
         userIDAppointment = appointmentTable.getSelectionModel().getSelectedItem().getUserID(); // get user id in select row and set it static variable
         name=appointmentTable.getSelectionModel().getSelectedItem().getName(); //get name in table set it name
         appointmentNo =appointmentTable.getSelectionModel().getSelectedItem().getOptions();//get user id in selected row
+        
         singleAppointment.forEach(allAppointment::remove); //delete select row
         Appointment appObj = new Appointment();            //create object in appointmen class
         appObj.deleteAppointment("user data//database//pendingappointment.txt", "user data//database//temp.txt"); //call appointment delete methode
@@ -167,13 +168,14 @@ public class RecAppointmentWindowController extends DashboardUIController implem
     @FXML  //approved appointment action event
     void approveAppointment(ActionEvent event) {
         try{
+         String name;   
         ObservableList<Appointment> allAppointment,singleAppointment;
         allAppointment = appointmentTable.getItems();
         singleAppointment =appointmentTable.getSelectionModel().getSelectedItems();
         userIDAppointment = appointmentTable.getSelectionModel().getSelectedItem().getUserID(); // get user id in select row and set it static variable
         status=appointmentTable.getSelectionModel().getSelectedItem().getStatus();
         appointmentNo =appointmentTable.getSelectionModel().getSelectedItem().getOptions();//get user id in selected row
-       
+        name=appointmentTable.getSelectionModel().getSelectedItem().getName();
         //get status in table and asign the value in static variable
         if (status.equals(pending)){        //compare  status (pending is an static variable)
         Appointment appObj = new Appointment();       //create object in appointment class
@@ -183,7 +185,7 @@ public class RecAppointmentWindowController extends DashboardUIController implem
         singleAppointment.forEach(allAppointment::remove);   // delete selected row in table
         // userid are equal display message
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setContentText("You approved "+appointmentTable.getSelectionModel().getSelectedItem().getName().toUpperCase()+"'s appointment..!");
+        alert.setContentText("You approved "+name.toUpperCase()+"'s appointment..!");
         alert.show();
         
         }
