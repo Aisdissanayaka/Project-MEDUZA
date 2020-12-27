@@ -167,7 +167,7 @@
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </opaqueInsets>
             </JFXTextField>
-            <JFXComboBox fx:id="gender" layoutX="319.0" layoutY="344.0" promptText="Gender" AnchorPane.leftAnchor="424.0" />
+            <JFXComboBox fx:id="gender" layoutX="431.0" layoutY="344.0" promptText="Gender" AnchorPane.leftAnchor="431.0" />
             <JFXDatePicker fx:id="dateOfBirth" defaultColor="#4059a9" layoutX="561.0" layoutY="343.0" prefHeight="28.0" prefWidth="142.0" promptText="Date of birth" AnchorPane.leftAnchor="561.0" />
             <JFXTextField fx:id="phoneNumber" labelFloat="true" layoutX="250.0" layoutY="390.0" prefHeight="36.0" prefWidth="454.0" promptText="Phone Number" unFocusColor="#1d7fff" AnchorPane.leftAnchor="250.0">
                <font>
@@ -208,7 +208,7 @@
                   <Image url="@../../images/big%20logo.png" />
                </image>
             </ImageView>
-            <JFXButton layoutX="1115.0" layoutY="653.0"  prefHeight="31.0" prefWidth="70.0" style="-fx-background-radius: 30;" styleClass="Special-buttons" text="Reset" textFill="#b9d5fd">
+            <JFXButton layoutX="1115.0" layoutY="653.0" prefHeight="31.0" prefWidth="70.0" style="-fx-background-radius: 30;" styleClass="Special-buttons" text="Reset" textFill="#b9d5fd">
                <font>
                   <Font size="15.0" />
                </font>
