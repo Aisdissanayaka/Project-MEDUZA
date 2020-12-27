@@ -175,7 +175,7 @@
             </Button>
             <Pane layoutX="852.0" layoutY="140.0" prefHeight="54.0" prefWidth="341.0" stylesheets="@../../Styles.css" AnchorPane.bottomAnchor="506.0" AnchorPane.rightAnchor="7.0">
                <children>
-                  <JFXButton buttonType="RAISED" layoutX="273.0" layoutY="15.0" styleClass="Close-Button" stylesheets="@../../Styles.css" text="Delete" textFill="WHITE" />
+                  <JFXButton fx:id="deleteVisitor" buttonType="RAISED" layoutX="273.0" layoutY="15.0" styleClass="Close-Button" stylesheets="@../../Styles.css" text="Delete" textFill="WHITE" />
                </children>
             </Pane>
          </children>
