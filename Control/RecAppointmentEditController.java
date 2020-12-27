@@ -11,11 +11,15 @@ import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
 import com.jfoenix.controls.JFXTimePicker;
+import com.jfoenix.validation.NumberValidator;
+import com.jfoenix.validation.RequiredFieldValidator;
 import java.awt.Desktop;
 import java.awt.event.ActionEvent;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -55,6 +59,7 @@ public class RecAppointmentEditController extends DashboardUIController implemen
     //appointment update button action event
     @FXML
     public void updateBtn(javafx.event.ActionEvent event) {
+        if(validateFields()){
     //create object in appointment class    
     Appointment obj = new Appointment();
     try{
@@ -69,7 +74,21 @@ public class RecAppointmentEditController extends DashboardUIController implemen
     alert.setContentText("Please update date and time..!");
     alert.show();
     }
-    }
+    }}
+    
+      private boolean validateFields(){
+         
+   if(name.getText().isEmpty() | appDate.getText().isEmpty()| appTime.getText().isEmpty()|Symptoms.getText().isEmpty())
+         {
+              Alert alert = new Alert(Alert.AlertType.WARNING);
+             alert.setTitle("Validate Fields");
+             alert.setHeaderText(null);
+             alert.setContentText("Please Enter Into The Fields");
+             alert.showAndWait();
+             return false;
+            }
+        return true;
+         }
 
   
 
@@ -90,6 +109,55 @@ public class RecAppointmentEditController extends DashboardUIController implemen
      
       ObservableList<String>list1=FXCollections.observableArrayList("A","B","C","D");
         specAreaCombo.setItems(list1);
+        
+         RequiredFieldValidator validator = new RequiredFieldValidator();
+        NumberValidator numvalidator = new  NumberValidator();
+       
+        numvalidator.setMessage("Invalied Number");
+        validator.setMessage("Required Field");
+        
+         name.getValidators().add(validator);
+         appDate.getValidators().add(validator);
+        appTime.getValidators().add(validator);
+        //specAreaCombo.getValidators().add(validator);
+         Symptoms.getValidators().add(validator);
+        
+        name.focusedProperty().addListener(new ChangeListener <Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+                if(!newValue)
+                {
+                name.validate();
+                }}
+        });
+  
+        appDate.focusedProperty().addListener(new ChangeListener <Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+                if(!newValue)
+                {
+                appDate.validate();
+                }}
+        });
+       
+        appTime.focusedProperty().addListener(new ChangeListener <Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+                if(!newValue)
+                {
+                appTime.validate();
+                }}
+        }); 
+       
+        Symptoms.focusedProperty().addListener(new ChangeListener <Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+                if(!newValue)
+                {
+                Symptoms.validate();
+                }}
+        }); 
+       
     }    
     
 }

@@ -18,6 +18,8 @@ import java.io.PrintWriter;
 import java.net.URL;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -72,13 +74,13 @@ public class RecAddPatientController extends DashboardUIController implements In
      @FXML
     public void submitBtn(ActionEvent event)throws  IOException{
         
-        if(validateFields()){
+        if(validateFields()&& validatePhoneNum()){
     try{ //set value in setters
         Patient obj = new Patient();
         obj.setNic(nic.getText());
         obj.setFName(firstName.getText());
         obj.setLName(lastName.getText());
-        obj.setAddress(address.getText());
+        obj.setPhoneNumber(phoneNumber.getText());
         obj.setBloodGroup(bloodGroup.getValue());
         obj.setAllergies(allergies.getText());
         obj.setGender(gender.getValue().toString());
@@ -103,7 +105,37 @@ public class RecAddPatientController extends DashboardUIController implements In
     
     } }
     
+       // warning message for null validation
+     private boolean validateFields(){
+         
+   if(firstName.getText().isEmpty() | lastName.getText().isEmpty()| nic.getText().isEmpty()| dateOfBirth.getEditor().getText().isEmpty()|phoneNumber.getText().isEmpty()|address.getText().isEmpty()|
+allergies.getText().isEmpty())
+         {
+              Alert alert = new Alert(Alert.AlertType.WARNING);
+             alert.setTitle("Validate Fields");
+             alert.setHeaderText(null);
+             alert.setContentText("Please Enter Into The Fields");
+             alert.showAndWait();
+             return false;
+            }
+        return true;
+         }
     
+       //warnig message to invalide Phone Number 
+     private boolean validatePhoneNum(){
+         Pattern p=Pattern.compile("[0][0-9]{9}");
+         Matcher m = p.matcher(phoneNumber.getText());
+         if(m.find() && m.group().equals(phoneNumber.getText())){
+           return true;
+         }else{
+              Alert alert = new Alert(Alert.AlertType.WARNING);
+             alert.setTitle("Validate Phone Number");
+            alert.setHeaderText(null);
+             alert.setContentText("Please Enter The Valid Phone Number");
+             alert.showAndWait();
+             return false;
+         }
+       }
     
      // Cancel Button. it's go to sign up as menu  
     public void cancelBtn(ActionEvent event) throws IOException{
@@ -118,22 +150,7 @@ public class RecAddPatientController extends DashboardUIController implements In
         
        }
     
-     // warning message for null validation
-     private boolean validateFields(){
-         
-   if(firstName.getText().isEmpty() | lastName.getText().isEmpty()|  address.getText().isEmpty()|
-       nic.getText().isEmpty()|allergies.getText().isEmpty()|phoneNumber.getText().isEmpty())
-         {
-              Alert alert = new Alert(Alert.AlertType.WARNING);
-             alert.setTitle("Validate Fields");
-             alert.setHeaderText(null);
-             alert.setContentText("Please Enter Into The Fields");
-             alert.showAndWait();
-             return false;
-            }
-        return true;
-         }
-    @Override
+      @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
          ObservableList<String>list1=FXCollections.observableArrayList("Male","Female");
