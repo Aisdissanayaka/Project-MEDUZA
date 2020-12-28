@@ -6,6 +6,7 @@
 package Control;
 
 import Model.Patient;
+import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
@@ -53,7 +54,7 @@ public class RecAddPatientController extends DashboardUIController implements In
     private JFXTextField lastName;
     
     @FXML
-    private ComboBox gender;
+    private JFXComboBox<String> gender;
     
     @FXML
     private JFXDatePicker dateOfBirth;
@@ -65,7 +66,7 @@ public class RecAddPatientController extends DashboardUIController implements In
     private JFXTextArea address;
     
     @FXML
-    private ComboBox<String> bloodGroup;
+    private JFXComboBox<String> bloodGroup;
     
     @FXML
     private JFXTextArea allergies;
@@ -174,8 +175,26 @@ allergies.getText().isEmpty())
         dateOfBirth.getValidators().add(validator);
         allergies.getValidators().add(validator);
         phoneNumber.getValidators().add(validator);
+        gender.getValidators().add(validator);
+        bloodGroup.getValidators().add(validator);
        
         
+       gender.focusedProperty().addListener(new ChangeListener <Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+                if(!newValue)
+                {
+               gender.validate();
+                }}
+        }); 
+        bloodGroup.focusedProperty().addListener(new ChangeListener <Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+                if(!newValue)
+                {
+                bloodGroup.validate();
+                }}
+        }); 
         phoneNumber.focusedProperty().addListener(new ChangeListener <Boolean>() {
             @Override
             public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
@@ -183,7 +202,7 @@ allergies.getText().isEmpty())
                 {
                 phoneNumber.validate();
                 }}
-        });       
+        }); 
        
         firstName.focusedProperty().addListener(new ChangeListener <Boolean>() {
             @Override
