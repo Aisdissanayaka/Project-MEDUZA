@@ -84,7 +84,7 @@ public class PatComplaintsWindowController extends DashboardUIController impleme
     
     
     
-    String filepath = "user data\\complaint\\data"+primaryKey+".txt";
+    String filepath = "user data\\complaint\\data\\"+primaryKey+".txt";
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         try {

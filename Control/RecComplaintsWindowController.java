@@ -109,18 +109,17 @@ public class RecComplaintsWindowController extends DashboardUIController impleme
         }
     
      
-     String filepath= "user data\\complaint\\data"+primaryKey+".txt";
+     String filepath= "user data\\complaint\\data\\"+primaryKey+".txt";
+     
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+       
        
         try {
           ArrayList<Complaint> complaintArrayList = Complaint.viewComplaint(filepath);
           
           int complaintCount = complaintArrayList.size();
-          
-          
-             System.out.println(complaintCount);
           
           ObservableList<Complaint> complaints = FXCollections.observableArrayList();
           for(int i =0;i< complaintCount;i++){

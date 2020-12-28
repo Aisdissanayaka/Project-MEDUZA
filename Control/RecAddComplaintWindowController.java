@@ -99,7 +99,6 @@ public class RecAddComplaintWindowController extends DashboardUIController imple
         nameTxt.setText(null);
         phoneNumTxt.setText(null);
         descriptionTxt.setText(null);
-        
         noteTxt.setText(null);
        
         
@@ -109,7 +108,7 @@ public class RecAddComplaintWindowController extends DashboardUIController imple
      // warning message for null validation
      private boolean validateFields(){
          
-          if(nameTxt.getText().isEmpty() | descriptionTxt.getText().isEmpty()| actionTakenTxt.getText().isEmpty()|
+          if(nameTxt.getText().isEmpty() | descriptionTxt.getText().isEmpty()|
              noteTxt.getText().isEmpty()|phoneNumTxt.getText().isEmpty())
          {
               Alert alert = new Alert(Alert.AlertType.WARNING);
@@ -189,7 +188,7 @@ public class RecAddComplaintWindowController extends DashboardUIController imple
        noteTxt.getValidators().add(validator);
        phoneNumTxt.getValidators().add(validator);
        phoneNumTxt.getValidators().add(numvalidator);
-       actionTakenTxt.getValidators().add(validator);
+      
         
         
        nameTxt.focusedProperty().addListener(new ChangeListener <Boolean>() {
