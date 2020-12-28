@@ -124,23 +124,7 @@
                   <Insets bottom="5.0" left="5.0" top="5.0" />
                </padding>
             </JFXDatePicker>
-            <JFXTextField fx:id="MOTxt" labelFloat="true" layoutX="33.0" layoutY="281.0" prefHeight="41.0" prefWidth="176.0" promptText="Medical Officer" unFocusColor="#1d7fff">
-               <font>
-                  <Font size="21.0" />
-               </font>
-               <padding>
-                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-               </padding>
-               <opaqueInsets>
-                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-               </opaqueInsets>
-            </JFXTextField>
             <JFXTimePicker fx:id="appTime" defaultColor="#274684" layoutX="38.0" layoutY="222.0" prefHeight="28.0" prefWidth="242.0" promptText="Appointment Time" />
-            <ComboBox fx:id="specAreaCombo" layoutX="239.0" layoutY="301.0" prefWidth="150.0" promptText="Select" styleClass="Table-pane" stylesheets="@../../Styles.css">
-               <cursor>
-               <Cursor fx:constant="HAND" />
-               </cursor>
-            </ComboBox>
             
             <JFXTextArea fx:id="SymptomsTxt" layoutX="38.0" layoutY="341.0" prefHeight="160.0" prefWidth="454.0" promptText="Symptoms" styleClass="BackgroundPane" stylesheets="@../../Styles.css">
                <font>
@@ -167,6 +151,21 @@
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </opaqueInsets>
             </JFXTextField>
+            <Label layoutX="38.0" layoutY="293.0" text="Speciality Area">
+               <font>
+                  <Font size="21.0" />
+               </font>
+            </Label>
+            <ComboBox fx:id="category" layoutX="190.0" layoutY="298.0" prefHeight="25.0" prefWidth="174.0" promptText="Select" styleClass="Table-pane" stylesheets="@../../Styles.css">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ComboBox>
+            <Label layoutX="422.0" layoutY="292.0" prefHeight="31.0" prefWidth="143.0" text="Medical Officer">
+               <font>
+                  <Font size="21.0" />
+               </font>
+            </Label>
          </children>
       </Pane>
       <Button layoutX="1165.0" layoutY="14.0" minHeight="-Infinity" mnemonicParsing="false" onAction="#closeBtn" prefHeight="13.0" prefWidth="26.0" style="-fx-background-radius: 50;" styleClass="Close-Button" stylesheets="@../../Styles.css">
@@ -184,5 +183,10 @@
             <Image url="@../../images/big%20logo.png" />
          </image>
       </ImageView>
+      <ComboBox fx:id="specAreaCombo" layoutX="843.0" layoutY="413.0" onMousePressed="#getMO" prefHeight="25.0" prefWidth="174.0" promptText="Select" styleClass="Table-pane" stylesheets="@../../Styles.css">
+         <cursor>
+         <Cursor fx:constant="HAND" />
+         </cursor>
+      </ComboBox>
    </children>
 </AnchorPane>
