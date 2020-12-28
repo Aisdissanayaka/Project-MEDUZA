@@ -7,14 +7,17 @@ package Control;
 
 import Model.Complaint;
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
 import com.jfoenix.validation.NumberValidator;
 import com.jfoenix.validation.RequiredFieldValidator;
+import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.net.URL;
@@ -22,6 +25,8 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.time.LocalDate;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javafx.beans.value.ChangeListener;
@@ -54,8 +59,8 @@ public class RecAddComplaintWindowController extends DashboardUIController imple
     @FXML
     private JFXTextArea actionTakenTxt;
 
-    @FXML
-    private ComboBox comTypeBox;
+     @FXML
+    private JFXComboBox<String> comTypeBox;
 
     @FXML
     private JFXTextField phoneNumTxt;
@@ -170,14 +175,31 @@ public class RecAddComplaintWindowController extends DashboardUIController imple
          
     }
 
-
+     ObservableList list1=FXCollections.observableArrayList();
+    
+     //Complaint type drop down list
+     private void loadData() throws FileNotFoundException, IOException{
+        list1.removeAll(list1);
+        
+        File myfile = new File("user data\\reference\\complaint.txt"); 
+    BufferedReader abc = new BufferedReader(new FileReader(myfile));
+     String s;
+        while((s=abc.readLine())!=null) {
+            list1.add(s);
+      
+     }
+        comTypeBox.getItems().addAll(list1);
+     }
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
         
-         ObservableList<String>list=FXCollections.observableArrayList("Type 1","Type 2", "Type 3");
-       comTypeBox.setItems(list);
+        //add compalint type combo box values
+        try {
+            loadData();
+        } catch (IOException ex) {
+            Logger.getLogger(RecAddComplaintWindowController.class.getName()).log(Level.SEVERE, null, ex);
+        }
        
        //show validation status
         RequiredFieldValidator validator = new RequiredFieldValidator();
@@ -191,7 +213,7 @@ public class RecAddComplaintWindowController extends DashboardUIController imple
        phoneNumTxt.getValidators().add(validator);
        phoneNumTxt.getValidators().add(numvalidator);
       complaintDate.getValidators().add(validator);
-        
+        comTypeBox.getValidators().add(validator);
         
        nameTxt.focusedProperty().addListener(new ChangeListener <Boolean>() {
             @Override
@@ -238,6 +260,14 @@ public class RecAddComplaintWindowController extends DashboardUIController imple
                 }}
         }); 
        
+        comTypeBox.focusedProperty().addListener(new ChangeListener <Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+                if(!newValue)
+                {
+                comTypeBox.validate();
+                }}
+        }); 
         
        
     }    

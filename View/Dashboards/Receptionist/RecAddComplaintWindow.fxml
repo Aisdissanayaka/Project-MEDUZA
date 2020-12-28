@@ -173,8 +173,14 @@
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </opaqueInsets>
             </JFXTextField>
-            <JFXTextArea fx:id="descriptionTxt" layoutX="32.0" layoutY="223.0" prefHeight="51.0" prefWidth="454.0" promptText="Description" styleClass="BackgroundPane" stylesheets="@../../Styles.css" />
-            <JFXTextArea fx:id="noteTxt" layoutX="32.0" layoutY="322.0" prefHeight="51.0" prefWidth="454.0" promptText="Note" styleClass="BackgroundPane" stylesheets="@../../Styles.css" />
+            <JFXTextArea fx:id="descriptionTxt" layoutX="32.0" layoutY="200.0" prefHeight="71.0" prefWidth="454.0" promptText="Description" styleClass="BackgroundPane" stylesheets="@../../Styles.css">
+               <font>
+                  <Font size="16.0" />
+               </font></JFXTextArea>
+            <JFXTextArea fx:id="noteTxt" layoutX="32.0" layoutY="322.0" prefHeight="71.0" prefWidth="454.0" promptText="Note" styleClass="BackgroundPane" stylesheets="@../../Styles.css">
+               <font>
+                  <Font size="17.0" />
+               </font></JFXTextArea>
             <JFXButton layoutX="418.0" layoutY="510.0" onAction="#submitBtn" prefHeight="31.0" prefWidth="74.0" styleClass="Special-buttons" text="Submit" textFill="#b9d5fd">
                <font>
                   <Font size="15.0" />
