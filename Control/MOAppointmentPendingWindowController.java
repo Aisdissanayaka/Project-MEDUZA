@@ -7,6 +7,9 @@ package Control;
 
 import static Control.RecAppointmentWindowController.appointmentNo;
 import static Control.RecAppointmentWindowController.userIDAppointment;
+import static Control.UserLoginController.staticFName;
+import static Control.UserLoginController.staticLName;
+import static Control.UserLoginController.staticUserName;
 import Model.Appointment;
 import java.io.IOException;
 import java.net.URL;
@@ -95,8 +98,13 @@ public class MOAppointmentPendingWindowController extends DashboardUIController 
           int appointmentCount = appointmentArrayList.size();
           
           ObservableList<Appointment> appointments = FXCollections.observableArrayList();   
+          
           for(int i =0;i< appointmentCount;i++){
+              if(appointmentArrayList.get(i).getSpecArea().equals("Dr. "+staticUserName+" "+staticLName)){
+                  
+               
           appointments.add(appointmentArrayList.get(i));
+              }
       
           }
           idCol.setCellValueFactory(new PropertyValueFactory<Appointment,String>("userID"));
