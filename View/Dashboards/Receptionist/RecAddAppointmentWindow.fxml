@@ -161,7 +161,7 @@
             
             <JFXTextArea fx:id="Symptoms" layoutX="38.0" layoutY="341.0" prefHeight="160.0" prefWidth="454.0" promptText="Symptoms" styleClass="BackgroundPane" stylesheets="@../../Styles.css">
                <font>
-                  <Font size="16.0" />
+                  <Font size="17.0" />
                </font></JFXTextArea>
             <JFXButton layoutX="307.0" layoutY="525.0" onAction="#AppointmentBtn" prefHeight="31.0" prefWidth="74.0" styleClass="Special-buttons" text="Cancel" textFill="#b9d5fd">
                <font>

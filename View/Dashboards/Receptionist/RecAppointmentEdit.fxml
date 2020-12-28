@@ -139,7 +139,7 @@
                   <Image url="@../../images/big%20logo.png" />
                </image>
             </ImageView>
-            <ComboBox fx:id="specAreaCombo" layoutX="617.0" layoutY="216.0" onMousePressed="#getMO" prefHeight="25.0" prefWidth="170.0" promptText="Select" styleClass="Table-pane" stylesheets="@../../Styles.css">
+            <ComboBox fx:id="specAreaCombo" layoutX="631.0" layoutY="213.0" onMousePressed="#getMO" prefHeight="25.0" prefWidth="167.0" promptText="Select" styleClass="Table-pane" stylesheets="@../../Styles.css">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
@@ -194,7 +194,7 @@
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </opaqueInsets>
             </JFXTextField>
-            <Label layoutX="400.0" layoutY="289.0" text="Medical Officer">
+            <Label layoutX="416.0" layoutY="285.0" text="Medical Officer">
                <font>
                   <Font size="21.0" />
                </font>
@@ -226,12 +226,12 @@
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </opaqueInsets>
             </JFXTextField>
-            <Label layoutX="36.0" layoutY="289.0" prefHeight="31.0" prefWidth="141.0" text="Speciality Area">
+            <Label layoutX="38.0" layoutY="285.0" text="Speciality Area">
                <font>
                   <Font size="21.0" />
                </font>
             </Label>
-            <ComboBox fx:id="category" layoutX="186.0" layoutY="292.0" prefHeight="25.0" prefWidth="170.0" promptText="Select" styleClass="Table-pane" stylesheets="@../../Styles.css">
+            <ComboBox fx:id="category" layoutX="186.0" layoutY="289.0" prefHeight="25.0" prefWidth="167.0" promptText="Select" styleClass="Table-pane" stylesheets="@../../Styles.css">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>

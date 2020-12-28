@@ -56,13 +56,13 @@ public class RecAppointmentEditController extends DashboardUIController implemen
     private ComboBox<String> specAreaCombo;
 
     @FXML
+    private ComboBox<String> category;
+    
+    @FXML
     private JFXTextArea Symptoms;
 
     @FXML
     private JFXTextField userID;
-    
-     @FXML
-    private ComboBox<?> category;
    
    
 
@@ -134,9 +134,7 @@ public class RecAppointmentEditController extends DashboardUIController implemen
         
     }
     
-
-  
-  
+    
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -157,7 +155,7 @@ public class RecAppointmentEditController extends DashboardUIController implemen
        appTime.setText(selectedFeield.getAppTime());
        appDate.setText(selectedFeield.getAppDate());
      
-        
+     
          RequiredFieldValidator validator = new RequiredFieldValidator();
         NumberValidator numvalidator = new  NumberValidator();
        

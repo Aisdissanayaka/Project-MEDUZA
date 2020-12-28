@@ -32,6 +32,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.beans.value.ChangeListener;
@@ -109,12 +110,12 @@ public class RecAddAppointmentWindowController extends DashboardUIController imp
         return true;
      }
     
-     
+    
      
   ObservableList list1=FXCollections.observableArrayList();
  ObservableList list2=FXCollections.observableArrayList();
     
-     //spec area drop down list
+     //Spec area drop down list
      private void loadData() throws FileNotFoundException, IOException{
       
         File myfile = new File("user data\\reference\\category.txt"); 
