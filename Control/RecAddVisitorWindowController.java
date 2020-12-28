@@ -11,6 +11,8 @@ import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
 import com.jfoenix.controls.JFXTimePicker;
+import com.jfoenix.validation.NumberValidator;
+import com.jfoenix.validation.RequiredFieldValidator;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -20,9 +22,12 @@ import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ResourceBundle;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
@@ -83,6 +88,7 @@ public class RecAddVisitorWindowController extends DashboardUIController impleme
     
     @FXML
     public void submitBtn(ActionEvent event) throws IOException {
+        if(validateFields()){
         try{
         Visitor visitorObj = new Visitor();
         
@@ -105,7 +111,7 @@ public class RecAddVisitorWindowController extends DashboardUIController impleme
         }
         catch(Exception e){
             System.out.println("Error");}
-    } 
+    } }
     
     
     //opening and saving document file    
@@ -137,12 +143,96 @@ public class RecAddVisitorWindowController extends DashboardUIController impleme
         
          
     }
+        // warning message for null validation
+     private boolean validateFields(){
+         
+   if(visName.getText().isEmpty() |  visID.getText().isEmpty()| visDate.getEditor().getText().isEmpty()|
+          inTime.getEditor().getText().isEmpty()| outTime.getEditor().getText().isEmpty() |visNote.getText().isEmpty())
+         {
+              Alert alert = new Alert(Alert.AlertType.WARNING);
+             alert.setTitle("Validate Fields");
+             alert.setHeaderText(null);
+             alert.setContentText("Please Enter Into The Fields");
+             alert.showAndWait();
+             return false;
+            }
+        return true;
+         }
        
     
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        // TODO
+        
+             //show validation status
+        RequiredFieldValidator validator = new RequiredFieldValidator();
+        validator.setMessage("Required Field");
+        
+        
+       
+         visID.getValidators().add(validator);
+        visName.getValidators().add(validator);
+        visNote.getValidators().add(validator);
+        inTime.getValidators().add(validator);
+       outTime.getValidators().add(validator);
+        visDate.getValidators().add(validator);
+        
+       
+        
+         visID.focusedProperty().addListener(new ChangeListener <Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+                if(!newValue)
+                {
+                 visID.validate();
+                }}
+        });       
+       
+        visName.focusedProperty().addListener(new ChangeListener <Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+                if(!newValue)
+                {
+                visName.validate();
+                }}
+        });
+  
+        visNote.focusedProperty().addListener(new ChangeListener <Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+                if(!newValue)
+                {
+               visNote.validate();
+                }}
+        });
+       
+        inTime.focusedProperty().addListener(new ChangeListener <Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+                if(!newValue)
+                {
+                inTime.validate();
+                }}
+        }); 
+       
+        outTime.focusedProperty().addListener(new ChangeListener <Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+                if(!newValue)
+                {
+               outTime.validate();
+                }}
+        }); 
+       
+        visDate.focusedProperty().addListener(new ChangeListener <Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+                if(!newValue)
+                {
+                visDate.validate();
+                }}
+        }); 
+      
     }    
     
 }

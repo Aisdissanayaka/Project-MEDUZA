@@ -6,6 +6,7 @@
 package Model;
 
 
+import static Control.AdminComplaintsController.complaintDate;
 import static Control.RecComplaintsWindowController.complaintID;
 import static Control.UserLoginController.primaryKey;
 import java.io.BufferedReader;
@@ -158,8 +159,8 @@ public class Complaint {
             oldFile.delete();   // file deleted
             File dump = new File (filepath); 
             newFile.renameTo(dump);  // new file rename old file name
-             File file = new File("user data\\complaint\\"+ complaintID+".txt");  
-             file.delete();
+            File file = new File("user data\\complaint\\"+ complaintID+".txt");  
+            file.delete();
             
        } catch (Exception e) {
        }
@@ -170,12 +171,11 @@ public class Complaint {
     
     public void addComplaint() throws FileNotFoundException, IOException{
         try{
-       Random randomObj = new Random();
-        String  randomNumber = Integer.toString( randomObj.nextInt(1000000)+100000);
+     
          FileWriter fw1 = new FileWriter("user data\\complaint\\data\\"+ primaryKey+".txt",true);
          BufferedWriter bw1 = new BufferedWriter(fw1);
          PrintWriter pw1 = new PrintWriter(bw1);
-         pw1.append(randomNumber+","  + getType()+","  + getName()+ "," +  
+         pw1.append(primaryKey+","  + getType()+","  + getName()+ "," +  
                 getPhoneNo()+","+getDate()+","+getDescription()+","+"pending" + ","+
                     getNote()+ "\n");
          pw1.close();
@@ -184,7 +184,7 @@ public class Complaint {
          FileWriter fw = new FileWriter("user data\\database\\complaints.txt",true);
          BufferedWriter bw = new BufferedWriter(fw);
          PrintWriter pw = new PrintWriter(bw);
-         pw.print(randomNumber+","+getType()+","+getName()+","+getPhoneNo()+","+getDate()+","+getDescription()+","+"pending"+","+getNote()+"\n");
+         pw.print(primaryKey+","+getType()+","+getName()+","+getPhoneNo()+","+getDate()+","+getDescription()+","+"pending"+","+getNote()+"\n");
          pw.close();
          Alert alert = new Alert(Alert.AlertType.INFORMATION);
          alert.setContentText("Complaint  was added..!");  //display data saved message
@@ -193,6 +193,56 @@ public class Complaint {
          }catch(FileNotFoundException e){}
            
         }
+    
+    
+    
+    
+    //edit action taken methode
+    public void editActionTaken(String filepath,String tempFile,String action){
+        File oldFile = new File(filepath);//create object in oldfile
+        File newFile = new File (tempFile);//create object in newfile
+        //idintyfiy each component
+        String id = "" ; String type = ""; String name =""; String phoneno =""; String date =""; String description=""; String act ="";String note;
+        try {
+            FileWriter fw = new FileWriter(tempFile,true); 
+            BufferedWriter bw = new BufferedWriter(fw);
+            PrintWriter pw = new PrintWriter(bw);
+            x = new Scanner (new File (filepath));  // scan file
+            x.useDelimiter("[,\n]"); // set delimiter
+            
+            while(x.hasNext()){
+                //assign value in variable in tempary
+                id=x.next();
+                type=x.next();
+                name=x.next();
+                phoneno=x.next();
+                date=x.next();
+                description=x.next();
+                act=x.next();
+                note=x.next();
+                
+                if(id.equals(complaintID) && date.equals(complaintDate)){  //compare idnumber
+                    
+                    pw.print(id+","+type+","+name+","+phoneno+","+date+","+description+","+action+","+note+"\n");
+                }else{
+                    pw.print(id+","+type+","+name+","+phoneno+","+date+","+description+","+act+","+note+"\n"); //else write other data in new file
+                }
+                
+            }
+            x.close();   //scanner close
+            pw.flush();  //print writer flush
+            pw.close();   //print writer close
+            oldFile.delete();   // file deleted
+            File dump = new File (filepath); 
+            newFile.renameTo(dump);  // new file rename old file name
+             
+            
+       } catch (Exception e) {
+       }
+          
+    
+}
+    
     
     
       @FXML

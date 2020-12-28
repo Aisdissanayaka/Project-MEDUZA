@@ -2,6 +2,7 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXDatePicker?>
 <?import com.jfoenix.controls.JFXTextArea?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.geometry.Insets?>
@@ -106,7 +107,7 @@
       </Label>
       <Pane layoutX="270.0" layoutY="118.0" prefHeight="579.0" prefWidth="517.0" AnchorPane.bottomAnchor="3.0" AnchorPane.leftAnchor="270.0" AnchorPane.rightAnchor="413.0" AnchorPane.topAnchor="118.0">
          <children>
-            <JFXTextField fx:id="nameTxt" labelFloat="true" layoutX="36.0" layoutY="83.0" promptText="Complaint By" unFocusColor="#1d7fff">
+            <JFXTextField fx:id="nameTxt" labelFloat="true" layoutX="323.0" layoutY="6.0" promptText="Complaint By" unFocusColor="#1d7fff">
                <font>
                   <Font size="21.0" />
                </font>
@@ -122,13 +123,13 @@
                   <Font size="15.0" />
                </font>
             </JFXButton>
-            <JFXButton layoutX="38.0" layoutY="432.0" onAction="#openFile" styleClass="Special-buttons" stylesheets="@../../Styles.css" text="Add a document" textFill="#b9d5fd">
+            <JFXButton layoutX="38.0" layoutY="434.0" onAction="#openFile" styleClass="Special-buttons" stylesheets="@../../Styles.css" text="Add a document" textFill="#b9d5fd">
                <font>
                   <Font size="15.0" />
                </font>
             </JFXButton>
-            <JFXComboBox fx:id="comTypeBox" labelFloat="true" layoutX="41.0" layoutY="14.0" prefHeight="25.0" prefWidth="245.0" promptText="Complaint Type" />
-            <JFXTextField fx:id="phoneNumTxt" labelFloat="true" layoutX="36.0" layoutY="153.0" promptText="Phone Number" unFocusColor="#1d7fff">
+            <JFXComboBox fx:id="comTypeBox" labelFloat="true" layoutX="41.0" layoutY="22.0" prefHeight="25.0" prefWidth="245.0" promptText="Complaint Type" />
+            <JFXTextField fx:id="phoneNumTxt" labelFloat="true" layoutX="35.0" layoutY="108.0" promptText="Phone Number" unFocusColor="#1d7fff">
                <font>
                   <Font size="21.0" />
                </font>
@@ -139,11 +140,11 @@
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </opaqueInsets>
             </JFXTextField>
-            <JFXTextArea fx:id="descriptionTxt" layoutX="38.0" layoutY="231.0" prefHeight="51.0" prefWidth="454.0" promptText="Description" styleClass="BackgroundPane" stylesheets="@../../Styles.css">
+            <JFXTextArea fx:id="descriptionTxt" layoutX="38.0" layoutY="211.0" prefHeight="69.0" prefWidth="454.0" promptText="Description" styleClass="BackgroundPane" stylesheets="@../../Styles.css">
                <font>
                   <Font size="14.0" />
                </font></JFXTextArea>
-            <JFXTextArea fx:id="noteTxt" layoutX="38.0" layoutY="335.0" prefHeight="51.0" prefWidth="454.0" promptText="Note" styleClass="BackgroundPane" stylesheets="@../../Styles.css">
+            <JFXTextArea fx:id="noteTxt" layoutX="38.0" layoutY="329.0" prefHeight="62.0" prefWidth="454.0" promptText="Note" styleClass="BackgroundPane" stylesheets="@../../Styles.css">
                <font>
                   <Font size="14.0" />
                </font></JFXTextArea>
@@ -152,6 +153,7 @@
                   <Font size="15.0" />
                </font>
             </JFXButton>
+            <JFXDatePicker fx:id="complaintDate" layoutX="333.0" layoutY="114.0" prefHeight="31.0" prefWidth="194.0" promptText="Complaint Date" />
          </children>
       </Pane>
       <ImageView fitHeight="532.0" fitWidth="488.0" layoutX="573.0" layoutY="30.0" opacity="0.23" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="-17.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="73.0">

@@ -96,7 +96,8 @@ public class RecComplaintsWindowController extends DashboardUIController impleme
         name=complaintsTable.getSelectionModel().getSelectedItem().getName(); //get name in table set it name
         singleComplaint.forEach(allComplaints::remove); //delete select row
         Complaint appObj = new Complaint();            //create object in Complaint class
-        appObj.deleteComplaint("user data\\database\\complaints.txt", "user data\\database\\temp.txt");
+        appObj.deleteComplaint("user data\\database\\complaints.txt", "user data\\database\\temp.txt"); //delete coplaint in database file
+        appObj.deleteComplaint("user data\\complaint\\data\\"+ complaintID+".txt", "user data\\complaint\\temp.txt");//delete coplaint in complaint file
         Alert alert = new Alert(Alert.AlertType.WARNING); //display Warning message
         alert.setContentText("You deleted "+name.toUpperCase()+"'s  complaint..!");
         alert.show();
@@ -110,7 +111,7 @@ public class RecComplaintsWindowController extends DashboardUIController impleme
     
      
      String filepath= "user data\\complaint\\data\\"+primaryKey+".txt";
-     
+
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
