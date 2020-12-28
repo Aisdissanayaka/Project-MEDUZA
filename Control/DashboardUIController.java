@@ -857,23 +857,7 @@ public class DashboardUIController implements Initializable {
     window.centerOnScreen();
         
        }
-     @FXML
-    public void AdminUserPatEdit(ActionEvent event) throws IOException{
-
-        
-    FXMLLoader loader =new FXMLLoader(getClass().getResource("/View/Dashboards/Admin/AdminUsersPatEdit.fxml"));
-    Parent root = loader.load();
-    DashboardUIController welcome =loader.getController();
-    welcome.showInformation(staticUserName);
-    welcome.showProfilePicture(profilePicture);
-         
-
-    Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
-    window.setScene(new Scene(root));
-    window.show();
-    window.centerOnScreen();
-        
-       }
+   
     @FXML
     public void AdminUserRec(ActionEvent event) throws IOException{
 

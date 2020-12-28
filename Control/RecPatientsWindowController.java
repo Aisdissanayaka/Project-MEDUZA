@@ -87,11 +87,7 @@ public class RecPatientsWindowController extends DashboardUIController implement
     @FXML
     private TableColumn<Patient, String> allergiesCol;
 
-    @FXML
-    private TableColumn<Patient, String> passwordCol;
-
-    @FXML
-    private TableColumn<Patient, String> optionsCol;
+    
     
     
     
@@ -121,8 +117,6 @@ public class RecPatientsWindowController extends DashboardUIController implement
           addressCol.setCellValueFactory(new PropertyValueFactory<Patient,String>("address"));
           bloodGroupCol.setCellValueFactory(new PropertyValueFactory<Patient,String>("bloodGroup"));
           allergiesCol.setCellValueFactory(new PropertyValueFactory<Patient,String>("allergies"));
-          //passwordCol.setCellValueFactory(new PropertyValueFactory<Patient,String>("password"));
-          //optionsCol.setCellValueFactory(new PropertyValueFactory<Patient,String>("options"));
           
        
           patientsTable.setItems(patients);
