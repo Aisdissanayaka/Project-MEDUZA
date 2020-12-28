@@ -115,8 +115,12 @@ public class RecAddAppointmentWindowController extends DashboardUIController imp
   ObservableList list1=FXCollections.observableArrayList();
  ObservableList list2=FXCollections.observableArrayList();
     
+
      //Spec area drop down list
+    
+
      private void loadData() throws FileNotFoundException, IOException{
+        //list1.removeAll(list1);
       
         File myfile = new File("user data\\reference\\category.txt"); 
     BufferedReader abc = new BufferedReader(new FileReader(myfile));
@@ -128,7 +132,7 @@ public class RecAddAppointmentWindowController extends DashboardUIController imp
         category.getItems().addAll(list1);
      }
     
-    //set medical officer's name
+    
     @FXML
     void getMO() throws IOException {
         specAreaCombo.getItems().removeAll(list2);

@@ -196,8 +196,8 @@ public class RecPostalWindowController extends DashboardUIController implements 
           noteCol.setCellValueFactory(new PropertyValueFactory<Postal,String>("Note"));
           dateCol.setCellValueFactory(new PropertyValueFactory<Postal,String>("Date"));
           toCol.setCellValueFactory(new PropertyValueFactory<Postal,String>("To"));
-          docCol.setCellValueFactory(new PropertyValueFactory<Postal,String>("Document"));
-          optionsCol.setCellValueFactory(new PropertyValueFactory<Postal,String>("Options"));
+         // docCol.setCellValueFactory(new PropertyValueFactory<Postal,String>("Document"));
+         // optionsCol.setCellValueFactory(new PropertyValueFactory<Postal,String>("Options"));
        
           receivedPostTable.setItems(recievedPostal);
           

@@ -5,6 +5,7 @@
  */
 package Control;
 
+import static Control.RecAppointmentWindowController.appointmentNo;
 import static Control.RecAppointmentWindowController.userIDAppointment;
 import Model.Appointment;
 import java.io.IOException;
@@ -60,7 +61,7 @@ public class MOAppointmentPendingWindowController extends DashboardUIController 
         allAppointment = appointmentPendingMO.getItems();
         singleAppointment =appointmentPendingMO.getSelectionModel().getSelectedItems();
         userIDAppointment = appointmentPendingMO.getSelectionModel().getSelectedItem().getUserID(); // get user id in select row and set it static variable
-        
+        appointmentNo =appointmentPendingMO.getSelectionModel().getSelectedItem().getOptions();//get user id in selected row
          
         //get status in table and asign the value in static variable
              

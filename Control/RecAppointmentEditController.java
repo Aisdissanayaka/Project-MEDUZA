@@ -15,16 +15,9 @@ import com.jfoenix.validation.NumberValidator;
 import com.jfoenix.validation.RequiredFieldValidator;
 import java.awt.Desktop;
 import java.awt.event.ActionEvent;
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
 
 import java.net.URL;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -101,52 +94,12 @@ public class RecAppointmentEditController extends DashboardUIController implemen
          }
 
   
- ObservableList list1=FXCollections.observableArrayList();
- ObservableList list2=FXCollections.observableArrayList();
-    
-     //Spec area drop down list
-     private void loadData() throws FileNotFoundException, IOException{
-      
-        File myfile = new File("user data\\reference\\category.txt"); 
-    BufferedReader abc = new BufferedReader(new FileReader(myfile));
-     String s;
-        while((s=abc.readLine())!=null) {
-            list1.add(s);
-      
-     }
-        category.getItems().addAll(list1);
-     }
-    
-    //set medical officer's name
-    @FXML
-    void getMO() throws IOException {
-        specAreaCombo.getItems().removeAll(list2);
-        list2.removeAll(list2);
-        
-        File myfile2 = new File("user data\\reference\\Speciality Area\\"+category.getValue()+".txt"); 
-    BufferedReader abc = new BufferedReader(new FileReader(myfile2));
-     String s;
-        while((s=abc.readLine())!=null) {
-            list2.add(s);
-      
-     }
-        specAreaCombo.getItems().addAll(list2);
-        
-    }
+
     
     
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
-        //Combo-box data for the Medical officer speciality
-        try {
-            loadData();
-        } catch (IOException ex) {
-            Logger.getLogger(RecAppointmentEditController.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        
-        
        //get value and set each text feild
        name.setText(selectedFeield.getName());
        Symptoms.setText(selectedFeield.getSymptoms());
@@ -155,7 +108,13 @@ public class RecAppointmentEditController extends DashboardUIController implemen
        appTime.setText(selectedFeield.getAppTime());
        appDate.setText(selectedFeield.getAppDate());
      
+
      
+
+     
+        
+        
+
          RequiredFieldValidator validator = new RequiredFieldValidator();
         NumberValidator numvalidator = new  NumberValidator();
        

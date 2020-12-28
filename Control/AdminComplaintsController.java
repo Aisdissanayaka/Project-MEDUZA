@@ -5,6 +5,7 @@
  */
 package Control;
 
+import static Control.UserLoginController.primaryKey;
 import Model.Complaint;
 import java.net.URL;
 import java.util.ArrayList;
@@ -59,12 +60,12 @@ public class AdminComplaintsController extends DashboardUIController implements 
     
     
     
-    
+    String filepath ="user data\\complaint\\data"+primaryKey+".txt";
     @Override
     public void initialize(URL url, ResourceBundle rb) {
        
          try {
-          ArrayList<Complaint> complaintArrayList = Complaint.viewComplaint();
+          ArrayList<Complaint> complaintArrayList = Complaint.viewComplaint(filepath);
           
           int complaintCount = complaintArrayList.size();
           
@@ -84,8 +85,8 @@ public class AdminComplaintsController extends DashboardUIController implements 
           desCol.setCellValueFactory(new PropertyValueFactory<>("description"));
           actionCol.setCellValueFactory(new PropertyValueFactory<>("actionTaken"));
           noteCol.setCellValueFactory(new PropertyValueFactory<>("note"));
-          docCol.setCellValueFactory(new PropertyValueFactory<>("document"));
-          optionsCol.setCellValueFactory(new PropertyValueFactory<>("options"));
+         // docCol.setCellValueFactory(new PropertyValueFactory<>("document"));
+         // optionsCol.setCellValueFactory(new PropertyValueFactory<>("options"));
        
        
           complaintsAdminTable.setItems(complaints);
