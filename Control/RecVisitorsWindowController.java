@@ -82,7 +82,7 @@ public class RecVisitorsWindowController extends DashboardUIController implement
           outTimeCol.setCellValueFactory(new PropertyValueFactory<Visitor,String>("outTime"));
           docCol.setCellValueFactory(new PropertyValueFactory<Visitor,String>("document"));
           noteCol.setCellValueFactory(new PropertyValueFactory<Visitor,String>("note"));
-          optionsCol.setCellValueFactory(new PropertyValueFactory<Visitor,String>("options"));
+          //optionsCol.setCellValueFactory(new PropertyValueFactory<Visitor,String>("options"));
           
        
           visitorTable.setItems(Visitors);
@@ -153,9 +153,10 @@ public class RecVisitorsWindowController extends DashboardUIController implement
         singleVisitor =visitorTable.getSelectionModel().getSelectedItems();
         visitorID = visitorTable.getSelectionModel().getSelectedItem().getNic(); // get user id in select row and set it static variable
         name=visitorTable.getSelectionModel().getSelectedItem().getName(); //get name in table set it name
-        singleVisitor.forEach(allVisitors::remove); //delete select row
+        
         Visitor appObj = new Visitor();            //create object in appointmen class
         appObj.deleteVisitor("user data\\database\\visitors.txt","user data\\database\\temp.txt" );
+        singleVisitor.forEach(allVisitors::remove); //delete select row
         Alert alert = new Alert(Alert.AlertType.WARNING); //display Warning message
         alert.setContentText("You deleted "+name.toUpperCase()+"'s visitor record..!");
         alert.show();

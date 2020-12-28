@@ -7,6 +7,7 @@ package Control;
 
 import Model.Complaint;
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
 import com.jfoenix.validation.NumberValidator;
@@ -77,7 +78,8 @@ public class RecAddComplaintWindowController extends DashboardUIController imple
     @FXML
     private JFXButton btnLoad;
     
-    
+     @FXML
+    private JFXDatePicker complaintDate;
     
     //submit button. It's writes complaints data to file
     @FXML
@@ -90,7 +92,7 @@ public class RecAddComplaintWindowController extends DashboardUIController imple
         recCom.setName(nameTxt.getText());
         recCom.setPhoneNo(phoneNumTxt.getText());
         recCom.setDescription(descriptionTxt.getText());
-        
+        recCom.setDate(complaintDate.getValue().toString());
         recCom.setNote(noteTxt.getText());
         
         recCom.addComplaint();
@@ -99,9 +101,8 @@ public class RecAddComplaintWindowController extends DashboardUIController imple
         nameTxt.setText(null);
         phoneNumTxt.setText(null);
         descriptionTxt.setText(null);
-        
         noteTxt.setText(null);
-       
+        complaintDate.setValue(null);
         
         
     }}
@@ -109,7 +110,7 @@ public class RecAddComplaintWindowController extends DashboardUIController imple
      // warning message for null validation
      private boolean validateFields(){
          
-          if(nameTxt.getText().isEmpty() | descriptionTxt.getText().isEmpty()| actionTakenTxt.getText().isEmpty()|
+          if(nameTxt.getText().isEmpty() | descriptionTxt.getText().isEmpty()|
              noteTxt.getText().isEmpty()|phoneNumTxt.getText().isEmpty())
          {
               Alert alert = new Alert(Alert.AlertType.WARNING);
@@ -145,7 +146,7 @@ public class RecAddComplaintWindowController extends DashboardUIController imple
        
        
         fileChooser.setInitialDirectory(new File("C:\\Users\\"));
-        fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("pdf file","*.pdf","*.PDF"));
+        fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("pdf file",".pdf",".PDF"));
 
         File file = fileChooser.showOpenDialog(primaryStage);
        // File desination = fileChooser.showSaveDialog(primaryStage);
@@ -164,7 +165,7 @@ public class RecAddComplaintWindowController extends DashboardUIController imple
        
         fileChooser.setInitialFileName(LocalDate.now()+" " +nameTxt.getText() +".pdf");  
         //getting type of files 
-        fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("pdf file","*.pdf","*.PDF"));
+        fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("pdf file",".pdf",".PDF"));
         
          
     }
@@ -189,7 +190,7 @@ public class RecAddComplaintWindowController extends DashboardUIController imple
        noteTxt.getValidators().add(validator);
        phoneNumTxt.getValidators().add(validator);
        phoneNumTxt.getValidators().add(numvalidator);
-       actionTakenTxt.getValidators().add(validator);
+      complaintDate.getValidators().add(validator);
         
         
        nameTxt.focusedProperty().addListener(new ChangeListener <Boolean>() {
@@ -209,6 +210,15 @@ public class RecAddComplaintWindowController extends DashboardUIController imple
                descriptionTxt.validate();
                 }}
         });
+       
+       complaintDate.focusedProperty().addListener(new ChangeListener <Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+                if(!newValue)
+                {
+               complaintDate.validate();
+                }}
+        }); 
         
         noteTxt.focusedProperty().addListener(new ChangeListener <Boolean>() {
             @Override

@@ -5,6 +5,7 @@
  */
 package Control;
 
+import static Control.RecVisitorsWindowController.visitorID;
 import Model.Visitor;
 import static Control.UserLoginController.profilePicture;
 import static Control.UserLoginController.staticUserName;
@@ -59,38 +60,9 @@ public class AdminVisitorsController extends DashboardUIController implements In
     @FXML
     private TableColumn<Visitor,String>  optionsCol;
     
-    public static String visitorID;
+   
     
-    @FXML
-    public void viewVisitors(){
-         try {
-          ArrayList<Visitor> visitorArrayList = Visitor.viewVisitor();
-          
-          int postalCount = visitorArrayList.size();
-          
-          
-             System.out.println(postalCount);
-          
-          ObservableList<Visitor> Visitors = FXCollections.observableArrayList();
-          for(int i =0;i< postalCount;i++){
-          Visitors.add(visitorArrayList.get(i));
-      
-          }
-          idCol.setCellValueFactory(new PropertyValueFactory<Visitor,String>("nic"));
-          nameCol.setCellValueFactory(new PropertyValueFactory<Visitor,String>("name"));
-          intimeCol.setCellValueFactory(new PropertyValueFactory<Visitor,String>("inTime"));
-          outTimeCol.setCellValueFactory(new PropertyValueFactory<Visitor,String>("outTime"));
-          docCol.setCellValueFactory(new PropertyValueFactory<Visitor,String>("document"));
-          noteCol.setCellValueFactory(new PropertyValueFactory<Visitor,String>("note"));
-          optionsCol.setCellValueFactory(new PropertyValueFactory<Visitor,String>("options"));
-          
-       
-          visitorTable.setItems(Visitors);
-          
-             
-         }catch(Exception e){}
-    
-    }
+   
 
    
  
@@ -133,9 +105,9 @@ public class AdminVisitorsController extends DashboardUIController implements In
           nameCol.setCellValueFactory(new PropertyValueFactory<Visitor,String>("name"));
           intimeCol.setCellValueFactory(new PropertyValueFactory<Visitor,String>("inTime"));
           outTimeCol.setCellValueFactory(new PropertyValueFactory<Visitor,String>("outTime"));
-          docCol.setCellValueFactory(new PropertyValueFactory<Visitor,String>("document"));
+          docCol.setCellValueFactory(new PropertyValueFactory<Visitor,String>("date"));
           noteCol.setCellValueFactory(new PropertyValueFactory<Visitor,String>("note"));
-          optionsCol.setCellValueFactory(new PropertyValueFactory<Visitor,String>("options"));
+         // optionsCol.setCellValueFactory(new PropertyValueFactory<Visitor,String>("options"));
           
        
           visitorTable.setItems(Visitors);
@@ -145,17 +117,18 @@ public class AdminVisitorsController extends DashboardUIController implements In
        
     }    
     
-        public void deleteVisitor(ActionEvent event){
-             try{
+      public  void deleteVisitorBtn(ActionEvent event){
+         try{
         String name; 
         ObservableList<Visitor> allVisitors,singleVisitor;
         allVisitors = visitorTable.getItems();
         singleVisitor =visitorTable.getSelectionModel().getSelectedItems();
         visitorID = visitorTable.getSelectionModel().getSelectedItem().getNic(); // get user id in select row and set it static variable
         name=visitorTable.getSelectionModel().getSelectedItem().getName(); //get name in table set it name
-        singleVisitor.forEach(allVisitors::remove); //delete select row
+            
         Visitor appObj = new Visitor();            //create object in appointmen class
         appObj.deleteVisitor("user data\\database\\visitors.txt","user data\\database\\temp.txt" );
+        singleVisitor.forEach(allVisitors::remove); //delete select row
         Alert alert = new Alert(Alert.AlertType.WARNING); //display Warning message
         alert.setContentText("You deleted "+name.toUpperCase()+"'s visitor record..!");
         alert.show();
