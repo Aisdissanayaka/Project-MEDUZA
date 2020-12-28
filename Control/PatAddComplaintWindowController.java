@@ -7,6 +7,7 @@ package Control;
 
 import Model.Complaint;
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXDatePicker;
 import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
 import com.jfoenix.validation.NumberValidator;
@@ -77,6 +78,8 @@ public class PatAddComplaintWindowController extends DashboardUIController imple
     @FXML
     private JFXButton btnLoad;
     
+      @FXML
+    private JFXDatePicker complaintDate;
     
     //submit button. It's writes complaints data to file
      @FXML
@@ -89,7 +92,7 @@ public class PatAddComplaintWindowController extends DashboardUIController imple
         patCom.setName(nameTxt.getText());
         patCom.setPhoneNo(phoneNumTxt.getText());
         patCom.setDescription(descriptionTxt.getText());
-        
+        patCom.setDate(complaintDate.getValue().toString());
         patCom.setNote(noteTxt.getText());
         
         patCom.addComplaint();

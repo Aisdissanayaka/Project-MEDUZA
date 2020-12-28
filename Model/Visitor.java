@@ -217,7 +217,7 @@ public class Visitor {
                     System.out.println("delete"+name+"'s visitor"); // is it true display message
                     
                 }else{
-                    pw.print(id+","+name+","+inTime+","+outTime+","+date+","+note+","+"\n"); //else write other data in new file
+                    pw.print(id+","+name+","+inTime+","+outTime+","+date+","+note+"\n"); //else write other data in new file
                 }
                 
             }
