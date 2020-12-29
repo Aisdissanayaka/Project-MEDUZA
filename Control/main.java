@@ -46,7 +46,7 @@ public class main extends Application {
             double progress =(double) i/10;
                        
             LauncherImpl.notifyPreloader(this, new Preloader.ProgressNotification(progress));
-            Thread.sleep(50);
+            Thread.sleep(250);
 
         }
         
