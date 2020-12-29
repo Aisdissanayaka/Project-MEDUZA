@@ -130,7 +130,7 @@ public class Visitor {
          
          
         fileChooser.setInitialDirectory(new File("C:\\Users\\"));
-        fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("doc file","*.doc","*.docx"));
+        fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("pdf file","*.pdf","*.PDF"));
         
         
         File file = fileChooser.showOpenDialog(primaryStage);
@@ -140,7 +140,7 @@ public class Visitor {
         
          //saving file given path
           try {
-                Files.copy(file.toPath(),Paths.get("user data\\visitors\\cv\\"+getNic()+".doc"));
+                Files.copy(file.toPath(),Paths.get("user data\\visitors\\cv\\"+getNic()+".pdf"));
             } catch (Exception ioException) {
                ioException.printStackTrace();
             }
@@ -148,9 +148,9 @@ public class Visitor {
           //create new object file1
           File file1 = new File(String.valueOf(path));
        
-        fileChooser.setInitialFileName(getNic()+".doc");  
+        fileChooser.setInitialFileName(getNic()+".pdf");  
         //getting type of files 
-        fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("doc file","*.doc","*.docx"));
+        fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("pdf file","*.pdf","*.PDF"));
         
          
     }

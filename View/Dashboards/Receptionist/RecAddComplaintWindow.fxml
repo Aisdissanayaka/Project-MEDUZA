@@ -162,7 +162,7 @@
                </font>
             </JFXButton>
             <JFXComboBox fx:id="comTypeBox" labelFloat="true" layoutX="34.0" layoutY="19.0" prefHeight="25.0" prefWidth="245.0" promptText="Complaint Type" />
-            <JFXTextField fx:id="phoneNumTxt" labelFloat="true" layoutX="34.0" layoutY="97.0" promptText="Phone Number" unFocusColor="#1d7fff">
+            <JFXTextField fx:id="phoneNumTxt" labelFloat="true" layoutX="30.0" layoutY="97.0" promptText="Phone Number" unFocusColor="#1d7fff">
                <font>
                   <Font size="21.0" />
                </font>
@@ -186,7 +186,7 @@
                   <Font size="15.0" />
                </font>
             </JFXButton>
-            <JFXDatePicker fx:id="complaintDate" layoutX="324.0" layoutY="108.0" promptText="Complaint Date" />
+            <JFXDatePicker fx:id="complaintDate" defaultColor="#2c6c8c" layoutX="330.0" layoutY="102.0" prefHeight="31.0" prefWidth="187.0" promptText="Complaint Date" />
          </children>
       </Pane>
       <ImageView fitHeight="532.0" fitWidth="488.0" layoutX="573.0" layoutY="30.0" opacity="0.23" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="-17.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="73.0">

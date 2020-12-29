@@ -151,8 +151,11 @@
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </opaqueInsets>
             </JFXTextField>
-            <JFXTextArea fx:id="address" layoutX="38.0" layoutY="358.0" prefHeight="51.0" prefWidth="454.0" promptText="Address" styleClass="BackgroundPane" stylesheets="@../../Styles.css" />
-            <JFXTextField fx:id="lastName" labelFloat="true" layoutX="40.0" layoutY="88.0" promptText="Last Name" unFocusColor="#1d7fff">
+            <JFXTextArea fx:id="address" layoutX="38.0" layoutY="366.0" prefHeight="58.0" prefWidth="454.0" promptText="Address" styleClass="BackgroundPane" stylesheets="@../../Styles.css">
+               <font>
+                  <Font size="16.0" />
+               </font></JFXTextArea>
+            <JFXTextField fx:id="lastName" labelFloat="true" layoutX="312.0" layoutY="28.0" promptText="Last Name" unFocusColor="#1d7fff">
                <font>
                   <Font size="21.0" />
                </font>
@@ -163,9 +166,9 @@
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </opaqueInsets>
             </JFXTextField>
-            <JFXComboBox fx:id="gender" layoutX="43.0" layoutY="219.0" promptText="Gender" />
-            <JFXDatePicker fx:id="dateOfBirth" defaultColor="#4059a9" layoutX="139.0" layoutY="216.0" prefHeight="28.0" prefWidth="142.0" promptText="Date of birth" />
-            <JFXTextField fx:id="phoneNumber" labelFloat="true" layoutX="36.0" layoutY="278.0" promptText="Phone Number" unFocusColor="#1d7fff">
+            <JFXComboBox fx:id="gender" layoutX="38.0" layoutY="295.0" prefHeight="31.0" prefWidth="88.0" promptText="Gender" />
+            <JFXDatePicker fx:id="dateOfBirth" defaultColor="#4059a9" layoutX="42.0" layoutY="214.0" prefHeight="41.0" prefWidth="245.0" promptText="Date of birth" />
+            <JFXTextField fx:id="phoneNumber" labelFloat="true" layoutX="312.0" layoutY="125.0" promptText="Phone Number" unFocusColor="#1d7fff">
                <font>
                   <Font size="21.0" />
                </font>
@@ -176,9 +179,12 @@
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </opaqueInsets>
             </JFXTextField>
-            <JFXComboBox fx:id="bloodGroup" layoutX="38.0" layoutY="431.0" promptText="Blood Group" />
-            <JFXTextArea fx:id="allergies" layoutX="38.0" layoutY="475.0" prefHeight="51.0" prefWidth="454.0" promptText="Allergies" styleClass="BackgroundPane" stylesheets="@../../Styles.css" />
-            <JFXTextField fx:id="nic" labelFloat="true" layoutX="41.0" layoutY="151.0" promptText="NIC" unFocusColor="#1d7fff">
+            <JFXComboBox fx:id="bloodGroup" layoutX="149.0" layoutY="296.0" prefHeight="31.0" prefWidth="127.0" promptText="Blood Group" />
+            <JFXTextArea fx:id="allergies" layoutX="38.0" layoutY="457.0" prefHeight="58.0" prefWidth="454.0" promptText="Allergies" styleClass="BackgroundPane" stylesheets="@../../Styles.css">
+               <font>
+                  <Font size="16.0" />
+               </font></JFXTextArea>
+            <JFXTextField fx:id="nic" labelFloat="true" layoutX="42.0" layoutY="124.0" promptText="NIC" unFocusColor="#1d7fff">
                <font>
                   <Font size="21.0" />
                </font>
@@ -206,7 +212,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <JFXButton fx:id="cancelBtn" layoutX="937.0" layoutY="612.0" onAction="#cancelBtn" prefHeight="31.0" prefWidth="74.0" style="-fx-background-radius: 30;" styleClass="Special-buttons" text="Cancel" textFill="#b9d5fd">
+      <JFXButton fx:id="cancelBtn" layoutX="937.0" layoutY="612.0" onAction="#PatientBtn" prefHeight="31.0" prefWidth="74.0" style="-fx-background-radius: 30;" styleClass="Special-buttons" text="Cancel" textFill="#b9d5fd">
          <font>
             <Font size="15.0" />
          </font>

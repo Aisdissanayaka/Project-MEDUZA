@@ -53,7 +53,7 @@
                         <InnerShadow blurType="GAUSSIAN" height="205.44" radius="70.52" width="78.64" />
                      </effect>
                   </JFXButton>
-                  <JFXButton alignment="TOP_RIGHT" buttonType="RAISED" graphicTextGap="0.0" lineSpacing="3.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" prefHeight="73.0" prefWidth="218.0" ripplerFill="#206afd" styleClass="Side-Button" stylesheets="@../Styles.css" text="Appointments" textFill="#b9d5fd" textOverrun="CLIP">
+                  <JFXButton alignment="TOP_RIGHT" buttonType="RAISED" graphicTextGap="0.0" lineSpacing="3.0" mnemonicParsing="false" nodeOrientation="RIGHT_TO_LEFT" onAction="#AppointmentBtn" prefHeight="73.0" prefWidth="218.0" ripplerFill="#206afd" styleClass="Side-Button" stylesheets="@../Styles.css" text="Appointments" textFill="#b9d5fd" textOverrun="CLIP">
                      <font>
                         <Font name="Segoe UI" size="27.0" />
                      </font>
@@ -202,7 +202,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <JFXButton buttonType="RAISED" layoutX="808.0" layoutY="127.0" onAction="#deletePostal" prefHeight="47.0" prefWidth="260.0" style="-fx-background-radius: 30;" styleClass="Special-buttons" stylesheets="@../../Styles.css" text="Delete Postal" textFill="#b3d1f4">
+      <JFXButton buttonType="RAISED" layoutX="798.0" layoutY="126.0" onAction="#deletePostal" prefHeight="47.0" prefWidth="260.0" style="-fx-background-radius: 30;" styleClass="Special-buttons" stylesheets="@../../Styles.css" text="Delete Postal" textFill="#b3d1f4">
          <font>
             <Font name="Segoe UI Symbol" size="20.0" />
          </font>
