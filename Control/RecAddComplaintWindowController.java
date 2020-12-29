@@ -145,13 +145,13 @@ public class RecAddComplaintWindowController extends DashboardUIController imple
          }
        }
     
-    //opening and saving document file    
+   //opening and saving document file    
     @FXML
     public void openFile(ActionEvent actionEvent) throws IOException {
        
        
         fileChooser.setInitialDirectory(new File("C:\\Users\\"));
-        fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("pdf file",".pdf",".PDF"));
+        fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("pdf file","*.pdf","*.PDF"));
 
         File file = fileChooser.showOpenDialog(primaryStage);
        // File desination = fileChooser.showSaveDialog(primaryStage);
@@ -160,7 +160,7 @@ public class RecAddComplaintWindowController extends DashboardUIController imple
         
          //saving file given path
           try {
-                Files.copy(file.toPath(),Paths.get("user data\\complaint\\cv\\"+LocalDate.now()+" " +nameTxt.getText() +".pdf"));
+                Files.copy(file.toPath(),Paths.get("user data\\complaint\\cv\\"+LocalDate.now()+" " +nameTxt.getText()+".pdf"));
             } catch (Exception ioException) {
                ioException.printStackTrace();
             }
@@ -168,12 +168,12 @@ public class RecAddComplaintWindowController extends DashboardUIController imple
           //create new object file1
           File file1 = new File(String.valueOf(path));
        
-        fileChooser.setInitialFileName(LocalDate.now()+" " +nameTxt.getText() +".pdf");  
+        fileChooser.setInitialFileName(LocalDate.now()+" " +nameTxt.getText()+".pdf");  
         //getting type of files 
-        fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("pdf file",".pdf",".PDF"));
-        
-         
+        fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("pdf file","*.pdf","*.PDF"));
+       
     }
+    
 
      ObservableList list1=FXCollections.observableArrayList();
     
