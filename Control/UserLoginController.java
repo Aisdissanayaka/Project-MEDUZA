@@ -249,11 +249,10 @@ public class UserLoginController implements Initializable {
       primaryKey = userName.getText();
       primaryKey1 = password.getText();
     
-      obj.login(event, lable, "user data\\admin\\credentials\\adminlogin.txt" , "/View/Dashboards/AdminDashboardWelcome.fxml");
-      
+    try { 
       profilePicture = "user data\\admin\\photo\\"+primaryKey+".jpg";
-    
-      try {
+
+   
       File file = new File("user data\\admin\\data\\"+primaryKey+".txt");
       FileReader fr = new FileReader(file);
       BufferedReader br = new BufferedReader(fr);
@@ -269,6 +268,9 @@ public class UserLoginController implements Initializable {
       } catch (Exception e) {
          
       }
+      obj.login(event, lable, "user data\\admin\\credentials\\adminlogin.txt" , "/View/Dashboards/AdminDashboardWelcome.fxml");
+     
+      
     }
       
     

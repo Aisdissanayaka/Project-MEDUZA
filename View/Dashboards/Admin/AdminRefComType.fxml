@@ -16,11 +16,11 @@
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" maxHeight="780.0" maxWidth="1500.0" minHeight="500.0" minWidth="500.0" prefHeight="700.0" prefWidth="1200.0" styleClass="BackgroundPane" stylesheets="@../../Styles.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Control.AdminRefComTypeController">
+<AnchorPane id="AnchorPane" maxHeight="780.0" maxWidth="1500.0" minHeight="500.0" minWidth="500.0" prefHeight="700.0" prefWidth="1200.0" styleClass="BackgroundPane" stylesheets="@../../Styles.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Control.AdminRefComTypeController">
    <children>
-      <AnchorPane id="AnchorPane" fx:id="ap" maxHeight="780.0" maxWidth="1500.0" minHeight="500.0" minWidth="500.0" prefHeight="700.0" prefWidth="1200.0" styleClass="BackgroundPane" stylesheets="@../../Styles.css">
+      <AnchorPane id="AnchorPane" fx:id="ap" layoutX="1.0" maxHeight="780.0" maxWidth="1500.0" minHeight="500.0" minWidth="500.0" prefHeight="700.0" prefWidth="1200.0" styleClass="BackgroundPane" stylesheets="@../../Styles.css">
          <children>
-            <AnchorPane layoutX="113.0" layoutY="40.0" prefHeight="796.0" prefWidth="218.0" styleClass="SubPane" stylesheets="@../Styles.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
+            <AnchorPane layoutX="-1.0" prefHeight="796.0" prefWidth="218.0" styleClass="SubPane" stylesheets="@../Styles.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="-1.0" AnchorPane.topAnchor="0.0">
                <children>
                   <AnchorPane layoutY="3.0" prefHeight="200.0" prefWidth="218.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="3.0">
                      <children>
@@ -141,7 +141,7 @@
                <children>
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="490.0" prefWidth="967.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <children>
-                        <JFXButton onAction="#refSpecArea" prefHeight="39.0" prefWidth="142.0" styleClass="Side-Button" stylesheets="@../../Styles.css" text="Spec Area" textFill="#b3d1f4" AnchorPane.leftAnchor="6.0">
+                        <JFXButton onAction="#refSpecArea" prefHeight="39.0" prefWidth="150.0" styleClass="Side-Button" stylesheets="@../../Styles.css" text="Speciality Area" textFill="#b3d1f4" AnchorPane.leftAnchor="6.0">
                            <font>
                               <Font name="Segoe UI Italic" size="19.0" />
                            </font>
@@ -149,7 +149,7 @@
                               <DropShadow color="#ff2727" height="121.09" radius="58.2575" spread="0.5" width="113.94" />
                            </effect>
                         </JFXButton>
-                        <JFXButton layoutX="153.0" prefHeight="39.0" prefWidth="164.0" styleClass="Side-Button-select" stylesheets="@../../Styles.css" text="Complaint Types" textFill="#b3d1f4">
+                        <JFXButton layoutX="164.0" prefHeight="39.0" prefWidth="164.0" styleClass="Side-Button-select" stylesheets="@../../Styles.css" text="Complaint Types" textFill="#b3d1f4">
                            <font>
                               <Font name="Segoe UI Italic" size="19.0" />
                            </font>
