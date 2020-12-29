@@ -68,3 +68,8 @@ The entire project mainly consists of 7 modules, which are
 * Less time consuming
 * Patient self-service
 * Better customer experience 
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+# ADMIN CREDENTIALS
+* Username  :  admin
+* Password  :  admin
