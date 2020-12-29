@@ -124,6 +124,34 @@ public class AdminAddMOController extends DashboardUIController implements Initi
          moSpecialityArea.setValue(null);
       }}
     
+    //upload the staff photograph
+     @FXML
+     private void addPhoto(ActionEvent event)throws IOException{
+         Stage stage =new Stage();
+         FileChooser fileChooser =new FileChooser();
+         fileChooser.setTitle("Choose an Image");
+         
+         fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("jpg","*.jpg"));
+         
+         File selectedFile = fileChooser.showOpenDialog(stage);
+         
+         Image OriginalPhoto = new Image(selectedFile.toURI().toString());
+      
+         Image img1= new Image(selectedFile.toURI().toString());
+         saveToFile(img1,"photo");
+         
+     }
+     
+     //save photogrgaph
+     private void saveToFile(Image image,String name)throws IOException{
+         File fileoutput = new File ("user data\\medical officer\\photo\\"+moStaffID.getText()+".jpg");
+         BufferedImage BI= SwingFXUtils.fromFXImage(image,null);
+         ImageIO.write(BI,"jpg",fileoutput);
+         
+    }
+
+     
+    
      @FXML
     private void Select(ActionEvent event) {
         
@@ -132,27 +160,7 @@ public class AdminAddMOController extends DashboardUIController implements Initi
              
    }
     
-    //to add a photograph for staff photograph
-    @FXML
-     private void openPhoto(ActionEvent event)throws IOException{
-         Stage stage =new Stage();
-         FileChooser fileChooser =new FileChooser();
-        
-         File selectedFile = fileChooser.showOpenDialog(stage);
-         
-        
-         Image moImg1= new Image(selectedFile.toURI().toString());
-         saveToFile(moImg1,"Photo");
-         
-     }
-     //saving photogrgaph
-     private void saveToFile(Image image,String name)throws IOException{
-         File fileoutput = new File ("user data\\medical officer\\photo\\"+moStaffID.getText()+".jpg");
-         BufferedImage BI= SwingFXUtils.fromFXImage(image,null);
-         ImageIO.write(BI,"jpg",fileoutput);
-     
-     }
-     
+   
      //opening and saving document file    
     @FXML
     public void openFile(ActionEvent actionEvent) throws IOException {

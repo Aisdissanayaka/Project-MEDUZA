@@ -142,14 +142,14 @@ public class AdminAddRecController extends DashboardUIController implements Init
      }
      
        
-     //upload to photograph
+     //upload the staff photograph
      @FXML
      private void openPhoto(ActionEvent event)throws IOException{
          Stage stage =new Stage();
          FileChooser fileChooser =new FileChooser();
          fileChooser.setTitle("Choose an Image");
          
-         fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("jpg","*.jpg","*.png"));
+         fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("jpg","*.jpg"));
          
          File selectedFile = fileChooser.showOpenDialog(stage);
          

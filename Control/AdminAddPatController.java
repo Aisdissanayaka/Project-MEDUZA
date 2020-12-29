@@ -128,7 +128,7 @@ public class AdminAddPatController extends DashboardUIController implements Init
          FileChooser fileChooser =new FileChooser();
          fileChooser.setTitle("Choose an Image");
          
-         fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("jpg","*.jpg","*.png"));
+         fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("jpg","*.jpg"));
          
          File selectedFile = fileChooser.showOpenDialog(stage);
          
