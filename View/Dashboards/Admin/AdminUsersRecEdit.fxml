@@ -178,7 +178,7 @@
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </opaqueInsets>
             </JFXTextField>
-            <JFXButton fx:id="cancelBtn" layoutX="549.0" layoutY="653.0" prefHeight="31.0" prefWidth="74.0" style="-fx-background-radius: 30;" styleClass="Special-buttons" text="Cancel" textFill="#b9d5fd">
+            <JFXButton fx:id="cancelBtn" layoutX="549.0" layoutY="653.0" onAction="#AdminUsersRecBtn" prefHeight="31.0" prefWidth="74.0" style="-fx-background-radius: 30;" styleClass="Special-buttons" text="Cancel" textFill="#b9d5fd">
                <font>
                   <Font size="15.0" />
                </font>

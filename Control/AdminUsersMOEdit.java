@@ -15,8 +15,6 @@ import com.jfoenix.controls.JFXTextField;
 import java.io.FileInputStream;
 import java.net.URL;
 import java.util.ResourceBundle;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -73,7 +71,6 @@ public class AdminUsersMOEdit extends DashboardUIController implements Initializ
     
      @FXML//ubdate butoon action event
     void updateBtn(ActionEvent event) {
-        if(validateFields()&&validatePhoneNum()&&validateEmail()){
         try{
     MedicalOfficer moObj = new MedicalOfficer(); //create object in medical officer class
     //assign the value in setters
@@ -92,7 +89,7 @@ public class AdminUsersMOEdit extends DashboardUIController implements Initializ
     alert.setContentText("Updated medical officer profile.!");
     alert.show();
         }catch(Exception e){}
-    }}
+    }
        
     
    
@@ -109,55 +106,6 @@ public class AdminUsersMOEdit extends DashboardUIController implements Initializ
          }
 
     }
-    
-     // warning message for null validation
-     private boolean validateFields(){
-         
-   if(firstName.getText().isEmpty() | lastName.getText().isEmpty()| dateOfBirth.getText().isEmpty()|
-       phoneNumber.getText().isEmpty()| address.getText().isEmpty()|moStaffID.getText().isEmpty()|moStaffEmail.getText().isEmpty()|
-           moDateOfJoin.getText().isEmpty())
-         {
-              Alert alert = new Alert(Alert.AlertType.WARNING);
-             alert.setTitle("Validate Fields");
-             alert.setHeaderText(null);
-             alert.setContentText("Please Enter Into The Fields");
-             alert.showAndWait();
-             return false;
-            }
-        return true;
-         }
-      //warnig message to invalide Email Address 
-     private boolean validateEmail(){
-         Pattern p=Pattern.compile("[a-zA-Z0-9][a-zA-Z0-9._]*@[a-zA-Z0-9]+([.][a-zA-Z0-9]+)+");
-         Matcher m = p.matcher(moStaffEmail.getText());
-         if(m.find() && m.group().equals(moStaffEmail.getText())){
-           return true;
-         }else{
-              Alert alert = new Alert(Alert.AlertType.WARNING);
-             alert.setTitle("Validate Email");
-             alert.setHeaderText(null);
-             alert.setContentText("Please Enter The Valid Email");
-             alert.showAndWait();
-             return false;
-         }
-       }
-      //warnig message to invalide Phone Number 
-     private boolean validatePhoneNum(){
-         Pattern p=Pattern.compile("[0][0-9]{9}");
-         Matcher m = p.matcher(phoneNumber.getText());
-         if(m.find() && m.group().equals(phoneNumber.getText())){
-           return true;
-         }else{
-              Alert alert = new Alert(Alert.AlertType.WARNING);
-             alert.setTitle("Validate Phone Number");
-             alert.setHeaderText(null);
-             alert.setContentText("Please Enter The Valid Phone Number");
-             alert.showAndWait();
-             return false;
-         }
-       }
-    
-    
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {

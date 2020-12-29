@@ -99,6 +99,26 @@ public class AdminUsersPatController extends DashboardUIController implements In
         
     }
     
+    public void deletePatient(ActionEvent event){
+         try{
+        ObservableList<Patient> allUser,singleUser;
+        allUser = patientTable.getItems();
+        singleUser =patientTable.getSelectionModel().getSelectedItems();
+        patientID = patientTable.getSelectionModel().getSelectedItem().getNic();
+       Patient obj = new Patient();
+       obj.deletePatient("user data//database//patients.txt", "user data//database//tempa.txt");
+        
+        singleUser.forEach(allUser::remove);
+        
+        }catch(Exception e){
+        
+        Alert alert = new Alert(Alert.AlertType.WARNING); //display Warning message
+        alert.setContentText("Selecet Patient and then press delete  button..!");
+        alert.show();
+       
+       }  
+    }
+    
     
     
     

@@ -179,6 +179,7 @@
                            </font>
                         </JFXButton>
                         <JFXButton layoutX="916.0" layoutY="7.0" onAction="#AdminUserPatEdit" styleClass="Close-Button" stylesheets="@../../Styles.css" text="Edit" textFill="WHITE" />
+                        <JFXButton buttonType="RAISED" layoutX="853.0" layoutY="8.0" onAction="#deletePatient" styleClass="Close-Button" stylesheets="@../../Styles.css" text="Delete" textFill="WHITE" />
                      </children>
                   </AnchorPane>
                </children>

@@ -204,6 +204,101 @@ public class Patient extends user {
      }
 
     
+     
+     public void deletePatient(String filepath,String tempFile){
+       File oldFile = new File(filepath);//create object in oldfile
+       File newFile = new File (tempFile);//create object in newfile
+        //idintyfiy each component
+        String idno;String fullname;String lastname;String usergender;String birthday;String phoneNo;String Address;String bloodGroup;String patienallergies;
+        try {
+            FileWriter fw = new FileWriter(tempFile,true); 
+            BufferedWriter bw = new BufferedWriter(fw);
+            PrintWriter pw = new PrintWriter(bw);
+            x = new Scanner (new File (filepath));  // scan file
+            x.useDelimiter("[,\n]"); // set delimiter
+            while(x.hasNext()){
+              //assign value in variable in tempary  
+                idno=x.next();
+                fullname=x.next();
+                lastname=x.next();
+                usergender=x.next();
+                birthday=x.next();
+                phoneNo=x.next();
+                Address=x.next();
+                bloodGroup=x.next();
+                patienallergies=x.next();
+               
+                
+                if(idno.equals(patientID)){  //compare idnumber
+                    System.out.println("you deleted"+patientID);
+                    
+                }else{
+                    pw.print(idno+","+fullname+","+lastname+","+usergender+","+birthday+","+phoneNo+","+Address+","+bloodGroup+","+patienallergies+"\n"); //else write other data in new file
+                }
+                    
+            } 
+            x.close();   //scanner close
+            pw.flush();  //print writer flush
+            pw.close();   //print writer close
+            oldFile.delete();   // file deleted
+            File dump = new File (filepath); 
+            newFile.renameTo(dump);  // new file rename old file name
+            
+            
+            
+       try{ //edit patient detail in data file
+        File file = new File("user data\\patient\\data\\"+patientID+".txt");  
+        file.delete();
+        
+        }catch(Exception e){
+                 System.out.println("error");
+        }
+            
+        }catch(Exception e){
+         Alert alert = new Alert(Alert.AlertType.WARNING); //display Warning message
+        alert.setContentText("Go back and try agin..!");
+        alert.show();
+        System.out.println(e);    
+        }
+        
+         File oldFilepat = new File("user data\\patient\\credentials\\patientlogin.txt");
+        File newFilepat = new File ("user data\\patient\\credentials\\temp.txt");
+        String uName = "" ; String pWord = "";
+        
+        
+            try {
+            
+            FileWriter fw = new FileWriter("user data\\patient\\credentials\\temp.txt",true);
+            BufferedWriter bw = new BufferedWriter(fw);
+            PrintWriter pw = new PrintWriter(bw);
+            x = new Scanner (new File ("user data\\patient\\credentials\\patientlogin.txt"));
+            x.useDelimiter("[,\n]");
+            
+            while(x.hasNext()){
+                uName = x.next();
+                pWord = x.next();
+                
+                if (uName.equals(patientID)){
+                    System.out.println("Delete credentials"); 
+                }else{
+                    pw.print(uName + "," + pWord + "\n");
+                }
+                
+              
+            }   
+            x.close();
+            pw.flush();
+            pw.close();
+            oldFilepat.delete();
+            File dump = new File ("user data\\patient\\credentials\\patientlogin.txt");
+            newFilepat.renameTo(dump); 
+          
+        } catch (Exception e) {
+            System.out.println("Error");
+          }
+        
+        
+     }
 
     
      
