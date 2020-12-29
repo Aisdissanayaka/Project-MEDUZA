@@ -6,6 +6,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.effect.InnerShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -178,18 +179,13 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <JFXButton buttonType="RAISED" layoutX="505.0" layoutY="126.0" onAction="#editPatientBtn" prefHeight="47.0" prefWidth="260.0" style="-fx-background-radius: 30;" styleClass="Special-buttons" stylesheets="@../../Styles.css" text="Edit Patient" textFill="#b3d1f4">
+      <JFXButton layoutX="1073.0" layoutY="158.0" onAction="#editPatientBtn" prefHeight="39.0" prefWidth="120.0" styleClass="Back-Button" stylesheets="@../../Styles.css" text="Edit" textFill="#b3d1f4">
          <font>
-            <Font name="Segoe UI Symbol" size="20.0" />
+            <Font name="Segoe UI Italic" size="19.0" />
          </font>
-         <ripplerFill>
-            <LinearGradient endX="1.0" endY="1.0">
-               <stops>
-                  <Stop color="#176694" />
-                  <Stop color="#5454cc" offset="1.0" />
-               </stops>
-            </LinearGradient>
-         </ripplerFill>
+         <effect>
+            <DropShadow color="#ff2727" height="121.09" radius="58.2575" spread="0.5" width="113.94" />
+         </effect>
       </JFXButton>
    </children>
 </AnchorPane>

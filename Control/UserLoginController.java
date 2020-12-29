@@ -347,7 +347,7 @@ public class UserLoginController implements Initializable {
   
          //switching and transition sign up as window to user login medical offficer window
         @FXML   
-        public void forgotpw(ActionEvent event) {
+        public void cancelbtn(ActionEvent event) {
               makeFadeOut4();
         }
         public void makeFadeOut4() {
@@ -370,7 +370,7 @@ public class UserLoginController implements Initializable {
        
         try {
             Parent secondview;
-            secondview = (AnchorPane)FXMLLoader.load(getClass().getResource("/View/Dashboards/MODashboardWelcome.fxml"));
+            secondview = (AnchorPane)FXMLLoader.load(getClass().getResource("/View/Sign_Up_as.fxml"));
             Scene newscene= new Scene(secondview);
             Stage curstage =(Stage)rootpane.getScene().getWindow();
             curstage.setScene(newscene);

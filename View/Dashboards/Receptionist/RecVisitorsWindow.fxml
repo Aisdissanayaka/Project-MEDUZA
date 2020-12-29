@@ -6,6 +6,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.effect.InnerShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -141,7 +142,7 @@
          <children>
             <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="471.0" prefWidth="946.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
-                  <TableView fx:id="visitorTable" layoutX="17.0" layoutY="26.0" prefHeight="663.0" prefWidth="929.0" tableMenuButtonVisible="true" AnchorPane.bottomAnchor="6.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="6.0" AnchorPane.topAnchor="0.0">
+                  <TableView fx:id="visitorTable" layoutX="17.0" layoutY="26.0" prefHeight="663.0" prefWidth="929.0" tableMenuButtonVisible="true" AnchorPane.bottomAnchor="6.0" AnchorPane.leftAnchor="6.0" AnchorPane.rightAnchor="6.0" AnchorPane.topAnchor="0.0">
                      <columns>
                         <TableColumn fx:id="idCol" minWidth="-1.0" prefWidth="67.199951171875" text="ID" />
                         <TableColumn fx:id="nameCol" minWidth="-1.0" prefWidth="260.0" text="Name" />
@@ -178,18 +179,13 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <JFXButton buttonType="RAISED" layoutX="553.0" layoutY="126.0" onAction="#deleteVisitor" prefHeight="47.0" prefWidth="253.0" style="-fx-background-radius: 30;" styleClass="Special-buttons" stylesheets="@../../Styles.css" text="Delete Visitor Record" textFill="#b3d1f4">
+      <JFXButton layoutX="1071.0" layoutY="156.0" onAction="#deleteVisitor" prefHeight="39.0" prefWidth="120.0" styleClass="Close-Button" stylesheets="@../../Styles.css" text="Delete" textFill="#b3d1f4">
          <font>
-            <Font name="Segoe UI Symbol" size="20.0" />
+            <Font name="Segoe UI Italic" size="19.0" />
          </font>
-         <ripplerFill>
-            <LinearGradient endX="1.0" endY="1.0">
-               <stops>
-                  <Stop color="#176694" />
-                  <Stop color="#5454cc" offset="1.0" />
-               </stops>
-            </LinearGradient>
-         </ripplerFill>
+         <effect>
+            <DropShadow color="#ff2727" height="121.09" radius="58.2575" spread="0.5" width="113.94" />
+         </effect>
       </JFXButton>
    </children>
 </AnchorPane>
