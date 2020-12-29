@@ -68,13 +68,13 @@ public class Receptionist extends user {
         try{
         File file = new File("user data\\receptionist\\data\\"+getStaffID()+".txt");    
         PrintWriter printer = new PrintWriter(new FileOutputStream(file));  
-        printer.append(getFName()+"\n"  + getLName()+ "\n" +  getAddress()+"\n"+ getPhoneNumber()+"\n"+ getDOB() + "\n"+
-              getGender()+ "\n"+ getStaffID() +"\n" +getStaffEmail() +"\n"+ getJoinDate());
+        printer.append(getFName()+"\n"  + getLName()+ "\n" +  getGender()+"\n"+ getDOB()+"\n"+ getPhoneNumber() + "\n"+
+              getAddress()+ "\n"+ getStaffID()+"\n" +getStaffEmail() +"\n"+ getJoinDate());
              printer.close();}
         catch(Exception e){
             
         }
-            //Write credentials file of patients
+            //Write credentials file of rec
         try{
          
          FileWriter fw = new FileWriter("user data\\receptionist\\credentials\\receptionistlogin.txt",true);
@@ -135,7 +135,7 @@ public class Receptionist extends user {
         
         // patient edit methode
      private Scanner x;
-     public void editPatient(String filepath,String tempFile,String staffid,String fname,String lname,String gender,String dob,String phone,String address,String joinedDate,String Email){
+     public void editPatient(String filepath,String tempFile){
        File oldFile = new File(filepath);//create object in oldfile
        File newFile = new File (tempFile);//create object in newfile
         //idintyfiy each component
@@ -159,8 +159,8 @@ public class Receptionist extends user {
                 staffEmail=x.next();
                
                 
-                if(idno.equals(staffid)){  //compare idnumber
-                    pw.print(staffid+","+fname+","+lname+","+gender+","+dob+","+address+","+phone+","+joinedDate+","+Email+"\n"); //is it true update new component
+                if(idno.equals(getStaffID())){  //compare idnumber
+                    pw.print(getStaffID()+","+getFName()+","+getLName()+","+getGender()+","+getDOB()+","+getAddress()+","+getPhoneNumber()+","+getJoinDate()+","+getJoinDate()+"\n"); //is it true update new component
                     
                 }else{
                     pw.print(idno+","+fullname+","+lastname+","+usergender+","+birthday+","+phoneNo+","+Address+","+dateJoined+","+staffEmail+"\n"); //else write other data in new file
@@ -177,16 +177,13 @@ public class Receptionist extends user {
             
             
        try{ //edit patient detail in data file
-        File file = new File("user data\\receptionist\\data\\"+staffid+".txt");  
+        File file = new File("user data\\receptionist\\data\\"+getStaffID()+".txt");  
         file.delete();
         PrintWriter printer = new PrintWriter(new FileOutputStream(file)); 
         
-         printer.append(fname+"\n"  + lname+ "\n" +  address+"\n"+ phone+"\n"+dob  + "\n"+
-             "\n"+ gender +"\n" +staffid+"\n"+ Email+"\n"+ joinedDate);
-         
-        
-         
-      printer.close();
+        printer.append(getFName()+"\n"  + getLName()+ "\n" +  getGender()+"\n"+ getDOB()+"\n"+ getDOB() + "\n"+
+              getPhoneNumber()+ "\n"+ getAddress()+"\n" +getStaffEmail() +"\n"+ getJoinDate());
+       printer.close();
         }catch(FileNotFoundException e){
                  System.out.println("error");
         }

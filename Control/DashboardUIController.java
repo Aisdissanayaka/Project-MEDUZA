@@ -212,7 +212,7 @@ public class DashboardUIController implements Initializable {
     Parent root = loader.load();
     DashboardUIController welcome =loader.getController();
     welcome.showInformation(staticUserName,staticLName, staticGender, 
-    staticDOB, staticPhoneNo, staticAddress,staticStaffID, staticEmail,staticJoinDate);
+    staticDOB, staticPhoneNo, staticAddress,staticEmail, staticStaffID,staticJoinDate);
     welcome.showProfilePicture(profilePicture);
     welcome.showInformation(staticUserName);
     

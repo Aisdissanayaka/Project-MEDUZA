@@ -100,12 +100,12 @@ public class UserLoginController implements Initializable {
       BufferedReader br = new BufferedReader(fr);
       staticUserName = br.readLine();
       staticLName = br.readLine();
-      staticAddress = br.readLine();
-      staticPhoneNo = br.readLine();
-      staticDOB = br.readLine();     
       staticGender = br.readLine();
-      staticStaffID = br.readLine();  
-      staticEmail = br.readLine();
+      staticDOB = br.readLine();
+      staticPhoneNo = br.readLine();
+      staticAddress = br.readLine();
+      staticEmail = br.readLine();  
+      staticStaffID= br.readLine();
       staticJoinDate = br.readLine();
       
         

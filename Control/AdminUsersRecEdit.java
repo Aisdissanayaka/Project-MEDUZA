@@ -70,15 +70,24 @@ public class AdminUsersRecEdit extends DashboardUIController implements Initiali
   try {
             
     Receptionist recObj = new Receptionist();
-    recObj.editPatient("user data//database//receptionists.txt", "user data//database//temp.txt", moStaffID.getText(), firstName.getText(), lastName.getText(), gender.getValue(), dateOfBirth.getText(), phoneNumber.getText(), address.getText(), dateOfJoined.getText(), moStaffEmail.getText()); 
+    recObj.setFName(firstName.getText());
+    recObj.setLName(lastName.getText());
+    recObj.setGender(gender.getValue().toString());
+    recObj.setDOB(dateOfBirth.getText());
+    recObj.setPhoneNumber(phoneNumber.getText());
+    recObj.setAddress(address.getText());      
+    recObj.setJoinDate(dateOfJoined.getText());
+    recObj.setStaffEmail(moStaffEmail.getText());
+    recObj.setStaffID(moStaffID.getText());
+    recObj.editPatient("user data//database//receptionists.txt", "user data//database//temp.txt"); 
     
     
     Alert alert = new Alert(Alert.AlertType.INFORMATION); //display Warning message
     alert.setContentText("Updated receptionist's profile.!");
     alert.show();
             
-        } catch (Exception e) {
-        }
+     } catch (Exception e) {
+   }
     
     
 }

@@ -80,7 +80,7 @@ public class AdminUsersRecController extends DashboardUIController implements In
         allUser = receptionistTable.getItems();
         singleUser =receptionistTable.getSelectionModel().getSelectedItems();
         receptionistID = receptionistTable.getSelectionModel().getSelectedItem().getStaffID();
-        // all items store in static object in patient class 
+        // all items store in static object in recep class 
         AdminUsersRecEdit.selectUser=(Receptionist)receptionistTable.getSelectionModel().getSelectedItem();
         singleUser.forEach(allUser::remove);
         // load patient edit window   
