@@ -7,6 +7,7 @@ package Control;
 
 import com.jfoenix.controls.JFXTextArea;
 import com.jfoenix.controls.JFXTextField;
+import com.jfoenix.validation.RequiredFieldValidator;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -20,11 +21,14 @@ import java.util.ResourceBundle;
 import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Alert;
 
 
 /**
@@ -44,8 +48,10 @@ public class AdminRefSpecAreaController extends DashboardUIController implements
     
     //add new speciality area to list
     @FXML
-    void add(ActionEvent event) throws FileNotFoundException, IOException {
+    private     void add(ActionEvent event) throws FileNotFoundException, IOException {
          
+        
+      if(  validateFields()){
         File file1 = new File("user data\\reference\\category.txt");
            PrintWriter print1 = new PrintWriter(new FileOutputStream(file1,true));
            print1.append(addNewTxt.getText()+"\n");
@@ -53,8 +59,8 @@ public class AdminRefSpecAreaController extends DashboardUIController implements
            print1.close();
       
         loadData();
-        addNewTxt.setText(null);
-        
+        addNewTxt.clear();
+    }
     }
     
     
@@ -71,6 +77,21 @@ public class AdminRefSpecAreaController extends DashboardUIController implements
      listTxt.setText(list);
      }
      
+      // warning message for null validation
+     private boolean validateFields(){
+         
+   if(addNewTxt.getText().isEmpty())
+         {
+              Alert alert = new Alert(Alert.AlertType.WARNING);
+             alert.setTitle("Validate Fields");
+             alert.setHeaderText(null);
+             alert.setContentText("Please Enter Into The Field");
+             alert.showAndWait();
+             return false;
+            }
+        return true;
+         }
+     
 
      @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -81,6 +102,22 @@ public class AdminRefSpecAreaController extends DashboardUIController implements
           Logger.getLogger(AdminRefSpecAreaController.class.getName()).log(Level.SEVERE, null, ex);
       }
 
+       //show validation status
+        RequiredFieldValidator validator = new RequiredFieldValidator();
+        validator.setMessage("Required Field");
+      
+         addNewTxt.getValidators().add(validator);
+
+          addNewTxt.focusedProperty().addListener(new ChangeListener <Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+                if(!newValue)
+                {
+                addNewTxt.validate();
+                }}
+        });
+
+        
     }
 
 }  
