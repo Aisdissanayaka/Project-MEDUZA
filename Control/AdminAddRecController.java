@@ -5,6 +5,7 @@
  */
 package Control;
 
+import Model.Receptionist;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXDatePicker;
@@ -96,24 +97,23 @@ public class AdminAddRecController extends DashboardUIController implements Init
         
          try
        {
-           File file = new File("user data\\receptionist\\data\\"+recStaffIDtxt.getText()+".txt");
-           PrintWriter printer = new PrintWriter(new FileOutputStream(file,true));
-          
-           printer.append(recFirstNametxt.getText()+"\n"+""+recLastNametxt.getText()
-                   +"\n"+""+recAddresstxt.getText()+"\n"+""+recPhoneNumtxt.getText()+"\n"+""+recDateOfBirth.getValue().toString()+"\n"+""+series.getValue()+"\n"+""+recStaffIDtxt.getText()
-                   +"\n"+""+recStaffEmailtxt.getText()+"\n"+""+recDateOfJoin.getValue().toString()+"\n");
-           printer.close();
-          
+           
+           Receptionist recObj = new Receptionist();
+           
+           recObj.setFName(recFirstNametxt.getText());
+           recObj.setLName(recLastNametxt.getText());
+           recObj.setAddress(recAddresstxt.getText());
+           recObj.setPhoneNumber(recPhoneNumtxt.getText());
+           recObj.setDOB(recDateOfBirth.getValue().toString());
+           recObj.setStaffID(recStaffIDtxt.getText());
+           recObj.setGender(series.getValue());
+           recObj.setJoinDate(recDateOfJoin.getValue().toString());
+           recObj.setStaffEmail(recStaffEmailtxt.getText());
+           
+           recObj.signup();
             
         //Write credentials file of receptionist
-        try{
-         
-         FileWriter fw = new FileWriter("user data\\receptionist\\credentials\\receptionistlogin.txt",true);
-         BufferedWriter bw = new BufferedWriter(fw);
-         PrintWriter pw = new PrintWriter(bw);
-         pw.write(recStaffIDtxt.getText()+","+recStaffIDtxt.getText()+"\n");
-         pw.close();
-         }catch(FileNotFoundException  e){}
+       
        }
          
         catch(Exception e){}

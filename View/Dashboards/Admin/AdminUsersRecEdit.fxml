@@ -2,7 +2,6 @@
 
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXComboBox?>
-<?import com.jfoenix.controls.JFXDatePicker?>
 <?import com.jfoenix.controls.JFXTextArea?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.geometry.Insets?>
@@ -168,7 +167,6 @@
                </opaqueInsets>
             </JFXTextField>
             <JFXComboBox fx:id="gender" layoutX="432.0" layoutY="309.0" promptText="Gender" AnchorPane.leftAnchor="432.0" />
-            <JFXDatePicker fx:id="dateOfBirth" defaultColor="#4059a9" layoutX="561.0" layoutY="308.0" prefHeight="28.0" prefWidth="142.0" promptText="Date of birth" AnchorPane.leftAnchor="561.0" />
             <JFXTextField fx:id="phoneNumber" labelFloat="true" layoutX="250.0" layoutY="390.0" prefHeight="36.0" prefWidth="454.0" promptText="Phone Number" unFocusColor="#1d7fff" AnchorPane.leftAnchor="250.0">
                <font>
                   <Font size="17.0" />
@@ -180,14 +178,12 @@
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </opaqueInsets>
             </JFXTextField>
-            <JFXComboBox fx:id="bloodGroup" layoutX="252.0" layoutY="536.0" promptText="Blood Group" AnchorPane.leftAnchor="250.0" />
-            <JFXTextArea fx:id="allergies" layoutX="252.0" layoutY="580.0" prefHeight="63.0" prefWidth="454.0" promptText="Allergies" styleClass="BackgroundPane" stylesheets="@../../Styles.css" AnchorPane.leftAnchor="250.0" />
             <JFXButton fx:id="cancelBtn" layoutX="549.0" layoutY="653.0" prefHeight="31.0" prefWidth="74.0" style="-fx-background-radius: 30;" styleClass="Special-buttons" text="Cancel" textFill="#b9d5fd">
                <font>
                   <Font size="15.0" />
                </font>
             </JFXButton>
-            <JFXButton layoutX="638.0" layoutY="653.0" prefHeight="31.0" prefWidth="69.0" style="-fx-background-radius: 30;" styleClass="Special-buttons" text="Update" textFill="#b9d5fd">
+            <JFXButton layoutX="638.0" layoutY="653.0" onAction="#updateBtn" prefHeight="31.0" prefWidth="69.0" style="-fx-background-radius: 30;" styleClass="Special-buttons" text="Update" textFill="#b9d5fd">
                <font>
                   <Font size="15.0" />
                </font>
@@ -197,12 +193,12 @@
                   <Image url="@../../images/big%20logo.png" />
                </image>
             </ImageView>
-            <JFXButton layoutX="1115.0" layoutY="653.0"  prefHeight="31.0" prefWidth="70.0" style="-fx-background-radius: 0;" styleClass="Special-buttons" text="Reset" textFill="#b9d5fd">
+            <JFXButton layoutX="1115.0" layoutY="653.0" onAction="#passwordResetBtn" prefHeight="31.0" prefWidth="70.0" style="-fx-background-radius: 0;" styleClass="Special-buttons" text="Reset" textFill="#b9d5fd">
                <font>
                   <Font size="15.0" />
                </font>
             </JFXButton>
-            <Circle fx:id="patientProfilePhoto" fill="DODGERBLUE" layoutX="326.0" layoutY="231.0" radius="76.0" stroke="BLACK" strokeType="INSIDE" AnchorPane.leftAnchor="250.0" />
+            <Circle fx:id="recProfilePhoto" fill="DODGERBLUE" layoutX="326.0" layoutY="231.0" radius="76.0" stroke="BLACK" strokeType="INSIDE" AnchorPane.leftAnchor="250.0" />
             <JFXTextField fx:id="firstName" labelFloat="true" layoutX="424.0" layoutY="142.0" prefHeight="36.0" prefWidth="283.0" promptText="First Name" unFocusColor="#1d7fff" AnchorPane.leftAnchor="424.0">
                <font>
                   <Font size="17.0" />
@@ -214,11 +210,6 @@
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </opaqueInsets>
             </JFXTextField>
-            <JFXButton layoutX="1031.0" layoutY="653.0" prefHeight="14.0" prefWidth="74.0" style="-fx-background-radius: 0;" styleClass="Special-buttons" text="Change" textFill="#b9d5fd">
-               <font>
-                  <Font size="15.0" />
-               </font>
-            </JFXButton>
             <Label layoutX="1031.0" layoutY="629.0" prefHeight="18.0" prefWidth="122.0" text="Password Settings" />
             <JFXTextField fx:id="moStaffID" labelFloat="true" layoutX="794.0" layoutY="138.0" promptText="Staff ID" unFocusColor="#1d7fff" AnchorPane.leftAnchor="795.0">
                <font>
@@ -242,7 +233,28 @@
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </opaqueInsets>
             </JFXTextField>
-            <JFXDatePicker fx:id="moDateOfJoin" defaultColor="#4059a9" layoutX="800.0" layoutY="281.0" prefHeight="28.0" prefWidth="151.0" promptText="Date of joining" AnchorPane.leftAnchor="800.0" />
+            <JFXTextField fx:id="dateOfBirth" labelFloat="true" layoutX="524.0" layoutY="304.0" prefHeight="36.0" prefWidth="178.0" promptText="Date of Birth" unFocusColor="#1d7fff">
+               <font>
+                  <Font size="17.0" />
+               </font>
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
+               <opaqueInsets>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </opaqueInsets>
+            </JFXTextField>
+            <JFXTextField fx:id="dateOfJoined" labelFloat="true" layoutX="797.0" layoutY="286.0" prefHeight="36.0" prefWidth="178.0" promptText="Joined Date" unFocusColor="#1d7fff">
+               <font>
+                  <Font size="17.0" />
+               </font>
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
+               <opaqueInsets>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </opaqueInsets>
+            </JFXTextField>
          </children>
       </AnchorPane>
    </children>
