@@ -19,16 +19,3 @@ and improve its effectiveness and quality of work. Managing the key processes ef
 # SOFTWARE REQUIREMENTS FOR THE PROJECT
 * OPERATING SYSTEM : Windows 10/7/XP/8
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-# SOFTWARE BUGS
----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-* LOGIN
- 1. Should be add a action event to Cancel button
- 2. When we click the "Forgot Password", then should be show a popup message
- 
-* ADMIN
- 1. Should be disable the Admin profile button
- 2. Should be enter a default image for Admin
- 
-* RECEPIONIST
- 1. When we submitted the received postal and dispatched postal then should be show the popup message.
- 2. Should be add the action event to Add Patient controller
