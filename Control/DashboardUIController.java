@@ -218,6 +218,7 @@ public class DashboardUIController implements Initializable {
             Scene newscene= new Scene(secondview);
             Stage curstage =(Stage)ap.getScene().getWindow();
             curstage.setScene(newscene);
+            curstage.centerOnScreen();
             
         } catch (IOException ex) {
             Logger.getLogger(Sign_Up_asController.class.getName()).log(Level.SEVERE, null, ex);
@@ -426,6 +427,7 @@ public class DashboardUIController implements Initializable {
     Parent root = loader.load();
     DashboardUIController welcome =loader.getController();
     welcome.showInformation(staticUserName);
+    welcome.showWelcome(staticUserName+"!");
     welcome.showProfilePicture(profilePicture);
     
     Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
@@ -524,6 +526,7 @@ public class DashboardUIController implements Initializable {
     Parent root = loader.load();
     DashboardUIController welcome =loader.getController();
     welcome.showInformation(staticUserName);
+     welcome.showWelcome(staticUserName+"!");
     welcome.showProfilePicture(profilePicture);
     
     Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
