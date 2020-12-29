@@ -89,7 +89,7 @@ public class PatientProfileWindowController extends DashboardUIController implem
     @FXML
     private void updateBtn()throws IOException{
         
-        
+        if(validateFields()&&validatePhoneNum()){
         
     try {
             
@@ -102,7 +102,7 @@ public class PatientProfileWindowController extends DashboardUIController implem
             
         } catch (Exception e) {
         }
-         if(validateFields()&&validatePhoneNum()){
+         
 
         
         

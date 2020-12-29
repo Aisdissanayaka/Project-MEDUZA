@@ -100,7 +100,7 @@ public class DashboardUIController implements Initializable {
     
 
     @FXML
-    private ComboBox specialityAreaBox;
+    private JFXTextField specialityAreamo;
 
     
     public void showInformation(String username){
@@ -164,7 +164,7 @@ public class DashboardUIController implements Initializable {
         staffEmailTxt.setText(email);
         staffIDTxt.setText(staffID);
         joinedDateTxt.setText(joinedDate);
-        specialityAreaBox.setValue(specialityArea);
+        specialityAreamo.setText(specialityArea);
     }
     
     public void showInformation(String username,String userid){
@@ -822,23 +822,7 @@ public class DashboardUIController implements Initializable {
         
        }
     
-    @FXML
-    public void AdminUserMOEdit(ActionEvent event) throws IOException{
-
-        
-    FXMLLoader loader =new FXMLLoader(getClass().getResource("/View/Dashboards/Admin/AdminUsersMOEdit.fxml"));
-    Parent root = loader.load();
-    DashboardUIController welcome =loader.getController();
-    welcome.showInformation(staticUserName);
-    welcome.showProfilePicture(profilePicture);
-         
-
-    Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
-    window.setScene(new Scene(root));
-    window.show();
-    window.centerOnScreen();
-        
-       }
+  
     
     @FXML
     public void AdminUserPat(ActionEvent event) throws IOException{

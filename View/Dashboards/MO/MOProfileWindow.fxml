@@ -196,7 +196,14 @@
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </padding>
             </JFXTextField>
-            <JFXComboBox fx:id="specialityAreaBox" layoutX="456.0" layoutY="265.0" prefHeight="26.0" prefWidth="231.0" promptText="Speciality Area" />
+            <JFXTextField fx:id="specialityAreamo" disable="true" labelFloat="true" layoutX="451.0" layoutY="258.0" prefHeight="45.0" prefWidth="245.0" promptText="Speciality Area" unFocusColor="#1d7fff">
+               <font>
+                  <Font size="21.0" />
+               </font>
+               <padding>
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+               </padding>
+            </JFXTextField>
          </children>
       </AnchorPane>
       <Label layoutX="266.0" layoutY="61.0" prefHeight="48.0" prefWidth="221.0" text="My Profile" textFill="#071739" AnchorPane.leftAnchor="266.0" AnchorPane.topAnchor="61.0">
