@@ -17,6 +17,8 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -75,6 +77,7 @@ public class AdminUsersPatEdit extends DashboardUIController implements Initiali
       
    @FXML
     void updateBtn(ActionEvent event){
+        if(validateFields()&&validatePhoneNum()){
         
   try {
             
@@ -88,8 +91,41 @@ public class AdminUsersPatEdit extends DashboardUIController implements Initiali
         } catch (Exception e) {
         }
         
-        
+        }
     }
+    
+      // warning message for null validation
+     private boolean validateFields(){
+         
+   if(firstName.getText().isEmpty() | lastName.getText().isEmpty()|dob.getText().isEmpty() |phoneNumber.getText().isEmpty()|
+       address.getText().isEmpty()| allergies.getText().isEmpty())
+         {
+              Alert alert = new Alert(Alert.AlertType.WARNING);
+             alert.setTitle("Validate Fields");
+             alert.setHeaderText(null);
+             alert.setContentText("Please Enter Into The Fields");
+             alert.showAndWait();
+             return false;
+            }
+        return true;
+         }
+     
+      //warnig message to invalide Phone Number 
+     private boolean validatePhoneNum(){
+         Pattern p=Pattern.compile("[0][0-9]{9}");
+         Matcher m = p.matcher(phoneNumber.getText());
+         if(m.find() && m.group().equals(phoneNumber.getText())){
+           return true;
+         }else{
+              Alert alert = new Alert(Alert.AlertType.WARNING);
+             alert.setTitle("Validate Phone Number");
+             alert.setHeaderText(null);
+             alert.setContentText("Please Enter The Valid Phone Number");
+             alert.showAndWait();
+             return false;
+         }
+       }
+   
    
     
    
