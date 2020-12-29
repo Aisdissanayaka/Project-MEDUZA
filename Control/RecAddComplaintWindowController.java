@@ -212,6 +212,8 @@ public class RecAddComplaintWindowController extends DashboardUIController imple
        noteTxt.getValidators().add(validator);
        phoneNumTxt.getValidators().add(validator);
        phoneNumTxt.getValidators().add(numvalidator);
+       complaintDate.getValidators().add(validator);
+       comTypeBox.getValidators().add(validator);
 
         
        nameTxt.focusedProperty().addListener(new ChangeListener <Boolean>() {

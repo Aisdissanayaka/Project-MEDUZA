@@ -74,7 +74,7 @@ public class RecAddVisitorWindowController extends DashboardUIController impleme
     
   
     //Submit Button Action Methode
-    
+    //opening and saving document file    
     @FXML
     public void openFile(ActionEvent event2) throws IOException {
         
@@ -114,35 +114,7 @@ public class RecAddVisitorWindowController extends DashboardUIController impleme
     } }
     
     
-    //opening and saving document file    
-    @FXML
-    public void openedFile(ActionEvent actionEvent) throws IOException {
-       
-       
-        fileChooser.setInitialDirectory(new File("C:\\Users\\"));
-        fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("pdf file","*.pdf","*.PDF"));
-
-        File file = fileChooser.showOpenDialog(primaryStage);
-       // File desination = fileChooser.showSaveDialog(primaryStage);
-        path=file.getAbsoluteFile();
-        
-        
-         //saving file given path
-          try {
-                Files.copy(file.toPath(),Paths.get("user data\\receptionist\\postal\\received postal\\cv\\"+visID.getText()+".pdf"));
-            } catch (Exception ioException) {
-               ioException.printStackTrace();
-            }
-          
-          //create new object file1
-          File file1 = new File(String.valueOf(path));
-       
-        fileChooser.setInitialFileName(visID.getText()+".pdf");  
-        //getting type of files 
-        fileChooser.getExtensionFilters().addAll(new FileChooser.ExtensionFilter("pdf file","*.pdf","*.PDF"));
-        
-         
-    }
+    
         // warning message for null validation
      private boolean validateFields(){
          
