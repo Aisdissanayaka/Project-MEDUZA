@@ -154,8 +154,11 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <JFXTextArea fx:id="address" layoutX="252.0" layoutY="462.0" prefHeight="51.0" prefWidth="454.0" promptText="Address" styleClass="BackgroundPane" stylesheets="@../../Styles.css" AnchorPane.leftAnchor="250.0" />
-            <JFXTextField fx:id="lastName" labelFloat="true" layoutX="424.0" layoutY="213.0" prefHeight="36.0" prefWidth="283.0" promptText="Last Name" unFocusColor="#1d7fff" AnchorPane.leftAnchor="424.0">
+            <JFXTextArea fx:id="address" layoutX="250.0" layoutY="502.0" prefHeight="51.0" prefWidth="454.0" promptText="Address" styleClass="BackgroundPane" stylesheets="@../../Styles.css" AnchorPane.leftAnchor="250.0">
+               <font>
+                  <Font size="17.0" />
+               </font></JFXTextArea>
+            <JFXTextField fx:id="lastName" labelFloat="true" layoutX="486.0" layoutY="205.0" prefHeight="36.0" prefWidth="219.0" promptText="Last Name" unFocusColor="#1d7fff" AnchorPane.leftAnchor="486.0">
                <font>
                   <Font size="17.0" />
                </font>
@@ -166,8 +169,8 @@
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </opaqueInsets>
             </JFXTextField>
-            <JFXComboBox fx:id="gender" layoutX="431.0" layoutY="344.0" promptText="Gender" AnchorPane.leftAnchor="431.0" />
-            <JFXTextField fx:id="phoneNumber" labelFloat="true" layoutX="250.0" layoutY="390.0" prefHeight="36.0" prefWidth="454.0" promptText="Phone Number" unFocusColor="#1d7fff" AnchorPane.leftAnchor="250.0">
+            <JFXComboBox fx:id="gender" layoutX="257.0" layoutY="429.0" prefHeight="31.0" prefWidth="171.0" promptText="Gender" AnchorPane.leftAnchor="257.0" />
+            <JFXTextField fx:id="phoneNumber" labelFloat="true" layoutX="250.0" layoutY="351.0" prefHeight="36.0" prefWidth="186.0" promptText="Phone Number" unFocusColor="#1d7fff" AnchorPane.leftAnchor="250.0">
                <font>
                   <Font size="17.0" />
                </font>
@@ -178,9 +181,12 @@
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </opaqueInsets>
             </JFXTextField>
-            <JFXComboBox fx:id="bloodGroup" layoutX="252.0" layoutY="536.0" promptText="Blood Group" AnchorPane.leftAnchor="250.0" />
-            <JFXTextArea fx:id="allergies" layoutX="252.0" layoutY="580.0" prefHeight="63.0" prefWidth="454.0" promptText="Allergies" styleClass="BackgroundPane" stylesheets="@../../Styles.css" AnchorPane.leftAnchor="250.0" />
-            <JFXTextField fx:id="nic" disable="true" labelFloat="true" layoutX="424.0" layoutY="283.0" prefHeight="36.0" prefWidth="283.0" promptText="NIC" unFocusColor="#1d7fff" AnchorPane.leftAnchor="424.0">
+            <JFXComboBox fx:id="bloodGroup" layoutX="499.0" layoutY="429.0" prefHeight="31.0" prefWidth="207.0" promptText="Blood Group" AnchorPane.leftAnchor="499.0" />
+            <JFXTextArea fx:id="allergies" layoutX="252.0" layoutY="580.0" prefHeight="63.0" prefWidth="454.0" promptText="Allergies" styleClass="BackgroundPane" stylesheets="@../../Styles.css" AnchorPane.leftAnchor="250.0">
+               <font>
+                  <Font size="17.0" />
+               </font></JFXTextArea>
+            <JFXTextField fx:id="nic" disable="true" labelFloat="true" layoutX="488.0" layoutY="278.0" prefHeight="36.0" prefWidth="219.0" promptText="NIC" unFocusColor="#1d7fff" AnchorPane.leftAnchor="488.0">
                <font>
                   <Font size="17.0" />
                </font>
@@ -211,8 +217,8 @@
                   <Font size="15.0" />
                </font>
             </JFXButton>
-            <Circle fx:id="patientProfilePhoto" fill="DODGERBLUE" layoutX="326.0" layoutY="231.0" radius="76.0" stroke="BLACK" strokeType="INSIDE" AnchorPane.leftAnchor="250.0" />
-            <JFXTextField fx:id="firstName" labelFloat="true" layoutX="424.0" layoutY="142.0" prefHeight="36.0" prefWidth="283.0" promptText="First Name" unFocusColor="#1d7fff" AnchorPane.leftAnchor="424.0">
+            <Circle fx:id="patientProfilePhoto" fill="DODGERBLUE" layoutX="326.0" layoutY="186.0" radius="76.0" stroke="BLACK" strokeType="INSIDE" AnchorPane.leftAnchor="250.0" />
+            <JFXTextField fx:id="firstName" labelFloat="true" layoutX="486.0" layoutY="129.0" prefHeight="36.0" prefWidth="219.0" promptText="First Name" unFocusColor="#1d7fff" AnchorPane.leftAnchor="486.0">
                <font>
                   <Font size="17.0" />
                </font>
@@ -224,7 +230,7 @@
                </opaqueInsets>
             </JFXTextField>
             <Label layoutX="1076.0" layoutY="626.0" prefHeight="18.0" prefWidth="122.0" text="Password Settings" />
-            <JFXTextField fx:id="dob" labelFloat="true" layoutX="555.0" layoutY="334.0" prefHeight="36.0" prefWidth="143.0" promptText="Date of Birth" unFocusColor="#1d7fff">
+            <JFXTextField fx:id="dob" disable="true" labelFloat="true" layoutX="488.0" layoutY="351.0" prefHeight="36.0" prefWidth="219.0" promptText="Date of Birth" unFocusColor="#1d7fff">
                <font>
                   <Font size="17.0" />
                </font>

@@ -116,7 +116,7 @@ public class RecPostalDispatchedWindowController extends DashboardUIController i
     @FXML
     private TableColumn<Postal, String> optionsCol;
     
-  
+  public static String datePostal;
      
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -150,7 +150,7 @@ public class RecPostalDispatchedWindowController extends DashboardUIController i
     
     
     
-     @FXML // dispatched postal delete button
+    @FXML // dispatched postal delete button
     void deletePostal(ActionEvent event) {
 
         try{
@@ -159,9 +159,9 @@ public class RecPostalDispatchedWindowController extends DashboardUIController i
         allReceved = dispatchedPostTable.getItems();
         singleReceved =dispatchedPostTable.getSelectionModel().getSelectedItems();
         refNumber = dispatchedPostTable.getSelectionModel().getSelectedItem().getRefferenceNum(); // get reff no in select row and set it static variable
-     
+        datePostal = dispatchedPostTable.getSelectionModel().getSelectedItem().getDate();
         Postal appObj = new Postal();            //create object in Postal class
-        appObj.deletePostal("user data//database//dispatchedPostals.txt", "user data//database//temp.txt"); //call postal delete methode
+        appObj.deletePostal("user data//database//dispatchedPostals.txt", "user data//database//tempt.txt"); //call postal delete methode
         singleReceved.forEach(allReceved::remove); //delete select row
         Alert alert = new Alert(Alert.AlertType.WARNING); //display Warning message
         alert.setContentText("You deleted "+refNumber.toUpperCase()+"'s Dispatched Posatal..!");

@@ -219,7 +219,7 @@ public class DashboardUIController implements Initializable {
             Stage curstage =(Stage)ap.getScene().getWindow();
             curstage.setScene(newscene);
             curstage.centerOnScreen();
-            
+
         } catch (IOException ex) {
             Logger.getLogger(Sign_Up_asController.class.getName()).log(Level.SEVERE, null, ex);
         }
