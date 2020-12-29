@@ -182,7 +182,7 @@ public class MOProfileWindowController extends DashboardUIController implements 
               Alert alert = new Alert(Alert.AlertType.WARNING);
              alert.setTitle("Validate Fields");
              alert.setHeaderText(null);
-             alert.setContentText("Please Enter Into The Fields");
+             alert.setContentText("Please Fill all the Fields");
              alert.showAndWait();
              return false;
             }
