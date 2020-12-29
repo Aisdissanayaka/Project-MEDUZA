@@ -4,13 +4,33 @@
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 # HOSPITAL-INFORMATION-MANAGEMENT-SYSTEM
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-A Hospital Management System based on TUI(Terminal User Interface). The project HIMS includes registration of patients, storing their details in to the system, and also the software has the facility to give 
-a unique id for every patient and stores the details of every patient and the staff automatically. User can search availability of a patient using the id.The Hospital Information Management System 
-can be entered using a username and password.It is accessible either by an administrator or receptionist. Only they can add data in to the database. The interface is very user-friendly. 
+A comprehensive hospital information management system would consist of several sub-systems to facilitate specific business and operational requirements. A hospital’s business and operation requirements can be broken down to its organizational departments as follows:
 
-Hospital Information Management System is powerful, flexible and easy to use and is designed and developed to deliver real conceivable benefits to hospitals.HIMS is a software product
-suite designed to improve the quality and management of hospital management in the areas of clinical process analysis and activity-based costing. HIMS enables you to develop your organization 
-and improve its effectiveness and quality of work. Managing the key processes efficiently is critical to the success of the hospital helps you manage your processes.
+● Out-Patient & Front-Office Department
+● Pathology Department
+● Pharmacy Department
+● Radiology Department
+● Finance Department
+● Human Resources Department
+
+# OUT PATIENT AND FRONT OFFICE DEPARTMENT
+
+OPD (Out-Patient Department) is responsible for managing out-patients who just come for a doctor for their issue/ disease check up, and managing front desk operations such as managing a visitor book, call log, postal records and complaints.
+This system will be mainly used by:
+
+● Receptionist
+● Patient
+● Medical Officer
+● Admin
+
+The entire project mainly consists of 7 modules, which are
+* Visitors Module
+* Postal Module
+* Complaint Module
+* Appointment Module
+* References Module
+* Users Module
+* Reports Module
 
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 # HARDWARE REQUIREMENTS FOR THE PROJECT
@@ -29,3 +49,12 @@ and improve its effectiveness and quality of work. Managing the key processes ef
 # USED LIBRARIES
 1. fontawesomefx-8.9.jar
 2. jfoenix-8.0.10.jar
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+# BENEFITS OF USING HIMS
+* Improved processes
+* Digital medical records
+* Staff interactions
+* Facility management
+* Less time consuming
+* Patient self-service
+* Better customer experience 
