@@ -1,5 +1,7 @@
 # Project-MEDUZA
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+![loading](https://user-images.githubusercontent.com/73226611/103294667-27247980-49a7-11eb-8b64-2d43f1063e12.jpg)
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 # HOSPITAL-INFORMATION-MANAGEMENT-SYSTEM
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 A Hospital Management System based on TUI(Terminal User Interface). The project HIMS includes registration of patients, storing their details in to the system, and also the software has the facility to give 
