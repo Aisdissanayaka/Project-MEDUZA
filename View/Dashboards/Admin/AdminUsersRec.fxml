@@ -148,11 +148,10 @@
                               <TableColumn fx:id="lNameCol" prefWidth="128.79995727539062" text="Last Name" />
                               <TableColumn fx:id="genderCol" prefWidth="81.59994506835938" text="Gender" />
                               <TableColumn fx:id="dobCol" minWidth="30.0" prefWidth="156.0" text="DOB" />
-                              <TableColumn fx:id="addressCol" minWidth="100.0" prefWidth="254.39996337890625" text="Address" />
-                              <TableColumn fx:id="phoneNoCol" minWidth="30.0" prefWidth="75.0" text="Phone No" />
+                              <TableColumn fx:id="addressCol" minWidth="100.0" prefWidth="145.60003662109375" text="Address" />
+                              <TableColumn fx:id="phoneNoCol" minWidth="30.0" prefWidth="151.99993896484375" text="Phone No" />
+                              <TableColumn fx:id="joinedDate" minWidth="30.0" prefWidth="75.0" text="Joined Date" />
                               <TableColumn fx:id="emailCol" prefWidth="91.20004882812498" text="Email Address" />
-                              <TableColumn fx:id="passwordCol" prefWidth="91.20004882812498" text="Password" />
-                              <TableColumn fx:id="optionsCol" prefWidth="91.20004882812498" text="Options" />
                            </columns>
                            <columnResizePolicy>
                               <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
@@ -179,7 +178,7 @@
                               <Font name="Segoe UI Italic" size="19.0" />
                            </font>
                         </JFXButton>
-                        <JFXButton layoutX="916.0" layoutY="7.0" onAction="#AdminUserRecEdit" styleClass="Close-Button" stylesheets="@../../Styles.css" text="Edit" textFill="WHITE" />
+                        <JFXButton layoutX="916.0" layoutY="7.0" onAction="#AdminUserPatEdit" styleClass="Close-Button" stylesheets="@../../Styles.css" text="Edit" textFill="WHITE" />
                      </children>
                   </AnchorPane>
                </children>

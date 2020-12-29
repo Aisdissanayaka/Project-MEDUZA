@@ -124,7 +124,7 @@ public class Sign_Up_as_RECEPTIONISTController extends DashboardUIController imp
            recObj.setGender(series.getValue());
          
           
-           recObj.signup(event);
+           recObj.signup();
           
           
             
