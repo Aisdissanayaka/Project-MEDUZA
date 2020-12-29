@@ -109,15 +109,7 @@ public class AdminAddMOController extends DashboardUIController implements Initi
           
           
          
-         //Write credentials file of MO
-         try{
          
-         FileWriter fw = new FileWriter("user data\\medical officer\\credentials\\medicalofficerlogin.txt",true);
-         BufferedWriter bw = new BufferedWriter(fw);
-         PrintWriter pw = new PrintWriter(bw);
-         pw.write(moStaffID.getText()+","+moStaffID.getText()+"\n");
-         pw.close();
-         }catch(FileNotFoundException  e){}
          
          //setiing values for declared variables
          moFirstName.setText(null);

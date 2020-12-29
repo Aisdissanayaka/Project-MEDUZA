@@ -102,15 +102,7 @@ public class AdminAddPatController extends DashboardUIController implements Init
           
            patObj.signup(event);
           
-        //Write credentials file of patients
-        try{
-         
-         FileWriter fw = new FileWriter("user data\\patient\\credentials\\patientlogin.txt",true);
-         BufferedWriter bw = new BufferedWriter(fw);
-         PrintWriter pw = new PrintWriter(bw);
-         pw.write(nicTxt.getText()+","+nicTxt.getText()+"\n");
-         pw.close();
-         }catch(FileNotFoundException  e){}
+
         
         }
         catch(Exception e){}

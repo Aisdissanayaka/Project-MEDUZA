@@ -6,6 +6,7 @@
 package Control;
 
 import static Control.UserLoginController.primaryKey;
+import Model.MedicalOfficer;
 import com.jfoenix.controls.JFXTextField;
 import java.awt.Desktop;
 import java.awt.image.BufferedImage;
@@ -57,7 +58,7 @@ public class MOProfileWindowController extends DashboardUIController implements 
     private JFXTextField lastNameTxt;
     
     @FXML
-    private ComboBox genderBox;
+    private ComboBox<String> genderBox;
 
     @FXML
     private JFXTextField dateOfBirthTxt;
@@ -75,10 +76,10 @@ public class MOProfileWindowController extends DashboardUIController implements 
     private JFXTextField joinedDateTxt;
     
     @FXML
-    public JFXTextField MOStaffIDTxt;
+    public JFXTextField staffIDTxt;
     
-      @FXML
-    private ComboBox specialityAreaBox;
+    @FXML
+    private JFXTextField specialityAreamo;
     
     @FXML
     public Circle profilePhoto;
@@ -111,27 +112,36 @@ public class MOProfileWindowController extends DashboardUIController implements 
 });}
     
     
-  // update button. It's update medical officer data
-    @FXML
-    private void updateBtn(){
-        if(validateFields()&&validatePhoneNum()&& validateEmail()){
+  @FXML//ubdate butoon action event
+    void updateBtn(ActionEvent event) {
+     if(validateFields()&&validatePhoneNum()&&validateEmail()){    
         try{
-        File file = new File("user data\\medical officer\\data\\"+ primaryKey+".txt");  
-        file.delete();
-        PrintWriter printer = new PrintWriter(new FileOutputStream(file,true)); 
-        
-        printer.write(firstNameTxt.getText()+"\n"+lastNameTxt.getText()+"\n"+addressTxt.getText()+"\n"+phoneNumTxt.getText()+"\n"
-                +dateOfBirthTxt.getText()+"\n"+ staffIDTxt.getText()+"\n"+ staffEmailTxt.getText()+"\n"+ joinedDateTxt.getText()+"\n"+
-                genderBox.getValue()+"\n"+ specialityAreaBox.getValue()+"\n");
-           
-        printer.close();
-        }catch(FileNotFoundException e){}
-         Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setContentText("Your profile was updated..!");
-        alert.show();
-        
-        
-    }}
+            
+    MedicalOfficer moObj = new MedicalOfficer(); //create object in medical officer class
+    
+    //assign the value in setters
+    moObj.setFName(firstNameTxt.getText());
+    
+    moObj.setLName(lastNameTxt.getText());
+    moObj.setAddress(addressTxt.getText());
+    moObj.setPhoneNumber(phoneNumTxt.getText());
+    moObj.setDOB(dateOfBirthTxt.getText());
+    moObj.setStaffID(staffIDTxt.getText());       
+    moObj.setEmail(staffEmailTxt.getText());
+    moObj.setDateJoined(joinedDateTxt.getText());
+    moObj.setGender(genderBox.getValue().toString());
+    moObj.setSpecialityArea (specialityAreamo.getText());
+   
+    moObj.editMO("user data//database//medicalOfficers.txt", "user data//database//temp.txt"); // call medical officer edit method
+   
+    Alert alert = new Alert(Alert.AlertType.INFORMATION); //display Warning message
+    alert.setContentText("Updated medical officer profile.!");
+    alert.show();
+        }catch(Exception e){
+            
+        }
+     } 
+    }
     
      //warnig message to invalide Email Address 
      private boolean validateEmail(){
@@ -218,8 +228,7 @@ public class MOProfileWindowController extends DashboardUIController implements 
         // TODO
        ObservableList<String>list1=FXCollections.observableArrayList("Male","Female");
        genderBox.setItems(list1);
-        ObservableList<String>list2=FXCollections.observableArrayList("A","B","C");
-       specialityAreaBox.setItems(list2);
+        
     }    
 
 

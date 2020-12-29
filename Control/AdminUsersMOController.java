@@ -5,18 +5,28 @@
  */
 package Control;
 
+import static Control.UserLoginController.profilePicture;
+import static Control.UserLoginController.staticUserName;
 import Model.MedicalOfficer;
 import Model.Patient;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.stage.Stage;
 
 /**
  * FXML Controller class
@@ -25,7 +35,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
  */
 public class AdminUsersMOController extends DashboardUIController implements Initializable {
 
-    
+    public static String moID;
     @FXML
     private TableView<MedicalOfficer> moTable;
 
@@ -60,7 +70,36 @@ public class AdminUsersMOController extends DashboardUIController implements Ini
     private TableColumn<MedicalOfficer, String> pwCol;
 
     @FXML
-    private TableColumn<MedicalOfficer, String> optionsCol;
+    void AdminUserMOEdit(ActionEvent event) throws IOException {
+    try{
+        ObservableList<MedicalOfficer> allUser,singleUser;
+        allUser = moTable.getItems();
+        singleUser = moTable.getSelectionModel().getSelectedItems();
+        moID = moTable.getSelectionModel().getSelectedItem().getStaffID();
+        // all items store in static object in patient class 
+        AdminUsersMOEdit.selectUser=(MedicalOfficer)moTable.getSelectionModel().getSelectedItem();
+        singleUser.forEach(allUser::remove);
+        // load patient edit window   
+        FXMLLoader loader =new FXMLLoader(getClass().getResource("/View/Dashboards/Admin/AdminUsersMOEdit.fxml"));
+        Parent root = loader.load();
+        DashboardUIController welcome =loader.getController();
+        welcome.showInformation(staticUserName);
+        welcome.showProfilePicture(profilePicture);
+         
+        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
+        window.setScene(new Scene(root));
+        window.show();
+        window.centerOnScreen();
+        }catch(Exception e){
+        
+        Alert alert = new Alert(Alert.AlertType.WARNING); //display Warning message
+        alert.setContentText("Selecet Medical Officer and then press edit  button");
+        alert.show();
+       
+       }
+        
+    }
+    
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -86,8 +125,8 @@ public class AdminUsersMOController extends DashboardUIController implements Ini
           addressCol.setCellValueFactory(new PropertyValueFactory<MedicalOfficer,String>("address"));
           phoneCol.setCellValueFactory(new PropertyValueFactory<MedicalOfficer,String>("phoneNumber"));
           emailCol.setCellValueFactory(new PropertyValueFactory<MedicalOfficer,String>("email"));
-          pwCol.setCellValueFactory(new PropertyValueFactory<MedicalOfficer,String>("email"));
-          optionsCol.setCellValueFactory(new PropertyValueFactory<MedicalOfficer,String>("options"));
+          pwCol.setCellValueFactory(new PropertyValueFactory<MedicalOfficer,String>("dateJoined"));
+         // optionsCol.setCellValueFactory(new PropertyValueFactory<MedicalOfficer,String>("options"));
           
        
           moTable.setItems(mos);
