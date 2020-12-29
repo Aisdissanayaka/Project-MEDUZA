@@ -15,7 +15,11 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javafx.animation.FadeTransition;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -25,7 +29,9 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.Label;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 //import Control.user;
 
 /**
@@ -38,6 +44,8 @@ public class UserLoginController implements Initializable {
     
     
     // Declare Variable each button
+     @FXML 
+     private AnchorPane rootpane;
     
      @FXML
     private Hyperlink createAccountLink;
@@ -189,18 +197,41 @@ public class UserLoginController implements Initializable {
     
 
     //Methode of Create Account HyperLink
-    @FXML   
-    public void createAccountMedicalOfficer(ActionEvent event) throws IOException{
-        Parent signUpAsParent = FXMLLoader.load(getClass().getResource("/View/Sign_Up_as_MO.fxml"));
-        Scene signUpAsviewScene = new Scene(signUpAsParent);
-        
-        //This Line gets the Stage Information
-        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
-        window.setScene(signUpAsviewScene);
-        window.show();
-        window.centerOnScreen();
-        
-       }
+  
+     //switching and transition sign up as window to user login medical offficer window
+        @FXML   
+        public void createAccountMedicalOfficer(ActionEvent event) {
+              makeFadeOut();
+        }
+        public void makeFadeOut() {
+        FadeTransition fadetransition = new FadeTransition();
+        fadetransition.setDuration(Duration.millis(250));
+        fadetransition.setNode(rootpane);
+        fadetransition.setFromValue(1);
+        fadetransition.setToValue(0);
+        fadetransition.setOnFinished(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                loadNextScene();
+            }
+        });
+        fadetransition.play();
+       
+    }
+    
+    private void loadNextScene() {
+       
+        try {
+            Parent secondview;
+            secondview = (AnchorPane)FXMLLoader.load(getClass().getResource("/View/Sign_Up_as_MO.fxml"));
+            Scene newscene= new Scene(secondview);
+            Stage curstage =(Stage)rootpane.getScene().getWindow();
+            curstage.setScene(newscene);
+            
+        } catch (IOException ex) {
+            Logger.getLogger(Sign_Up_asController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
     
     @FXML
     private void loginAsAdmin(ActionEvent event) throws IOException ,FileNotFoundException {
@@ -234,75 +265,186 @@ public class UserLoginController implements Initializable {
       
     
     //Methode of Create Account HyperLink
-    @FXML   
-    public void createAccountPATIENT(ActionEvent event) throws IOException{
-        Parent signUpAsParent = FXMLLoader.load(getClass().getResource("/View/Sign_Up_as_PATIENT.fxml"));
-        Scene signUpAsviewScene = new Scene(signUpAsParent);
-        
-        //This Line gets the Stage Information
-        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
-        window.setScene(signUpAsviewScene);
-        window.show();
-        window.centerOnScreen();
-        
-       }
-    //Methode of Create Account HyperLink
-    @FXML   
-    public void createAccountReceptionist(ActionEvent event) throws IOException{
-        Parent signUpAsParent = FXMLLoader.load(getClass().getResource("/View/Sign_Up_as_RECEPTIONIST.fxml"));
-        Scene signUpAsviewScene = new Scene(signUpAsParent);
-        
-        //This Line gets the Stage Information
-        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
-        window.setScene(signUpAsviewScene);
-        window.show();
-        window.centerOnScreen();
-        
-       }
+   
+     //switching and transition sign up as window to user login patient window
+        @FXML   
+        public void createAccountPATIENT(ActionEvent event) {
+              makeFadeOut1();
+        }
+        public void makeFadeOut1() {
+        FadeTransition fadetransition = new FadeTransition();
+        fadetransition.setDuration(Duration.millis(250));
+        fadetransition.setNode(rootpane);
+        fadetransition.setFromValue(1);
+        fadetransition.setToValue(0);
+        fadetransition.setOnFinished(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                loadNextScene1();
+            }
+        });
+        fadetransition.play();
+       
+    }
     
-    @FXML 
-    public void forgotpw(ActionEvent event) throws IOException{
-        Parent signUpAsParent = FXMLLoader.load(getClass().getResource("/View/Dashboards/MODashboardWelcome.fxml"));
-        Scene signUpAsviewScene = new Scene(signUpAsParent);
-        
-        //This Line gets the Stage Information
-        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
-        window.setScene(signUpAsviewScene);
-        window.show();
-        window.centerOnScreen();
-        window.getFullScreenExitKeyCombination();
-        
-       }
+    private void loadNextScene1() {
+       
+        try {
+            Parent secondview;
+            secondview = (AnchorPane)FXMLLoader.load(getClass().getResource("/View/Sign_Up_as_PATIENT.fxml"));
+            Scene newscene= new Scene(secondview);
+            Stage curstage =(Stage)rootpane.getScene().getWindow();
+            curstage.setScene(newscene);
+            
+        } catch (IOException ex) {
+            Logger.getLogger(Sign_Up_asController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    //Methode of Create Account HyperLink
+   
+      //switching and transition sign up as window to user login Receptionist window
+        @FXML   
+        public void createAccountReceptionist(ActionEvent event) {
+              makeFadeOut2();
+        }
+        public void makeFadeOut2() {
+        FadeTransition fadetransition = new FadeTransition();
+        fadetransition.setDuration(Duration.millis(250));
+        fadetransition.setNode(rootpane);
+        fadetransition.setFromValue(1);
+        fadetransition.setToValue(0);
+        fadetransition.setOnFinished(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                loadNextScene2();
+            }
+        });
+        fadetransition.play();
+       
+    }
+    
+    private void loadNextScene2() {
+       
+        try {
+            Parent secondview;
+            secondview = (AnchorPane)FXMLLoader.load(getClass().getResource("/View/Sign_Up_as_RECEPTIONIST.fxml"));
+            Scene newscene= new Scene(secondview);
+            Stage curstage =(Stage)rootpane.getScene().getWindow();
+            curstage.setScene(newscene);
+            
+        } catch (IOException ex) {
+            Logger.getLogger(Sign_Up_asController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+  
+         //switching and transition sign up as window to user login medical offficer window
+        @FXML   
+        public void forgotpw(ActionEvent event) {
+              makeFadeOut4();
+        }
+        public void makeFadeOut4() {
+        FadeTransition fadetransition = new FadeTransition();
+        fadetransition.setDuration(Duration.millis(250));
+        fadetransition.setNode(rootpane);
+        fadetransition.setFromValue(1);
+        fadetransition.setToValue(0);
+        fadetransition.setOnFinished(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                loadNextScene4();
+            }
+        });
+        fadetransition.play();
+       
+    }
+    
+    private void loadNextScene4() {
+       
+        try {
+            Parent secondview;
+            secondview = (AnchorPane)FXMLLoader.load(getClass().getResource("/View/Dashboards/MODashboardWelcome.fxml"));
+            Scene newscene= new Scene(secondview);
+            Stage curstage =(Stage)rootpane.getScene().getWindow();
+            curstage.setScene(newscene);
+            
+        } catch (IOException ex) {
+            Logger.getLogger(Sign_Up_asController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+  
 
-     @FXML 
-    public void forgotpw1(ActionEvent event) throws IOException{
-        Parent signUpAsParent = FXMLLoader.load(getClass().getResource("/View/Dashboards/PatientDashboardWelcome.fxml"));
-        Scene signUpAsviewScene = new Scene(signUpAsParent);
+   //switching and transition sign up as window to user login patient window
+        @FXML   
+        public void forgotpw1(ActionEvent event) {
+              makeFadeOut5();
+        }
+        public void makeFadeOut5() {
+        FadeTransition fadetransition = new FadeTransition();
+        fadetransition.setDuration(Duration.millis(250));
+        fadetransition.setNode(rootpane);
+        fadetransition.setFromValue(1);
+        fadetransition.setToValue(0);
+        fadetransition.setOnFinished(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                loadNextScene5();
+            }
+        });
+        fadetransition.play();
+       
+    }
+    
+    private void loadNextScene5() {
+       
+        try {
+            Parent secondview;
+            secondview = (AnchorPane)FXMLLoader.load(getClass().getResource("/View/Dashboards/PatientDashboardWelcome.fxml"));
+            Scene newscene= new Scene(secondview);
+            Stage curstage =(Stage)rootpane.getScene().getWindow();
+            curstage.setScene(newscene);
+            
+        } catch (IOException ex) {
+            Logger.getLogger(Sign_Up_asController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
         
-        //This Line gets the Stage Information
-        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
-        window.setScene(signUpAsviewScene);
-        window.show();
-        window.centerOnScreen();
-        window.getFullScreenExitKeyCombination();
-        
-       }
     
  
-     @FXML 
-    public void forgotpw2(ActionEvent event) throws IOException{
-        Parent signUpAsParent = FXMLLoader.load(getClass().getResource("/View/Dashboards/RecDashboardWelcome.fxml"));
-        Scene signUpAsviewScene = new Scene(signUpAsParent);
-        
-        //This Line gets the Stage Information
-        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
-        window.setScene(signUpAsviewScene);
-        window.show();
-        window.centerOnScreen();
-        window.getFullScreenExitKeyCombination();
-        
-       }
     
+   //switching and transition sign up as window to user login Receptionist window
+        @FXML   
+        public void forgotpw2(ActionEvent event) {
+              makeFadeOut6();
+        }
+        public void makeFadeOut6() {
+        FadeTransition fadetransition = new FadeTransition();
+        fadetransition.setDuration(Duration.millis(250));
+        fadetransition.setNode(rootpane);
+        fadetransition.setFromValue(1);
+        fadetransition.setToValue(0);
+        fadetransition.setOnFinished(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                loadNextScene6();
+            }
+        });
+        fadetransition.play();
+       
+    }
+    
+    private void loadNextScene6() {
+       
+        try {
+            Parent secondview;
+            secondview = (AnchorPane)FXMLLoader.load(getClass().getResource("/View/Dashboards/RecDashboardWelcome.fxml"));
+            Scene newscene= new Scene(secondview);
+            Stage curstage =(Stage)rootpane.getScene().getWindow();
+            curstage.setScene(newscene);
+            
+        } catch (IOException ex) {
+            Logger.getLogger(Sign_Up_asController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
   
     @Override
     public void initialize(URL url, ResourceBundle rb) {
