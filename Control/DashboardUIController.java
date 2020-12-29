@@ -28,7 +28,11 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javafx.animation.FadeTransition;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -42,6 +46,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 /**
  * 
@@ -183,18 +188,41 @@ public class DashboardUIController implements Initializable {
 
     
     //Signout button - (Side Vbox)
-    @FXML
-    public void Signoutbtn(ActionEvent event) throws IOException{
-        Parent loginWindow = FXMLLoader.load(getClass().getResource("/View/Sign_Up_as.fxml"));
-        Scene loginViewScene = new Scene(loginWindow);
-        
-        //This Line gets the Stage Information
-        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
-        window.setScene(loginViewScene);
-        window.show();
-        window.centerOnScreen();
-        
-       }
+   
+     //switching and transition sign up as window to user login medical offficer window
+        @FXML   
+        public void Signoutbtn(ActionEvent event) {
+              makeFadeOut();
+        }
+        public void makeFadeOut() {
+        FadeTransition fadetransition = new FadeTransition();
+        fadetransition.setDuration(Duration.millis(250));
+        fadetransition.setNode(ap);
+        fadetransition.setFromValue(1);
+        fadetransition.setToValue(0);
+        fadetransition.setOnFinished(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                loadNextScene();
+            }
+        });
+        fadetransition.play();
+       
+    }
+    
+    private void loadNextScene() {
+       
+        try {
+            Parent secondview;
+            secondview = (AnchorPane)FXMLLoader.load(getClass().getResource("/View/Sign_Up_as.fxml"));
+            Scene newscene= new Scene(secondview);
+            Stage curstage =(Stage)ap.getScene().getWindow();
+            curstage.setScene(newscene);
+            
+        } catch (IOException ex) {
+            Logger.getLogger(Sign_Up_asController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
 
  //minimize button
      @FXML
