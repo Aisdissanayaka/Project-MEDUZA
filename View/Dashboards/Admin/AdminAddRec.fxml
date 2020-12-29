@@ -19,9 +19,9 @@
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" maxHeight="780.0" maxWidth="1500.0" minHeight="500.0" minWidth="500.0" prefHeight="700.0" prefWidth="1200.0" styleClass="BackgroundPane" stylesheets="@../../Styles.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Control.AdminAddRecController">
+<AnchorPane id="AnchorPane" maxHeight="780.0" maxWidth="1500.0" minHeight="500.0" minWidth="500.0" prefHeight="700.0" prefWidth="1200.0" styleClass="BackgroundPane" stylesheets="@../../Styles.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Control.AdminAddRecController">
    <children>
-      <AnchorPane id="AnchorPane" maxHeight="780.0" maxWidth="1500.0" minHeight="500.0" minWidth="500.0" prefHeight="700.0" prefWidth="1200.0" styleClass="BackgroundPane" stylesheets="@../../Styles.css">
+      <AnchorPane id="AnchorPane" fx:id="ap" maxHeight="780.0" maxWidth="1500.0" minHeight="500.0" minWidth="500.0" prefHeight="700.0" prefWidth="1200.0" styleClass="BackgroundPane" stylesheets="@../../Styles.css">
          <children>
             <ImageView fitHeight="532.0" fitWidth="488.0" layoutX="774.0" layoutY="73.0" opacity="0.23" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -225,7 +225,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
-            <Button layoutX="1114.0" layoutY="20.0" minHeight="-Infinity" mnemonicParsing="false" prefHeight="4.0" prefWidth="45.0" style="-fx-background-radius: 50;" styleClass="Side-Button" stylesheets="@../../Styles.css">
+            <Button layoutX="1114.0" layoutY="20.0" minHeight="-Infinity" mnemonicParsing="false" onAction="#minimizeButtonAction" prefHeight="4.0" prefWidth="45.0" style="-fx-background-radius: 50;" styleClass="Side-Button" stylesheets="@../../Styles.css">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
