@@ -121,7 +121,7 @@ public class RecAddComplaintWindowController extends DashboardUIController imple
               Alert alert = new Alert(Alert.AlertType.WARNING);
              alert.setTitle("Validate Fields");
              alert.setHeaderText(null);
-             alert.setContentText("Please Enter Into The Fields");
+             alert.setContentText("Please fill all the fields");
              alert.showAndWait();
              
           return false;
