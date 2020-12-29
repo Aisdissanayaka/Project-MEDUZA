@@ -5,6 +5,8 @@
  */
 package Control;
 
+import static Control.RecPostalDispatchedWindowController.datePostal;
+import static Control.RecPostalWindowController.refNumber;
 import static Control.UserLoginController.profilePicture;
 import static Control.UserLoginController.staticUserName;
 import Model.Postal;
@@ -21,6 +23,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -60,7 +63,7 @@ public class AdminReceivedPostalController extends DashboardUIController impleme
     @FXML
     private TableColumn<Postal, String> optionsCol;
     
-@FXML
+    @FXML
     public void AdminDispatchedpostalBtn(ActionEvent event) throws IOException{
 
         
@@ -76,7 +79,34 @@ public class AdminReceivedPostalController extends DashboardUIController impleme
     window.show();
     window.centerOnScreen();
         
-       }
+    }
+    
+     @FXML // received postal delete button
+    void deletePostal(ActionEvent event) {
+
+        try{
+        
+        ObservableList<Postal> allReceived,singleReceived;
+        allReceived = receivedPostTableAdmin.getItems();
+        singleReceived =receivedPostTableAdmin.getSelectionModel().getSelectedItems();
+        refNumber = receivedPostTableAdmin.getSelectionModel().getSelectedItem().getRefferenceNum(); // get refnumber in select row and set it static variable
+        datePostal = receivedPostTableAdmin.getSelectionModel().getSelectedItem().getDate();
+        Postal appObj = new Postal();            //create object in postal class
+        appObj.deletePostal("user data//database//recievedPostals.txt", "user data//database//temp.txt"); //call postal delete methode
+        singleReceived.forEach(allReceived::remove); //delete select row
+        Alert alert = new Alert(Alert.AlertType.WARNING); //display Warning message
+        alert.setContentText("You deleted "+refNumber.toUpperCase()+"'s Received Posatal..!");
+        alert.show();
+        }catch(Exception e){
+        Alert alert = new Alert(Alert.AlertType.WARNING); //display Warning message
+        alert.setContentText("Selecet Postal and press delete button");
+        alert.show();   
+        }
+        
+    }
+    
+    
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         
@@ -95,8 +125,8 @@ public class AdminReceivedPostalController extends DashboardUIController impleme
           noteCol.setCellValueFactory(new PropertyValueFactory<Postal,String>("Note"));
           dateCol.setCellValueFactory(new PropertyValueFactory<Postal,String>("Date"));
           toCol.setCellValueFactory(new PropertyValueFactory<Postal,String>("To"));
-          docCol.setCellValueFactory(new PropertyValueFactory<Postal,String>("Document"));
-          optionsCol.setCellValueFactory(new PropertyValueFactory<Postal,String>("Options"));
+         // docCol.setCellValueFactory(new PropertyValueFactory<Postal,String>("Document"));
+          //optionsCol.setCellValueFactory(new PropertyValueFactory<Postal,String>("Options"));
        
           receivedPostTableAdmin.setItems(recievedPostal);
           

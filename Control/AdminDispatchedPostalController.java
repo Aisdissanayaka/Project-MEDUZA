@@ -5,6 +5,8 @@
  */
 package Control;
 
+import static Control.RecPostalDispatchedWindowController.datePostal;
+import static Control.RecPostalWindowController.refNumber;
 import static Control.UserLoginController.profilePicture;
 import static Control.UserLoginController.staticUserName;
 import Model.Postal;
@@ -21,6 +23,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -78,6 +81,33 @@ public class AdminDispatchedPostalController extends DashboardUIController imple
     window.centerOnScreen();
         
        }
+    
+    @FXML // dispatched postal delete button
+    void deletePostal(ActionEvent event) {
+
+        try{
+        
+        ObservableList<Postal> allReceved,singleReceved;
+        allReceved = dispatchedPostAdminTable.getItems();
+        singleReceved =dispatchedPostAdminTable.getSelectionModel().getSelectedItems();
+        refNumber = dispatchedPostAdminTable.getSelectionModel().getSelectedItem().getRefferenceNum(); // get reff no in select row and set it static variable
+        datePostal = dispatchedPostAdminTable.getSelectionModel().getSelectedItem().getDate();
+        Postal appObj = new Postal();            //create object in Postal class
+        appObj.deletePostal("user data//database//dispatchedPostals.txt", "user data//database//temp.txt"); //call postal delete methode
+        singleReceved.forEach(allReceved::remove); //delete select row
+        Alert alert = new Alert(Alert.AlertType.WARNING); //display Warning message
+        alert.setContentText("You deleted "+refNumber.toUpperCase()+"'s Dispatched Posatal..!");
+        alert.show();
+        }catch(Exception e){
+        Alert alert = new Alert(Alert.AlertType.WARNING); //display Warning message
+        alert.setContentText("Selecet Postal and press delete button");
+        alert.show();   
+        }
+        
+    }
+    
+    
+    
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         
@@ -99,8 +129,8 @@ public class AdminDispatchedPostalController extends DashboardUIController imple
           noteCol.setCellValueFactory(new PropertyValueFactory<Postal,String>("Note"));
           dateCol.setCellValueFactory(new PropertyValueFactory<Postal,String>("Date"));
           fromCol.setCellValueFactory(new PropertyValueFactory<Postal,String>("From"));
-          docCol.setCellValueFactory(new PropertyValueFactory<Postal,String>("Document"));
-          optionsCol.setCellValueFactory(new PropertyValueFactory<Postal,String>("Options"));
+          // docCol.setCellValueFactory(new PropertyValueFactory<Postal,String>("Document"));
+          //optionsCol.setCellValueFactory(new PropertyValueFactory<Postal,String>("Options"));
        
           dispatchedPostAdminTable.setItems(dispatchedPostal);
           

@@ -160,7 +160,7 @@ public class Receptionist extends user {
                
                 
                 if(idno.equals(getStaffID())){  //compare idnumber
-                    pw.print(getStaffID()+","+getFName()+","+getLName()+","+getGender()+","+getDOB()+","+getAddress()+","+getPhoneNumber()+","+getJoinDate()+","+getJoinDate()+"\n"); //is it true update new component
+                    pw.print(getStaffID()+","+getFName()+","+getLName()+","+getGender()+","+getDOB()+","+getAddress()+","+getPhoneNumber()+","+getJoinDate()+","+getStaffEmail()+"\n"); //is it true update new component
                     
                 }else{
                     pw.print(idno+","+fullname+","+lastname+","+usergender+","+birthday+","+phoneNo+","+Address+","+dateJoined+","+staffEmail+"\n"); //else write other data in new file

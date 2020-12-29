@@ -155,14 +155,12 @@
                         </JFXButton>
                         <TableView fx:id="receivedPostTableAdmin" prefHeight="447.0" prefWidth="970.0" AnchorPane.bottomAnchor="6.0" AnchorPane.leftAnchor="6.0" AnchorPane.rightAnchor="6.0">
                            <columns>
-                              <TableColumn fx:id="refCol" prefWidth="93.33329772949219" text="Ref No" />
-                              <TableColumn fx:id="fromCol" prefWidth="124.26669311523438" text="From" />
-                              <TableColumn fx:id="fromAddressCol" prefWidth="127.99996948242188" text="From Address" />
-                              <TableColumn fx:id="noteCol" prefWidth="96.26669311523438" text="Note" />
-                              <TableColumn fx:id="dateCol" prefWidth="117.33343505859375" text="Date" />
-                              <TableColumn fx:id="toCol" prefWidth="129.066650390625" text="To" />
-                              <TableColumn fx:id="docCol" prefWidth="119.46661376953125" text="Document" />
-                              <TableColumn fx:id="optionsCol" prefWidth="126.6666259765625" text="Options" />
+                              <TableColumn fx:id="refCol" prefWidth="128.0" text="Ref No" />
+                              <TableColumn fx:id="fromCol" prefWidth="144.0" text="From" />
+                              <TableColumn fx:id="fromAddressCol" prefWidth="153.0" text="From Address" />
+                              <TableColumn fx:id="noteCol" prefWidth="210.0" text="Note" />
+                              <TableColumn fx:id="dateCol" prefWidth="128.0" text="Date" />
+                              <TableColumn fx:id="toCol" prefWidth="206.0" text="To" />
                            </columns>
                         </TableView>
                      </children>
@@ -184,6 +182,19 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Button>
+            <JFXButton buttonType="RAISED" layoutX="226.0" layoutY="113.0" onAction="#deletePostal" prefHeight="47.0" prefWidth="260.0" style="-fx-background-radius: 30;" styleClass="Special-buttons" stylesheets="@../../Styles.css" text="Delete Postal" textFill="#b3d1f4">
+               <font>
+                  <Font name="Segoe UI Symbol" size="20.0" />
+               </font>
+               <ripplerFill>
+                  <LinearGradient endX="1.0" endY="1.0">
+                     <stops>
+                        <Stop color="#176694" />
+                        <Stop color="#5454cc" offset="1.0" />
+                     </stops>
+                  </LinearGradient>
+               </ripplerFill>
+            </JFXButton>
          </children>
       </AnchorPane>
    </children>
