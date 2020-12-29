@@ -19,3 +19,11 @@ and improve its effectiveness and quality of work. Managing the key processes ef
 # SOFTWARE REQUIREMENTS FOR THE PROJECT
 * OPERATING SYSTEM : Windows 10/7/XP/8
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+# MAIN PACKAGES
+* Control
+* Model
+* View
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+# USED LIBRARIES
+1. fontawesomefx-8.9.jar
+2. jfoenix-8.0.10.jar
