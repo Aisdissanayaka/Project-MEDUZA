@@ -15,8 +15,6 @@ import com.jfoenix.controls.JFXTextField;
 import java.io.FileInputStream;
 import java.net.URL;
 import java.util.ResourceBundle;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -73,7 +71,6 @@ public class AdminUsersMOEdit extends DashboardUIController implements Initializ
     
      @FXML//ubdate butoon action event
     void updateBtn(ActionEvent event) {
-        if(validateFields()&&validatePhoneNum()&&validateEmail()){
         try{
     MedicalOfficer moObj = new MedicalOfficer(); //create object in medical officer class
     //assign the value in setters
@@ -92,7 +89,7 @@ public class AdminUsersMOEdit extends DashboardUIController implements Initializ
     alert.setContentText("Updated medical officer profile.!");
     alert.show();
         }catch(Exception e){}
-    }}
+    }
        
     
    
@@ -110,6 +107,7 @@ public class AdminUsersMOEdit extends DashboardUIController implements Initializ
 
     }
     
+
      // warning message for null validation
      private boolean validateFields(){
          
@@ -159,6 +157,7 @@ public class AdminUsersMOEdit extends DashboardUIController implements Initializ
     
     
     
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
        firstName.setText(selectUser.getFName());
