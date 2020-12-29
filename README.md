@@ -7,11 +7,17 @@
 A comprehensive hospital information management system would consist of several sub-systems to facilitate specific business and operational requirements. A hospital’s business and operation requirements can be broken down to its organizational departments as follows:
 
 ● Out-Patient & Front-Office Department
+
 ● Pathology Department
+
 ● Pharmacy Department
+
 ● Radiology Department
+
 ● Finance Department
+
 ● Human Resources Department
+
 
 # OUT PATIENT AND FRONT OFFICE DEPARTMENT
 
@@ -19,9 +25,13 @@ OPD (Out-Patient Department) is responsible for managing out-patients who just c
 This system will be mainly used by:
 
 ● Receptionist
+
 ● Patient
+
 ● Medical Officer
+
 ● Admin
+
 
 The entire project mainly consists of 7 modules, which are
 * Visitors Module
