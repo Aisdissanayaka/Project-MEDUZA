@@ -165,6 +165,14 @@
                         <TableColumn fx:id="toCol" prefWidth="155.0" text="To" />
                     </columns>
                   </TableView>
+                  <JFXButton layoutX="849.0" layoutY="-2.0" onAction="#deletePostal" prefHeight="39.0" prefWidth="120.0" styleClass="Close-Button" stylesheets="@../../Styles.css" text="Delete" textFill="#b3d1f4">
+                     <font>
+                        <Font name="Segoe UI Italic" size="19.0" />
+                     </font>
+                     <effect>
+                        <DropShadow color="#ff2727" height="121.09" radius="58.2575" spread="0.5" width="113.94" />
+                     </effect>
+                  </JFXButton>
                </children>
             </AnchorPane>
          </children>
@@ -202,18 +210,5 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <JFXButton buttonType="RAISED" layoutX="798.0" layoutY="126.0" onAction="#deletePostal" prefHeight="47.0" prefWidth="260.0" style="-fx-background-radius: 30;" styleClass="Special-buttons" stylesheets="@../../Styles.css" text="Delete Postal" textFill="#b3d1f4">
-         <font>
-            <Font name="Segoe UI Symbol" size="20.0" />
-         </font>
-         <ripplerFill>
-            <LinearGradient endX="1.0" endY="1.0">
-               <stops>
-                  <Stop color="#176694" />
-                  <Stop color="#5454cc" offset="1.0" />
-               </stops>
-            </LinearGradient>
-         </ripplerFill>
-      </JFXButton>
    </children>
 </AnchorPane>
