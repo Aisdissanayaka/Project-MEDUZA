@@ -6,6 +6,7 @@
 package Control;
 
 import static Control.UserLoginController.primaryKey;
+import Model.Receptionist;
 import com.jfoenix.controls.JFXTextField;
 import java.awt.Desktop;
 import java.awt.image.BufferedImage;
@@ -115,20 +116,27 @@ public class ReceptionistProfileWindowController extends DashboardUIController i
     @FXML 
     private void updateBtn(){ 
        if(validateFields()&&validatePhoneNum()&& validateEmail()){
-        try{
-        File file = new File("user data\\receptionist\\data\\"+ primaryKey+".txt");   
-        file.delete(); 
-        PrintWriter printer = new PrintWriter(new FileOutputStream(file,true)); 
-        
-        printer.append(firstNameTxt.getText()+"\n"+lastNameTxt.getText()+"\n"+addressTxt.getText()+"\n"+phoneNumTxt.getText()+"\n"
-                +dateOfBirthTxt.getText()+"\n"+ genderBox.getValue()+"\n"+""+staffIDTxt.getText()
-                   +"\n"+ staffEmailTxt.getText()+"\n"+ joinedDateTxt.getText()+"\n");
-           
-        printer.close();
-        }catch(FileNotFoundException e){} 
-         Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setContentText("Your profile was updated..!");
-        alert.show();
+       try {
+            
+    Receptionist recObj = new Receptionist();
+    recObj.setFName(firstNameTxt.getText());
+    recObj.setLName(lastNameTxt.getText());
+    recObj.setGender(genderBox.getValue().toString());
+    recObj.setDOB(dateOfBirthTxt.getText());
+    recObj.setPhoneNumber(phoneNumTxt.getText());
+    recObj.setAddress(addressTxt.getText());      
+    recObj.setJoinDate(joinedDateTxt.getText());
+    recObj.setStaffEmail(staffEmailTxt.getText()); 
+    recObj.setStaffID(staffIDTxt.getText());
+    recObj.editPatient("user data//database//receptionists.txt", "user data//database//temp.txt"); 
+    
+    
+    Alert alert = new Alert(Alert.AlertType.INFORMATION); //display Warning message
+    alert.setContentText("Updated receptionist's profile.!");
+    alert.show();
+            
+     } catch (Exception e) {
+   }
          
         
     } 
