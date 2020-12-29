@@ -6,6 +6,7 @@
 package Model;
 
 import static Control.RecAppointmentWindowController.userIDAppointment;
+import static Control.RecPostalDispatchedWindowController.datePostal;
 import static Control.RecPostalWindowController.refNumber;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -217,20 +218,24 @@ public class Postal {
                 date=x.next();
                 to=x.next();
                 
-                if(ref.equals(refNumber)){  //compare idnumber
+                if(ref.equals(refNumber) && date.equals(datePostal)){  //compare idnumber
                     System.out.println("You deleted "+ref+"postal"); // is it true display message
                     
                 }else{
-                    pw.print(ref+","+from+","+fromadd+","+note+","+date+","+to+","+"\n"); //else write other data in new file
+                    pw.print(ref+","+from+","+fromadd+","+note+","+date+","+to+"\n"); //else write other data in new file
+                    
+                
                 }
                 
             }
+            
             x.close();   //scanner close
             pw.flush();  //print writer flush
             pw.close();   //print writer close
-            oldFile.delete();   // file deleted
+            if(oldFile.delete()); 
             File dump = new File (filepath); 
-            newFile.renameTo(dump);  // new file rename old file name
+            if(newFile.renameTo(dump));  // new file rename old file name
+            
             
             
        } catch (Exception e) {
