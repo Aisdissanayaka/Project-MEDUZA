@@ -18,19 +18,19 @@
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" fx:id="ap" maxHeight="780.0" maxWidth="1500.0" minHeight="500.0" minWidth="500.0" prefHeight="700.0" prefWidth="1200.0" styleClass="BackgroundPane" stylesheets="@../../Styles.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Control.RecAppointmentWindowController">
+<AnchorPane id="AnchorPane" fx:id="ap" maxHeight="780.0" maxWidth="1500.0" minHeight="500.0" minWidth="500.0" prefHeight="700.0" prefWidth="1200.0" styleClass="BackgroundPane" stylesheets="@../../Styles.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Control.RecAppointmentWindowController">
    <children>
       <AnchorPane layoutX="113.0" layoutY="40.0" prefHeight="796.0" prefWidth="218.0" styleClass="SubPane" stylesheets="@../Styles.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <AnchorPane layoutY="3.0" prefHeight="200.0" prefWidth="218.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="3.0">
                <children>
                   <Circle fx:id="profilePhoto" fill="DODGERBLUE" layoutX="112.0" layoutY="74.0" radius="46.0" stroke="BLACK" strokeType="INSIDE" AnchorPane.bottomAnchor="80.0" AnchorPane.leftAnchor="66.0" AnchorPane.rightAnchor="60.400000000000006" AnchorPane.topAnchor="28.0" />
-                  <Label fx:id="nameLbl" alignment="CENTER" layoutX="10.0" layoutY="128.0" prefHeight="28.0" prefWidth="194.0" text="John Doe" textFill="#274684">
+                  <Label fx:id="nameLbl" alignment="CENTER" layoutX="10.0" layoutY="128.0" prefHeight="28.0" prefWidth="194.0" text="John Doe" textFill="#274684" AnchorPane.leftAnchor="12.0" AnchorPane.rightAnchor="12.0">
                      <font>
                         <Font name="Segoe UI" size="23.0" />
                      </font>
                   </Label>
-                  <Label fx:id="roleLbl" alignment="CENTER" layoutX="62.0" layoutY="156.0" prefHeight="22.0" prefWidth="98.0" text="Receptionist" textFill="#071739">
+                  <Label fx:id="roleLbl" alignment="CENTER" layoutX="62.0" layoutY="156.0" prefHeight="22.0" prefWidth="98.0" text="Receptionist" textFill="#071739" AnchorPane.leftAnchor="12.0" AnchorPane.rightAnchor="12.0">
                      <font>
                         <Font name="Segoe UI" size="17.0" />
                      </font>
@@ -146,7 +146,7 @@
       </JFXButton>
       <AnchorPane layoutX="218.0" layoutY="203.0" prefHeight="583.0" prefWidth="1550.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="218.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="203.0">
          <children>
-            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="491.0" prefWidth="976.0" AnchorPane.bottomAnchor="6.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="6.0" AnchorPane.topAnchor="0.0">
+            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="491.0" prefWidth="976.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                <children>
                   <TableView fx:id="appointmentTable" editable="true" layoutX="17.0" layoutY="46.0" prefHeight="439.0" prefWidth="964.0" tableMenuButtonVisible="true" AnchorPane.bottomAnchor="6.0" AnchorPane.leftAnchor="6.0" AnchorPane.rightAnchor="6.0" AnchorPane.topAnchor="46.0">
                      <columns>
@@ -190,6 +190,30 @@
                         <DropShadow color="#ff2727" height="121.09" radius="58.2575" spread="0.5" width="113.94" />
                      </effect>
                   </JFXButton>
+                  <JFXButton layoutX="854.0" onAction="#deleteAppointment" prefHeight="39.0" prefWidth="120.0" styleClass="Close-Button" stylesheets="@../../Styles.css" text="Delete" textFill="#b3d1f4">
+                     <font>
+                        <Font name="Segoe UI Italic" size="19.0" />
+                     </font>
+                     <effect>
+                        <DropShadow color="#ff2727" height="121.09" radius="58.2575" spread="0.5" width="113.94" />
+                     </effect>
+                  </JFXButton>
+                  <JFXButton layoutX="730.0" onAction="#editAppointment" prefHeight="39.0" prefWidth="120.0" styleClass="Back-Button" stylesheets="@../../Styles.css" text="Edit" textFill="#b3d1f4">
+                     <font>
+                        <Font name="Segoe UI Italic" size="19.0" />
+                     </font>
+                     <effect>
+                        <DropShadow color="#ff2727" height="121.09" radius="58.2575" spread="0.5" width="113.94" />
+                     </effect>
+                  </JFXButton>
+                  <JFXButton layoutX="606.0" onAction="#approveAppointment" prefHeight="39.0" prefWidth="120.0" style="-fx-background-color: green;" styleClass="Special-buttons" stylesheets="@../../Styles.css" text="Approve" textFill="#b3d1f4">
+                     <font>
+                        <Font name="Segoe UI Italic" size="19.0" />
+                     </font>
+                     <effect>
+                        <DropShadow color="#ff2727" height="121.09" radius="58.2575" spread="0.5" width="113.94" />
+                     </effect>
+                  </JFXButton>
                </children>
             </AnchorPane>
          </children>
@@ -209,44 +233,5 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <JFXButton buttonType="RAISED" layoutX="493.0" layoutY="126.0" onAction="#deleteAppointment" prefHeight="47.0" prefWidth="260.0" style="-fx-background-radius: 30;" styleClass="Special-buttons" stylesheets="@../../Styles.css" text="Delete" textFill="#b3d1f4">
-         <font>
-            <Font name="Segoe UI Symbol" size="20.0" />
-         </font>
-         <ripplerFill>
-            <LinearGradient endX="1.0" endY="1.0">
-               <stops>
-                  <Stop color="#176694" />
-                  <Stop color="#5454cc" offset="1.0" />
-               </stops>
-            </LinearGradient>
-         </ripplerFill>
-      </JFXButton>
-      <JFXButton fx:id="btn" buttonType="RAISED" layoutX="760.0" layoutY="126.0" onAction="#editAppointment" prefHeight="47.0" prefWidth="260.0" style="-fx-background-radius: 30;" styleClass="Special-buttons" stylesheets="@../../Styles.css" text="Edit" textFill="#b3d1f4">
-         <font>
-            <Font name="Segoe UI Symbol" size="20.0" />
-         </font>
-         <ripplerFill>
-            <LinearGradient endX="1.0" endY="1.0">
-               <stops>
-                  <Stop color="#176694" />
-                  <Stop color="#5454cc" offset="1.0" />
-               </stops>
-            </LinearGradient>
-         </ripplerFill>
-      </JFXButton>
-      <JFXButton buttonType="RAISED" layoutX="760.0" layoutY="70.0" onAction="#approveAppointment" prefHeight="47.0" prefWidth="260.0" style="-fx-background-radius: 30;" styleClass="Special-buttons" stylesheets="@../../Styles.css" text="Approve" textFill="#b3d1f4">
-         <font>
-            <Font name="Segoe UI Symbol" size="20.0" />
-         </font>
-         <ripplerFill>
-            <LinearGradient endX="1.0" endY="1.0">
-               <stops>
-                  <Stop color="#176694" />
-                  <Stop color="#5454cc" offset="1.0" />
-               </stops>
-            </LinearGradient>
-         </ripplerFill>
-      </JFXButton>
    </children>
 </AnchorPane>

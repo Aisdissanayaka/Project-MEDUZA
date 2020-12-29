@@ -93,7 +93,7 @@ public class UserLoginController implements Initializable {
       obj.setUserName(userName.getText());
       primaryKey = userName.getText();
       primaryKey1 = password.getText();
-    
+     try {
       profilePicture = "user data\\receptionist\\photo\\"+primaryKey+".jpg";
       File file = new File("user data\\receptionist\\data\\"+primaryKey+".txt");
       FileReader fr = new FileReader(file);
@@ -108,15 +108,17 @@ public class UserLoginController implements Initializable {
       staticStaffID= br.readLine();
       staticJoinDate = br.readLine();
       
-        
+        fr.close();
+      br.close();      
+      } catch (Exception e) {
+         
+      } 
       obj.setPassword(password.getText());
       obj.login(event, lable, "user data\\receptionist\\credentials\\receptionistlogin.txt", "/View/Dashboards/RecDashboardWelcome.fxml");
       
      
         
-      
-      fr.close();
-      br.close();
+     
      
       
     }
@@ -131,12 +133,10 @@ public class UserLoginController implements Initializable {
       obj.setPassword(password.getText());
       primaryKey = userName.getText();
       primaryKey1 = password.getText();
-    
-      obj.login(event, lable, "user data\\patient\\credentials\\patientlogin.txt" , "/View/Dashboards/PatientDashboardWelcome.fxml");
-      
-      profilePicture = "user data\\patient\\photo\\"+primaryKey+".jpg";
+       
       
       try {
+      profilePicture = "user data\\patient\\photo\\"+primaryKey+".jpg";
       File file = new File("user data\\patient\\data\\"+primaryKey+".txt");
       FileReader fr = new FileReader(file);
       BufferedReader br = new BufferedReader(fr);
@@ -157,6 +157,11 @@ public class UserLoginController implements Initializable {
          
       }
       
+      obj.login(event, lable, "user data\\patient\\credentials\\patientlogin.txt" , "/View/Dashboards/PatientDashboardWelcome.fxml");
+      
+      
+      
+      
       
       
     }
@@ -172,9 +177,9 @@ public class UserLoginController implements Initializable {
       obj.setPassword(password.getText());
       primaryKey = userName.getText();
       primaryKey1 = password.getText();
-      obj.login(event, lable, "user data\\medical officer\\credentials\\medicalofficerlogin.txt", "/View/Dashboards/MODashboardWelcome.fxml");
-       profilePicture = "user data\\receptionist\\photo\\"+primaryKey+".jpg";
-      try{
+      
+        try{
+        profilePicture = "user data\\receptionist\\photo\\"+primaryKey+".jpg";
       File file = new File("user data\\medical officer\\data\\"+primaryKey+".txt");
       FileReader fr = new FileReader(file);
       BufferedReader br = new BufferedReader(fr);
@@ -193,6 +198,9 @@ public class UserLoginController implements Initializable {
       } catch (Exception e) {
 
       }
+       obj.login(event, lable, "user data\\medical officer\\credentials\\medicalofficerlogin.txt", "/View/Dashboards/MODashboardWelcome.fxml");
+      
+     
     }
     
 
@@ -339,7 +347,7 @@ public class UserLoginController implements Initializable {
   
          //switching and transition sign up as window to user login medical offficer window
         @FXML   
-        public void forgotpw(ActionEvent event) {
+        public void cancelbtn(ActionEvent event) {
               makeFadeOut4();
         }
         public void makeFadeOut4() {
@@ -362,7 +370,7 @@ public class UserLoginController implements Initializable {
        
         try {
             Parent secondview;
-            secondview = (AnchorPane)FXMLLoader.load(getClass().getResource("/View/Dashboards/MODashboardWelcome.fxml"));
+            secondview = (AnchorPane)FXMLLoader.load(getClass().getResource("/View/Sign_Up_as.fxml"));
             Scene newscene= new Scene(secondview);
             Stage curstage =(Stage)rootpane.getScene().getWindow();
             curstage.setScene(newscene);

@@ -115,7 +115,7 @@ allergies.getText().isEmpty())
               Alert alert = new Alert(Alert.AlertType.WARNING);
              alert.setTitle("Validate Fields");
              alert.setHeaderText(null);
-             alert.setContentText("Please Enter Into The Fields");
+             alert.setContentText("Please fill all the fields");
              alert.showAndWait();
              return false;
             }
@@ -138,18 +138,6 @@ allergies.getText().isEmpty())
          }
        }
     
-     // Cancel Button. it's go to sign up as menu  
-    public void cancelBtn(ActionEvent event) throws IOException{
-        Parent signUpAsParent = FXMLLoader.load(getClass().getResource("/View/Sign_Up_as.fxml"));
-        Scene signUpAsviewScene = new Scene(signUpAsParent);
-        
-        //This Line gets the Stage Information
-        Stage window = (Stage)((Node)event.getSource()).getScene().getWindow();
-        window.setScene(signUpAsviewScene);
-        window.show();
-        window.centerOnScreen();
-        
-       }
     
       @Override
     public void initialize(URL url, ResourceBundle rb) {

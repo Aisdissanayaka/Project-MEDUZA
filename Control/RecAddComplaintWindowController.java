@@ -121,7 +121,7 @@ public class RecAddComplaintWindowController extends DashboardUIController imple
               Alert alert = new Alert(Alert.AlertType.WARNING);
              alert.setTitle("Validate Fields");
              alert.setHeaderText(null);
-             alert.setContentText("Please Enter Into The Fields");
+             alert.setContentText("Please fill all the fields");
              alert.showAndWait();
              
           return false;
@@ -212,6 +212,8 @@ public class RecAddComplaintWindowController extends DashboardUIController imple
        noteTxt.getValidators().add(validator);
        phoneNumTxt.getValidators().add(validator);
        phoneNumTxt.getValidators().add(numvalidator);
+       complaintDate.getValidators().add(validator);
+       comTypeBox.getValidators().add(validator);
 
         
        nameTxt.focusedProperty().addListener(new ChangeListener <Boolean>() {
