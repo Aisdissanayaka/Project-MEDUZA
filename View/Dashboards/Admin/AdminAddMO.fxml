@@ -19,7 +19,7 @@
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" maxHeight="780.0" maxWidth="1500.0" minHeight="500.0" minWidth="500.0" prefHeight="700.0" prefWidth="1200.0" styleClass="BackgroundPane" stylesheets="@../../Styles.css" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Control.AdminAddMOController">
+<AnchorPane id="AnchorPane" maxHeight="780.0" maxWidth="1500.0" minHeight="500.0" minWidth="500.0" prefHeight="700.0" prefWidth="1200.0" styleClass="BackgroundPane" stylesheets="@../../Styles.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Control.AdminAddMOController">
    <children>
       <AnchorPane id="AnchorPane" fx:id="ap" maxHeight="780.0" maxWidth="1500.0" minHeight="500.0" minWidth="500.0" prefHeight="700.0" prefWidth="1200.0" styleClass="BackgroundPane" stylesheets="@../../Styles.css">
          <children>
@@ -208,7 +208,7 @@
                      </font>
                   </JFXButton>
                   <JFXComboBox fx:id="moSpecialityArea" layoutX="502.0" layoutY="213.0" prefHeight="26.0" prefWidth="142.0" promptText="Speciality Area" />
-                  <JFXButton layoutX="672.0" layoutY="275.0" onAction="#openPhoto" prefHeight="31.0" prefWidth="142.0" styleClass="Special-buttons" stylesheets="@../../Styles.css" text="Add Staff Photograph" textFill="WHITE">
+                  <JFXButton layoutX="672.0" layoutY="275.0" onAction="#addPhoto" prefHeight="31.0" prefWidth="142.0" styleClass="Special-buttons" stylesheets="@../../Styles.css" text="Add Staff Photograph" textFill="WHITE">
                      <font>
                         <Font name="Segoe UI" size="12.0" />
                      </font>
